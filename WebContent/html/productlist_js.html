@@ -9,11 +9,13 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 
 <style>
+/* 글꼴 */
 @import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
 *{
 font-family: 'Jua', sans-serif;
 font-weight : 900;
 }
+
 
 img {
 	display: block;
@@ -22,9 +24,16 @@ img {
 	height : 250px;
 }
 
-/* 글꼴 */
+#card > img{
+	width : 180px;
+	height : 280px;
+}
 
-	
+a {
+	color : black;
+}
+
+
 
 </style>
 
@@ -57,9 +66,9 @@ img {
 					<div id="accordion">
 						<div class="card">
 							<div class="card-header">
-								<a class="card-link" data-toggle="collapse" href="#collapseOne"> 세탁기 </a>
+								<a class="card-link" data-toggle="collapse" href="#collapseOne"> 냉장고 유형 </a>
 							</div>
-							<div id="collapseOne" class="collapse show" data-parent="#accordion">
+							<div id="collapseOne" class="collapse" data-parent="#accordion">
 
 								<div class="card-body">
 									<ul class="list-group">
@@ -76,15 +85,15 @@ img {
 						
 						<div class="card">
 							<div class="card-header">
-								<a class="card-link" data-toggle="collapse" href="#collapseOne"> 세탁기 </a>
+								<a class="card-link" data-toggle="collapse" href="#collapseTwo"> 설치 타입  </a>
 							</div>
-							<div id="collapseOne" class="collapse show" data-parent="#accordion">
+							<div id="collapseTwo" class="collapse" data-parent="#accordion">
 
 								<div class="card-body">
 									<ul class="list-group">
-										<li class="list-group-item">양문형</li>
-										<li class="list-group-item">단일형</li>
-										<li class="list-group-item">김치냉장고</li>
+										<li class="list-group-item">프리스탠딩</li>
+										<li class="list-group-item">키친핏</li>
+										<li class="list-group-item">빌트인</li>
 									</ul>
 
 
@@ -94,15 +103,15 @@ img {
 						</div>
 						<div class="card">
 							<div class="card-header">
-								<a class="card-link" data-toggle="collapse" href="#collapseOne"> 세탁기 </a>
+								<a class="card-link" data-toggle="collapse" href="#collapseThree"> 도어 유형 </a>
 							</div>
-							<div id="collapseOne" class="collapse show" data-parent="#accordion">
+							<div id="collapseThree" class="collapse" data-parent="#accordion">
 
 								<div class="card-body">
 									<ul class="list-group">
-										<li class="list-group-item">양문형</li>
-										<li class="list-group-item">단일형</li>
-										<li class="list-group-item">김치냉장고</li>
+										<li class="list-group-item">5도어 이상</li>
+										<li class="list-group-item">4도어</li>
+										<li class="list-group-item">3도어</li>
 									</ul>
 
 
@@ -110,7 +119,24 @@ img {
 
 							</div>
 						</div>
-						
+						<div class="card">
+							<div class="card-header">
+								<a class="card-link" data-toggle="collapse" href="#collapseFout"> 용량 </a>
+							</div>
+							<div id="collapseFout" class="collapse" data-parent="#accordion">
+
+								<div class="card-body">
+									<ul class="list-group">
+										<li class="list-group-item">900L ~</li>
+										<li class="list-group-item">700L ~ 899L</li>
+										<li class="list-group-item">500L ~ 699L</li>
+									</ul>
+
+
+								</div>
+
+							</div>
+						</div>
 					</div>
 				</div>
 
@@ -121,9 +147,6 @@ img {
 			
 			
 			<!--상품 리스트 부분 -->
-			
-			
-			
 			
 			<div id="product" class="col-sm-9 container-fluid text-center">
 				<h5>들어갈 상품 목록</h5>
