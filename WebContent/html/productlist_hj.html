@@ -10,8 +10,87 @@
 		<script>
 			
 		</script>
+		<style>
+			*{	
+				border: 1px solid black;
+				padding: 0px;
+				margin: 0px;
+				box-sizing: border-box;
+				text-align: center;
+			}
+			#total{
+				width: 1800px;
+			}
+			#product2{
+				background-color: #F6F6F6;
+			}
+			
+			img{
+				display: block;
+				margin: 0px auto;
+			}
+			
+			.btn-lg {
+			  font-size: 14px;
+			}
+			
+			.round {
+				width: 250px;
+			  	border-radius: 24px;
+			}
+		
+			.btn:focus{
+				border:3px dashed #0054FF;
+				box-shadow: none;
+			}
+			/*삼성색깔:#1428A0*/
+			#css_button{
+				background-color: #FFFFFF;
+			}
+		</style>
 	</head>
 	<body>
-		
+		<div id=total class="container-fluid">
+			<div id=product2 class="col-sm-3">
+				<div class="column">
+					<div class="container-fluid row mb-3">
+						<div class="col-sm-6 text-left">설치상품</div>
+						<div class="col-sm-6 text-right">
+							<button id="css_button">
+								<img src="../images/cart.png" width="20" height="20"/>
+							</button>
+						</div>
+					</div>
+					<div id=rf_image>
+						<img src="../images/refrigator2.png"/>
+					</div>
+					<div id=rf_name class="mt-4">
+						<h5>BESPOKE 냉장고 4도어</h5>
+						<h5>키친핏 604 L</h5>
+					</div>
+					<div id=rf_price class="mt-2">
+						<div class="row" >
+							<h5 class="text-right col-sm-5"><small>3,999,000원</small></h5>
+							<h5 class="text-left col-sm-7 text-primary font-weight-bold">2,600,000원</h5>
+						</div>
+					</div>
+					<div id="rf_point">
+						<h6><small>적립 예정포인트 65,200원</small></h6>
+					</div>
+					<div id="rf_detail">
+						<button type="button" class="btn btn-dark btn-lg round">구매하기</button>
+					</div>
+					<div id="rf_score">
+						<div class="row text-right">
+							<button class="btn btn-light text-right">
+								<img src="../images/star.png" width="15" height="15"/>
+								4.8(31)
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>	
+	
 	</body>
 </html>
