@@ -24,14 +24,19 @@ img {
 	height : 250px;
 }
 
-#card > img{
+#sidebar {
 	width : 180px;
 	height : 280px;
 }
 
+
+
+
 a {
 	color : black;
 }
+
+
 
 
 
@@ -60,11 +65,11 @@ a {
 
 	<div id="contents" class="container-fluid">
 		<div class="row">
-			<div id="sidebar" class="col-sm-3 text-center">
+			<div id="sidebar" class="col-sm-3 col-md-3 d-none d-xl-block text-center">
 				<h5>제품별 유형</h5>
 				<div class="container">
 					<div id="accordion">
-						<div class="card">
+						<div id = "sidecard" class="card">
 							<div class="card-header">
 								<a class="card-link" data-toggle="collapse" href="#collapseOne"> 냉장고 유형 </a>
 							</div>
@@ -83,7 +88,7 @@ a {
 							</div>
 						</div>
 						
-						<div class="card">
+						<div id = "sidecard" class="card">
 							<div class="card-header">
 								<a class="card-link" data-toggle="collapse" href="#collapseTwo"> 설치 타입  </a>
 							</div>
@@ -101,7 +106,7 @@ a {
 
 							</div>
 						</div>
-						<div class="card">
+						<div id = "sidecard" class="card">
 							<div class="card-header">
 								<a class="card-link" data-toggle="collapse" href="#collapseThree"> 도어 유형 </a>
 							</div>
@@ -119,7 +124,7 @@ a {
 
 							</div>
 						</div>
-						<div class="card">
+						<div id = "sidecard" class="card">
 							<div class="card-header">
 								<a class="card-link" data-toggle="collapse" href="#collapseFout"> 용량 </a>
 							</div>
@@ -148,7 +153,7 @@ a {
 			
 			<!--상품 리스트 부분 -->
 			
-			<div id="product" class="col-sm-9 container-fluid text-center">
+			<div id="product" class="col-sm-9 col-md-9 container-fluid text-center">
 				<h5>들어갈 상품 목록</h5>
 				<div class="row">
 				
