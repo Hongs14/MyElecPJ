@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+		<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+		
+		<script>
+			
+		</script>
+		<style>
+		
+			*{
+				/*border: 1px solid black;*/
+				margin: 0px;
+				padding: 0px;
+			
+			}
+			img{
+				display: block;
+				margin: 0px auto;
+			}
+			.v_center{
+			 	vertical-align: middle;
+			}
+			.btn-lg {
+				font-size: 14px;
+			}
+				
+			.round {
+				width: 150px;
+				border-radius: 24px;
+			}
+			
+			.btn:focus{
+				border:3px dashed #0054FF;
+				box-shadow: none;
+			}
+			#rf_category{
+				font-color: #BDBDBD;
+			}
+			
+			#rf_detail{
+				background-color: #F0F0F0;
+			}
+			#rf_detail_option{
+				width: 94%;
+				padding-top: 30px;
+				padding-bottom: 30px;
+			}
+			
+		
+		</style>
+	</head>
+	<body>
+		<div>
+			삼성위크 최대~~
+		</div>
+		<div>
+			<p>samsung 메뉴~~</p>
+			
+			
+		</div>
+		<div class="pb-3" style="background-color: #F0F0F0;">
+			<h6>HOME > 주방가전 > 냉장고 모두 보기 > BESPOKE > 냉장고 4도어 키친핏 604 L</h6>
+		</div>
+		<div id="rf_detail" class="container-fluid row">
+			<div class="col-sm-12 col-md-6 col-lg-8">
+				<div class="my-3 text-center">
+					<img src="../images/refrigerator_big.png"/>
+				</div>
+			</div>
+			
+			<div class="col-sm-0 col-md-6 col-lg-4 container-fluid">
+				<div class="card">
+					<div class="card-header" style="background-color: #FFFFFF">
+						<div id="rf_category" class="row">
+							<h6>설치상품 | 아울렛 | 삼성케어플러스 | 번개특가</h6>
+						</div>
+					</div>
+					<div class="card_body container-fluid">
+						<h4>BESPOKE 냉장고 4도어 키친핏 604 L</h4>
+						<div id="rf_detail_score" class="row">
+							<div class=" col-6 text-left row">
+								<img src="../images/score.png" width="70px"/>
+								<h6>1.0</h6>
+							</div>
+							<div class="col-6 row d-flex justify-content-end">
+							<img src="../images/pencil.png" height="20px"/> 
+							
+							<h6 style="text-decoration-line:underline;">상품평 쓰기</h6>
+
+							</div>
+						</div>
+						
+						<div id="rf_detail_price" class="mt-4">
+							<div class="column">
+								<div class="row">
+									<div class="col-6 text-left v_center"><h6>판매가</h6></div>
+									<div class="col-6 text-right v_center"><h6>3,999,000원</h6></div>
+								</div>	
+								<div class="row v_center">
+									<div class="col-6 text-left text-primary"><h6>아울렛 특가</h6></div>
+									<div class="col-6 text-right text-primary"><h5>2,600,000원</h5></div>
+								</div>
+							</div>
+						</div>
+						<div class="d-flex justify-content-center my-3">
+							<div id="rf_detail_option" style="background-color : #EAEAEA">
+								<div class="column container-fluid">
+									<div class="row">
+										<div class="col-6">
+											<h6>색상</h6>
+										</div>
+										<div class="col-6 text-center row">
+											<img src="../images/color_white.png" width="30px" height="30px"/>
+											<h6><strong>글램 화이트</strong></h6>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-6">
+											<h6>수량</h6>
+										</div>
+										<div class="col-6 row  d-flex justify-content-center">
+											<input class="mr-5" type="number" id="quantity" name="quantity" min="1" max="99">
+											
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>	
+						
+						<!-- 사이즈 맞추기용 -->
+						<div>
+							<img src="../images/setting_height.png" width="400px">
+						</div>
+						
+						<!--  -->
+						
+						<div id="rf_button">
+							<div class="row" style="text-align: center">
+								<div class="text-right col-6">
+									<button type="button" class="btn btn-dark btn-lg round">장바구니</button>	
+								</div>
+								<div class="text-left col-6">
+									<button type="button" class="btn btn-dark btn-lg round">구매하기</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
