@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="UTF-8">
@@ -19,8 +19,18 @@
 			* {
 				padding: 0px;
 				margin: 0px;
-				border: 1px solid black;
+				/*border: 1px solid black;*/
 			}
+
+            .wrapper {
+                width: 1440px;
+                margin: 0px auto;
+            }
+
+            .wrapperChild {
+                width: 95%;
+                margin: 0px auto;
+            }
 			
 			img {
 				display: block;
@@ -30,207 +40,236 @@
 			a {
 				color : black;
 			}
+
+            hr {
+                height: 1px;
+                background-color: black;
+            }
 		</style>
 		
 	</head>
 	<body>
-		<div class="jumbotron text-center jumbotron-fluid bg-white border">
+		<div class="jumbotron text-center jumbotron-fluid bg-primary border">
 			<div class="container bg-white text-dark mx-auto my-0 ">
 				<h1>컴퓨터 쇼핑몰</h1>
 			</div>
 		</div>
-		
-		<div id="topNavi">
-			<nav class="navbar navbar-expand-sm nav-bar-gray d-flex flex-column">
-				<ul class="navbar-nav row d-flex justify-content-start">
+		<hr />
+		<div id="topNavi" class="wrapper bg-success">
+			<nav class="navbar navbar-expand-sm nav-bar-gray d-flex flex-column wrapperChild">
+				<ul class="navbar-nav row d-flex justify-content-start" style="width: 100%">
 					<li class="nav-item col-1 d-flex justify-content-center">
 						<button type="button" class="btn btn-danger align-self-start">LOGO</button>
 					</li>
-					
-					<li class="nav-item col-9 d-flex justify-content-center">
-						<button type="button" class="btn btn-info align-self-start" data-toggle="collapse" data-target="#refrigator">냉장고</button>
 
-						<button type="button" class="btn btn-info align-self-start" data-toggle="collapse" data-target="#TV">TV</button>
+					<li class="nav-item col-7 d-flex justify-content-center">
+						<div class="col-2 d-flex justify-content-center">
+							<button type="button" class="btn btn-info align-self-start" data-toggle="collapse" data-target="#refrigator">냉장고</button>
+						</div>
 
-						<button type="button" class="btn btn-info align-self-start" data-toggle="collapse" data-target="#washingmachine">세탁기</button>
+						<div class="col-2 d-flex justify-content-center">
+							<button type="button" class="btn btn-info align-self-start" data-toggle="collapse" data-target="#TV">TV</button>
+						</div>
 
-						<button type="button" class="btn btn-info align-self-start" data-toggle="collapse" data-target="#airconditioner">에어컨</button>
+						<div class="col-2 d-flex justify-content-center">
+							<button type="button" class="btn btn-info align-self-start" data-toggle="collapse" data-target="#washingmachine">세탁기</button>
+						</div>
 
-						<button type="button" class="btn btn-info align-self-start" data-toggle="collapse" data-target="#personalcomputer">PC</button>
+						<div class="col-2 d-flex justify-content-center">
+							<button type="button" class="btn btn-info align-self-start" data-toggle="collapse" data-target="#airconditioner">에어컨</button>
+						</div>
+
+						<div class="col-2 d-flex justify-content-center">
+							<button type="button" class="btn btn-info align-self-start" data-toggle="collapse" data-target="#personalcomputer">PC</button>
+						</div>
+						<div class="col-2"></div>
 					</li>
 
-			    	
-			    	<li class="nav-item col-1 d-flex justify-content-center">
-						<button type="button" class="btn btn-warning align-self-start">로그인</button>
+					<li class="nav-item col-2 d-flex justify-content-center">
+						<button type="button" class="btn btn-warning align-self-start" onclick="window.location.href='login_js.html'">로그인</button>
 					</li>
-					
-					<li class="nav-item col-1 d-flex justify-content-center">
-						<button type="button" class="btn btn-warning align-self-start">회원가입</button>
+
+					<li class="nav-item col-2 d-flex justify-content-center">
+						<button type="button" class="btn btn-warning align-self-start" onclick="window.location.href='joinform_ej.html'">회원가입</button>
 					</li>
 				</ul>
-				
-				<ul class="navbar-nav row">
-				
+
+				<ul class="navbar-nav row" style="width: 100%">
+
 					<li class="nav-item col-1 d-flex justify-content-center">
 					</li>
-					
-					<li class="nav-item col-9 d-flex justify-content-center">
-						<ul id="refrigator" class="list-group collapse">
-							<li class="list-group-item">정수기형</li>
-							<li class="list-group-item">양문형</li>
-							<li class="list-group-item">일반형</li>
-							<li class="list-group-item">김치냉장고</li>
-						</ul>
-						<ul id="TV" class="list-group collapse">
-							<li class="list-group-item">올레드</li>
-							<li class="list-group-item">벽걸이형</li>
-							<li class="list-group-item">스탠드형</li>
-						</ul>
-						<ul id="washingmachine" class="list-group collapse">
-							<li class="list-group-item">통돌이</li>
-							<li class="list-group-item">드럼</li>
-							<li class="list-group-item">워시타워</li>
-						</ul>
-			    		<ul id="airconditioner" class="list-group collapse">
-							<li class="list-group-item">스탠드형</li>
-							<li class="list-group-item">이동식</li>
-							<li class="list-group-item">벽걸이형</li>
-						</ul>
-			    		<ul id="personalcomputer" class="list-group collapse">
-							<li class="list-group-item">노트북</li>
-							<li class="list-group-item">모니터</li>
-							<li class="list-group-item">데스크톱</li>
-						</ul>
+
+					<li class="nav-item col-7 d-flex justify-content-center">
+						<div class="col-2 d-flex justify-content-center">
+							<ul id="refrigator" class="list-group collapse">
+								<li class="list-group-item">정수기형</li>
+								<li class="list-group-item">양문형</li>
+								<li class="list-group-item">일반형</li>
+								<li class="list-group-item">김치냉장고</li>
+							</ul>
+						</div>
+
+						<div class="col-2 d-flex justify-content-center">
+							<ul id="TV" class="list-group collapse">
+								<li class="list-group-item">올레드</li>
+								<li class="list-group-item">벽걸이형</li>
+								<li class="list-group-item">스탠드형</li>
+							</ul>
+						</div>
+
+						<div class="col-2 d-flex justify-content-center">
+							<ul id="washingmachine" class="list-group collapse">
+								<li class="list-group-item">통돌이</li>
+								<li class="list-group-item">드럼</li>
+								<li class="list-group-item">워시타워</li>
+							</ul>
+						</div>
+
+						<div class="col-2 d-flex justify-content-center">
+							<ul id="airconditioner" class="list-group collapse">
+								<li class="list-group-item">스탠드형</li>
+								<li class="list-group-item">이동식</li>
+								<li class="list-group-item">벽걸이형</li>
+							</ul>
+						</div>
+
+						<div class="col-2 d-flex justify-content-center">
+							<ul id="personalcomputer" class="list-group collapse">
+								<li class="list-group-item">노트북</li>
+								<li class="list-group-item">모니터</li>
+								<li class="list-group-item">데스크톱</li>
+							</ul>
+						</div>
+						<div class="col-2 d-flex justify-content-center"></div>
 					</li>
-			    	
-			    	<li class="nav-item col-1 d-flex justify-content-center">
+
+					<li class="nav-item col-2 d-flex justify-content-center">
 					</li>
-					
-					<li class="nav-item col-1 d-flex justify-content-center">
+
+					<li class="nav-item col-2 d-flex justify-content-center">
 					</li>
 				</ul>
 			</nav>
 		</div>
-	
-		<div id="serachNavi">
-			<nav class="navbar navbar-expand-sm nav-bar-gray">
+		<hr />
+		<div id="serachNavi" class="wrapper bg-success">
+			<nav class="navbar navbar-expand-sm nav-bar-gray wrapperChild">
 				<ul class="navbar-nav">
-					<li class="nav-item active"><a class="nav-link" href="#">카테고리</a></li>
-					<li class="nav-item active"><a class="nav-link" href="#">제품1</a></li>
 					<li class="nav-item"><input type="text" class="form-control"></li>
-			    	<li class="nav-item"><button type="button" class="btn btn-success">Search</button></li>
+					<li class="nav-item"><button type="button" class="btn btn-success">Search</button></li>
 				</ul>
 			</nav>
 		</div>
-	
-		<div id="contents" class="container-fluid">
-			<div class="row">
-			
-				<div id="sidebar" class="col-sm-3 col-md-3 d-none d-xl-block text-center"><h5>제품별 유형</h5>
-					<div class="container-fluid">
-					
-						
-							<div id = "sidecard" class="card">
-								<div class="card-header">
-									<a class="card-link" data-toggle="collapse" href="#collapseOne"> 냉장고 유형 </a>
-								</div>
-								<div id="collapseOne" class="collapse">
-									<div class="card-body">
-										<ul class="list-group">
-											<li class="list-group-item">양문형</li>
-											<li class="list-group-item">단일형</li>
-											<li class="list-group-item">김치냉장고</li>
-										</ul>
-									</div>
-								</div>
-							</div>
-						
-						
-						
-							<div id = "sidecard" class="card">
-								<div class="card-header">
-									<a class="card-link" data-toggle="collapse" href="#collapseTwo"> 설치 타입  </a>
-								</div>
-								<div id="collapseTwo" class="collapse">
-									<div class="card-body">
-										<ul class="list-group">
-											<li class="list-group-item">프리스탠딩</li>
-											<li class="list-group-item">키친핏</li>
-											<li class="list-group-item">빌트인</li>
-										</ul>
-									</div>
-								</div>
-							</div>
-						
-						
-						
-							<div id = "sidecard" class="card">
-								<div class="card-header">
-									<a class="card-link" data-toggle="collapse" href="#collapseThree"> 도어 유형 </a>
-								</div>
-								<div id="collapseThree" class="collapse" >
 
-									<div class="card-body">
-										<ul class="list-group">
-											<li class="list-group-item">5도어 이상</li>
-											<li class="list-group-item">4도어</li>
-											<li class="list-group-item">3도어</li>
-										</ul>
-									</div>
+		<div id="contents" class="wrapper">
+			<div class="row">
+
+				<div id="sidebar" class="col-sm-3 col-md-3 d-none d-xl-block text-center">
+					<h5>제품별 유형</h5>
+					<div class="container-fluid">
+
+
+						<div id="sidecard" class="card">
+							<div class="card-header">
+								<a class="card-link" data-toggle="collapse" href="#collapseOne"> 냉장고 유형 </a>
+							</div>
+							<div id="collapseOne" class="collapse">
+								<div class="card-body">
+									<ul class="list-group">
+										<li class="list-group-item">양문형</li>
+										<li class="list-group-item">단일형</li>
+										<li class="list-group-item">김치냉장고</li>
+									</ul>
 								</div>
 							</div>
-						
-						
-						
-							<div id = "sidecard" class="card">
-								<div class="card-header">
-									<a class="card-link" data-toggle="collapse" href="#collapseFour"> 용량 </a>
-								</div>
-								<div id="collapseFour" class="collapse">
-									<div class="card-body">
-										<ul class="list-group">
-											<li class="list-group-item">900L ~</li>
-											<li class="list-group-item">700L ~ 899L</li>
-											<li class="list-group-item">500L ~ 699L</li>
-										</ul>
-									</div>
+						</div>
+
+
+
+						<div id="sidecard" class="card">
+							<div class="card-header">
+								<a class="card-link" data-toggle="collapse" href="#collapseTwo"> 설치 타입  </a>
+							</div>
+							<div id="collapseTwo" class="collapse">
+								<div class="card-body">
+									<ul class="list-group">
+										<li class="list-group-item">프리스탠딩</li>
+										<li class="list-group-item">키친핏</li>
+										<li class="list-group-item">빌트인</li>
+									</ul>
 								</div>
 							</div>
-						
-						
+						</div>
+
+
+
+						<div id="sidecard" class="card">
+							<div class="card-header">
+								<a class="card-link" data-toggle="collapse" href="#collapseThree"> 도어 유형 </a>
+							</div>
+							<div id="collapseThree" class="collapse">
+
+								<div class="card-body">
+									<ul class="list-group">
+										<li class="list-group-item">5도어 이상</li>
+										<li class="list-group-item">4도어</li>
+										<li class="list-group-item">3도어</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+
+
+
+						<div id="sidecard" class="card">
+							<div class="card-header">
+								<a class="card-link" data-toggle="collapse" href="#collapseFour"> 용량 </a>
+							</div>
+							<div id="collapseFour" class="collapse">
+								<div class="card-body">
+									<ul class="list-group">
+										<li class="list-group-item">900L ~</li>
+										<li class="list-group-item">700L ~ 899L</li>
+										<li class="list-group-item">500L ~ 699L</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+
+
 					</div>
 				</div>
-				
-				
+
+
 				<!--상품 리스트 부분 -->
-				
+
 				<div id="product" class="col-sm-9 col-md-9 container-fluid text-center">
 					<h5>들어갈 상품 목록</h5>
 					<div class="row">
 						<div id="product3" class="col-sm-4 container-fluid text-center">
-							<div class="card" style = "background-color : #EAEAEA">
-								<div class = "card-head pt-4 pb-4">
-									<div class = "row">
-										<h6 class = "col-sm-7">상품상태</h6>
-										<h6 class = "col-sm-5">장바구니</h6>
+							<div class="card" style="background-color : #EAEAEA">
+								<div class="card-head pt-4 pb-4">
+									<div class="row">
+										<h6 class="col-sm-7">상품상태</h6>
+										<h6 class="col-sm-5">장바구니</h6>
 									</div>
 								</div>
 								<div class="card-body">
-									<img src = "../images/refrigator1.png" class = "mb-5" >
-									<h3 class = "mb-5"><strong>양문형 냉장고</strong></h3>
-									<h3 class = "mb-5">5,000,000</h3>
-									<h6 class = "text-right">포인트</h6>
-									<button type="button" class="btn btn-primary btn-dark mb-5">자세히 보기</button>
-									<div id = "detail_3" class = "table table-hover text-left">
+									<img src="../images/refrigator1.png" class="mb-5">
+									<h3 class="mb-5"><strong>양문형 냉장고</strong></h3>
+									<h3 class="mb-5">5,000,000</h3>
+									<h6 class="text-right">포인트</h6>
+									<button type="button" class="btn btn-primary btn-dark mb-5" onclick="window.location.href='productdetail_hj.html'">자세히 보기</button>
+									<div id="detail_3" class="table table-hover text-left">
 										<h6>- 기술과 감성의 만남</h6>
 										<h6>- 메종 마르지엘라 시그니처 테크닉으로 디자인</h6>
 										<h6>- 메종 마르지엘라 디자인의 레더 커버</h6>
 									</div>
-									<div class = "row">
-										<div class = "col-sm-6 text-left">
+									<div class="row">
+										<div class="col-sm-6 text-left">
 											<h6>비교하기</h6>
 										</div>
-										<div class = "col-sm-6">
+										<div class="col-sm-6">
 											<h6>별점</h6>
 										</div>
 									</div>
@@ -238,61 +277,61 @@
 							</div>
 						</div>
 						<div id="product3" class="col-sm-4 container-fluid text-center">
-							<div class="card" style = "background-color : #EAEAEA">
-								<div class = "card-head pt-4 pb-4">
-									<div class = "row">
-										<h6 class = "col-sm-7">상품상태</h6>
-										<h6 class = "col-sm-5">장바구니</h6>
+							<div class="card" style="background-color : #EAEAEA">
+								<div class="card-head pt-4 pb-4">
+									<div class="row">
+										<h6 class="col-sm-7">상품상태</h6>
+										<h6 class="col-sm-5">장바구니</h6>
 									</div>
 								</div>
 								<div class="card-body">
-									<img src = "../images/refrigator2.png" class = "mb-5" >
-									<h3 class = "mb-5"><strong>양문형 냉장고</strong></h3>
-									<h3 class = "mb-5">5,000,000</h3>
-									<h6 class = "text-right">포인트</h6>
-									<button type="button" class="btn btn-primary btn-dark mb-5">자세히 보기</button>
-									<div id = "detail_3" class = "table table-hover text-left">
+									<img src="../images/refrigator2.png" class="mb-5">
+									<h3 class="mb-5"><strong>양문형 냉장고</strong></h3>
+									<h3 class="mb-5">5,000,000</h3>
+									<h6 class="text-right">포인트</h6>
+									<button type="button" class="btn btn-primary btn-dark mb-5" onclick="window.location.href='productdetail_hj.html'">자세히 보기</button>
+									<div id="detail_3" class="table table-hover text-left">
 										<h6>- 기술과 감성의 만남</h6>
 										<h6>- 메종 마르지엘라 시그니처 테크닉으로 디자인</h6>
 										<h6>- 메종 마르지엘라 디자인의 레더 커버</h6>
 									</div>
-									<div class = "row">
-										<div class = "col-sm-6 text-left">
+									<div class="row">
+										<div class="col-sm-6 text-left">
 											<h6>비교하기</h6>
 										</div>
-										<div class = "col-sm-6">
+										<div class="col-sm-6">
 											<h6>별점</h6>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
-				<!-- ---------------------------------------------------------------------------- -->
+						<!-- ---------------------------------------------------------------------------- -->
 						<div id="product3" class="col-sm-4 container-fluid text-center">
-							<div class="card" style = "background-color : #EAEAEA">
-								<div class = "card-head pt-4 pb-4">
-									<div class = "row">
-										<h6 class = "col-sm-7">상품상태</h6>
-										<h6 class = "col-sm-5">장바구니</h6>
+							<div class="card" style="background-color : #EAEAEA">
+								<div class="card-head pt-4 pb-4">
+									<div class="row">
+										<h6 class="col-sm-7">상품상태</h6>
+										<h6 class="col-sm-5">장바구니</h6>
 									</div>
 								</div>
 								<div class="card-body">
-									<img src = "../images/refrigator3.png" class = "mb-5" >
-									<h3 class = "mb-5"><strong>양문형 냉장고</strong></h3>
-									<h3 class = "mb-5">5,000,000</h3>
-									<h6 class = "text-right">포인트</h6>
-									<button type="button" class="btn btn-primary btn-dark mb-5">자세히 보기</button>
-									<div id = "detail_3" class = "text-left">
+									<img src="../images/refrigator3.png" class="mb-5">
+									<h3 class="mb-5"><strong>양문형 냉장고</strong></h3>
+									<h3 class="mb-5">5,000,000</h3>
+									<h6 class="text-right">포인트</h6>
+									<button type="button" class="btn btn-primary btn-dark mb-5" onclick="window.location.href='productdetail_hj.html'">자세히 보기</button>
+									<div id="detail_3" class="text-left">
 										<h6>- 기술과 감성의 만남</h6>
 										<h6>- 메종 마르지엘라 시그니처 테크닉으로 디자인</h6>
 										<h6>- 메종 마르지엘라 디자인의 레더 커버</h6>
 									</div>
-									
-									<div class = "row">
-										<div class = "col-sm-6 text-left">
+
+									<div class="row">
+										<div class="col-sm-6 text-left">
 											<h6>비교하기</h6>
 										</div>
-										<div class = "col-sm-6">
+										<div class="col-sm-6">
 											<h6>별점</h6>
 										</div>
 									</div>
@@ -300,32 +339,32 @@
 							</div>
 						</div>
 					</div>
-					
+
 					<div class="row">
 						<div id="product3" class="col-sm-4 container-fluid text-center">
-							<div class="card" style = "background-color : #EAEAEA">
-								<div class = "card-head pt-4 pb-4">
-									<div class = "row">
-										<h6 class = "col-sm-7">상품상태</h6>
-										<h6 class = "col-sm-5">장바구니</h6>
+							<div class="card" style="background-color : #EAEAEA">
+								<div class="card-head pt-4 pb-4">
+									<div class="row">
+										<h6 class="col-sm-7">상품상태</h6>
+										<h6 class="col-sm-5">장바구니</h6>
 									</div>
 								</div>
 								<div class="card-body">
-									<img src = "../images/refrigator1.png" class = "mb-5" >
-									<h3 class = "mb-5"><strong>양문형 냉장고</strong></h3>
-									<h3 class = "mb-5">5,000,000</h3>
-									<h6 class = "text-right">포인트</h6>
-									<button type="button" class="btn btn-primary btn-dark mb-5">자세히 보기</button>
-									<div id = "detail_3" class = "table table-hover text-left">
+									<img src="../images/refrigator1.png" class="mb-5">
+									<h3 class="mb-5"><strong>양문형 냉장고</strong></h3>
+									<h3 class="mb-5">5,000,000</h3>
+									<h6 class="text-right">포인트</h6>
+									<button type="button" class="btn btn-primary btn-dark mb-5" onclick="window.location.href='productdetail_hj.html'">자세히 보기</button>
+									<div id="detail_3" class="table table-hover text-left">
 										<h6>- 기술과 감성의 만남</h6>
 										<h6>- 메종 마르지엘라 시그니처 테크닉으로 디자인</h6>
 										<h6>- 메종 마르지엘라 디자인의 레더 커버</h6>
 									</div>
-									<div class = "row">
-										<div class = "col-sm-6 text-left">
+									<div class="row">
+										<div class="col-sm-6 text-left">
 											<h6>비교하기</h6>
 										</div>
-										<div class = "col-sm-6">
+										<div class="col-sm-6">
 											<h6>별점</h6>
 										</div>
 									</div>
@@ -333,61 +372,61 @@
 							</div>
 						</div>
 						<div id="product3" class="col-sm-4 container-fluid text-center">
-							<div class="card" style = "background-color : #EAEAEA">
-								<div class = "card-head pt-4 pb-4">
-									<div class = "row">
-										<h6 class = "col-sm-7">상품상태</h6>
-										<h6 class = "col-sm-5">장바구니</h6>
+							<div class="card" style="background-color : #EAEAEA">
+								<div class="card-head pt-4 pb-4">
+									<div class="row">
+										<h6 class="col-sm-7">상품상태</h6>
+										<h6 class="col-sm-5">장바구니</h6>
 									</div>
 								</div>
 								<div class="card-body">
-									<img src = "../images/refrigator2.png" class = "mb-5" >
-									<h3 class = "mb-5"><strong>양문형 냉장고</strong></h3>
-									<h3 class = "mb-5">5,000,000</h3>
-									<h6 class = "text-right">포인트</h6>
-									<button type="button" class="btn btn-primary btn-dark mb-5">자세히 보기</button>
-									<div id = "detail_3" class = "table table-hover text-left">
+									<img src="../images/refrigator2.png" class="mb-5">
+									<h3 class="mb-5"><strong>양문형 냉장고</strong></h3>
+									<h3 class="mb-5">5,000,000</h3>
+									<h6 class="text-right">포인트</h6>
+									<button type="button" class="btn btn-primary btn-dark mb-5" onclick="window.location.href='productdetail_hj.html'">자세히 보기</button>
+									<div id="detail_3" class="table table-hover text-left">
 										<h6>- 기술과 감성의 만남</h6>
 										<h6>- 메종 마르지엘라 시그니처 테크닉으로 디자인</h6>
 										<h6>- 메종 마르지엘라 디자인의 레더 커버</h6>
 									</div>
-									<div class = "row">
-										<div class = "col-sm-6 text-left">
+									<div class="row">
+										<div class="col-sm-6 text-left">
 											<h6>비교하기</h6>
 										</div>
-										<div class = "col-sm-6">
+										<div class="col-sm-6">
 											<h6>별점</h6>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
-				<!-- ---------------------------------------------------------------------------- -->
+						<!-- ---------------------------------------------------------------------------- -->
 						<div id="product3" class="col-sm-4 container-fluid text-center">
-							<div class="card" style = "background-color : #EAEAEA">
-								<div class = "card-head pt-4 pb-4">
-									<div class = "row">
-										<h6 class = "col-sm-7">상품상태</h6>
-										<h6 class = "col-sm-5">장바구니</h6>
+							<div class="card" style="background-color : #EAEAEA">
+								<div class="card-head pt-4 pb-4">
+									<div class="row">
+										<h6 class="col-sm-7">상품상태</h6>
+										<h6 class="col-sm-5">장바구니</h6>
 									</div>
 								</div>
 								<div class="card-body">
-									<img src = "../images/refrigator3.png" class = "mb-5" >
-									<h3 class = "mb-5"><strong>양문형 냉장고</strong></h3>
-									<h3 class = "mb-5">5,000,000</h3>
-									<h6 class = "text-right">포인트</h6>
-									<button type="button" class="btn btn-primary btn-dark mb-5">자세히 보기</button>
-									<div id = "detail_3" class = "text-left">
+									<img src="../images/refrigator3.png" class="mb-5">
+									<h3 class="mb-5"><strong>양문형 냉장고</strong></h3>
+									<h3 class="mb-5">5,000,000</h3>
+									<h6 class="text-right">포인트</h6>
+									<button type="button" class="btn btn-primary btn-dark mb-5" onclick="window.location.href='productdetail_hj.html'">자세히 보기</button>
+									<div id="detail_3" class="text-left">
 										<h6>- 기술과 감성의 만남</h6>
 										<h6>- 메종 마르지엘라 시그니처 테크닉으로 디자인</h6>
 										<h6>- 메종 마르지엘라 디자인의 레더 커버</h6>
 									</div>
-									
-									<div class = "row">
-										<div class = "col-sm-6 text-left">
+
+									<div class="row">
+										<div class="col-sm-6 text-left">
 											<h6>비교하기</h6>
 										</div>
-										<div class = "col-sm-6">
+										<div class="col-sm-6">
 											<h6>별점</h6>
 										</div>
 									</div>
@@ -396,7 +435,7 @@
 						</div>
 					</div>
 				</div>
-				
+
 			</div>
 		</div>
 	</body>
