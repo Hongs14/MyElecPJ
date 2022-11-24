@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>회원정보 수정</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap')
+	;
+
+* {
+	font-family: 'Jua', sans-serif;
+	font-weight: 3rem;
+	background-color: #F0F0F0;
+}
+
+form {
+	font-size: 0.8rem;
+	border-radius: 1rem;
+	padding: 0.5rem 0.5rem;
+}
+
+.p-1 {
+	width: 5rem;
+	margin: auto 0px;
+}
+
+.form-control {
+	width: 20rem;
+	margin: auto 0px;
+	justify-content: start;
+}
+
+[title~=delivery]{
+ 	padding: 1.5em .5em .5em;
+    border-radius: 2em;
+    text-align: center;
+}
+table {
+	background-color: white;
+	 text-align: center;
+	 font-weight: lighter;
+}
+
+
+</style>
+<script>
+	var Validate = true;
+	
+	function fun2(){
+		console.log(event.type);
+		if(event.type === "mouseenter") {
+			//$(event.target).css("background-color", "#ff0000")
+			$("#uid").addClass("bg-danger");
+			//$(event.target).removeClass("bg-success");
+			 
+		} else if(event.type === "mouseleave") {
+			//$(event.target).addClass("bg-success") 
+			//$(event.target).css("background-color", "green")
+			$("#uid").removeClass("bg-danger")
+		}
+	}
+	
+	
+</script>
+
+
+
+
+
+</head>
+<body>
+	<div class="jumbotron text-center jumbotron-fluid bg-primary border">
+		<div class="container bg-white text-dark mx-auto my-0 ">
+			<h1>컴퓨터 쇼핑몰</h1>
+		</div>
+	</div>
+	<hr />
+	<div id="topNavi" class="wrapper bg-success">
+		<nav class="navbar navbar-expand-sm nav-bar-gray d-flex flex-column wrapperChild">
+			<ul class="navbar-nav row d-flex justify-content-start" style="width: 100%">
+				<li class="nav-item col-1 d-flex justify-content-center">
+					<button type="button" class="btn btn-danger align-self-start">LOGO</button>
+				</li>
+
+				<li class="nav-item col-7 d-flex justify-content-center">
+					<div class="col-2 d-flex justify-content-center">
+						<button type="button" class="btn btn-info align-self-start" data-toggle="collapse" data-target="#refrigator">냉장고</button>
+					</div>
+
+					<div class="col-2 d-flex justify-content-center">
+						<button type="button" class="btn btn-info align-self-start" data-toggle="collapse" data-target="#TV">TV</button>
+					</div>
+
+					<div class="col-2 d-flex justify-content-center">
+						<button type="button" class="btn btn-info align-self-start" data-toggle="collapse" data-target="#washingmachine">세탁기</button>
+					</div>
+
+					<div class="col-2 d-flex justify-content-center">
+						<button type="button" class="btn btn-info align-self-start" data-toggle="collapse" data-target="#airconditioner">에어컨</button>
+					</div>
+
+					<div class="col-2 d-flex justify-content-center">
+						<button type="button" class="btn btn-info align-self-start" data-toggle="collapse" data-target="#personalcomputer">PC</button>
+					</div>
+					<div class="col-2"></div>
+				</li>
+
+				<li class="nav-item col-2 d-flex justify-content-center">
+					<button type="button" class="btn btn-warning align-self-start" onclick="window.location.href='login_js.html'">로그인</button>
+				</li>
+
+				<li class="nav-item col-2 d-flex justify-content-center">
+					<button type="button" class="btn btn-warning align-self-start" onclick="window.location.href='joinform_ej.html'">회원가입</button>
+				</li>
+			</ul>
+
+			<ul class="navbar-nav row" style="width: 100%">
+
+				<li class="nav-item col-1 d-flex justify-content-center"></li>
+
+				<li class="nav-item col-7 d-flex justify-content-center">
+					<div class="col-2 d-flex justify-content-center">
+						<ul id="refrigator" class="list-group collapse">
+							<li class="list-group-item">정수기형</li>
+							<li class="list-group-item">양문형</li>
+							<li class="list-group-item">일반형</li>
+							<li class="list-group-item">김치냉장고</li>
+						</ul>
+					</div>
+
+					<div class="col-2 d-flex justify-content-center">
+						<ul id="TV" class="list-group collapse">
+							<li class="list-group-item">올레드</li>
+							<li class="list-group-item">벽걸이형</li>
+							<li class="list-group-item">스탠드형</li>
+						</ul>
+					</div>
+
+					<div class="col-2 d-flex justify-content-center">
+						<ul id="washingmachine" class="list-group collapse">
+							<li class="list-group-item">통돌이</li>
+							<li class="list-group-item">드럼</li>
+							<li class="list-group-item">워시타워</li>
+						</ul>
+					</div>
+
+					<div class="col-2 d-flex justify-content-center">
+						<ul id="airconditioner" class="list-group collapse">
+							<li class="list-group-item">스탠드형</li>
+							<li class="list-group-item">이동식</li>
+							<li class="list-group-item">벽걸이형</li>
+						</ul>
+					</div>
+
+					<div class="col-2 d-flex justify-content-center">
+						<ul id="personalcomputer" class="list-group collapse">
+							<li class="list-group-item">노트북</li>
+							<li class="list-group-item">모니터</li>
+							<li class="list-group-item">데스크톱</li>
+						</ul>
+					</div>
+					<div class="col-2 d-flex justify-content-center"></div>
+				</li>
+
+				<li class="nav-item col-2 d-flex justify-content-center"></li>
+
+				<li class="nav-item col-2 d-flex justify-content-center"></li>
+			</ul>
+		</nav>
+	</div>
+	<hr />
+	<div id="serachNavi" class="wrapper bg-success">
+		<nav class="navbar navbar-expand-sm nav-bar-gray wrapperChild">
+			<ul class="navbar-nav">
+				<li class="nav-item"><input type="text" class="form-control"></li>
+				<li class="nav-item"><button type="button" class="btn btn-success">Search</button></li>
+			</ul>
+		</nav>
+	</div>
+
+
+
+	<!-- 좌측 사이드바 +  --------------------------------------------------------------------------------------->
+
+
+	<div class="row">
+		<div id="sidebar" class="col-md-3 d-sm-none d-md-block text-center">
+			<h5>제품별 유형</h5>
+			<div class="container-fluid">
+
+
+				<div id="sidecard" class="card">
+					<div class="card-header">
+						<a class="card-link" data-toggle="collapse" href="#collapseOne"> 개인정보 </a>
+					</div>
+					<div id="collapseOne" class="collapse">
+						<div class="card-body">
+							<ul class="list-group">
+								<li class="list-group-item"><a href = "http://localhost:8080/Project2_shopping/html/my_page_userdata_info.html">개인정보 확인</a></li>
+								<li class="list-group-item"><a href = "http://localhost:8080/Project2_shopping/html/my_page_userdata_update.html">개인정보 수정</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+
+
+
+				<div id="sidecard" class="card">
+					<div class="card-header">
+						<a class="card-link" data-toggle="collapse" href="#collapseTwo"> 구매 정보 </a>
+					</div>
+					<div id="collapseTwo" class="collapse">
+						<div class="card-body">
+							<ul class="list-group">
+								<li class="list-group-item"><a href = 'my_page_orderlist.html'>주문 내역 조회</a></li>
+								<li class="list-group-item">장바구니 조회</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+
+
+
+				<div id="sidecard" class="card">
+					<div class="card-header">
+						<a class="card-link" data-toggle="collapse" href="#collapseThree">고객센터</a>
+					</div>
+					<div id="collapseThree" class="collapse">
+
+						<div class="card-body">
+							<ul class="list-group">
+								<li class="list-group-item">상품평</li>
+								<li class="list-group-item">Q & A</li>
+								<li class="list-group-item">내 게시글</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+
+		<!-- 우측 본문 +  --------------------------------------------------------------------------------------->
+		<div id="product" class="col-sm-9 col-md-9 container-fluid text-center">
+
+			<form>
+				<div class="card container-fluid">
+					<div class="column">
+						<div id="card1">
+							<div class="card-header"></div>
+							<div class="card-body text-left">
+							<b>주문/배송 조회</b>
+							</div>
+						</div>
+						
+						<div id = "card2" class ="card">
+							<div class = "card-body">
+								<div class = "row">
+									<div title="delivery" class = "card col-sm-3 ">
+										<table>
+											<tr><td>1</td></tr>
+											<tr><td>주문 접수</td></tr>
+										</table>
+									</div>
+									
+									<div title="delivery" class = "card col-sm-3 ">
+										<table>
+											<tr><td>1</td></tr>
+											<tr><td>상품 준비</td></tr>
+										</table>
+									</div>
+									
+									<div title="delivery" class = "card col-sm-3">
+										<table>
+											<tr><td>1</td></tr>
+											<tr><td>배송 중</td></tr>
+										</table>
+									</div>
+									
+									<div title="delivery" class = "card col-sm-3">
+										<table>
+											<tr><td>1</td></tr>
+											<tr><td>배송 완료</td></tr>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+						<div id="card3">
+							<div class="card-header"></div>
+							<div class="card-body text-left">
+							<b>주문 내역</b>
+							<hr/>
+								<table id = "orderlist"class="table table-striped">
+									<thead>
+										<tr>
+											<th>주문자</th>
+											<th>주문 상품</th>
+											<th>가격</th>
+											<th>배송상태</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<th>1</th>
+											<th>2</th>
+											<th>3</th>
+											<th>4</th>
+										</tr>
+										<tr>
+											<th>1</th>
+											<th>2</th>
+											<th>3</th>
+											<th>4</th>
+										</tr>
+										<tr>
+											<th>1</th>
+											<th>2</th>
+											<th>3</th>
+											<th>4</th>
+										</tr>
+									</tbody>
+								</table>
+
+							</div>
+						</div>
+						
+						<div id="card4">
+							<div class="card-header"></div>
+							<div class="card-body text-left">
+							<b>쇼핑몰 주문 공통</b>
+							<hr/>
+								<ul>
+									<li class="list-group-item">- 주문하신 상품마다 배송 및 도착 날짜가 서로 다를 수 있습니다.</li>
+									<li class="list-group-item">- 일요일 및 공휴일에는 배송이 되지 않습니다.</li>
+									<li class="list-group-item">- 주문 취소/반품은 '주문 취소’, ‘반품 신청’ 버튼을 클릭하여 직접 신청하거나, 고객센터를 통해 취소/반품 해주시기 바랍니다.</li>
+									<li class="list-group-item">- 주문 취소/반품은 처리가 가능한 단계에서만 버튼이 표시됩니다.</li>
+																
+								</ul>
+							</div>
+						</div>
+
+
+					</div>
+				</div>
+			</form>
+		</div>
+
+
+	</div>
+
+
+</body>
+</html>
