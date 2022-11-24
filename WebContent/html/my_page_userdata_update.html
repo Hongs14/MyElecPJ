@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>회원정보 수정</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
+<style>
+@font-face {
+	font-family: 'NanumBarunGothic';
+	font-style: normal;
+	font-weight: 400;
+	src:
+		url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot');
+	src:
+		url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot?#iefix')
+		format('embedded-opentype'),
+		url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.woff')
+		format('woff'),
+		url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.ttf')
+		format('truetype');
+}
+
+@font-face {
+	font-family: 'NanumBarunGothic';
+	font-style: normal;
+	font-weight: 700;
+	src:
+		url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebBold.eot');
+	src:
+		url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebBold.eot?#iefix')
+		format('embedded-opentype'),
+		url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebBold.woff')
+		format('woff'),
+		url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebBold.ttf')
+		format('truetype')
+}
+
+@font-face {
+	font-family: 'NanumBarunGothic';
+	font-style: normal;
+	font-weight: 300;
+	src:
+		url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebLight.eot');
+	src:
+		url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebLight.eot?#iefix')
+		format('embedded-opentype'),
+		url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebLight.woff')
+		format('woff'),
+		url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebLight.ttf')
+		format('truetype');
+}
+
+.nanumbarungothic * {
+	font-family: 'NanumBarunGothic', sans-serif;
+}
+
+* {
+	font-family: 'Jua', sans-serif;
+	font-weight: 5rem;
+	background-color: #F0F0F0;
+}
+
+form {
+	font-size: 0.8rem;
+	border-radius: 1rem;
+	padding: 0.5rem 0.5rem;
+}
+
+.card {
+	border: none;
+}
+
+.p-1 {
+	width: 5rem;
+	margin: auto 0px;
+}
+
+.form-control {
+	width: 20rem;
+	margin: auto 0px;
+	justify-content: start;
+}
+</style>
+<script>
+	var Validate = true;
+	
+	function fun2(){
+		console.log(event.type);
+		if(event.type === "mouseenter") {
+			//$(event.target).css("background-color", "#ff0000")
+			$("#uid").addClass("bg-danger");
+			//$(event.target).removeClass("bg-success");
+			 
+		} else if(event.type === "mouseleave") {
+			//$(event.target).addClass("bg-success") 
+			//$(event.target).css("background-color", "green")
+			$("#uid").removeClass("bg-danger")
+		}
+	}
+	
+	
+</script>
+
+
+
+
+
+</head>
+<body>
+	<div class="jumbotron text-center jumbotron-fluid bg-primary border">
+		<div class="container bg-white text-dark mx-auto my-0 ">
+			<h1>컴퓨터 쇼핑몰</h1>
+		</div>
+	</div>
+	<hr />
+	<div id="topNavi" class="wrapper bg-success">
+		<nav class="navbar navbar-expand-sm nav-bar-gray d-flex flex-column wrapperChild">
+			<ul class="navbar-nav row d-flex justify-content-start" style="width: 100%">
+				<li class="nav-item col-1 d-flex justify-content-center">
+					<button type="button" class="btn btn-danger align-self-start">LOGO</button>
+				</li>
+
+				<li class="nav-item col-7 d-flex justify-content-center">
+					<div class="col-2 d-flex justify-content-center">
+						<button type="button" class="btn btn-info align-self-start" data-toggle="collapse" data-target="#refrigator">냉장고</button>
+					</div>
+
+					<div class="col-2 d-flex justify-content-center">
+						<button type="button" class="btn btn-info align-self-start" data-toggle="collapse" data-target="#TV">TV</button>
+					</div>
+
+					<div class="col-2 d-flex justify-content-center">
+						<button type="button" class="btn btn-info align-self-start" data-toggle="collapse" data-target="#washingmachine">세탁기</button>
+					</div>
+
+					<div class="col-2 d-flex justify-content-center">
+						<button type="button" class="btn btn-info align-self-start" data-toggle="collapse" data-target="#airconditioner">에어컨</button>
+					</div>
+
+					<div class="col-2 d-flex justify-content-center">
+						<button type="button" class="btn btn-info align-self-start" data-toggle="collapse" data-target="#personalcomputer">PC</button>
+					</div>
+					<div class="col-2"></div>
+				</li>
+
+				<li class="nav-item col-2 d-flex justify-content-center">
+					<button type="button" class="btn btn-warning align-self-start" onclick="window.location.href='login_js.html'">로그인</button>
+				</li>
+
+				<li class="nav-item col-2 d-flex justify-content-center">
+					<button type="button" class="btn btn-warning align-self-start" onclick="window.location.href='joinform_ej.html'">회원가입</button>
+				</li>
+			</ul>
+
+			<ul class="navbar-nav row" style="width: 100%">
+
+				<li class="nav-item col-1 d-flex justify-content-center"></li>
+
+				<li class="nav-item col-7 d-flex justify-content-center">
+					<div class="col-2 d-flex justify-content-center">
+						<ul id="refrigator" class="list-group collapse">
+							<li class="list-group-item">정수기형</li>
+							<li class="list-group-item">양문형</li>
+							<li class="list-group-item">일반형</li>
+							<li class="list-group-item">김치냉장고</li>
+						</ul>
+					</div>
+
+					<div class="col-2 d-flex justify-content-center">
+						<ul id="TV" class="list-group collapse">
+							<li class="list-group-item">올레드</li>
+							<li class="list-group-item">벽걸이형</li>
+							<li class="list-group-item">스탠드형</li>
+						</ul>
+					</div>
+
+					<div class="col-2 d-flex justify-content-center">
+						<ul id="washingmachine" class="list-group collapse">
+							<li class="list-group-item">통돌이</li>
+							<li class="list-group-item">드럼</li>
+							<li class="list-group-item">워시타워</li>
+						</ul>
+					</div>
+
+					<div class="col-2 d-flex justify-content-center">
+						<ul id="airconditioner" class="list-group collapse">
+							<li class="list-group-item">스탠드형</li>
+							<li class="list-group-item">이동식</li>
+							<li class="list-group-item">벽걸이형</li>
+						</ul>
+					</div>
+
+					<div class="col-2 d-flex justify-content-center">
+						<ul id="personalcomputer" class="list-group collapse">
+							<li class="list-group-item">노트북</li>
+							<li class="list-group-item">모니터</li>
+							<li class="list-group-item">데스크톱</li>
+						</ul>
+					</div>
+					<div class="col-2 d-flex justify-content-center"></div>
+				</li>
+
+				<li class="nav-item col-2 d-flex justify-content-center"></li>
+
+				<li class="nav-item col-2 d-flex justify-content-center"></li>
+			</ul>
+		</nav>
+	</div>
+	<hr />
+	<div id="serachNavi" class="wrapper bg-success">
+		<nav class="navbar navbar-expand-sm nav-bar-gray wrapperChild">
+			<ul class="navbar-nav">
+				<li class="nav-item"><input type="text" class="form-control"></li>
+				<li class="nav-item"><button type="button" class="btn btn-success">Search</button></li>
+			</ul>
+		</nav>
+	</div>
+
+
+
+	<!-- 좌측 사이드바 +  --------------------------------------------------------------------------------------->
+
+
+	<div class="row">
+		<div id="sidebar" class="col-md-3 d-sm-none d-md-block text-center">
+			<h5>제품별 유형</h5>
+			<div class="container-fluid">
+
+
+				<div id="sidecard" class="card">
+					<div class="card-header">
+						<a class="card-link" data-toggle="collapse" href="#collapseOne"> 개인정보 </a>
+					</div>
+					<div id="collapseOne" class="collapse">
+						<div class="card-body">
+							<ul class="list-group">
+								<li class="list-group-item"><a href = "http://localhost:8080/Project2_shopping/html/my_page_userdata_info.html">개인정보 확인</a></li>
+								<li class="list-group-item"><a href = "http://localhost:8080/Project2_shopping/html/my_page_userdata_update.html">개인정보 수정</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+
+
+
+				<div id="sidecard" class="card">
+					<div class="card-header">
+						<a class="card-link" data-toggle="collapse" href="#collapseTwo"> 구매 정보 </a>
+					</div>
+					<div id="collapseTwo" class="collapse">
+						<div class="card-body">
+							<ul class="list-group">
+								<li class="list-group-item"><a href = 'my_page_orderlist.html'>주문 내역 조회</a></li>
+								<li class="list-group-item">장바구니 조회</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+
+
+
+				<div id="sidecard" class="card">
+					<div class="card-header">
+						<a class="card-link" data-toggle="collapse" href="#collapseThree">고객센터</a>
+					</div>
+					<div id="collapseThree" class="collapse">
+
+						<div class="card-body">
+							<ul class="list-group">
+								<li class="list-group-item">상품평</li>
+								<li class="list-group-item">Q & A</li>
+								<li class="list-group-item">내 게시글</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+
+		<!-- 우측 본문 +  --------------------------------------------------------------------------------------->
+
+		<div id="product" class="col-sm-9 col-md-9 container-fluid text-center">
+			<div class="container-fluid">
+				<div class="d-flex-column">
+					<div class="p-3 bg-info">회원정보 수정</div>
+					<hr />
+
+					<div class="card">
+						<div class="card-header"></div>
+
+						<div class="card-body">
+
+							<form>
+								<div class="d-flex form-group">
+									<div class="p-1">
+										<div>회원 프로필</div>
+									</div>
+									<div class="p-1" style="margin-left: 5rem">
+										<img src="../images/userPhoto.png" width="120px" height="120px" />
+										<button class="btn btn-primary btn-sm" style="width: 120px">프로필 사진 수정</button>
+									</div>
+								</div>
+
+							</form>
+							<hr />
+
+							<form id="idpass" >
+								<div class="d-flex form-group">
+									<div class="p-1">
+										<div class="userId">아이디</div>
+									</div>
+
+									<div class="p-1"  onmouseenter ="fun2()" onmouseleave ="fun2()">
+										
+										<input id = "uid" type="text" class="form-control flex-grow-1 " 
+										placeholder = "알파벳과 숫자 혼용, 6자 이상 10자 이하" 
+										
+										/>
+									</div>
+								</div>
+
+								<div class="d-flex form-group">
+									<div class="p-1">
+										<div class="password">패스워드</div>
+									</div>
+
+									<div class="p-1 ">
+										<input id = "upassword" type="text" class="form-control flex-grow-1" />
+									</div>
+								</div>
+							</form>
+
+							<hr />
+
+							<form id="personal">
+								<div class="d-flex form-group">
+									<div class="p-1">
+										<div class="name">이름</div>
+									</div>
+
+									<div class="p-1">
+										<input id = "uname" type="text" class="form-control flex-grow-1" />
+									</div>
+								</div>
+
+								<div class="d-flex form-group">
+									<div class="p-1">
+										<div class="email">E-mail</div>
+									</div>
+
+									<div class="p-1">
+										<input id = "uemail" type="text" class="form-control flex-grow-1" />
+									</div>
+								</div>
+								<div class="d-flex form-group">
+									<div class="p-1">
+										<div class="phone">전화번호</div>
+									</div>
+
+									<div class="p-1 ">
+										<input id = "uphone" type="text" class="form-control flex-grow-1" />
+									</div>
+								</div>
+
+								<div class="d-flex form-group">
+									<div class="p-1">
+										<div class="birth">생년월일</div>
+									</div>
+
+									<div class="p-1">
+										<input type="date" id="birth" name="birth" class="form-control flex-grow-1" />
+									</div>
+								</div>
+								<div class="d-flex form-group">
+									<div class="p-1">
+										<div class="address">주소</div>
+									</div>
+
+									<div class="p-1">
+										<input type="text" class="form-control flex-grow-1" />
+									</div>
+								</div>
+							</form>
+							<hr />
+
+							<button class="btn btn-primary btn-md">회원정보 수정하기</button>
+							<button class="btn btn-primary btn-md"
+							onclick = "location.href = 'my_page_userdata_info.html'"
+							>돌아가기</button>
+
+
+
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+</body>
+</html>
