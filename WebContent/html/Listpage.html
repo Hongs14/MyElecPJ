@@ -49,7 +49,7 @@
 			* {
 				padding: 0px;
 				margin: 0px;
-				border: 0px solid black;
+				/*border: 1px solid black;*/
 			}
 			
 			.wrapper {
@@ -85,8 +85,8 @@
 			}
 			
 			hr {
-				height: 1px;
-				background-color: black;
+				height: 0.5px;
+				background-color: grey;
 			}
 			
 			label {
@@ -95,6 +95,120 @@
 		</style>
 	</head>
 	<body>
+		<div class="my-auto">
+			<div class="jumbotron text-center jumbotron-fluid bg-lightgrey">
+				<h1 class="wrapper py-5 shadow bg-dark rounded-lg text-white">컴퓨터 쇼핑몰</h1>
+			</div>
+		</div>
+		<hr/>
+		<div id="topNavi" class="wrapper">
+			<nav class="navbar navbar-expand-sm nav-bar-gray d-flex flex-column wrapperChild">
+				<ul class="navbar-nav row d-flex justify-content-start" style="width: 100%">
+					<li class="nav-item col-1 d-flex justify-content-center">
+						<button type="button" class="btn btn-danger align-self-start">LOGO</button>
+					</li>
+
+					<li class="nav-item col-7 d-flex justify-content-center">
+						<div class="col-2 d-flex justify-content-center">
+							<button type="button" class="btn btn-info align-self-start shadow" data-toggle="collapse" data-target="#refrigator">냉장고</button>
+						</div>
+
+						<div class="col-2 d-flex justify-content-center">
+							<button type="button" class="btn btn-info align-self-start shadow" data-toggle="collapse" data-target="#TV">TV</button>
+						</div>
+
+						<div class="col-2 d-flex justify-content-center">
+							<button type="button" class="btn btn-info align-self-start shadow" data-toggle="collapse" data-target="#washingmachine">세탁기</button>
+						</div>
+
+						<div class="col-2 d-flex justify-content-center">
+							<button type="button" class="btn btn-info align-self-start shadow" data-toggle="collapse" data-target="#airconditioner">에어컨</button>
+						</div>
+
+						<div class="col-2 d-flex justify-content-center">
+							<button type="button" class="btn btn-info align-self-start shadow" data-toggle="collapse" data-target="#personalcomputer">PC</button>
+						</div>
+						<div class="col-2"></div>
+					</li>
+
+					<li class="nav-item col-2 d-flex justify-content-center">
+						<button type="button" class="btn btn-warning align-self-start shadow" onclick="window.location.href='login_js.html'">로그인</button>
+					</li>
+
+					<li class="nav-item col-2 d-flex justify-content-center">
+						<button type="button" class="btn btn-warning align-self-start shadow" onclick="window.location.href='joinform_ej.html'">회원가입</button>
+					</li>
+				</ul>
+
+				<ul class="navbar-nav row" style="width: 100%">
+
+					<li class="nav-item col-1 d-flex justify-content-center">
+					</li>
+
+					<li class="nav-item col-7 d-flex justify-content-center">
+						<div class="col-2 d-flex justify-content-center">
+							<ul id="refrigator" class="list-group collapse">
+								<li class="list-group-item">정수기형</li>
+								<li class="list-group-item">양문형</li>
+								<li class="list-group-item">일반형</li>
+								<li class="list-group-item">김치냉장고</li>
+							</ul>
+						</div>
+
+						<div class="col-2 d-flex justify-content-center">
+							<ul id="TV" class="list-group collapse">
+								<li class="list-group-item">올레드</li>
+								<li class="list-group-item">벽걸이형</li>
+								<li class="list-group-item">스탠드형</li>
+							</ul>
+						</div>
+
+						<div class="col-2 d-flex justify-content-center">
+							<ul id="washingmachine" class="list-group collapse">
+								<li class="list-group-item">통돌이</li>
+								<li class="list-group-item">드럼</li>
+								<li class="list-group-item">워시타워</li>
+							</ul>
+						</div>
+
+						<div class="col-2 d-flex justify-content-center">
+							<ul id="airconditioner" class="list-group collapse">
+								<li class="list-group-item">스탠드형</li>
+								<li class="list-group-item">이동식</li>
+								<li class="list-group-item">벽걸이형</li>
+							</ul>
+						</div>
+
+						<div class="col-2 d-flex justify-content-center">
+							<ul id="personalcomputer" class="list-group collapse">
+								<li class="list-group-item">노트북</li>
+								<li class="list-group-item">모니터</li>
+								<li class="list-group-item">데스크톱</li>
+							</ul>
+						</div>
+						<div class="col-2 d-flex justify-content-center"></div>
+					</li>
+
+					<li class="nav-item col-2 d-flex justify-content-center">
+					</li>
+
+					<li class="nav-item col-2 d-flex justify-content-center">
+					</li>
+				</ul>
+			</nav>
+		</div>
+		<hr/>
+		<div id="serachNavi" class="wrapper">
+			<nav class="navbar navbar-expand-sm nav-bar-gray wrapperChild">
+				<ul class="navbar-nav">
+					<li class="nav-item"><input type="text" class="form-control"></li>
+					<li class="nav-item"><button type="button" class="btn btn-success shadow">Search</button></li>
+				</ul>
+			</nav>
+		</div><hr/>
+	
+	
+	
 		<div id="bottomViewPort">
 			<div class="wrapper d-flex flex-column">
 				<div id="listType" class="mt-4">
@@ -114,7 +228,6 @@
 					    	<option>PC</option>
 					  	</select>
 					</div>
-					<div class="vl"></div>
 					<div class="conditionSet d-flex justify-content-center align-items-center flex-fill">
 						<h5 class="col-6 text-center">상세 종류</h5>
 						<select class="col-5 form-control">
@@ -124,7 +237,6 @@
 					    	<option>김치냉장고</option>
 					  	</select>
 					</div>
-					<div class="vl"></div>
 					<div class="conditionSet d-flex justify-content-center align-items-center flex-fill">
 						<h5 class="col-8 text-center">리스트 최대치</h5>
 						<select class="col-3 form-control">
@@ -133,13 +245,12 @@
 					    	<option>15</option>
 					  	</select>
 					</div>
-					<div class="vl"></div>
 					<div class="conditionSet d-flex align-items-center flex-fill">
 						<div>
 							<nav class="navbar navbar-expand-sm nav-bar-gray">
 								<ul class="navbar-nav">
 									<li class="nav-item"><input type="text" class="form-control" value="검색할 내용 입력하기"></li>
-							    	<li class="nav-item"><button type="button" class="btn btn-primary">Search</button></li>
+							    	<li class="nav-item"><button type="button" class="btn btn-primary shadow">Search</button></li>
 								</ul>
 							</nav>
 						</div>
@@ -150,10 +261,9 @@
 					    	<option>상품</option>
 					  	</select>
 					</div>
-					<div class="vl"></div>
 					<div class="conditionSet d-flex justify-content-center align-items-center flex-fill">
-						<h5 class="col-5 text-center">정렬순</h5>
-						<select class="col-6 form-control">
+						<h5 class="col-6 text-center">정렬순</h5>
+						<select class="col-5 form-control">
 					    	<option>조회순</option>
 					    	<option>평점순</option>
 					    	<option>댓글순</option>
@@ -288,15 +398,15 @@
 						</div><hr class="my-1"/>
 					</div>
 				</div>
-				<div class="pager d-flex justify-content-center mt-3">
+				<div class="pager d-flex justify-content-center my-3">
 					<div class="pagingButtonSet d-flex justify-content-around">
-						<button type="button" class="btn btn-warning" onclick="window.location.href='login_js.html'">처음으로</button>
-						<button type="button" class="btn btn-warning" onclick="window.location.href='login_js.html'">앞으로</button>
-						<button type="button" class="btn btn-primary" onclick="window.location.href='login_js.html'">1</button>
-						<button type="button" class="btn btn-primary" onclick="window.location.href='login_js.html'">2</button>
-						<button type="button" class="btn btn-primary" onclick="window.location.href='login_js.html'">3</button>
-						<button type="button" class="btn btn-warning" onclick="window.location.href='login_js.html'">뒤로</button>
-						<button type="button" class="btn btn-warning" onclick="window.location.href='login_js.html'">마지막으로</button>							
+						<button type="button" class="btn btn-warning shadow" onclick="window.location.href='login_js.html'">처음으로</button>
+						<button type="button" class="btn btn-warning shadow" onclick="window.location.href='login_js.html'">앞으로</button>
+						<button type="button" class="btn btn-primary shadow" onclick="window.location.href='login_js.html'">1</button>
+						<button type="button" class="btn btn-primary shadow" onclick="window.location.href='login_js.html'">2</button>
+						<button type="button" class="btn btn-primary shadow" onclick="window.location.href='login_js.html'">3</button>
+						<button type="button" class="btn btn-warning shadow" onclick="window.location.href='login_js.html'">뒤로</button>
+						<button type="button" class="btn btn-warning shadow" onclick="window.location.href='login_js.html'">마지막으로</button>							
 					</div>
 				</div>
 			</div>
