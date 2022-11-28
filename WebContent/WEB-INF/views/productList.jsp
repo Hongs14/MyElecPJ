@@ -228,7 +228,7 @@ hr {
 							</div>
 						</figcaption>
 
-						<img src="/Project2_shopping/resoucres/refrigerator1.png" />
+						<img src="/Project2_shopping/resources/images/refrigerator1.png" />
 						<figcaption id="bottomfugure">
 							<h6 class="text-center">
 								<strong>BESPOKE 냉장고 4도어</strong>
@@ -270,7 +270,7 @@ hr {
 							</div>
 						</figcaption>
 
-						<img src="/Project2_shopping/resoucres/refrigerator2.png" />
+						<img src="/Project2_shopping/resources/images/refrigerator2.png" />
 						<figcaption id="bottomfugure">
 							<h6 class="text-center">
 								<strong>BESPOKE 냉장고 4도어</strong>
@@ -309,7 +309,7 @@ hr {
 							</div>
 						</figcaption>
 
-						<img src="/Project2_shopping/resoucres/refrigerator3.png" />
+						<img src="/Project2_shopping/resources/images/refrigerator3.png" />
 						<figcaption id="bottomfugure">
 							<h6 class="text-center">
 								<strong>BESPOKE 냉장고 4도어</strong>
@@ -348,7 +348,7 @@ hr {
 							</div>
 						</figcaption>
 
-						<img src="/Project2_shopping/resoucres/refrigerator1.png" />
+						<img src="/Project2_shopping/resources/images/refrigerator1.png" />
 						<figcaption id="bottomfugure">
 							<h6 class="text-center">
 								<strong>BESPOKE 냉장고 4도어</strong>
@@ -387,7 +387,7 @@ hr {
 							</div>
 						</figcaption>
 
-						<img src="/Project2_shopping/resoucres/refrigerator2.png" />
+						<img src="/Project2_shopping/resources/images/refrigerator2.png" />
 						<figcaption id="bottomfugure">
 							<h6 class="text-center">
 								<strong>BESPOKE 냉장고 4도어</strong>
@@ -425,7 +425,7 @@ hr {
 							</div>
 						</figcaption>
 
-						<img src="/Project2_shopping/resoucres/refrigerator3.png" />
+						<img src="/Project2_shopping/resources/images/refrigerator3.png" />
 						<figcaption id="bottomfugure">
 							<h6 class="text-center">
 								<strong>BESPOKE 냉장고 4도어</strong>
