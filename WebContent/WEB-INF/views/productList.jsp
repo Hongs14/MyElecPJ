@@ -71,11 +71,11 @@ hr {
 	border: 1px solid rgb(0, 0, 0, 0.2);
 	padding: 10px;
 	box-shadow: 2px 2px 5px rgb(0, 0, 0, 0.5);
-	width: 300px;
+	width: 400px;
 }
 
 #columns figure img {
-	width: 70%;
+	width: 30%;
 	height: 250px;
 }
 
@@ -94,6 +94,8 @@ hr {
 .checked {
 	color: orange;
 }
+
+
 </style>
 
 </head>
@@ -107,7 +109,7 @@ hr {
 	<div id="topNavi" class="bg-dark">
 		<nav class="navbar navbar-expand-lg navbar-dark wrapper">
 			<div class="container-fluid">
-				<a class="navbar-brand" href="#">MY 전자</a>
+				<a class="navbar-brand" href="/Project2_shopping/home">MY 전자</a>
 				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
 				</button>
@@ -240,7 +242,7 @@ hr {
 						</figcaption>
 
 						<figcaption id="buttonfigcaption" class="text-center">
-							<button type="button" class="btn btn-sm btn-dark">자세히 보기</button>
+							<button type="button" class="btn btn-sm btn-dark" onclick = "window.location.href='productDetail'">자세히 보기</button>
 						</figcaption>
 
 						<figcaption id="textfigcaption" class="text-center" style="margin: 0px;">
@@ -282,7 +284,7 @@ hr {
 						</figcaption>
 
 						<figcaption id="buttonfigcaption" class="text-center">
-							<button type="button" class="btn btn-sm btn-dark">자세히 보기</button>
+							<button type="button" class="btn btn-sm btn-dark" onclick = "window.location.href='productDetail'">자세히 보기</button>
 						</figcaption>
 
 						<figcaption id="textfigcaption" class="text-center" style="margin: 0px;">
@@ -321,7 +323,7 @@ hr {
 						</figcaption>
 
 						<figcaption id="buttonfigcaption" class="text-center">
-							<button type="button" class="btn btn-sm btn-dark">자세히 보기</button>
+							<button type="button" class="btn btn-sm btn-dark" onclick = "window.location.href='productDetail'">자세히 보기</button>
 						</figcaption>
 
 						<figcaption id="textfigcaption" class="text-center" style="margin: 0px;">
@@ -360,7 +362,7 @@ hr {
 						</figcaption>
 
 						<figcaption id="buttonfigcaption" class="text-center">
-							<button type="button" class="btn btn-sm btn-dark">자세히 보기</button>
+							<button type="button" class="btn btn-sm btn-dark" onclick = "window.location.href='productDetail'">자세히 보기</button>
 						</figcaption>
 
 						<figcaption id="textfigcaption" class="text-center" style="margin: 0px;">
@@ -399,7 +401,7 @@ hr {
 						</figcaption>
 
 						<figcaption id="buttonfigcaption" class="text-center">
-							<button type="button" class="btn btn-sm btn-dark">자세히 보기</button>
+							<button type="button" class="btn btn-sm btn-dark" onclick = "window.location.href='productDetail'">자세히 보기</button>
 						</figcaption>
 
 						<figcaption id="textfigcaption" class="text-center" style="margin: 0px;">
@@ -437,7 +439,7 @@ hr {
 						</figcaption>
 
 						<figcaption id="buttonfigcaption" class="text-center">
-							<button type="button" class="btn btn-sm btn-dark">자세히 보기</button>
+							<button type="button" class="btn btn-sm btn-dark" onclick = "window.location.href='productDetail'">자세히 보기</button>
 						</figcaption>
 
 						<figcaption id="textfigcaption" class="text-center" style="margin: 0px;">
@@ -453,6 +455,25 @@ hr {
 						</figcaption>
 					</figure>
 				</div>
+				
+				<div>
+					<div id = "pagination " class = "container" >
+						<ul class = "pagination justify-content-center" >
+						
+							<li class ="page-item"><a class = "page-link"><i class="fa-solid fa-angles-left" style = "color: black"></i></a></li>
+							<li class ="page-item"><a class = "page-link"><i class="fa-solid fa-angle-left" style = "color: black"></i></a></li>
+							<li class ="page-item"><a class = "page-link"><i class="fa-solid fa-1" style = "color: black"></i></a></li>
+							<li class ="page-item"><a class = "page-link"><i class="fa-solid fa-2" style = "color: black"></i></a></li>
+							<li class ="page-item"><a class = "page-link"><i class="fa-solid fa-3" style = "color: black"></i></a></li>
+							<li class ="page-item"><a class = "page-link"><i class="fa-solid fa-4" style = "color: black"></i></a></li>
+							<li class ="page-item"><a class = "page-link"><i class="fa-solid fa-5" style = "color: black"></i></a></li>
+							<li class ="page-item"><a class = "page-link"><i class="fa-solid fa-angle-right" style = "color: black"></i></a></li>
+							<li class ="page-item"><a class = "page-link"><i class="fa-solid fa-angles-right" style = "color: black"></i></a></li>
+						</ul>
+					
+					</div>
+				</div>
+				
 			</div>
 		</div>
 	</div>
