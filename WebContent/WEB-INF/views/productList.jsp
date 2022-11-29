@@ -42,7 +42,7 @@
 }
 
 .wrapperChild {
-	width: 95%;
+	width: 90%;
 	margin: 0px auto;
 }
 
@@ -61,7 +61,7 @@ hr {
 }
 
 #columns {
-	column-width: 300px;
+	column-width: 250px;
 	column-gap: 100px;
 }
 
@@ -71,11 +71,11 @@ hr {
 	border: 1px solid rgb(0, 0, 0, 0.2);
 	padding: 10px;
 	box-shadow: 2px 2px 5px rgb(0, 0, 0, 0.5);
-	width: 300px;
+	width: 350px;
 }
 
 #columns figure img {
-	width: 70%;
+	width: 50%;
 	height: 250px;
 }
 
@@ -453,7 +453,25 @@ hr {
 						</figcaption>
 					</figure>
 				</div>
+			<div class ="d-flex">
+               <div id = "pagination " class = "container" >
+                  <ul class = "pagination justify-content-center" >
+                  
+                     <li class ="page-item"><a class = "page-link"><i class="fa-solid fa-angles-left" style = "color: black"></i></a></li>
+                     <li class ="page-item"><a class = "page-link"><i class="fa-solid fa-angle-left" style = "color: black"></i></a></li>
+                     <li class ="page-item"><a class = "page-link"><i class="fa-solid fa-1" style = "color: black"></i></a></li>
+                     <li class ="page-item"><a class = "page-link"><i class="fa-solid fa-2" style = "color: black"></i></a></li>
+                     <li class ="page-item"><a class = "page-link"><i class="fa-solid fa-3" style = "color: black"></i></a></li>
+                     <li class ="page-item"><a class = "page-link"><i class="fa-solid fa-4" style = "color: black"></i></a></li>
+                     <li class ="page-item"><a class = "page-link"><i class="fa-solid fa-5" style = "color: black"></i></a></li>
+                     <li class ="page-item"><a class = "page-link"><i class="fa-solid fa-angle-right" style = "color: black"></i></a></li>
+                     <li class ="page-item"><a class = "page-link"><i class="fa-solid fa-angles-right" style = "color: black"></i></a></li>
+                  </ul>
+               
+               </div>
+            </div>
 			</div>
+			
 		</div>
 	</div>
 </body>

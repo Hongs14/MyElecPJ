@@ -12,7 +12,7 @@
 		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 		<!-- Latest compiled JavaScript -->
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
-		
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 		<style>
 			/* 글꼴 */
 			@font-face {
@@ -70,6 +70,10 @@
 			label {
 				text-align: left;
 			}
+			
+			.checked {
+				color: orange;
+			}
 		</style>
 	</head>
 	<body>
@@ -117,16 +121,63 @@
 			</nav>
 	 	</div>
 	 
-		<div id="bottomViewPort">
-			<div class="wrapper d-flex flex-column">
+		<div id="bottomViewPort" class="wrapper d-flex">
+			<div id="sidebar" class="col-sm-2 col-md-2 d-none d-xl-block">
+				<div class="d-flex flex-column rounded-lg" style="background-color: #F5F5F5;">
+					<div class="mx-3 mt-3">
+						<h5>ID님</h5>
+					</div>
+					<div class="d-flex mx-1">
+						<h6 class="col-2">
+							<span class="align-self-start badge badge-primary">VIP</span>
+						</h6>
+						<h6 class="col-2">
+							<span class="align-self-start badge badge-info">100,000P</span>
+						</h6>
+					</div>
+					<div class="mx-3 mt-3">
+						<h6>최근주문내역</h6>
+					</div>
+					<div class="d-flex justify-content-between mx-3 my-3">
+						<h6>내가 쓴 리뷰</h6>
+						<h6>문의사항</h6>
+					</div>
+				</div>
+
+				<h3 class="text-left my-3">게시판 목록</h3>
+
+				<div class="d-flex flex-column">
+					<div class="d-flex flex-column my-2">
+						<a class="text-left" data-toggle="collapse" href=".collapseOne" style="font-size: large;">리뷰게시판</a>
+						<hr />
+						<div class="d-flex flex-column">
+							<div class="collapse collapseOne text-left">정수기형</div>
+							<div class="collapse collapseOne text-left">양문형</div>
+							<div class="collapse collapseOne text-left">일반형</div>
+							<div class="collapse collapseOne text-left">김치냉장고</div>
+						</div>
+					</div>
+
+					<div class="d-flex flex-column my-2">
+						<a class="text-left " data-toggle="collapse" href=".collapseOne" style="font-size: arge;">QnA게시판</a>
+						<hr />
+						<div class="d-flex flex-column">
+							<div class="collapse collapseOne text-left">올레드</div>
+							<div class="collapse collapseOne text-left">벽걸이형</div>
+							<div class="collapse collapseOne text-left">스탠드형</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="d-flex flex-column col-sm-10 col-md-10">
 				<div id="listType" class="mt-4">
 					<h1>게시판인데수</h1>
 				</div><hr class="mb-4"/>
 				<div id="notice">
 					<h2>검색 조건을 선택하세요</h2>
 				</div><hr class="mb-4"/>	
-				<div id="selectCondition" class="d-flex justify-content-between">
-					<div class="conditionSet d-flex justify-content-center align-items-center flex-fill">	
+				<div id="selectCondition" class="d-flex">
+					<div class="conditionSet d-flex justify-content-start align-items-center flex-fill">	
 						<h5 class="col-5 text-center">종류</h5>
 						<select class="col-6 form-control">
 					    	<option>냉장고</option>
@@ -136,7 +187,7 @@
 					    	<option>PC</option>
 					  	</select>
 					</div>
-					<div class="conditionSet d-flex justify-content-center align-items-center flex-fill">
+					<div class="conditionSet d-flex justify-content-start align-items-center flex-fill">
 						<h5 class="col-6 text-center">상세 종류</h5>
 						<select class="col-5 form-control">
 					    	<option>정수기형</option>
@@ -145,7 +196,7 @@
 					    	<option>김치냉장고</option>
 					  	</select>
 					</div>
-					<div class="conditionSet d-flex justify-content-center align-items-center flex-fill">
+					<div class="conditionSet d-flex justify-content-start align-items-center flex-fill">
 						<h5 class="col-8 text-center">리스트 최대치</h5>
 						<select class="col-3 form-control">
 					    	<option>5</option>
@@ -153,7 +204,7 @@
 					    	<option>15</option>
 					  	</select>
 					</div>
-					<div class="conditionSet d-flex align-items-center flex-fill">
+					<div class="conditionSet d-flex align-items-center col-3 flex-fill">
 						<div>
 							<nav class="navbar navbar-expand-sm nav-bar-gray">
 								<ul class="navbar-nav">
@@ -169,7 +220,7 @@
 					    	<option>상품</option>
 					  	</select>
 					</div>
-					<div class="conditionSet d-flex justify-content-center align-items-center flex-fill">
+					<div class="conditionSet d-flex justify-content-start align-items-center flex-fill">
 						<h5 class="col-6 text-center">정렬순</h5>
 						<select class="col-5 form-control">
 					    	<option>조회순</option>
@@ -190,10 +241,10 @@
 							</div>
 							<div class="titleContentInfo col-11">
 								<div class="d-flex">
-									<h5 class="col-6">제목</h5>
+									<h5 class="col-5">제목</h5>
 									<h5 class="col-2">글쓴이</h5>
 									<h5 class="col-2">날짜</h5>
-									<h5 class="col-2">평점</h5>
+									<h5 class="col-3">평점</h5>
 								</div>
 							</div>
 						</div>
@@ -205,10 +256,17 @@
 							</div>
 							<div class="titleContent col-11">
 								<div class="titleTop d-flex">
-									<h5 class="col-6">앞광고) 갤럭시 S222 Note 리뷰</h5>
+									<h5 class="col-5">앞광고) 갤럭시 S222 Note 리뷰</h5>
 									<h5 class="col-2">Samsung</h5>
 									<h5 class="col-2">2222-2-22</h5>
-									<h5 class="col-2">2.2</h5>
+									<div class="col-1 d-flex justify-content-start">					
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+									</div>
+									<h5 class="col-1 text-center">(2.2)</h5>
 								</div>
 								<div class="titleBottom d-flex justify-content-start">
 									<div class="d-flex justify-content-around col-3">
@@ -226,10 +284,17 @@
 							</div>
 							<div class="titleContent col-11">
 								<div class="titleTop d-flex">
-									<h5 class="col-6">앞광고) 갤럭시 S222 Note 리뷰</h5>
+									<h5 class="col-5">앞광고) 갤럭시 S222 Note 리뷰</h5>
 									<h5 class="col-2">Samsung</h5>
 									<h5 class="col-2">2222-2-22</h5>
-									<h5 class="col-2">2.2</h5>
+									<div class="col-1 d-flex justify-content-start">
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+									</div>
+									<h5 class="col-1 text-center">(2.2)</h5>
 								</div>
 								<div class="titleBottom d-flex justify-content-start">
 									<div class="d-flex justify-content-around col-3">
@@ -247,10 +312,17 @@
 							</div>
 							<div class="titleContent col-11">
 								<div class="titleTop d-flex">
-									<h5 class="col-6">앞광고) 갤럭시 S222 Note 리뷰</h5>
+									<h5 class="col-5">앞광고) 갤럭시 S222 Note 리뷰</h5>
 									<h5 class="col-2">Samsung</h5>
 									<h5 class="col-2">2222-2-22</h5>
-									<h5 class="col-2">2.2</h5>
+									<div class="col-1 d-flex justify-content-start">					
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+									</div>
+									<h5 class="col-1 text-center">(2.2)</h5>
 								</div>
 								<div class="titleBottom d-flex justify-content-start">
 									<div class="d-flex justify-content-around col-3">
@@ -268,10 +340,17 @@
 							</div>
 							<div class="titleContent col-11">
 								<div class="titleTop d-flex">
-									<h5 class="col-6">앞광고) 갤럭시 S222 Note 리뷰</h5>
+									<h5 class="col-5">앞광고) 갤럭시 S222 Note 리뷰</h5>
 									<h5 class="col-2">Samsung</h5>
 									<h5 class="col-2">2222-2-22</h5>
-									<h5 class="col-2">2.2</h5>
+									<div class="col-1 d-flex justify-content-start">					
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+									</div>
+									<h5 class="col-1 text-center">(2.2)</h5>
 								</div>
 								<div class="titleBottom d-flex justify-content-start">
 									<div class="d-flex justify-content-around col-3">
@@ -289,10 +368,17 @@
 							</div>
 							<div class="titleContent col-11">
 								<div class="titleTop d-flex">
-									<h5 class="col-6">앞광고) 갤럭시 S222 Note 리뷰</h5>
+									<h5 class="col-5">앞광고) 갤럭시 S222 Note 리뷰</h5>
 									<h5 class="col-2">Samsung</h5>
 									<h5 class="col-2">2222-2-22</h5>
-									<h5 class="col-2">2.2</h5>
+									<div class="col-1 d-flex justify-content-start">					
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+									</div>
+									<h5 class="col-1 text-center">(2.2)</h5>
 								</div>
 								<div class="titleBottom d-flex justify-content-start">
 									<div class="d-flex justify-content-around col-3">
