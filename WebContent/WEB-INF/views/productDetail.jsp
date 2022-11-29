@@ -43,6 +43,12 @@
 				padding: 0px;
 			
 			}
+			
+			#wrapper{
+				margin: 0px auto;
+				width: 1440px;
+				
+			}
 			img{
 				display: block;
 				margin: 0px auto;
@@ -66,8 +72,12 @@
 			#rf_category{
 				font-color: #BDBDBD;
 			}
-			
-			#rf_detail{
+			#rf_content{
+				border-radius: 24px;
+				background-color: #F0F0F0;
+			}
+			.card{
+				border: none;
 				background-color: #F0F0F0;
 			}
 			#rf_detail_option{
@@ -75,10 +85,8 @@
 				padding-top: 30px;
 				padding-bottom: 30px;
 			}
-			#rf_color{
-				
-			}
-			input[name=rf_color  ]:checked {
+			
+			input[name=rf_color]:checked {
 				width: 25px;
 				height: 25px;
 				background-color: red;
@@ -127,9 +135,9 @@
 		</style>
 	</head>
 	<body>
-		<div class="jumbotron text-center bg-lightgrey">
-			<div class="container bg-dark rounded-lg text-white mx-auto my-0">
-				<h1 class="text-white">MY 전자</h1>
+		<div class="text-center py-5" style="background-color: #E9ECEF">
+			<div class="container bg-dark rounded-lg text-white mx-auto my-5 py-2">
+				<h1 class="text-white my-0">MY 전자</h1>
 			</div>
 		</div>
 		
@@ -171,122 +179,124 @@
 			</nav>
 	 	</div>
 	 	
-		<div class="pb-3 pt-2" style="background-color: #FCFCFC">
-			<h6>HOME > 주방가전 > 냉장고 모두 보기 > BESPOKE 냉장고 4도어 키친핏 604 L</h6>
+	 	<div class="pb-5 pt-2">
+			<h6>HOME > 주방가전 > <a href="/Project2_shopping/productList">냉장고 모두 보기</a> > BESPOKE 냉장고 4도어 키친핏 604 L</h6>
 		</div>
-		<div id="rf_detail" class="container-fluid row">
-			<div class="col-sm-12 col-md-6 col-lg-8">
-				<div class="py-3 text-center">
-					<img src="/Project2_shopping/resources/images/refrigerator_big.png"/>
+		<div id="wrapper">
+		  <div id="rf_detail" class="container-fluid row">
+				<div class="col-sm-12 col-md-6 col-lg-8">
+					<div class="py-3 text-center">
+						<img class="mt-5" src="/Project2_shopping/resources/images/refrigerator_big.png"/>
+					</div>
 				</div>
-			</div>
-			
-			<div class="col-sm-0 col-md-6 col-lg-4 container-fluid mt-3">
-				<div class="card p-2" style="width: 97%;">
-					<div class="card-header" style="background-color: #FFFFFF">
-						<div id="rf_category" class="row text-primary">
-							<ul style="list-style: none">
-								<li>설치상품 </li>
-								<li>아울렛 </li>
-								<li>삼성케어 플러스 </li>
-								<li>번개 특가 </li>
-							</ul>
+				
+				<div id="rf_content" class="col-sm-0 col-md-6 col-lg-4 container-fluid mt-3" style="border-radius: 24px">
+					<div class="card p-3 mt-2" style="width: 97%;">
+						<div class="card-header pt-2" style="background-color: #F0F0F0; border: none" >
+							<div id="rf_category" class="row text-primary">
+								<ul style="list-style: none">
+									<li>설치상품 </li>
+									<li>아울렛 </li>
+									<li>삼성케어 플러스 </li>
+									<li>번개 특가 </li>
+								</ul>
+								
+							</div>
+						</div>
+						<div class="card_body container-fluid">
+							<h4 class="my-4">BESPOKE 냉장고 4도어 키친핏 604 L</h4>
+							<div class="rf_score container-fluid d-flex justify-content-between px-0">
+								<div class="d-flex">
+									<span>
+										<span class="fa fa-star starchecked"></span>
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+									</span>
+									
+									<h6 class="mt-1 ml-1">1.0</h6>
+								</div>
+								<div class=" d-flex justify-content-end">
+									<span class="d-flex justify-content-start">
+										<img src="/Project2_shopping/resources/images/pencil.png" height="20px"/> 
+									</span>
+									
+									<h6 class="flex-fulfill" style="text-decoration-line:underline;"><a href="#">상품평 쓰기</a></h6>
+								</div>
+							</div>
 							
-						</div>
-					</div>
-					<div class="card_body container-fluid">
-						<h4>BESPOKE 냉장고 4도어 키친핏 604 L</h4>
-						<div class="rf_score row container-fluid">
-							<div class="col-8 row d-flex justify-content-start">
-								<span>
-									<span class="fa fa-star starchecked"></span>
-									<span class="fa fa-star"></span>
-									<span class="fa fa-star"></span>
-									<span class="fa fa-star"></span>
-									<span class="fa fa-star"></span>
-								</span>
-								
-								<h6 class="mt-1 ml-1">1.0</h6>
-							</div>
-							<div class="col-6 row text-right pl-5">
-								<span>
-									<img src="/Project2_shopping/resources/images/pencil.png" height="20px"/> 
-								</span>
-								
-								<h6 style="text-decoration-line:underline;"><a href="#">상품평 쓰기</a></h6>
-							</div>
-						</div>
-						
-						<div id="rf_detail_price" class="mt-4">
-							<div class="column">
-								<div class="row">
-									<div class="col-6 text-left v_center"><h6>판매가</h6></div>
-									<div class="col-6 text-right v_center"><h6>3,999,000원</h6></div>
-								</div>	
-								<div class="row v_center">
-									<div class="col-6 text-left text-primary"><h6>아울렛 특가</h6></div>
-									<div class="col-6 text-right text-primary"><h5>2,600,000원</h5></div>
-								</div>
-							</div>
-						</div>
-						<div class="d-flex justify-content-center my-3">
-							<div id="rf_detail_option" style="background-color : #EAEAEA">
-								<div class="column container-fluid">
+							<div id="rf_detail_price" class="mt-4">
+								<div class="column">
 									<div class="row">
-										<div class="col-6">
-											<h6>색상</h6>
-										</div>
-										<div class="col-6 text-center row">
-											<input id="rf_white" name="rf_color" type="radio" checked/>
-											<h6><strong>글램 화이트</strong></h6>
-										</div>
-									</div>
-									<div class="row">
-										<div class="col-6">
-											<h6>수량</h6>
-										</div>
-										<div class="col-6 row  d-flex justify-content-center">
-											<input class="mr-5" type="number" id="quantity" name="quantity" min="1" max="99">
-											
-										</div>
+										<div class="col-6 text-left v_center"><h6>판매가</h6></div>
+										<div class="col-6 text-right v_center"><h6>3,999,000원</h6></div>
+									</div>	
+									<div class="row v_center">
+										<div class="col-6 text-left text-primary"><h6>아울렛 특가</h6></div>
+										<div class="col-6 text-right text-primary"><h5>2,600,000원</h5></div>
 									</div>
 								</div>
 							</div>
-						</div>	
-						
-						<!-- 실제 계산해서 띄우는 곳 개수*가격 -->
-						<div>
-					<!--  		<div class="row container-fluid ">
-								<div class="col-6 row">
-									<h6>혜택가</h6>
+							<div class="d-flex justify-content-center my-3">
+								<div id="rf_detail_option" style="background-color : #EAEAEA; border-radius: 24px">
+									<div class="column container-fluid">
+										<div class="row">
+											<div class="col-6">
+												<h6>색상</h6>
+											</div>
+											<div class="col-6 text-center row">
+												<input id="rf_white" name="rf_color" type="radio" checked/>
+												<h6><strong>글램 화이트</strong></h6>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-6">
+												<h6>수량</h6>
+											</div>
+											<div class="col-6 row  d-flex justify-content-center">
+												<input class="mr-5" type="number" id="quantity" name="quantity" min="1" max="99">
+												
+											</div>
+										</div>
+									</div>
 								</div>
-								<div class="col-6 d-flex justify-content-end">
-									<h3>1,690,000원</h3>
+							</div>	
+							
+							<!-- 실제 계산해서 띄우는 곳 개수*가격 -->
+							<div>
+						<!--  		<div class="row container-fluid ">
+									<div class="col-6 row">
+										<h6>혜택가</h6>
+									</div>
+									<div class="col-6 d-flex justify-content-end">
+										<h3>1,690,000원</h3>
+									</div>
 								</div>
+								-->
+								<img src="/Project2_shopping/resources/images/change.png" width="96%"/>
 							</div>
-							-->
-							<img src="/Project2_shopping/resources/images/change.png" width="96%"/>
-						</div>
-
-						<!--  -->
-						
-						<div id="rf_button">
-							<div class="row" style="text-align: center">
-								<div class="text-right col-6 my-1">
-									<button type="button" onClick="javascript:popOpen();" class="btn btn-dark btn-lg round">장바구니</button>	
-								</div>
-								<div class="text-left col-6 my-1">
-									<button type="button" class="btn btn-dark btn-lg round" onclick="window.location.href='order'">구매하기</button>
+	
+							<!--  -->
+							
+							<div id="rf_button">
+								<div class="row" style="text-align: center">
+									<div class="text-right col-6 my-1">
+										<button type="button" onClick="javascript:popOpen();" class="btn btn-dark btn-lg round">장바구니</button>	
+									</div>
+									<div class="text-left col-6 my-1">
+										<button type="button" class="btn btn-dark btn-lg round" onclick="window.location.href='order'">구매하기</button>
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-				</div>
+				</div> 
 			</div>
-		</div>
-		<div>
 			<div>
-				<img src="/Project2_shopping/resources/rf_ad.png"/>
+				<div>
+					<img src="/Project2_shopping/resources/rf_ad.png"/>
+				</div>
 			</div>
 		</div>
 		
