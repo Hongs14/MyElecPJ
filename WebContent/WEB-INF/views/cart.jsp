@@ -73,33 +73,38 @@
 			
 		<div id="cart" class="container-fluid" style="width:1440px">		
 			<div class="row">		
+						
+			<div id="sidebar" class="col-sm-2 col-md-2 d-none d-xl-block justicy-content-center">
+				<div class="d-flex flex-column rounded-lg py-2" style="background-color: #F5F5F5;">
+					<div class="mx-3 mt-1">
+						<h4>ID님</h4>
+					</div>
+					<div class="d-flex">
+						<h6 class="col-2">
+							<span class="align-self-start badge badge-primary">VIP</span>
+						</h6>
+						<h6 class="col-2">
+							<span class="align-self-start badge badge-warning">100,000P</span>
+						</h6>
+					</div>
+					<div class="mx-3 mt-3">
+						<h6 onclick="window.location.href='userInfo'">마이페이지</h6>
+						<h6 onclick="window.location.href='orderList'">최근 주문 내역</h6>
+						<h6 onclick="window.location.href='boardList'">관심상품</h6>
+						<h6 onclick="window.location.href='boardList'">내가 쓴 리뷰</h6>
+					</div>
+				</div>		
+				<div class="d-flex flex-column rounded-lg py-2">
+					<img src="/Project2_shopping/resources/images/longAd.png" style="width:100%; height:100%">
+				</div>
+						
+			</div>			
+						
 							
-			<div class="card px-0 d-flex flex-column col-sm-2" style="background-color: #F5F5F5">
-			  <h3 class="card-header bg-dark text-white text-center">Cart</h3>
-			  <div class="card-body">
-			    <h2 class="card-title">ID님</h2>
-			    <div class="row">
-			    <h5 class="col-2"><span class="align-self-start badge badge-primary">VIP</span></h5>
-				<h5 class="col-2"><span class="align-self-start badge badge-warning">100,000P</span></h5>
-			 	</div>
-			 	<div class="card-body">
-			 	<div class="row d-flex flex-column text-align:center">
-			 	<button type="button" class="btn btn-secondary border-dark my-1" onclick="window.location.href='userInfo'">마이페이지</button>
-			 	<button type="button" class="btn btn-secondary border-dark my-1" onclick="window.location.href='orderList'">최근 주문 내역</button>
-			 	<button type="button" class="btn btn-secondary border-dark my-1" onclick="window.location.href='boardList'">관심상품</button>
-			 	<button type="button" class="btn btn-secondary border-dark my-1" onclick="window.location.href='boardList'">내가 쓴 리뷰</button>
-			 	</div>
-			 	</div>
-			  </div>
-			  			
-			   <div class="card-footer d-flex justify-content-between">
-			    <a href="window.location.href='home'">Home</a>
-			    <a href="#">맨 위로</a>
-			  </div>
-			 </div>	
+	
 			
 				<div id="cartProduct" class="col-sm-7 container-fluid">
-					<div class="card container fluid pt-3" style="background-color: #F5F5F5">
+					<div class="card container fluid py-2" style="background-color: #F5F5F5">
 						<div class="row">
 							<div class="col-sm-9"><input type="radio" name="selectAll"/> 전체선택 </div>
 						 	<div class="col-sm-3 d-flex justify-content-end">
@@ -108,6 +113,7 @@
 						</div>						
 					</div>
 					<hr/>
+					
 					<div class="card container-fluid">
 						<div class="row">
 							<div class="col-sm-9"><input type="radio" name="select"/></div>
@@ -120,24 +126,22 @@
 					<div class="card container-fluid py-3">
 						<div class="row">
 							<div class="col-sm-3"><img src="/Project2_shopping/resources/images/refrigerator1.png"/></div>							
-							<div class="col-sm-4 container-fluid d-flex flex-column"> 								
+							<div class="col-sm-6 container-fluid d-flex flex-column"> 								
 								<div class="status" style="color:DodgerBlue"><h6>설치상품</h6></div><br/>
 								<div class="name"><h3>BESPOKE 냉장고 4도어</h3></div>
 								<div class="name"><h3>프리스탠딩 875 L</h3></div><br/>
 								<div class="color"><h5>새틴 베이지+새틴 화이트</h5></div>								
 							</div>
-							
-							<div class="col-sm-2"> 
-							 <div class="btn-group btn-group-sm">
+													
+							<div class="col-sm-3 card container-fluid d-flex flex-column py-3">
+								<div class="text-right text-muted" style="text-decoration:line-through"><h5>3,140,000원</h5></div>
+								<div class="text-right pb-2"><h4>2,135,000원</h4></div>
+								
+								<div class="btn-group btn-group-sm pl-5 ml-5" style="width:50%">
 							    <button type="button" class="btn btn-outline-dark btn-sm">-</button>
 							   	<button type="button" class="btn btn-outline-dark btn-sm disabled">1</button>
 							    <button type="button" class="btn btn-outline-dark btn-sm">+</button>
-							 </div>
-							</div>
-							
-							<div class="col-sm-3 card container-fluid d-flex flex-column py-3">
-								<div class="text-right text-muted" style="text-decoration:line-through"><h5>3,140,000원</h5></div>
-								<div class="text-right"><h4>2,135,000원</h4></div>
+							 	</div>
 							</div> 
 						</div>
 					</div>
@@ -160,28 +164,26 @@
 							<i class='far fa-trash-alt'></i>
 							</button></div>					
 						</div>				
-					</div>		
+					</div>					
 					<div class="card container-fluid py-3">
 						<div class="row">
 							<div class="col-sm-3"><img src="/Project2_shopping/resources/images/refrigerator1.png"/></div>							
-							<div class="col-sm-4 container-fluid d-flex flex-column"> 								
+							<div class="col-sm-6 container-fluid d-flex flex-column"> 								
 								<div class="status" style="color:DodgerBlue"><h6>설치상품</h6></div><br/>
 								<div class="name"><h3>BESPOKE 냉장고 4도어</h3></div>
 								<div class="name"><h3>프리스탠딩 875 L</h3></div><br/>
 								<div class="color"><h5>새틴 베이지+새틴 화이트</h5></div>								
 							</div>
-							
-							<div class="col-sm-2"> 
-							 <div class="btn-group btn-group-sm">
+													
+							<div class="col-sm-3 card container-fluid d-flex flex-column py-3">
+								<div class="text-right text-muted" style="text-decoration:line-through"><h5>3,140,000원</h5></div>
+								<div class="text-right pb-2"><h4>2,135,000원</h4></div>
+								
+								<div class="btn-group btn-group-sm pl-5 ml-5" style="width:50%">
 							    <button type="button" class="btn btn-outline-dark btn-sm">-</button>
 							   	<button type="button" class="btn btn-outline-dark btn-sm disabled">1</button>
 							    <button type="button" class="btn btn-outline-dark btn-sm">+</button>
-							 </div>
-							</div>
-							
-							<div class="col-sm-3 card container-fluid d-flex flex-column py-3">
-								<div class="text-right text-muted" style="text-decoration:line-through"><h5>3,140,000원</h5></div>
-								<div class="text-right"><h4>2,135,000원</h4></div>
+							 	</div>
 							</div> 
 						</div>
 					</div>
@@ -198,35 +200,32 @@
 					
 					<div class="card container-fluid">
 						<div class="row">
-						
 							<div class="col-sm-9"><input type="radio" name="select"/></div>
 							<div class="col-sm-3 d-flex justify-content-end">
 							<button type="button" class="btn btn-outline-dark btn-sm" style='font-size:20px' >
 							<i class='far fa-trash-alt'></i>
 							</button></div>					
 						</div>				
-					</div>		
-						<div class="card container-fluid py-3">
+					</div>					
+					<div class="card container-fluid py-3">
 						<div class="row">
 							<div class="col-sm-3"><img src="/Project2_shopping/resources/images/refrigerator1.png"/></div>							
-							<div class="col-sm-4 container-fluid d-flex flex-column"> 							
+							<div class="col-sm-6 container-fluid d-flex flex-column"> 								
 								<div class="status" style="color:DodgerBlue"><h6>설치상품</h6></div><br/>
 								<div class="name"><h3>BESPOKE 냉장고 4도어</h3></div>
 								<div class="name"><h3>프리스탠딩 875 L</h3></div><br/>
 								<div class="color"><h5>새틴 베이지+새틴 화이트</h5></div>								
 							</div>
-							
-							<div class="col-sm-2"> 
-							 <div class="btn-group btn-group-sm">
+													
+							<div class="col-sm-3 card container-fluid d-flex flex-column py-3">
+								<div class="text-right text-muted" style="text-decoration:line-through"><h5>3,140,000원</h5></div>
+								<div class="text-right pb-2"><h4>2,135,000원</h4></div>
+								
+								<div class="btn-group btn-group-sm pl-5 ml-5" style="width:50%">
 							    <button type="button" class="btn btn-outline-dark btn-sm">-</button>
 							   	<button type="button" class="btn btn-outline-dark btn-sm disabled">1</button>
 							    <button type="button" class="btn btn-outline-dark btn-sm">+</button>
-							 </div>
-							</div>
-							
-							<div class="col-sm-3 card container-fluid d-flex flex-column py-3">
-								<div class="text-right text-muted" style="text-decoration:line-through"><h5>3,140,000원</h5></div>
-								<div class="text-right"><h4>2,135,000원</h4></div>
+							 	</div>
 							</div> 
 						</div>
 					</div>
@@ -239,18 +238,20 @@
 							</div>
 						</div>
 					</div>
-					<hr/>					
+					<hr/>
 				
-				</div>
-				
+				</div>				
 				<div id="cartPrice" class="col-sm-3 container-fluid">
-					<div class="card container fluid d-flex flex-column py-4" style="background-color: #F5F5F5; border:dark;">													
+					<!-- <div class="card container fluid d-flex flex-column py-4" style="background-color: #F5F5F5; border:dark;">													
 						 	<h5>배송지를 등록해주세요.</h5>
 						 	<br/>
 						  	<button type="button" class="btn btn-dark" style="border-radius:20px">배송지 등록</button>										  						
-					</div>						
-					
-					<div class="card container fluid d-flex flex-column py-5">
+					</div>			 -->			
+					<div>
+						<img src="/Project2_shopping/resources/images/change.png" style="width:100%; height:110%">
+					</div>
+				
+					<div class="card container fluid d-flex flex-column py-3">
 						<div class="row justify-content-between">
 							<div class="d-flex mx-3"><h5>전체 상품</h5></div>
 							<div class="d-flex mx-3"><h5>0개</h5></div>
