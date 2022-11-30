@@ -146,15 +146,15 @@
 		  <!-- The slideshow -->
 		  <div class="carousel-inner">
 		    <div class="carousel-item active">
-		      <img src="/Project2_shopping/resources/images/carou1.png" alt="TV" width="1100" height="500">
+		      <img src="/Project2_shopping/resources/images/${pathList0}" alt="TV" width="1100" height="500">
 		    </div>
 		    <div class="carousel-item">
-		      <img src="/Project2_shopping/resources/images/carou2.png" alt="Watch" width="1100" height="500">
+		      <img src="/Project2_shopping/resources/images/${pathList1}" alt="Watch" width="1100" height="500">
 		    </div>
 		    <div class="carousel-item">
-		      <img src="/Project2_shopping/resources/images/carou3.png" alt="Refrigerator" width="1100" height="500">
+		      <img src="/Project2_shopping/resources/images/${pathList2}" alt="Refrigerator" width="1100" height="500">
 		    </div><div class="carousel-item">
-		      <img src="/Project2_shopping/resources/images/carou4.png" alt="Mobile" width="1100" height="500">
+		      <img src="/Project2_shopping/resources/images/${pathList3}" alt="Mobile" width="1100" height="500">
 		    </div>
 		  </div>
 		  
@@ -177,6 +177,13 @@
 			  <h6 class="list-group-item">[매장 상담 예약] 맞춤 상담을 예약하고 MY전자가 제안하는 라이프스타일을 직접 체험해보세요.</h6>
 			  <h6 class="list-group-item">[이벤트] OTI x MY전자 콜라보 상품 예약하고 다양한 이벤트에 참여해보세요.</h6>
 			  <h6 class="list-group-item">[공지] 2022 누적 판매 1위 MY전자</h6>
+			  <h6 class="list-group-item">${pathList0}</h6>
+			  <h6 class="list-group-item">${pathList1}</h6>
+			  <h6 class="list-group-item">${pathList2}</h6>
+			  <h6 class="list-group-item">${pathList3}</h6>
+			  <h6 class="list-group-item">${pathList4}</h6>
+			  <h6 class="list-group-item">${pathList5}</h6>
+			  <h6 class="list-group-item">${pathList6}</h6>
 			</div>				
 			</div>
 			
@@ -184,7 +191,7 @@
 			  <div class="card-header bg-dark text-white">오시는 길</div>
 			  <div class="card-body">
 			    <h4 class="card-title">MY전자</h4>
-			    <a href="https://goo.gl/maps/EZCKLvqxrKsis2Dy8"><img src="/Project2_shopping/resources/images/map.png" alt="map" style="width:550px; height:250px;"></a><br/>
+			    <a href="https://goo.gl/maps/EZCKLvqxrKsis2Dy8"><img src="/Project2_shopping/resources/images/${pathList4}" alt="map" style="width:550px; height:250px;"></a><br/>
 			    <p class="card-text">서울시 종로구 창경궁로 254 4층 MY전자</p>
 			  </div>
 			</div>
@@ -204,8 +211,8 @@
 					<div class="card-body">
 					  	<h4 class="card-title">협력사</h4>
 					  	<div class="row text-align: center"> 
-						  	<img src="/Project2_shopping/resources/images/otilogo.png" style="width:100px; height:100px">
-							<img src="/Project2_shopping/resources/images/kosalogo.png" style="width:100px; height:120px;">
+						  	<img src="/Project2_shopping/resources/images/${pathList5}" style="width:100px; height:100px">
+							<img src="/Project2_shopping/resources/images/${pathList6}" style="width:100px; height:120px;">
 						</div>
 					</div>				
 			   </div>		 
