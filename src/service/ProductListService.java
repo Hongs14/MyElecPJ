@@ -4,11 +4,11 @@ import javax.servlet.ServletContext;
 
 import dto.product.ProductListDTO;
 
-public class productListService {
+public class ProductListService {
 	
 private ServletContext application;
 	
-	public productListService(ServletContext application) {
+	public ProductListService(ServletContext application) {
 		this.application = application;
 	}
 	
