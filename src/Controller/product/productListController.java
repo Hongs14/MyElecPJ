@@ -35,7 +35,7 @@ public class productListController extends HttpServlet{
 		
 		
 		ServletContext application = request.getServletContext();
-		ProductListDTO productListService = (ProductListDTO)application.getAttribute("ProductListService");
+		ProductListDTO productListService = (ProductListDTO)application.getAttribute("productListService");
 		//productListService. productListDTO);
 		
 		

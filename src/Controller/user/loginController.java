@@ -32,7 +32,7 @@ public class loginController extends HttpServlet{
 		
 		//서비스로 로그인 요청
 		ServletContext application = request.getServletContext();
-		LoginService loginService = (LoginService)application.getAttribute("LoginService");
+		LoginService loginService = (LoginService)application.getAttribute("loginService");
 		//loginService.join(userDTO);
 		
 		//response.sendRedirect("loginController");

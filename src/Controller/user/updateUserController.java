@@ -38,7 +38,7 @@ public class updateUserController extends HttpServlet{
 		
 		//서비스로 로그인 요청
 		ServletContext application = request.getServletContext();
-		UpdateUserService updateUserService = (UpdateUserService)application.getAttribute("UpdateUserService");
+		UpdateUserService updateUserService = (UpdateUserService)application.getAttribute("updateUserService");
 		updateUserService.UpdateUserInfo(userDTO);
 		
 		
