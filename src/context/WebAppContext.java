@@ -12,6 +12,7 @@ import dao.QnABoardDAO;
 import dao.ReviewBoardDAO;
 import dao.SubCategoryDAO;
 import dao.UserDAO;
+import server.Server;
 import service.BoardListService;
 import service.CartService;
 import service.CreateQnAService;
@@ -29,7 +30,7 @@ public class WebAppContext implements ServletContextListener{
 	@Override
 	public void contextInitialized(ServletContextEvent sce) {
 		System.out.println("WebApplication(ServletContext) 생성 시작");
-		
+		Server.main(null);
 		ServletContext application = sce.getServletContext();
 //		System.out.println("1");
 		
