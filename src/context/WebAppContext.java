@@ -28,37 +28,58 @@ import service.UpdateUserService;
 public class WebAppContext implements ServletContextListener{
 	@Override
 	public void contextInitialized(ServletContextEvent sce) {
-		System.out.println("WebApplication(ServletContext) 생성 완료");
+		System.out.println("WebApplication(ServletContext) 생성 시작");
 		
 		ServletContext application = sce.getServletContext();
+//		System.out.println("1");
 		
 		//ServletContext 객체에 데이터 저장
 //		application.setAttribute("adminService", new AdminService(application));
 //		application.setAttribute("adminListService", new AdminListService(application));
 		application.setAttribute("QnAboardListService", new BoardListService(application));
+//		System.out.println("2");
 		application.setAttribute("createQnAService", new CreateQnAService(application));
+//		System.out.println("3");
 		application.setAttribute("reviewboardListService", new ReviewboardListService(application));
+//		System.out.println("4");
 		application.setAttribute("createReviewService", new CreateReviewService(application));
+//		System.out.println("5");
 		application.setAttribute("readReviewService", new ReadReviewService(application));
+//		System.out.println("6");
 		application.setAttribute("cartService", new CartService(application));
+//		System.out.println("7");
 //		application.setAttribute("orderService", new OrderService(application));
 //		application.setAttribute("orderListService", new OrderListService(application));
 		application.setAttribute("productDetailService", new ProductDetailService(application));
+//		System.out.println("8");
 		application.setAttribute("productListService", new ProductListService(application));
+//		System.out.println("9");
 		application.setAttribute("findPasswordService", new FindPasswordService(application));
+//		System.out.println("10");
 		application.setAttribute("joinService", new JoinService(application));
+//		System.out.println("11");
 		application.setAttribute("loginService", new LoginService(application));
+//		System.out.println("12");
 		application.setAttribute("updateUserService", new UpdateUserService(application));
+//		System.out.println("13");
 //		application.setAttribute("userInfoService", new UserInfoService(application));
 //		application.setAttribute("homeService", new HomeService(application));
 
 		application.setAttribute("cartDAO", new CartDAO());
+//		System.out.println("14");
 		application.setAttribute("categoryDAO", new CategoryDAO());
+//		System.out.println("15");
 		application.setAttribute("orderDAO", new OrderDAO());
+//		System.out.println("16");
 		application.setAttribute("productDAO", new ProductDAO());
+//		System.out.println("17");
 		application.setAttribute("QnABoardDAO", new QnABoardDAO());
+//		System.out.println("18");
 		application.setAttribute("reviewBoardDAO", new ReviewBoardDAO());
+//		System.out.println("19");
 		application.setAttribute("subCategoryDAO", new SubCategoryDAO());
+//		System.out.println("20");
 		application.setAttribute("userDAO", new UserDAO());
+//		System.out.println("21");
 	}
 }

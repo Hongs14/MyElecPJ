@@ -12,11 +12,12 @@ import dto.qna.QnABoardProductDTO;
 import server.ConnectionProvider;
 
 public class QnABoardDAO {
-	Connection conn = ConnectionProvider.getConnection();
+	Connection conn;
 	List<QnABoardDTO> qnaBoardDTOs = new ArrayList<>();
 	List<QnABoardProductDTO> qnaBoardProductDTOs = new ArrayList<>();
 
 	public int getTotalRows() {
+		conn = ConnectionProvider.getConnection();
 		int totalRows = 0;
 		try {
 			String sql = "" + "select count(*) " + "from qna_board ";
@@ -41,6 +42,7 @@ public class QnABoardDAO {
 	}
 
 	public int getTotalSearchRows(String search) {
+		conn = ConnectionProvider.getConnection();
 		int totalRows = 0;
 		try {
 			String sql = "" + "select count(*) "
@@ -76,6 +78,7 @@ public class QnABoardDAO {
 	}
 	
 	public int getMyListRows(String users_id) {
+		conn = ConnectionProvider.getConnection();
 		int totalRows = 0;
 		try {
 			String sql = "" + "select count(*) "
@@ -111,6 +114,7 @@ public class QnABoardDAO {
 	}
 	
 	public List<QnABoardProductDTO> selectAllList(int pageNo) {
+		conn = ConnectionProvider.getConnection();
 		try {
 			// sql문 작성
 			String sql = ""
@@ -165,6 +169,7 @@ public class QnABoardDAO {
 	}
 
 	public String insertQnABoard(QnABoardDTO qnaDTO) {
+		conn = ConnectionProvider.getConnection();
 		int rsResult = 0;
 		String result = null;
 		try {
@@ -202,6 +207,7 @@ public class QnABoardDAO {
 	}
 
 	public QnABoardProductDTO selectOneQnA(int idNum) {
+		conn = ConnectionProvider.getConnection();
 		System.out.println("DAO : " + idNum);
 		QnABoardProductDTO qnaContentDTO = new QnABoardProductDTO();
 		try {
@@ -241,6 +247,7 @@ public class QnABoardDAO {
 	}
 
 	public List<QnABoardProductDTO> selectSearchList(int pageNo, String search_String) {
+		conn = ConnectionProvider.getConnection();
 		System.out.println("DAO String: " + search_String);
 		System.out.println("DAO pageNo: " + pageNo);
 		try {
@@ -302,6 +309,7 @@ public class QnABoardDAO {
 	}
 
 	public String updateQnABoard(QnABoardProductDTO qnaDTO) {
+		conn = ConnectionProvider.getConnection();
 		int rsResult = 0;
 		System.out.println("DAO title: " + qnaDTO.getQna_board_title());
 		System.out.println("DAO content: " + qnaDTO.getQna_board_content());
@@ -341,6 +349,7 @@ public class QnABoardDAO {
 	}
 
 	public String deleteQnABoard(int qna_board_id) {
+		conn = ConnectionProvider.getConnection();
 		int rsResult = 0;
 		System.out.println("DAO BoardID: " + qna_board_id);
 		String result = null;
@@ -373,6 +382,7 @@ public class QnABoardDAO {
 	}
 
 	public String updateAnswerQnABoard(QnABoardDTO qnaDTO) {
+		conn = ConnectionProvider.getConnection();
 
 		int rsResult = 0;
 		System.out.println("DAO BoardID: " + qnaDTO.getQna_board_id());
@@ -410,6 +420,7 @@ public class QnABoardDAO {
 	}
 
 	public String deleteAnswerQnABoard(int qna_board_id) {
+		conn = ConnectionProvider.getConnection();
 
 		int rsResult = 0;
 		System.out.println("DAO BoardID: " + qna_board_id);
@@ -445,6 +456,7 @@ public class QnABoardDAO {
 	}
 
 	public List<QnABoardProductDTO> selectMyList(int pageNo, String users_id) {
+		conn = ConnectionProvider.getConnection();
 		try {
 			// sql문 작성
 			String sql = ""

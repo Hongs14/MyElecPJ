@@ -24,12 +24,15 @@ public class homeController extends HttpServlet{
 		//데이터를 처리함
 		//서버랑연결함
 		//데이터받아옴
-
+		System.out.println("1");
 		Client.ConnectServer();
 		
+		System.out.println("2");
 		Client.sendRequest();
+		System.out.println("3");
 		
 		JSONObject receivedFromServer = Client.receivedFromServer();
+		System.out.println("4");
 		
 		JSONArray array = receivedFromServer.getJSONArray("images_name");
 		int length = array.length();
@@ -37,6 +40,7 @@ public class homeController extends HttpServlet{
 		for (int i = 0; i < length; i++) {
 			request.setAttribute("pathList" + i, array.getString(i));
 		}
+		System.out.println("5");
 		
 		//받은 데이터를 해가지고 jsp만들고 클라이언트로 보냄
 		request.getRequestDispatcher("/WEB-INF/views/home.jsp").forward(request, response);

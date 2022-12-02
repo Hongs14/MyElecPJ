@@ -18,11 +18,11 @@ public class SubCategoryDAO {
 	JSONObject response = new JSONObject();
 	JSONArray data = new JSONArray();
 	List<SubCategoryDTO> subcategoryDTOs = new ArrayList<>() ;
-	Connection conn = ConnectionProvider.getConnection();
+	Connection conn;
 	
 	//DB에서 받아서 DTO로 저장하여 리턴하는 메소드 
 	public List<SubCategoryDTO> selectSubCategoryAllList(int category_id) throws SQLException {
-
+		conn = ConnectionProvider.getConnection();
 		String sql = "SELECT subcategory_id, subcategory_name, s.category_id as category_id, category_name "
 				+ "FROM category c, subcategory s "
 				+ "WHERE s.category_id = c.category_id and s.category_id=?";

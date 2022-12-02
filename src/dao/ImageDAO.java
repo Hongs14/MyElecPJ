@@ -11,8 +11,9 @@ import org.json.JSONObject;
 import server.ConnectionProvider;
 
 public class ImageDAO {
-	Connection conn = ConnectionProvider.getConnection();
+	Connection conn;
 	public JSONObject selectImageName() throws SQLException {
+		conn = ConnectionProvider.getConnection();
 		String sql = "Select image_name from images";
 		
 		PreparedStatement pstmt = conn.prepareStatement(sql);

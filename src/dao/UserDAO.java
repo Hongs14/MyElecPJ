@@ -14,8 +14,10 @@ import dto.user.UserDTO;
 import server.ConnectionProvider;
 
 public class UserDAO {
+	Connection conn;
 	
 	public List<UserDTO> getUserList(int pageNo, String id, String condition) throws SQLException {
+		conn = ConnectionProvider.getConnection();
 		StringBuilder sqlBuilder = new StringBuilder();
 		sqlBuilder.append("SELECT USERS_ID, USERS_NAME, RNUM ");
 		sqlBuilder.append("FROM ( ");
@@ -35,7 +37,6 @@ public class UserDAO {
 		sqlBuilder.append("	) ");
 		sqlBuilder.append("WHERE (RNUM - 1) > = ?");
 
-		Connection conn = ConnectionProvider.getConnection();
 		PreparedStatement pstmt = conn.prepareStatement(sqlBuilder.toString());
 		
 		int idx = 1;
@@ -70,13 +71,13 @@ public class UserDAO {
 	}
 	
 	public UserDTO selectUser(String id, String password) throws JSONException, SQLException {
+		conn = ConnectionProvider.getConnection();
 		String sql
 			="SELECT USERS_PASSWORD, USERS_NAME, USERS_LEVEL, USERS_POINT, USERS_ADDRESS "
 			+"FROM USERS "
 			+"WHERE USERS_ID = ? AND USERS_PASSWORD = ?"
 			;
 		
-		Connection conn = ConnectionProvider.getConnection();
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		
 		pstmt.setString(1, id);
@@ -104,7 +105,7 @@ public class UserDAO {
 	}
 	
 	public JSONObject insertUser(UserDTO receivedDTO) throws SQLException {
-		Connection conn = ConnectionProvider.getConnection();
+		conn = ConnectionProvider.getConnection();
 		JSONObject result = new JSONObject();
 
 		try {
@@ -172,13 +173,13 @@ public class UserDAO {
 	}
 	
 	public UserDTO selectUserInfo(String id) throws JSONException, SQLException {
+		conn = ConnectionProvider.getConnection();
 		String sql
 			="SELECT * "
 			+"FROM USERS "
 			+"WHERE USERS_ID = ?"
 			;
 		
-		Connection conn = ConnectionProvider.getConnection();
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		
 		pstmt.setString(1, id);
@@ -205,6 +206,7 @@ public class UserDAO {
 	}
 	
 	public int getTotalRows(String id, String condition) throws SQLException {
+		conn = ConnectionProvider.getConnection();
 		String SQL
 				="SELECT COUNT(*) as total "
 				+"FROM USERS "
@@ -220,7 +222,6 @@ public class UserDAO {
 			
 		}
 		
-		Connection conn = ConnectionProvider.getConnection();
 		PreparedStatement pstmt = conn.prepareStatement(SQL);
 		
 		if (!condition.isEmpty()) {
@@ -248,6 +249,7 @@ public class UserDAO {
 	}
 	
 	public void updateUser(UserDTO receivedDTO) throws SQLException {
+		conn = ConnectionProvider.getConnection();
 		StringBuilder sqlBuilder = new StringBuilder();
 		sqlBuilder.append("UPDATE USERS SET ");
 		if (!receivedDTO.getUser_email().equals("X")) {
@@ -268,7 +270,6 @@ public class UserDAO {
 		sqlBuilder.delete(sqlBuilder.length() - 2, sqlBuilder.length());
 		sqlBuilder.append(" WHERE USERS_ID = '" + receivedDTO.getUser_id() + "'");
 
-		Connection conn = ConnectionProvider.getConnection();
 		PreparedStatement pstmt = conn.prepareStatement(sqlBuilder.toString());
 		pstmt.executeUpdate();
 		pstmt.close();
@@ -276,8 +277,8 @@ public class UserDAO {
 	}
 	
 	public void deleteUser(String id) throws SQLException {
+		conn = ConnectionProvider.getConnection();
 		String SQL = "DELETE FROM USER WHERE USERS_ID = ?";
-		Connection conn = ConnectionProvider.getConnection();
 		PreparedStatement pstmt = conn.prepareStatement(SQL);
 		pstmt.setString(1, id);
 		pstmt.executeUpdate();

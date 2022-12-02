@@ -12,11 +12,12 @@ import dto.review.ReviewBoardProductDTO;
 import server.ConnectionProvider;
 
 public class ReviewBoardDAO {
-	Connection conn = ConnectionProvider.getConnection();
+	Connection conn;
 	List<ReviewBoardDTO> reviewBoardDTOs = new ArrayList<>();
 	List<ReviewBoardProductDTO> reviewBoardProductDTOs = new ArrayList<>();
 	
 	public int getTotalRows() {
+		conn = ConnectionProvider.getConnection();
 		int totalRows = 0;
 		try {
 			String sql = "" + "select count(*) " + "from review_board ";
@@ -41,6 +42,7 @@ public class ReviewBoardDAO {
 	}
 	
 	public int getTotalSearchRows(String search) {
+		conn = ConnectionProvider.getConnection();
 		int totalRows = 0;
 		try {
 			String sql = "" + " select count(*) " + "FROM review_board r , product p "
@@ -77,6 +79,7 @@ public class ReviewBoardDAO {
 	}
 
 	public int getTotalSearchRows(int product_id) {
+		conn = ConnectionProvider.getConnection();
 		int totalRows = 0;
 		try {
 			String sql = "" + "select count(*) " + "FROM review_board WHERE product_id = ? ";
@@ -111,6 +114,7 @@ public class ReviewBoardDAO {
 
 
 	public List<ReviewBoardProductDTO> selectAllList(int pageNo) {
+		conn = ConnectionProvider.getConnection();
 		try {
 		
 		
@@ -171,6 +175,7 @@ public class ReviewBoardDAO {
 	}
 	
 	public String insertReviewBoard(ReviewBoardDTO reviewDTO) {
+		conn = ConnectionProvider.getConnection();
 		int rsResult = 0;
 		String result = null;
 		try {
@@ -260,6 +265,7 @@ public class ReviewBoardDAO {
 	}
 
 	public ReviewBoardProductDTO selectOnereview(int idNum) {
+		conn = ConnectionProvider.getConnection();
 		System.out.println("DAO : "+ idNum);
 		ReviewBoardProductDTO reviewContentDTO = new ReviewBoardProductDTO();
 		try {
@@ -298,6 +304,7 @@ public class ReviewBoardDAO {
 	}
 	
 	public List<ReviewBoardProductDTO> selectSearchReview(int pageNo, String search) {
+		conn = ConnectionProvider.getConnection();
 		System.out.println("리뷰 서치 DAO: "+pageNo +"/ "+ search);
 		try {
 		
@@ -357,6 +364,7 @@ public class ReviewBoardDAO {
 
 	//MYLIST
 	public List<ReviewBoardProductDTO> selectMyList(int pageNo, String users_id) {
+		conn = ConnectionProvider.getConnection();
 		System.out.println("MyReview DAO: "+ users_id);
 		System.out.println("MyReview DAO: "+ pageNo);
 		try {
@@ -422,6 +430,7 @@ public class ReviewBoardDAO {
 	}
 
 	public int getMyListRows(String users_id) {
+		conn = ConnectionProvider.getConnection();
 		int totalRows = 0;
 		try {
 			String sql = "" + "select count(*) " + "FROM review_board WHERE users_id = ? ";
@@ -449,6 +458,7 @@ public class ReviewBoardDAO {
 
 
 	public String updateReviewBoard(ReviewBoardDTO reviewDTO) {
+		conn = ConnectionProvider.getConnection();
 		int rsResult = 0;
 		String result = null;
 		try {
@@ -486,6 +496,7 @@ public class ReviewBoardDAO {
 	}
 
 	public String deleteReviewBoard(int review_board_id) {
+		conn = ConnectionProvider.getConnection();
 		int rsResult = 0;
 		String result = null;
 		try {
