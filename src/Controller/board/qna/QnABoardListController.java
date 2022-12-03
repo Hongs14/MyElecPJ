@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import dto.qna.QnABoardDTO;
 import service.BoardListService;
 
-@WebServlet(name="Controller.QnABoardDTOListController", urlPatterns="/QnABoardDTOList")
+@WebServlet(name="Controller.QnABoardListController", urlPatterns="/QnABoardList")
 public class QnABoardListController extends HttpServlet{
 
 	@Override

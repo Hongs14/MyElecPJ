@@ -92,21 +92,21 @@
 				    </button>
 				    <div class="collapse navbar-collapse" id="navbarColor02">
 						<ul class="navbar-nav me-auto">
-						 	<li class="nav-item">
-						    	<a class="nav-link active" onclick="window.location.href='home'">Home</a>
+					        <li class="nav-item">
+						    	<a class="nav-link" onclick="window.location.href='home'">Home</a>
 						   	</li>
 						   	<li class="nav-item">
 						    	<a class="nav-link" onclick="window.location.href='productList'">Products</a>
 						   	</li>
 						   	<li class="nav-item">
-						    	<a class="nav-link" onclick="window.location.href='boardList'">QnA</a>
+						    	<a class="nav-link" onclick="window.location.href='QnABoardList'">QnA</a>
 						   	</li>
 						   	<li class="nav-item">
-						    	<a class="nav-link" onclick="window.location.href='boardList'">Review</a>
+						    	<a class="nav-link" onclick="window.location.href='reviewBoardList'">Review</a>
 						   	</li>  
 						   	<li class="nav-item">
-						    	<a class="nav-link" onclick="window.location.href='userInfo'">MyPage</a>
-							</li>        
+						    	<a class="nav-link active" onclick="window.location.href='userInfo'">MyPage</a>
+							</li>      
 						</ul>
 			 		</div>
 			    	<form class="d-flex">
