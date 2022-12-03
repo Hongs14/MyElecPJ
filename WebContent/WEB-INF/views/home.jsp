@@ -30,11 +30,6 @@
                 width: 1440px;
                 margin: 0px auto;
             }
-
-            .wrapperChild {
-                width: 95%;
-                margin: 0px auto;
-            }
 			
 			img {
 				display: block;
@@ -44,11 +39,6 @@
 			a {
 				color : black;
 			}
-
-            hr {
-                height: 1px;
-                background-color: black;
-            }
             
            	.carousel-inner img {
 		    width: 1440px;
@@ -62,7 +52,7 @@
 			div > .banner{
 			  width: 80px;
 			  height: 80px;
-				font-size:100%;
+			  font-size:100%;
 			  position: relative;
 			  animation: mymove infinite;
 			  animation-duration: 3s;
@@ -91,50 +81,37 @@
 			</div>
 			</div>
 		</div>				
-		<hr/>
 	
-		<div id="topNavi" class="wrapper">			
-			<nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="width: 1440px;">
-			  <div class="container-fluid">
-			    <a class="navbar-brand" href="#">MY전자</a>
-				    
-		    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
-		      <span class="navbar-toggler-icon"></span>
-		    </button>
-		    
-		    <div class="collapse navbar-collapse" id="navbarColor02">
-		      <ul class="navbar-nav me-auto">
-		        <li class="nav-item">
-			    	<a class="nav-link active" onclick="window.location.href='home'">Home</a>
-			   	</li>
-			   	<li class="nav-item">
-			    	<a class="nav-link" onclick="window.location.href='productList'">Products</a>
-			   	</li>
-			   	<li class="nav-item">
-			    	<a class="nav-link" onclick="window.location.href='QnABoardList'">QnA</a>
-			   	</li>
-			   	<li class="nav-item">
-			    	<a class="nav-link" onclick="window.location.href='reviewBoardList'">Review</a>
-			   	</li>  
-			   	<li class="nav-item">
-			    	<a class="nav-link" onclick="window.location.href='userInfo'">MyPage</a>
-				</li>        
-				</ul>
-	 		</div>
-	    	<form class="d-flex">
-		        <input class="form-control me-sm-2" type="text" placeholder="Search">
-		        <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-	      	</form>    
-    		<div class="d-flex justify-content-end">
-				<button type="button" class="btn btn-dark my-2 my-sm-0" onclick="window.location.href='login'">Login</button>
-				<button type="button" class="btn btn-dark my-2 my-sm-0" onclick="window.location.href='join'">Join</button>
-			</div>
-	  	</div>
+		<div id="topNavi" class="bg-dark">
+			<nav class="navbar navbar-expand-lg navbar-dark wrapper">
+				<div class="container-fluid">
+					<a class="navbar-brand" href="#">MY 전자</a>
+					<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+					<div class="collapse navbar-collapse" id="navbarColor02">
+						<ul class="navbar-nav me-auto">
+							<li class="nav-item"><a class="nav-link active" onclick="window.location.href='home'">Home</a></li>
+							<li class="nav-item"><a class="nav-link" onclick="window.location.href='productList'">Products</a></li>
+							<li class="nav-item"><a class="nav-link" onclick="window.location.href='QnABoardList'">QnA</a></li>
+							<li class="nav-item"><a class="nav-link" onclick="window.location.href='reviewBoardList'">Review</a></li>
+							<li class="nav-item"><a class="nav-link" onclick="window.location.href='userInfo.html'">MyPage</a></li>
+						</ul>
+					</div>
+					<form class="d-flex">
+						<input class="form-control me-sm-2" type="text" placeholder="Search">
+						<button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+					</form>
+					<div class="d-flex justify-content-end">
+						<button type="button" class="btn btn-dark my-2 my-sm-0" onclick="window.location.href='login'">Login</button>
+						<button type="button" class="btn btn-dark my-2 my-sm-0" onclick="window.location.href='join'">Join</button>
+					</div>
+				</div>
 			</nav>
-	</div>		 
-		 <br/>
+		</div>				 
+		<br/>
 	 
-	 <div id="demo" class="carousel slide" data-ride="carousel">
+	 <div id="demo" class="carousel slide mb-4" data-ride="carousel">
 		  <!-- Indicators -->
 		  <ul class="carousel-indicators">
 		    <li data-target="#demo" data-slide-to="0" class="active"></li>
@@ -166,7 +143,6 @@
 		    <span class="carousel-control-next-icon"></span>
 		  </a>
 		</div>
-		<hr />
 		
 		<div id="contents" class="wrapper">
 			<div class="row">
@@ -201,8 +177,8 @@
 			  <div class="card-body">
 			    <h4 class="card-title">고객센터</h4>
 			    <p class="card-text">운영시간 </p>
-			    <p class="card-text">&nbsp;월-금 09:00-18:00</p>
-			    <p class="card-text">&nbsp;토 09:00-14:00 / (일요일 휴무)</p>
+			    <p class="card-text ml-1">월-금 09:00-18:00</p>
+			    <p class="card-text ml-1">토 09:00-14:00 / (일요일 휴무)</p>
 			    <p class="card-text">TEL 02) 123-4567</p>			    
 			  </div>
 			</div>
