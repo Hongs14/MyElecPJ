@@ -234,11 +234,14 @@ hr {
 								<strong>BESPOKE 냉장고 4도어</strong>
 							</h6>
 							<h6 class="text-center">5,000,000</h6>
+							<div class="d-felx justify-content-center" style="text-align: center;">
+								<span class="fa fa-star checked"></span>
+								<span class="fa fa-star checked"></span>
+								<span class="fa fa-star checked"></span>
+								<span class="fa fa-star"></span>
+								<span class="fa fa-star"></span>
+							</div>
 						</figcaption>
-						<figcaption id="starrating" style="text-align: center">
-							<span class="fa fa-star checked"></span> <span class="fa fa-star checked"></span> <span class="fa fa-star checked"></span> <span class="fa fa-star"></span> <span class="fa fa-star"></span>
-						</figcaption>
-
 						<figcaption id="buttonfigcaption" class="text-center">
 							<button type="button" class="btn btn-sm btn-dark">자세히 보기</button>
 						</figcaption>

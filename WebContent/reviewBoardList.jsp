@@ -142,35 +142,26 @@
                         <h6>내 문의내역</h6>
                     </div>
                 </div>
-				
-				<h3 class="text-left my-3">게시판 목록</h3>
-				
-                <div class="d-flex flex-column">
-                    <div class="d-flex flex-column my-2">
-                        <a class="text-left ml-1" onclick="window.location.href='QnABoardList'" style="font-size: large;">QnA</a>
-						<hr />
-						<div class="d-flex flex-column">
-							<div class="collapse collapseOne text-left">정수기형</div>
-							<div class="collapse collapseOne text-left">양문형</div>
-							<div class="collapse collapseOne text-left">일반형</div>
-							<div class="collapse collapseOne text-left">김치냉장고</div>
-						</div>
-					</div>
 
-                    <div class="d-flex flex-column my-2">
-                        <a class="text-left ml-1" onclick="window.location.href='reviewBoardList'" style="font-size: large;">Review</a>
-						<hr />
+				<h3 class="text-left my-3">게시판 목록</h3>
+
+				<div class="d-flex flex-column">
+					<div class="d-flex flex-column my-2">
+						<a class="text-left" data-toggle="collapse" href=".collapseOne" style="font-size: x-large;">관리 목록</a>
+						<hr/>
 						<div class="d-flex flex-column">
-							<div class="collapse collapseOne text-left">올레드</div>
-							<div class="collapse collapseOne text-left">벽걸이형</div>
-							<div class="collapse collapseOne text-left">스탠드형</div>
+							<div class="collapse collapseOne text-left">유저 목록</div>
+							<div class="collapse collapseOne text-left">상품 목록</div>
+							<div class="collapse collapseOne text-left">주문 목록</div>
+							<div class="collapse collapseOne text-left">리뷰 게시판 목록</div>
+							<div class="collapse collapseOne text-left">QnA 게시판 목록</div>
 						</div>
 					</div>
 				</div>
 			</div>
 			<div class="d-flex flex-column col-sm-10 col-md-10">
 				<div id="listType" class="mt-4">
-					<h1>게시판인데수</h1>
+					<h1>리뷰 목록</h1>
 				</div><hr class="mb-4"/>
 				<div id="notice">
 					<h2>검색 조건을 선택하세요</h2>
@@ -243,7 +234,8 @@
 									<h5 class="col-5">제목</h5>
 									<h5 class="col-2">글쓴이</h5>
 									<h5 class="col-2">날짜</h5>
-									<h5 class="col-3">평점</h5>
+									<h5 class="col-2">평점</h5>
+									<h5 class="col-1">조회수</h5>
 								</div>
 							</div>
 						</div>
@@ -266,6 +258,7 @@
 										<span class="fa fa-star"></span>
 									</div>
 									<h5 class="col-1 text-center">(2.2)</h5>
+									<h5 class="col-1 text-center">222</h5>
 								</div>
 								<div class="titleBottom d-flex justify-content-start">
 									<div class="d-flex justify-content-around col-3">
@@ -294,6 +287,7 @@
 										<span class="fa fa-star"></span>
 									</div>
 									<h5 class="col-1 text-center">(2.2)</h5>
+									<h5 class="col-1 text-center">222</h5>
 								</div>
 								<div class="titleBottom d-flex justify-content-start">
 									<div class="d-flex justify-content-around col-3">
@@ -322,6 +316,7 @@
 										<span class="fa fa-star"></span>
 									</div>
 									<h5 class="col-1 text-center">(2.2)</h5>
+									<h5 class="col-1 text-center">222</h5>
 								</div>
 								<div class="titleBottom d-flex justify-content-start">
 									<div class="d-flex justify-content-around col-3">
@@ -350,6 +345,7 @@
 										<span class="fa fa-star"></span>
 									</div>
 									<h5 class="col-1 text-center">(2.2)</h5>
+									<h5 class="col-1 text-center">222</h5>
 								</div>
 								<div class="titleBottom d-flex justify-content-start">
 									<div class="d-flex justify-content-around col-3">
@@ -378,6 +374,7 @@
 										<span class="fa fa-star"></span>
 									</div>
 									<h5 class="col-1 text-center">(2.2)</h5>
+									<h5 class="col-1 text-center">222</h5>
 								</div>
 								<div class="titleBottom d-flex justify-content-start">
 									<div class="d-flex justify-content-around col-3">
