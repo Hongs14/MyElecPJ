@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import dto.review.ReviewBoardDTO;
 import service.ReviewboardListService;
 
-@WebServlet(name="Controller.boardListController", urlPatterns="/boardList")
+@WebServlet(name="Controller.reviewBoardListController", urlPatterns="/reviewBoardList")
 public class reviewBoardListController extends HttpServlet{
 
 	@Override
@@ -21,7 +21,7 @@ public class reviewBoardListController extends HttpServlet{
 		
 		//서비스로 회원 가입 요청
 		ServletContext application = request.getServletContext();
-		ReviewboardListService reviewBoardListService = (ReviewboardListService) application.getAttribute("QnAboardListService"); 
+		ReviewboardListService reviewBoardListService = (ReviewboardListService) application.getAttribute("reviewboardListService"); 
 		reviewBoardListService.readList(reviewBoardDTO);
 		
 		request.getRequestDispatcher("/WEB-INF/views/boardList.jsp").forward(request, response);

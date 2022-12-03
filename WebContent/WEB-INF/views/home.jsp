@@ -111,10 +111,10 @@
 			    	<a class="nav-link" onclick="window.location.href='productList'">Products</a>
 			   	</li>
 			   	<li class="nav-item">
-			    	<a class="nav-link" onclick="window.location.href='boardList'">QnA</a>
+			    	<a class="nav-link" onclick="window.location.href='QnABoardList'">QnA</a>
 			   	</li>
 			   	<li class="nav-item">
-			    	<a class="nav-link" onclick="window.location.href='boardList'">Review</a>
+			    	<a class="nav-link" onclick="window.location.href='reviewBoardList'">Review</a>
 			   	</li>  
 			   	<li class="nav-item">
 			    	<a class="nav-link" onclick="window.location.href='userInfo'">MyPage</a>
