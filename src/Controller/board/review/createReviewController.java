@@ -20,7 +20,7 @@ public class createReviewController extends HttpServlet{
 		
 		ServletContext application = request.getServletContext();
 		CreateReviewService createReviewService = (CreateReviewService)application.getAttribute("createReviewService");
-		createReviewService.write(reviewBoardDTO);
+		createReviewService.write(reviewBoardDTO); 
 		
 		
 		request.getRequestDispatcher("/WEB-INF/views/createReview.jsp").forward(request, response);

@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>QnA 상세보기</title>
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
 <script
@@ -149,89 +149,39 @@ a {
 
 	<div class="d-flex justify-content-center mt-3"
 		style="width: 1440px; margin: 0px auto;">
-		<div id="sidebar"
-			class="col-sm-2 col-md-2 d-none d-xl-block justicy-content-center">
-			<div class="d-flex flex-column rounded-lg"
-				style="background-color: #F5F5F5;">
-				<div class="mx-3 mt-3">
-					<h5>ID님</h5>
-				</div>
-				<div class="d-flex mx-1">
-					<h6 class="col-2">
-						<span class="align-self-start badge badge-primary">VIP</span>
-					</h6>
-					<h6 class="col-2">
-						<span class="align-self-start badge badge-info">100,000P</span>
-					</h6>
-				</div>
-				<div class="mx-3 mt-3">
-					<h6>최근주문내역</h6>
-				</div>
-				<div class="d-flex justify-content-between mx-3 my-3">
-					<h6>내가 쓴 리뷰</h6>
-					<h6>문의사항</h6>
-				</div>
+		<div id="sidebar" class="col-sm-2 col-md-2 d-none d-xl-block justicy-content-center">
+			<div class="d-flex flex-column rounded-lg" style="background-color: #F5F5F5;">
+	            <div class="mx-3 mt-3">
+	                <h4>ID님</h4>
+	            </div>
+	            <div class="d-flex mx-0">
+	                <h6 class="col-2">
+	                    <span class="align-self-start badge badge-primary">VIP</span>
+	                </h6>
+	                <h6 class="col-2">
+	                    <span class="align-self-start badge badge-info">100,000P</span>
+	                </h6>
+	            </div>
+	            <div class="mx-3 my-3">
+	                <h6>최근주문내역</h6>
+	                <h6>장바구니</h6>
+	                <h6>내가 쓴 리뷰</h6>
+	                <h6>내 문의내역</h6>
+	            </div>
 			</div>
 
-			<h3 class="text-left my-3">제품군</h3>
-
-			<div class="d-flex flex-column">
-				<div class="d-flex flex-column my-2">
-					<a class="text-left" data-toggle="collapse" href=".collapseOne"
-						style="font-size: large;">냉장고</a>
-					<hr />
-					<div class="d-flex flex-column">
-						<div class="collapse collapseOne text-left">정수기형</div>
-						<div class="collapse collapseOne text-left">양문형</div>
-						<div class="collapse collapseOne text-left">일반형</div>
-						<div class="collapse collapseOne text-left">김치냉장고</div>
-					</div>
-				</div>
-
-				<div class="d-flex flex-column my-2">
-					<a class="text-left " data-toggle="collapse" href=".collapseOne"
-						style="font-size: arge;">TV</a>
-					<hr />
-					<div class="d-flex flex-column">
-						<div class="collapse collapseOne text-left">올레드</div>
-						<div class="collapse collapseOne text-left">벽걸이형</div>
-						<div class="collapse collapseOne text-left">스탠드형</div>
-					</div>
-				</div>
-
-				<div class="d-flex flex-column my-2">
-					<a class="text-left " data-toggle="collapse" href=".collapseOne"
-						style="font-size: large;">세탁기</a>
-					<hr />
-					<div class="d-flex flex-column">
-						<div class="collapse collapseOne text-left">통돌이</div>
-						<div class="collapse collapseOne text-left">드럼</div>
-						<div class="collapse collapseOne text-left">워시타워</div>
-					</div>
-				</div>
-
-				<div class="d-flex flex-column my-2">
-					<a class="text-left " data-toggle="collapse" href=".collapseOne"
-						style="font-size: large;">에어컨</a>
-					<hr />
-					<div class="d-flex flex-column">
-						<div class="collapse collapseOne text-left">스텐드형</div>
-						<div class="collapse collapseOne text-left">이동식</div>
-						<div class="collapse collapseOne text-left">벽걸이형</div>
-					</div>
-				</div>
-
-				<div class="d-flex flex-column my-2">
-					<a class="text-left " data-toggle="collapse" href=".collapseOne"
-						style="font-size: large;">PC</a>
-					<hr />
-					<div class="d-flex flex-column">
-						<div class="collapse collapseOne text-left">노트북</div>
-						<div class="collapse collapseOne text-left">모니터</div>
-						<div class="collapse collapseOne text-left">데스크톱</div>
-					</div>
-				</div>
-			</div>
+			<h3 class="text-left mt-4 mb-3">게시판 목록</h3>
+	            <div class="d-flex flex-column">
+	                <div class="d-flex flex-column my-2">
+	                    <a class="text-left ml-1" onclick="window.location.href='QnABoardList'" style="font-size: large;">QnA</a>
+	                    <hr/>
+	                </div>
+	
+	                <div class="d-flex flex-column my-2">
+	                    <a class="text-left ml-1" onclick="window.location.href='reviewBoardList'" style="font-size: large;">Review</a>
+	                    <hr/>
+	                </div>
+	            </div>
 		</div>
 
 		<div id="readQna" class="d-flex flex-column col-10">

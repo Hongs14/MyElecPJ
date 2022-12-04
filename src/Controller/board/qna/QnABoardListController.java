@@ -24,6 +24,6 @@ public class QnABoardListController extends HttpServlet{
 		BoardListService QnABoardListService = (BoardListService) application.getAttribute("QnAboardListService"); 
 		QnABoardListService.readList(QnABoardDTO);
 		
-		request.getRequestDispatcher("/WEB-INF/views/boardList.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/views/qnaBoardList.jsp").forward(request, response);
 	}
 }
