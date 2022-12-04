@@ -64,6 +64,9 @@
                 width: 95%;
                 margin: 0px auto;
             }
+            #review_content{
+            	width: 80%;
+            }
 			
 			img {
 				display: block;
@@ -128,23 +131,23 @@
 			</nav>
 	 	</div>
 	
-		<hr style="0.7px solid lightgray"/>
+		<hr style="0.7px solid lightgrey"/>
 		
 <!-------------------------------    분류    --------------------------->
-		<div id="review_top" class="wrapper">
-			<div class="wrapperCild py-2">
+		<div id="review_top" class="wrapper" style="width: 80%;">
+			<div class="wrapperCild py-2" >
 				<div class="text-left row container-fluid">
-					<div style="width: 40px">
-						<a href="http://localhost:8080/Project2_shopping/html/Homepage.html" style="display: block"><img src="/Project2_shopping/resources/images/house.png" width="20px" height="20px"/></a>
-					</div>
-					<div>
+					<span>
+						<a href="/Project2_shopping/home" style="display: block"><img src="/Project2_shopping/resources/images/house.png" width="20px" height="20px"/></a>
+					</span>
+					<div class="ml-2">
 						> <a href="#">상품 리뷰</a>
 					</div>
 				</div>
 				
 			</div>	
 		</div>
-		<hr style="0.7px solid lightgray"/>
+		<hr style="0.7px solid lightgrey"/>
 		
 		<div id="review_content" class="wrapper">
 			<div class="mt-4" style="border-bottom: 1px solid black">
@@ -210,11 +213,20 @@
 								<textarea id="review_content_box" name="review_content" maxlength="1000" style="width: 800px; height: 200px; resize: none; "></textarea>
 							</div>
 						</div>
-				
+						
+						<div class="row my-4">
+							<div class="col-3">
+								<h5>사진 첨부 (10MB이하 가능)</h5>
+							</div>
+							<div class="col-9">
+								<input type="file" class="form-control" id="review_attach" name="review_attach" required multiple> 
+							</div>
+						</div>
 					</div>
+				
 				</form>
 				
-				<div style="background-color:#F0F0F0; border-radius: 24px" class="p-2">
+				<div style="background-color:#F0F0F0; border-radius: 24px" class="p-2 my-4">
 					<h6>ㆍ 게시판 성격에 맞지 않는 게시물은 사전 통보 없이 삭제 될 수 있는 점을 양해 부탁드립니다.</h6>
 					<h6>ㆍ 유사 내용이 반복 등록되는 것을 방지하고자 1시간 이내에는 추가 글쓰기를 하실 수 없습니다.</h6>
 					<h6>ㆍ 자동 로그아웃, 네트워크 장애 등으로 내용 저장이 안 될 수 있으니 메모장 등에서 작성하여 등록해 주시기 바랍니다.</h6>
@@ -224,15 +236,16 @@
 				<div class="row container-fluid mt-3 col-sm-12 ">
 					<div class="col-6">
 						<div class="text-right">
-							<button class="btn btn-sm btn-dark round">취소하기</button>
+							<button class="btn btn-sm btn-primary round">취소하기</button>
 						</div>
 					</div>
 					<div class="col-6">
-						<div class="text-left">
-							<button class="btn btn-sm btn-dark round">등록하기</button>
+						<div class="text-left mb-5">
+							<button type="submit" class="btn btn-sm btn-primary round" onclick="window.location.href='readReview'">등록하기</button>
 						</div>
 					</div>
 				</div>
+				
 			
 			</div>
 			

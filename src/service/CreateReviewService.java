@@ -15,6 +15,6 @@ public class CreateReviewService {
 	
 	public void write(ReviewBoardDTO reviewBoardDTO) {
 		System.out.println("리뷰작성에 성공했습니다.");
-		ReviewBoardDAO reviewBoardDAO = (ReviewBoardDAO)application.getAttribute("createReviewService");
+		ReviewBoardDAO reviewBoardDAO = (ReviewBoardDAO)application.getAttribute("reviewBoardDAO");
 	}
 }

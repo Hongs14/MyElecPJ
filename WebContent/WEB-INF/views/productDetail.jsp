@@ -193,15 +193,7 @@
 				<div id="rf_content" class="col-sm-0 col-md-6 col-lg-4 container-fluid mt-3" style="border-radius: 24px">
 					<div class="card p-3 mt-2" style="width: 97%;">
 						<div class="card-header pt-2" style="background-color: #F0F0F0; border: none" >
-							<div id="rf_category" class="row text-primary">
-								<ul style="list-style: none">
-									<li>설치상품 </li>
-									<li>아울렛 </li>
-									<li>삼성케어 플러스 </li>
-									<li>번개 특가 </li>
-								</ul>
-								
-							</div>
+						
 						</div>
 						<div class="card_body container-fluid">
 							<h4 class="my-4">BESPOKE 냉장고 4도어 키친핏 604 L</h4>
