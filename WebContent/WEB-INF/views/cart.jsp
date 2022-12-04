@@ -64,9 +64,8 @@
 	</head>
 	<body>
 		<%@ include file="/WEB-INF/views/common/banner.jsp" %>
-		<hr/>
 			
-		<div id="cart" class="container-fluid" style="width:1440px">		
+		<div id="cart" class="container-fluid mt-3" style="width:1440px">		
 			<div class="row">		
 						
 			<div id="sidebar" class="col-sm-2 col-md-2 d-none d-xl-block justicy-content-center">
@@ -89,10 +88,9 @@
 						<h6 onclick="window.location.href='boardList'">내가 쓴 리뷰</h6>
 					</div>
 				</div>		
-				<div class="d-flex flex-column rounded-lg py-2">
-					<img src="/Project2_shopping/resources/images/longAd.png" style="width:100%; height:100%">
+				<div class="d-flex flex-column rounded-lg pt-3">
+					<img src="/Project2_shopping/resources/images/adlong.png" style="width:97%; height:97%">
 				</div>
-						
 			</div>			
 						
 							
