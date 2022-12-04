@@ -1,19 +1,12 @@
 package Controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
-
-import client.Client;
 
 @WebServlet(name = "Controller.homeController", urlPatterns = "/home")
 public class homeController extends HttpServlet{
@@ -24,23 +17,13 @@ public class homeController extends HttpServlet{
 		//데이터를 처리함
 		//서버랑연결함
 		//데이터받아옴
-		System.out.println("1");
-		Client.ConnectServer();
-		
-		System.out.println("2");
-		Client.sendRequest();
-		System.out.println("3");
-		
-		JSONObject receivedFromServer = Client.receivedFromServer();
-		System.out.println("4");
-		
-		JSONArray array = receivedFromServer.getJSONArray("images_name");
-		int length = array.length();
-		
-		for (int i = 0; i < length; i++) {
-			request.setAttribute("pathList" + i, array.getString(i));
-		}
-		System.out.println("5");
+		request.setAttribute("pathList0", "carou1.png");
+		request.setAttribute("pathList1", "carou2.png");
+		request.setAttribute("pathList2", "carou3.png");
+		request.setAttribute("pathList3", "carou4.png");
+		request.setAttribute("pathList4", "map.png");
+		request.setAttribute("pathList5", "otilogo.png");
+		request.setAttribute("pathList6", "kosalogo.png");
 		
 		//받은 데이터를 해가지고 jsp만들고 클라이언트로 보냄
 		request.getRequestDispatcher("/WEB-INF/views/home.jsp").forward(request, response);
