@@ -124,13 +124,7 @@
 	
 	</head>
 	<body >
-
-		<div class="jumbotron text-center jumbotron-fluid border">
-			<div class="container mx-auto my-0 ">
-				<h1 class="text-dark grey" style="font-size:80px">MY 전자</h1>		
-			</div>
-		</div>
-		<hr/>
+		<%@ include file="/WEB-INF/views/common/banner.jsp" %>
 			
 		<div class="container">
 			<div class="row justify-content-center">

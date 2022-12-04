@@ -10,70 +10,35 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 
 <style>
+/* 글꼴 */
 @font-face {
-	font-family: 'NanumBarunGothic';
-	font-style: normal;
-	font-weight: 400;
-	src:
-		url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot');
-	src:
-		url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot?#iefix')
-		format('embedded-opentype'),
-		url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.woff')
-		format('woff'),
-		url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.ttf')
-		format('truetype');
-}
-
-@font-face {
-	font-family: 'NanumBarunGothic';
-	font-style: normal;
-	font-weight: 700;
-	src:
-		url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebBold.eot');
-	src:
-		url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebBold.eot?#iefix')
-		format('embedded-opentype'),
-		url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebBold.woff')
-		format('woff'),
-		url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebBold.ttf')
-		format('truetype')
-}
-
-@font-face {
-	font-family: 'NanumBarunGothic';
-	font-style: normal;
-	font-weight: 300;
-	src:
-		url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebLight.eot');
-	src:
-		url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebLight.eot?#iefix')
-		format('embedded-opentype'),
-		url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebLight.woff')
-		format('woff'),
-		url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebLight.ttf')
-		format('truetype');
-}
-
-.nanumbarungothic * {
-	font-family: 'NanumBarunGothic', sans-serif;
+  font-family: 'LotteMartDream';
+  font-style: normal;
+  font-weight: 400;
+  src: url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamMedium.woff2') format('woff2'), url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamMedium.woff') format('woff');
 }
 
 * {
-	font-family: 'Jua', sans-serif;
+	font-family: 'LotteMartDream';
 	font-weight: 300px;
-	background-color: #F0F0F0;
 }
 
-#bg-gradient-primary {
-	background-color: #F0F0F0;
-}
 /* https://www.w3schools.com/cssref/tryit.php?filename=trycss3_justify-content */
 #cardbox {
 	border: 1px solid black;
 }
 
-.container {
+.wrapper {
+	width: 1440px;
+	margin: 0px auto;
+}
+
+.wrapper > * {
+	width: 90%;
+	margin: 0px auto;
+}
+
+#bg-gradient-primary > .container {
 	width: 500px;
 }
 
@@ -132,16 +97,9 @@
 
 </head>
 
-<body style="backgroud-color: #F0F0F0">
-	<div class="jumbotron text-center jumbotron-fluid border" style="background-color: #F0F0F0">
-		<div class="container bg-white text-dark mx-auto my-0 " style="background-color: #F0F0F0">
-			<h1>컴퓨터 쇼핑몰</h1>
-		</div>
-	</div>
-
-
-
-	<div id="bg-gradient-primary">
+<body>
+	<%@ include file="/WEB-INF/views/common/banner.jsp" %>
+	<div id="bg-gradient-primary" class="mt-5">
 		<div class="container">
 			<div class="row justify-content-center">
 				<div class="col-xl-10 col-lg-12 col-md-9">
@@ -159,9 +117,13 @@
 
 							<form>
 								<div id="userId" class="form-group">
-									<input type="email" class="form-control form-control-user" id="inputEmail1" placeholder="input your ID">
+									<input type="text" class="form-control form-control-user" id="inputEmail1" placeholder="input your ID">
 								</div>
 
+								<div id="userId" class="form-group">
+									<input type="text" class="form-control form-control-user" id="inputPhoneNumber" placeholder="input your phone number">
+								</div>
+								
 								<a href="javascript:void(0);" class="btn btn-primary btn-user btn-block" onclick= "javascript:popOpen();"> FindPassword </a>
 								
 								<hr />

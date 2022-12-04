@@ -63,12 +63,7 @@
 		</style>
 	</head>
 	<body>
-		
-		<div class="jumbotron text-center jumbotron-fluid border">
-		<div class="container mx-auto my-0 ">
-			<h1 class="text-dark grey" style="font-size:80px">MY 전자</h1>		
-			</div>
-		</div>
+		<%@ include file="/WEB-INF/views/common/banner.jsp" %>
 		<hr/>
 			
 		<div id="cart" class="container-fluid" style="width:1440px">		

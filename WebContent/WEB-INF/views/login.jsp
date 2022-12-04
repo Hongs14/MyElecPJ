@@ -96,8 +96,11 @@ hr {
 
 #cardbox {
 	text-align: center;
-	border: none;
-	margin: 70px;
+	border: 1px solid black;
+}
+
+#bg-gradient-primary > .container {
+	width: 500px;
 }
 
 
@@ -139,52 +142,25 @@ function checkID() {
 
 </head>
 <body>
-	<div class="jumbotron text-center bg-lightgrey">
-		<div class="container bg-dark rounded-lg text-white mx-auto my-0">
-			<h1 class="text-white">MY 전자</h1>
-		</div>
-	</div>
+	<%@ include file="/WEB-INF/views/common/banner.jsp" %>
+	
+	<div id="bg-gradient-primary" class="mt-5">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-xl-10 col-lg-12 col-md-9">
+					<div id="cardbox" class="card">
+						<div class="card-header">
+							<div class = "text-center">
+								<b>로그인</b>
+							</div>
+						</div>
 
-	<div id="topNavi" class="bg-dark">
-		<nav class="navbar navbar-expand-lg navbar-dark wrapper">
-			<div class="container-fluid">
-				<a class="navbar-brand" href="#">MY 전자</a>
-				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-				<div class="collapse navbar-collapse" id="navbarColor02">
-					<ul class="navbar-nav me-auto">
-						<li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
-						<li class="nav-item"><a class="nav-link" href="#">Products</a></li>
-						<li class="nav-item"><a class="nav-link" href="#">QnA</a></li>
-						<li class="nav-item"><a class="nav-link" href="#">Review</a></li>
-						<li class="nav-item"><a class="nav-link" href="#">MyPage</a></li>
-					</ul>
-				</div>
-				<form class="d-flex">
-					<input class="form-control me-sm-2" type="text" placeholder="Search">
-					<button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-				</form>
-				<div class="d-flex justify-content-end">
-					<button type="button" class="btn btn-dark my-2 my-sm-0" onclick="window.location.href='login_js.html'">Login</button>
-					<button type="button" class="btn btn-dark my-2 my-sm-0" onclick="window.location.href='joinform_js.html'">Join</button>
-				</div>
-			</div>
-		</nav>
-	</div>
+						<!--card body------------------------------------------------------  -->
+						<div class="card-body col-sm-12 col-md-12">
 
 
-	<div id="product" class="wrapper">
 
-			<!--상품 리스트 부분 -->
-				<div class="row">
-					<div class ="col-1"></div>
-
-					<!--card body------------------------------------------------------  -->
-					
-					<div id="cardbox" class="card col-8">
-						<div class = "container" style ="width: 500px; height: 800px;">
-						<form>
+							<form>
 							<div id="userId" class="form-group">
 								<input type="email" class="form-control form-control-user" id="uid" 
 								onfocusout = "checkID()" 
@@ -224,14 +200,11 @@ function checkID() {
 							</div>
 						</form>
 						</div>
+
 					</div>
-					
-					
 				</div>
-
-
-
 			</div>
-
+		</div>
+	</div>
 </body>
 </html>

@@ -117,67 +117,32 @@ hr {
 
 </head>
 <body>
-	<div class="jumbotron text-center jumbotron-fluid bg-lightgrey">
-		<div class="container bg-dark rounded-lg text-white mx-auto my-0">
-			<h1 class="text-white">MY 전자</h1>
-		</div>
-	</div>
-
-	<div id="topNavi" class="bg-dark">
-		<nav class="navbar navbar-expand-lg navbar-dark wrapper">
-			<div class="container-fluid">
-				<a class="navbar-brand" href="#">MY 전자</a>
-				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-				<div class="collapse navbar-collapse" id="navbarColor02">
-					<ul class="navbar-nav me-auto">
-						<li class="nav-item"><a class="nav-link active" onclick="window.location.href='home'">Home</a></li>
-						<li class="nav-item"><a class="nav-link" onclick="window.location.href='productList'">Products</a></li>
-						<li class="nav-item"><a class="nav-link" onclick="window.location.href='boardList'">QnA</a></li>
-						<li class="nav-item"><a class="nav-link" onclick="window.location.href='boardList'">Review</a></li>
-						<li class="nav-item"><a class="nav-link" onclick="window.location.href='userInfo'">MyPage</a></li>
-					</ul>
-				</div>
-				<form class="d-flex">
-					<input class="form-control me-sm-2" type="text" placeholder="Search">
-					<button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-				</form>
-				<div class="d-flex justify-content-end">
-					<button type="button" class="btn btn-dark my-2 my-sm-0" onclick="window.location.href='login'">Login</button>
-					<button type="button" class="btn btn-dark my-2 my-sm-0" onclick="window.location.href='join'">Join</button>
-				</div>
-			</div>
-		</nav>
-	</div>
-
-
-
+	<%@ include file="/WEB-INF/views/common/banner.jsp" %>
+	
 	<div id="contents" class="wrapper">
 		<div class="row">
 
 			<!-- 사이드바 -->
 			<div id="sidebar" class="col-sm-2 col-md-2 d-none d-xl-block">
 				<div class="d-flex flex-column rounded-lg" style="background-color: #F5F5F5;">
-					<div class="mx-3 mt-3">
-						<h5>ID님</h5>
-					</div>
-					<div class="d-flex mx-1">
-						<h6 class="col-2">
-							<span class="align-self-start badge badge-primary">VIP</span>
-						</h6>
-						<h6 class="col-2">
-							<span class="align-self-start badge badge-info">100,000P</span>
-						</h6>
-					</div>
-					<div class="mx-3 mt-3">
-						<h6>최근주문내역</h6>
-					</div>
-					<div class="d-flex justify-content-between mx-3 my-3">
-						<h6>내가 쓴 리뷰</h6>
-						<h6>문의사항</h6>
-					</div>
-				</div>
+                    <div class="mx-3 mt-3">
+                        <h4>ID</h4>
+                    </div>
+                    <div class="d-flex mx-0">
+                        <h6 class="col-2">
+                            <span class="align-self-start badge badge-primary">VIP</span>
+                        </h6>
+                        <h6 class="col-2">
+                            <span class="align-self-start badge badge-info">100,000P</span>
+                        </h6>
+                    </div>
+                    <div class="mx-3 my-3">
+                        <h6>최근주문내역</h6>
+                        <h6>장바구니</h6>
+                        <h6>내가 쓴 리뷰</h6>
+                        <h6>내 문의내역</h6>
+                    </div>
+               	</div>
 
 				<h3 class="text-left my-3">My page</h3>
 
