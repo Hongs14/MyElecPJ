@@ -8,15 +8,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import dto.cart.CartDTO;
-import dto.product.ProductListDTO;
-import server.ConnectionProvider;
 
 public class CartDAO {
-	Connection conn;
 
 	// 장바구니에 담기
-	public String insertCart(CartDTO cartDTO) {
-		conn = ConnectionProvider.getConnection();
+	public String insertCart(CartDTO cartDTO, Connection conn) {
 		String result = null;
 		int rsResult = 0;
 
@@ -102,8 +98,7 @@ public class CartDAO {
 	}
 
 	//장바구니 총 갯수 출력
-	public int getTotalRows(CartDTO cartDTO) {
-		conn = ConnectionProvider.getConnection();
+	public int getTotalRows(CartDTO cartDTO, Connection conn) {
 		int totalRows = 0;
 		try {
 			String sql = "SELECT count(*) " 
@@ -132,8 +127,7 @@ public class CartDAO {
 	}
 
 	// 장바구니 목록
-	public List<CartDTO> selectAllList(int pageNo, CartDTO cartDTO) {
-		conn = ConnectionProvider.getConnection();
+	public List<CartDTO> selectAllList(int pageNo, CartDTO cartDTO, Connection conn) {
 		List<CartDTO> cartDTOs = new ArrayList<>();
 		try {
 			String sql = "" +

@@ -3,7 +3,7 @@ package context;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
-
+import javax.sql.DataSource;
 import dao.CartDAO;
 import dao.CategoryDAO;
 import dao.OrderDAO;
@@ -12,7 +12,6 @@ import dao.QnABoardDAO;
 import dao.ReviewBoardDAO;
 import dao.SubCategoryDAO;
 import dao.UserDAO;
-import server.Server;
 import service.BoardListService;
 import service.CartService;
 import service.CreateQnAService;
@@ -29,10 +28,27 @@ import service.UpdateUserService;
 public class WebAppContext implements ServletContextListener{
 	@Override
 	public void contextInitialized(ServletContextEvent sce) {
-		System.out.println("WebApplication(ServletContext) 생성 시작");
-		Server.main(null);
 		ServletContext application = sce.getServletContext();
+		DataSource dataSource = ConnectionProvider.getDataSource();
+		application.setAttribute("dataSource", dataSource);
 //		System.out.println("1");
+		
+		application.setAttribute("cartDAO", new CartDAO());
+//		System.out.println("14");
+		application.setAttribute("categoryDAO", new CategoryDAO());
+//		System.out.println("15");
+		application.setAttribute("orderDAO", new OrderDAO());
+//		System.out.println("16");
+		application.setAttribute("productDAO", new ProductDAO());
+//		System.out.println("17");
+		application.setAttribute("QnABoardDAO", new QnABoardDAO());
+//		System.out.println("18");
+		application.setAttribute("reviewBoardDAO", new ReviewBoardDAO());
+//		System.out.println("19");
+		application.setAttribute("subCategoryDAO", new SubCategoryDAO());
+//		System.out.println("20");
+		application.setAttribute("userDAO", new UserDAO());
+//		System.out.println("21");
 		
 		//ServletContext 객체에 데이터 저장
 //		application.setAttribute("adminService", new AdminService(application));
@@ -66,21 +82,5 @@ public class WebAppContext implements ServletContextListener{
 //		application.setAttribute("userInfoService", new UserInfoService(application));
 //		application.setAttribute("homeService", new HomeService(application));
 
-		application.setAttribute("cartDAO", new CartDAO());
-//		System.out.println("14");
-		application.setAttribute("categoryDAO", new CategoryDAO());
-//		System.out.println("15");
-		application.setAttribute("orderDAO", new OrderDAO());
-//		System.out.println("16");
-		application.setAttribute("productDAO", new ProductDAO());
-//		System.out.println("17");
-		application.setAttribute("QnABoardDAO", new QnABoardDAO());
-//		System.out.println("18");
-		application.setAttribute("reviewBoardDAO", new ReviewBoardDAO());
-//		System.out.println("19");
-		application.setAttribute("subCategoryDAO", new SubCategoryDAO());
-//		System.out.println("20");
-		application.setAttribute("userDAO", new UserDAO());
-//		System.out.println("21");
 	}
 }

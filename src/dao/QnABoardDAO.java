@@ -9,15 +9,12 @@ import java.util.List;
 
 import dto.qna.QnABoardDTO;
 import dto.qna.QnABoardProductDTO;
-import server.ConnectionProvider;
 
 public class QnABoardDAO {
-	Connection conn;
 	List<QnABoardDTO> qnaBoardDTOs = new ArrayList<>();
 	List<QnABoardProductDTO> qnaBoardProductDTOs = new ArrayList<>();
 
-	public int getTotalRows() {
-		conn = ConnectionProvider.getConnection();
+	public int getTotalRows(Connection conn) {
 		int totalRows = 0;
 		try {
 			String sql = "" + "select count(*) " + "from qna_board ";
@@ -41,8 +38,7 @@ public class QnABoardDAO {
 		return totalRows;
 	}
 
-	public int getTotalSearchRows(String search) {
-		conn = ConnectionProvider.getConnection();
+	public int getTotalSearchRows(String search, Connection conn) {
 		int totalRows = 0;
 		try {
 			String sql = "" + "select count(*) "
@@ -77,8 +73,7 @@ public class QnABoardDAO {
 		return totalRows;
 	}
 	
-	public int getMyListRows(String users_id) {
-		conn = ConnectionProvider.getConnection();
+	public int getMyListRows(String users_id, Connection conn) {
 		int totalRows = 0;
 		try {
 			String sql = "" + "select count(*) "
@@ -113,8 +108,7 @@ public class QnABoardDAO {
 		return totalRows;
 	}
 	
-	public List<QnABoardProductDTO> selectAllList(int pageNo) {
-		conn = ConnectionProvider.getConnection();
+	public List<QnABoardProductDTO> selectAllList(int pageNo, Connection conn) {
 		try {
 			// sql문 작성
 			String sql = ""
@@ -168,8 +162,7 @@ public class QnABoardDAO {
 		return qnaBoardProductDTOs;
 	}
 
-	public String insertQnABoard(QnABoardDTO qnaDTO) {
-		conn = ConnectionProvider.getConnection();
+	public String insertQnABoard(QnABoardDTO qnaDTO, Connection conn) {
 		int rsResult = 0;
 		String result = null;
 		try {
@@ -206,8 +199,7 @@ public class QnABoardDAO {
 		return result;
 	}
 
-	public QnABoardProductDTO selectOneQnA(int idNum) {
-		conn = ConnectionProvider.getConnection();
+	public QnABoardProductDTO selectOneQnA(int idNum, Connection conn) {
 		System.out.println("DAO : " + idNum);
 		QnABoardProductDTO qnaContentDTO = new QnABoardProductDTO();
 		try {
@@ -246,8 +238,7 @@ public class QnABoardDAO {
 		return qnaContentDTO;
 	}
 
-	public List<QnABoardProductDTO> selectSearchList(int pageNo, String search_String) {
-		conn = ConnectionProvider.getConnection();
+	public List<QnABoardProductDTO> selectSearchList(int pageNo, String search_String, Connection conn) {
 		System.out.println("DAO String: " + search_String);
 		System.out.println("DAO pageNo: " + pageNo);
 		try {
@@ -308,8 +299,7 @@ public class QnABoardDAO {
 		return qnaBoardProductDTOs;
 	}
 
-	public String updateQnABoard(QnABoardProductDTO qnaDTO) {
-		conn = ConnectionProvider.getConnection();
+	public String updateQnABoard(QnABoardProductDTO qnaDTO, Connection conn) {
 		int rsResult = 0;
 		System.out.println("DAO title: " + qnaDTO.getQna_board_title());
 		System.out.println("DAO content: " + qnaDTO.getQna_board_content());
@@ -348,8 +338,7 @@ public class QnABoardDAO {
 		return result;
 	}
 
-	public String deleteQnABoard(int qna_board_id) {
-		conn = ConnectionProvider.getConnection();
+	public String deleteQnABoard(int qna_board_id, Connection conn) {
 		int rsResult = 0;
 		System.out.println("DAO BoardID: " + qna_board_id);
 		String result = null;
@@ -381,8 +370,7 @@ public class QnABoardDAO {
 		return result;
 	}
 
-	public String updateAnswerQnABoard(QnABoardDTO qnaDTO) {
-		conn = ConnectionProvider.getConnection();
+	public String updateAnswerQnABoard(QnABoardDTO qnaDTO, Connection conn) {
 
 		int rsResult = 0;
 		System.out.println("DAO BoardID: " + qnaDTO.getQna_board_id());
@@ -419,8 +407,7 @@ public class QnABoardDAO {
 		return result;
 	}
 
-	public String deleteAnswerQnABoard(int qna_board_id) {
-		conn = ConnectionProvider.getConnection();
+	public String deleteAnswerQnABoard(int qna_board_id, Connection conn) {
 
 		int rsResult = 0;
 		System.out.println("DAO BoardID: " + qna_board_id);
@@ -455,8 +442,7 @@ public class QnABoardDAO {
 		return result;
 	}
 
-	public List<QnABoardProductDTO> selectMyList(int pageNo, String users_id) {
-		conn = ConnectionProvider.getConnection();
+	public List<QnABoardProductDTO> selectMyList(int pageNo, String users_id, Connection conn) {
 		try {
 			// sql문 작성
 			String sql = ""

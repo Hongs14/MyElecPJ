@@ -8,12 +8,8 @@ import java.sql.SQLException;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import server.ConnectionProvider;
-
 public class ImageDAO {
-	Connection conn;
-	public JSONObject selectImageName() throws SQLException {
-		conn = ConnectionProvider.getConnection();
+	public JSONObject selectImageName(Connection conn) throws SQLException {
 		String sql = "Select image_name from images";
 		
 		PreparedStatement pstmt = conn.prepareStatement(sql);

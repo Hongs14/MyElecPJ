@@ -10,12 +10,9 @@ import java.util.List;
 import dto.order.OrderDTO;
 import dto.order.OrderDetailDTO;
 import dto.order.OrderReadListDTO;
-import server.ConnectionProvider;
 
 public class OrderDAO {
-	Connection conn;
-	public void insertOrder(OrderDTO order, OrderDetailDTO orderDetail) throws SQLException {
-		conn = ConnectionProvider.getConnection();
+	public void insertOrder(OrderDTO order, OrderDetailDTO orderDetail, Connection conn) throws SQLException {
 		int price = order.getOrders_price();
 		String userId = order.getUsers_id();
 		String address = order.getOrders_address();
@@ -49,8 +46,7 @@ public class OrderDAO {
 		conn.close();
 	}
 	
-	public OrderDTO selectOrder(String id) throws SQLException {
-		conn = ConnectionProvider.getConnection();
+	public OrderDTO selectOrder(String id, Connection conn) throws SQLException {
 		String SQL
 			="SELECT ORDERS.USER_ID, ORDERS.ORDERS_ID, PRODUCT_NAME, ORDER_DETAIL_ITEM_COUNT, ORDERS_DATE, ORDERS_PRICE, ORDERS_STATUS, ORDERS_ADDRESS "
 			+"FROM ORDERS, ORDER_DETAIL, PRODUCT "
@@ -82,8 +78,7 @@ public class OrderDAO {
 		return order;
 	}
 	
-	public OrderDTO selectOrder(int id) throws SQLException {
-		conn = ConnectionProvider.getConnection();
+	public OrderDTO selectOrder(int id, Connection conn) throws SQLException {
 		String SQL
 			="SELECT ORDERS.USERS_ID, ORDERS.ORDERS_ID, PRODUCT_NAME, ORDER_DETAIL_ITEM_COUNT, ORDERS_DATE, ORDERS_PRICE, ORDERS_STATUS, ORDERS_ADDRESS "
 			+"FROM ORDERS, ORDER_DETAIL, PRODUCT "
@@ -115,8 +110,7 @@ public class OrderDAO {
 		return order;
 	}
 	
-	public List<OrderDTO> selectOrderList(int pageNo, OrderReadListDTO receivedDTO) throws SQLException {
-		conn = ConnectionProvider.getConnection();
+	public List<OrderDTO> selectOrderList(int pageNo, OrderReadListDTO receivedDTO, Connection conn) throws SQLException {
 		StringBuilder sqlBuilder = new StringBuilder();
 		sqlBuilder.append("SELECT USERS_ID, ORDERS_ID, PRODUCT_NAME, ORDERS_DATE, ORDERS_STATUS, RNUM ");
 		sqlBuilder.append("FROM ( ");
@@ -193,8 +187,7 @@ public class OrderDAO {
 		return orders;
 	}
 	
-	public int getTotalRows(OrderReadListDTO receivedDTO) throws SQLException {
-		conn = ConnectionProvider.getConnection();
+	public int getTotalRows(OrderReadListDTO receivedDTO, Connection conn) throws SQLException {
 		String SQL
 				="SELECT COUNT(*) as total "
 				+"FROM ORDERS "
@@ -236,8 +229,7 @@ public class OrderDAO {
 		return result;
 	}
 	
-	public int getTotalJoinRows(OrderReadListDTO receivedDTO) throws SQLException {
-		conn = ConnectionProvider.getConnection();
+	public int getTotalJoinRows(OrderReadListDTO receivedDTO, Connection conn) throws SQLException {
 		String SQL
 				="SELECT COUNT(*) as total "
 				+"FROM ORDERS, ORDER_DETAIL, PRODUCT "
@@ -280,8 +272,7 @@ public class OrderDAO {
 		return result;
 	}
 	
-	public void updateOrder(OrderDTO order) throws SQLException {
-		conn = ConnectionProvider.getConnection();
+	public void updateOrder(OrderDTO order, Connection conn) throws SQLException {
 		int id = order.getOrders_id();
 		String status = order.getOrders_status();
 		
@@ -302,8 +293,7 @@ public class OrderDAO {
 		
 	}
 	
-	public void deleteOrder(OrderDTO order) throws SQLException { 
-		conn = ConnectionProvider.getConnection();
+	public void deleteOrder(OrderDTO order, Connection conn) throws SQLException {
 		int id = order.getOrders_id();
 		String SQL = "DELETE FROM ORDERS WHERE ORDERS_ID = ?";
 

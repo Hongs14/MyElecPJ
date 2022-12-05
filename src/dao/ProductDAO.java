@@ -9,16 +9,13 @@ import java.util.List;
 
 import dto.product.ProductDTO;
 import dto.product.ProductListDTO;
-import server.ConnectionProvider;
 
 
 public class ProductDAO {
-	Connection conn;
 	List<ProductListDTO> productListDTOs = new ArrayList<>();
 
 	//상품 총 갯수 출력
-	public int getTotalRows(ProductListDTO productListDTO) {
-		conn = ConnectionProvider.getConnection();
+	public int getTotalRows(ProductListDTO productListDTO, Connection conn) {
 		int totalRows = 0;
 		try {
 			String sql = "SELECT count(*) " +
@@ -48,8 +45,7 @@ public class ProductDAO {
 	}
 	
 	//상품 목록 조회
-	public List<ProductListDTO> selectAllList(int pageNo, ProductListDTO productListDTO) {
-		conn = ConnectionProvider.getConnection();
+	public List<ProductListDTO> selectAllList(int pageNo, ProductListDTO productListDTO, Connection conn) {
 		try {
 			String sql = "SELECT rnum, product_id, product_name, product_price, category_id, category_name, subcategory_id, subcategory_name, product_totalpoint " +
 					 "FROM ( " + 
@@ -106,8 +102,7 @@ public class ProductDAO {
 	}
 	
 	//상품 상세 정보 출력
-	public ProductDTO selectProductContent(int product_id) {
-		conn = ConnectionProvider.getConnection();
+	public ProductDTO selectProductContent(int product_id, Connection conn) {
 		ProductDTO productDTO = null;
 		
 		try {
