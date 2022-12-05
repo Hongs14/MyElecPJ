@@ -9,37 +9,18 @@
 		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>	
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 		<script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+		
 		<style>
 			/* 글꼴 */
 			@font-face {
-				font-family: 'NanumBarunGothic';
-				font-style: normal;
-				font-weight: 400;
-				src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot');
-				src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot?#iefix') format('embedded-opentype'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.woff') format('woff'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.ttf') format('truetype');
-			}
-			
-			@font-face {
-				font-family: 'NanumBarunGothic';
-				font-style: normal;
-				font-weight: 700;
-				src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebBold.eot');
-				src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebBold.eot?#iefix') format('embedded-opentype'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebBold.woff') format('woff'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebBold.ttf') format('truetype')
-			}
-			
-			@font-face {
-				font-family: 'NanumBarunGothic';
-				font-style: normal;
-				font-weight: 300;
-				src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebLight.eot');
-				src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebLight.eot?#iefix') format('embedded-opentype'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebLight.woff') format('woff'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebLight.ttf') format('truetype');
-			}
-			
-			.nanumbarungothic * {
-				font-family: 'NanumBarunGothic', sans-serif;
+			  font-family: 'LotteMartDream';
+			  font-style: normal;
+			  font-weight: 400;
+			  src: url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamMedium.woff2') format('woff2'), url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamMedium.woff') format('woff');
 			}
 			
 			* {
+			 	font-family: 'LotteMartDream';
 				padding: 0px;
 				margin: 0px;
 				/*border: 1px solid black;*/
@@ -51,73 +32,99 @@
 				width : 150px;
 				height : 250px;
 			}
-
-			hr {
-	            height: 1px;
-	            background-color: black;
-	         }
-	         
+			
+			a {
+				color : black;
+			}
+			
+			.wrapper {
+				width: 1440px;
+				margin: 0px auto;
+			}
+			
 	         .card {
 	         	border: none;
 	         }
+	         
+	         .grey {
+	         	background-color: #F5F5F5;
+	         }
+	         
+	         .houseImg {
+	         	display: block;
+	         	width : 20px;
+				height : 20px;
+				margin: 0px auto;
+	         }
+	         
 		</style>
 	</head>
 	<body>
 		<%@ include file="/WEB-INF/views/common/banner.jsp" %>
+  
+		<div id="cart" class="container-fluid mt-3" style="width:1440px">																			
+			<div class="text-left container-fluid row">
+				<span>
+					<a href="/Project2_shopping/home" style="display:block">
+					<img src="/Project2_shopping/resources/images/house.png" class="houseImg"/>
+					</a>
+				</span>
+				<div class="ml-2">
+					> <a href="#">장바구니</a>
+				</div>
+			</div>
+			<hr style="height: 0.1px; background-color: lightgrey"/>
 			
-		<div id="cart" class="container-fluid mt-3" style="width:1440px">		
-			<div class="row">		
-						
-			<div id="sidebar" class="col-sm-2 col-md-2 d-none d-xl-block justicy-content-center">
-				<div class="d-flex flex-column rounded-lg py-2" style="background-color: #F5F5F5;">
-					<div class="mx-3 mt-1">
+		<div class="row">
+			<div id="sidebar" class="col-sm-2 col-md-2 d-none d-xl-block justify-content-center">
+				<div class="d-flex flex-column rounded-lg" style="background-color: #F5F5F5;">
+					<div class="mx-3 mt-3">
 						<h4>ID님</h4>
 					</div>
-					<div class="d-flex">
-						<h6 class="col-2">
-							<span class="align-self-start badge badge-primary">VIP</span>
-						</h6>
-						<h6 class="col-2">
-							<span class="align-self-start badge badge-warning">100,000P</span>
-						</h6>
-					</div>
-					<div class="mx-3 mt-3">
-						<h6 onclick="window.location.href='userInfo'">마이페이지</h6>
-						<h6 onclick="window.location.href='orderList'">최근 주문 내역</h6>
-						<h6 onclick="window.location.href='boardList'">관심상품</h6>
-						<h6 onclick="window.location.href='boardList'">내가 쓴 리뷰</h6>
-					</div>
-				</div>		
+					<div class="d-flex mx-0">
+                       <h6 class="col-2">
+                           <span class="align-self-start badge badge-primary">VIP</span>
+                       </h6>
+                       <h6 class="col-2">
+                           <span class="align-self-start badge badge-info">100,000P</span>
+                       </h6>
+                   </div>
+                   <div class="mx-3 my-3">
+                       <h6>최근주문내역</h6>
+                       <h6>장바구니</h6>
+                       <h6>내가 쓴 리뷰</h6>
+                       <h6>내 문의내역</h6>
+                   </div>                    
+				</div>	
+				
 				<div class="d-flex flex-column rounded-lg pt-3">
 					<img src="/Project2_shopping/resources/images/adlong.png" style="width:97%; height:97%">
-				</div>
+				</div>						
 			</div>			
-						
-							
-	
-			
-				<div id="cartProduct" class="col-sm-7 container-fluid">
-					<div class="card container fluid py-2" style="background-color: #F5F5F5">
+
+				<div id="cartProduct" class="col-sm-7 container-fluid" >
+					<div class="card container fluid py-2 grey" style="background-color: #F5F5F5">
 						<div class="row">
-							<div class="col-sm-9"><input type="radio" name="selectAll"/> 전체선택 </div>
+							<div class="col-sm-9 mt-1"><input type="checkbox" name="selectAll"/> 전체선택 </div>
 						 	<div class="col-sm-3 d-flex justify-content-end">
 						  	<button type="button" class="btn btn-outline-dark btn-sm" style="border-radius:20px">선택 삭제</button>										  
 							</div>	
 						</div>						
-					</div>
-					<hr/>
-					
-					<div class="card container-fluid">
+					</div>			
+			
+				<div class="card container-fluid grey my-2 py-1">
+					<div class="card container-fluid grey">
 						<div class="row">
-							<div class="col-sm-9"><input type="radio" name="select"/></div>
+							<div class="col-sm-9"><input type="checkbox" name="select" multiple/></div>
 							<div class="col-sm-3 d-flex justify-content-end">
-							<button type="button" class="btn btn-outline-dark btn-sm" style='font-size:20px' >
+							<button type="button" class="btn btn-outline-dark btn-sm" style="font-size:17px;">
 							<i class='far fa-trash-alt'></i>
 							</button></div>					
 						</div>				
 					</div>					
-					<div class="card container-fluid py-3">
-						<div class="row">
+					
+					<div class="card container-fluid py-3 grey">
+						<div class="row" >
 							<div class="col-sm-3"><img src="/Project2_shopping/resources/images/refrigerator1.png"/></div>							
 							<div class="col-sm-6 container-fluid d-flex flex-column"> 								
 								<div class="status" style="color:DodgerBlue"><h6>설치상품</h6></div><br/>
@@ -126,9 +133,9 @@
 								<div class="color"><h5>새틴 베이지+새틴 화이트</h5></div>								
 							</div>
 													
-							<div class="col-sm-3 card container-fluid d-flex flex-column py-3">
+							<div class="col-sm-3 card container-fluid d-flex flex-column py-3 mt-5 grey align-center">
 								<div class="text-right text-muted" style="text-decoration:line-through"><h5>3,140,000원</h5></div>
-								<div class="text-right pb-2"><h4>2,135,000원</h4></div>
+								<div class="text-right pb-2" style="color:DodgerBlue"><h4>2,135,000원</h4></div>
 								
 								<div class="btn-group btn-group-sm pl-5 ml-5" style="width:50%">
 							    <button type="button" class="btn btn-outline-dark btn-sm">-</button>
@@ -139,27 +146,24 @@
 						</div>
 					</div>
 					
-					<div class="card container-fluid">
-						<div class="row">
-							<div class="col-sm-8 text-left text-muted"><h6>*장바구니 상품은 30일간 보관됩니다.</h6></div>
-							<div class="col-sm-4 d-flex justify-content-end">
-							<button type="button" class="btn btn-outline-dark btn-sm" style="border-radius:25px">추가</button>				
-							</div>
-						</div>
-					</div>
-					<hr/>
+					<div class="card container-fluid grey">
+						<h6 class="text-left text-muted">*장바구니 상품은 30일간 보관됩니다.</h6>
+					</div>	
+				</div>		
 					
-					<div class="card container-fluid">
+				<div class="card container-fluid grey my-2 py-1">
+					<div class="card container-fluid grey">
 						<div class="row">
-							<div class="col-sm-9"><input type="radio" name="select"/></div>
+							<div class="col-sm-9"><input type="checkbox" name="select" multiple/></div>
 							<div class="col-sm-3 d-flex justify-content-end">
-							<button type="button" class="btn btn-outline-dark btn-sm" style='font-size:20px' >
+							<button type="button" class="btn btn-outline-dark btn-sm" style="font-size:17px;">
 							<i class='far fa-trash-alt'></i>
 							</button></div>					
 						</div>				
 					</div>					
-					<div class="card container-fluid py-3">
-						<div class="row">
+					
+					<div class="card container-fluid py-3 grey">
+						<div class="row" >
 							<div class="col-sm-3"><img src="/Project2_shopping/resources/images/refrigerator1.png"/></div>							
 							<div class="col-sm-6 container-fluid d-flex flex-column"> 								
 								<div class="status" style="color:DodgerBlue"><h6>설치상품</h6></div><br/>
@@ -168,9 +172,9 @@
 								<div class="color"><h5>새틴 베이지+새틴 화이트</h5></div>								
 							</div>
 													
-							<div class="col-sm-3 card container-fluid d-flex flex-column py-3">
+							<div class="col-sm-3 card container-fluid d-flex flex-column py-3 mt-5 grey align-center">
 								<div class="text-right text-muted" style="text-decoration:line-through"><h5>3,140,000원</h5></div>
-								<div class="text-right pb-2"><h4>2,135,000원</h4></div>
+								<div class="text-right pb-2" style="color:DodgerBlue"><h4>2,135,000원</h4></div>
 								
 								<div class="btn-group btn-group-sm pl-5 ml-5" style="width:50%">
 							    <button type="button" class="btn btn-outline-dark btn-sm">-</button>
@@ -181,27 +185,24 @@
 						</div>
 					</div>
 					
-					<div class="card container-fluid">
+					<div class="card container-fluid grey">
+						<h6 class="text-left text-muted">*장바구니 상품은 30일간 보관됩니다.</h6>
+					</div>	
+				</div>		
+
+				<div class="card container-fluid grey my-2 py-1">
+					<div class="card container-fluid grey">
 						<div class="row">
-							<div class="col-sm-8 text-left text-muted"><h6>*장바구니 상품은 30일간 보관됩니다.</h6></div>
-							<div class="col-sm-4 d-flex justify-content-end">
-							<button type="button" class="btn btn-outline-dark btn-sm" style="border-radius:25px">추가</button>				
-							</div>
-						</div>
-					</div>
-					<hr/>
-					
-					<div class="card container-fluid">
-						<div class="row">
-							<div class="col-sm-9"><input type="radio" name="select"/></div>
+							<div class="col-sm-9"><input type="checkbox" name="select" multiple/></div>
 							<div class="col-sm-3 d-flex justify-content-end">
-							<button type="button" class="btn btn-outline-dark btn-sm" style='font-size:20px' >
+							<button type="button" class="btn btn-outline-dark btn-sm" style="font-size:17px;">
 							<i class='far fa-trash-alt'></i>
 							</button></div>					
 						</div>				
 					</div>					
-					<div class="card container-fluid py-3">
-						<div class="row">
+					
+					<div class="card container-fluid py-3 grey">
+						<div class="row" >
 							<div class="col-sm-3"><img src="/Project2_shopping/resources/images/refrigerator1.png"/></div>							
 							<div class="col-sm-6 container-fluid d-flex flex-column"> 								
 								<div class="status" style="color:DodgerBlue"><h6>설치상품</h6></div><br/>
@@ -210,9 +211,9 @@
 								<div class="color"><h5>새틴 베이지+새틴 화이트</h5></div>								
 							</div>
 													
-							<div class="col-sm-3 card container-fluid d-flex flex-column py-3">
+							<div class="col-sm-3 card container-fluid d-flex flex-column py-3 mt-5 grey align-center">
 								<div class="text-right text-muted" style="text-decoration:line-through"><h5>3,140,000원</h5></div>
-								<div class="text-right pb-2"><h4>2,135,000원</h4></div>
+								<div class="text-right pb-2" style="color:DodgerBlue"><h4>2,135,000원</h4></div>
 								
 								<div class="btn-group btn-group-sm pl-5 ml-5" style="width:50%">
 							    <button type="button" class="btn btn-outline-dark btn-sm">-</button>
@@ -223,17 +224,12 @@
 						</div>
 					</div>
 					
-					<div class="card container-fluid">
-						<div class="row">
-							<div class="col-sm-8 text-left text-muted"><h6>*장바구니 상품은 30일간 보관됩니다.</h6></div>
-							<div class="col-sm-4 d-flex justify-content-end">
-							<button type="button" class="btn btn-outline-dark btn-sm" style="border-radius:25px">추가</button>				
-							</div>
-						</div>
-					</div>
-					<hr/>
-				
-				</div>				
+					<div class="card container-fluid grey">
+						<h6 class="text-left text-muted">*장바구니 상품은 30일간 보관됩니다.</h6>
+					</div>	
+				</div>						
+			</div>
+							
 				<div id="cartPrice" class="col-sm-3 container-fluid">
 					<!-- <div class="card container fluid d-flex flex-column py-4" style="background-color: #F5F5F5; border:dark;">													
 						 	<h5>배송지를 등록해주세요.</h5>
@@ -252,24 +248,23 @@
 						<div class="row justify-content-between">
 						 	<div class="d-flex mx-3"><h5>주문 금액</h5></div>
 							<div class="d-flex mx-3"><h5>0원</h5></div>
-							</div>
-							<div class="row justify-content-between">
+						</div>
+						<div class="row justify-content-between">
 							<div class="d-flex mx-3"><h5>할인 금액</h5></div>
 							<div class="d-flex mx-3" style="color:DodgerBlue"><h5>0원</h5></div>	
-							</div>
-							<br/>
-							<div class="row justify-content-between">
+						</div>
+						<br/>
+						<div class="row justify-content-between">
 							<div class="d-flex mx-3"><h4>결제 예정 금액</h4></div>
 							<div class="d-flex mx-3"><h4>0원</h4></div>	
-							</div>
-						</div>			
+						</div>
+					</div>			
 						
 						<div class="card container fluid d-flex flex-column py-3">													 	
-							<button type="button" class="btn btn-warning border-dark" style="border-radius:20px" onclick="window.location.href='order'">주문하기</button>										  						
-						</div>	
-									
-					</div>												
-				</div>
-			</div>				
+							<button type="button" class="btn btn-primary" style="border-radius:20px" onclick="window.location.href='order'">주문하기</button>										  						
+						</div>										
+				</div>												
+			</div>
+		</div>				
 	</body>
 </html>

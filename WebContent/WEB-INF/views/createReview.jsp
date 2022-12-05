@@ -10,14 +10,20 @@
 		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 		<script>
-		/* 별점 hover 하기
-		http://hk-skin.hk-test.co.kr/study/js/base06.php
 		
-		function countingstar(){
-				var imgsDiv = $("fa-star");
+		//별점 주기
+		$(function(){
+			$('.makeStar span').hover(function(){
+				var targetNum = $(this).index() + 1;
+				$('.makeStar span').css({color: '#000'});
+				$('.makeStar span:nth-child(-n'+targetNum+')').css({color: 'orange'});
 				
-			}
-		*/
+			});
+			
+		});
+		
+		
+			
 		
 		/* 글자수 제한걸기
 		$('#review_content_box').keyup(function (e) {
@@ -72,9 +78,7 @@
 				display: block;
 				margin: 0px auto;
 			}
-			.checked {
-  				color: orange;
-			}
+			
 			.card {
 				border: none;
 			}
@@ -143,14 +147,15 @@
 							<div class="col-3">
 								<h5>별점 </h5>
 							</div>
-							<div class="col-9">
-								<div>
-									<span class="fa fa-star checked"></span>
-									<span class="fa fa-star checked"></span>
-									<span class="fa fa-star checked"></span>
+							<div class="starScore col-9">
+								<div class="makeStar">
+									<span class="fa fa-star"></span>
+									<span class="fa fa-star"></span>
+									<span class="fa fa-star"></span>
 									<span class="fa fa-star"></span>
 									<span class="fa fa-star"></span>
 								</div>
+								
 							</div>
 						</div>
 						
@@ -168,7 +173,7 @@
 								<h5>리뷰 내용 </h5>
 							</div>
 							<div class="col-9">
-								<textarea id="review_content_box" name="review_content" maxlength="1000" style="width: 800px; height: 200px; resize: none; "></textarea>
+								<textarea id="review_content_box" name="review_content" maxlength="1000" placeholder="리뷰 내용을 입력하시오" style="width: 800px; height: 200px; resize: none;"></textarea>
 							</div>
 						</div>
 						

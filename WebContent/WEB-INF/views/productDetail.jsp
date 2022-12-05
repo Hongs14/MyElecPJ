@@ -172,7 +172,7 @@
 										<img src="/Project2_shopping/resources/images/pencil.png" height="20px"/> 
 									</span>
 									
-									<h6 class="flex-fulfill" style="text-decoration-line:underline;"><a href="#">상품평 쓰기</a></h6>
+									<h6 class="flex-fulfill" style="text-decoration-line:underline;"><a href="/Project2_shopping/reviewBoardList">상품평 쓰기</a></h6>
 								</div>
 							</div>
 							

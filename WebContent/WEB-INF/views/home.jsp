@@ -95,7 +95,7 @@
 							<li class="nav-item"><a class="nav-link" onclick="window.location.href='productList'">Products</a></li>
 							<li class="nav-item"><a class="nav-link" onclick="window.location.href='QnABoardList'">QnA</a></li>
 							<li class="nav-item"><a class="nav-link" onclick="window.location.href='reviewBoardList'">Review</a></li>
-							<li class="nav-item"><a class="nav-link" onclick="window.location.href='userInfo.html'">MyPage</a></li>
+							<li class="nav-item"><a class="nav-link" onclick="window.location.href='userInfo'">MyPage</a></li>
 						</ul>
 					</div>
 					<form class="d-flex">
@@ -148,7 +148,7 @@
 			<div class="row">
 			<div class="d-flex col-sm-3">
 			<div class="list-group d-flex border-secondary">
-			  <a href="#" class="list-group-item border-dark bg-dark list-group-item-action active">Notice</a>
+			  <div class="list-group-item border-dark bg-dark text-white">Notice</div>
 			  <h6 class="list-group-item">[신제품 출시] MY flip 메종 마르지엘라 에디션</h6>
 			  <h6 class="list-group-item">[매장 상담 예약] 맞춤 상담을 예약하고 MY전자가 제안하는 라이프스타일을 직접 체험해보세요.</h6>
 			  <h6 class="list-group-item">[이벤트] OTI x MY전자 콜라보 상품 예약하고 다양한 이벤트에 참여해보세요.</h6>

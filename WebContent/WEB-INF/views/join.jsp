@@ -35,10 +35,17 @@
 			width: 1200px;
 		}
 		
-		hr {
-			height: 1px;
-			background-color: black;
-		}
+	    .houseImg {
+	         	display: block;
+	         	width : 20px;
+				height : 20px;
+				margin: 0px auto;
+	    }	    
+	    
+    	.wrapper {
+			width: 1440px;
+			margin: 0px auto;
+		}     
             
 	</style>
 	<script>
@@ -125,6 +132,20 @@
 	</head>
 	<body >
 		<%@ include file="/WEB-INF/views/common/banner.jsp" %>
+		
+		<div class="container-fluid mt-3" style="width: 1200px;">
+			<div class="text-left container-fluid row">
+				<span>
+					<a onclick="window.location.href='home'" style="display:block">
+					<img src="/Project2_shopping/resources/images/house.png" class="houseImg"/>
+					</a>
+					</span>
+				<div class="ml-2">
+					> <a onclick="window.location.href='reviewBoardList'">Join</a>
+				</div>			
+			</div>
+			<hr class="text-center" style="height: 0.1px; background-color: lightgrey">
+		</div>				
 			
 		<div class="container">
 			<div class="row justify-content-center">
@@ -135,7 +156,7 @@
 						<div class="card-body col-sm-12">
 							<div class="card border-dark">
 								<div class="card-header bg-dark py-2">
-									<h3 class="text-white text-center">Join</h3>
+									<h3 class="text-white text-center">회원가입</h3>
 								</div>
 	
 								<div class="card-body">
@@ -182,20 +203,9 @@
 											<input type="text" id="addr3" placeholder="상세 주소">
 										</div>
 	
-										<div class="form-group">
-											<label for="wishProduct">관심상품</label>
-											<select id="wishProduct" name="likeProduct" class="form-control">
-												<option value="refrigerator">냉장고</option>
-												<option value="tv">TV</option>
-												<option value="washingmachine">세탁기</option>
-												<option value="airconditioner">에어컨</option>
-												<option value="pc">PC</option>
-											</select>
-										</div>
-	
 										<div class="text-center">
-											<input type="submit" class="btn btn-warning border-dark" value="Join" /> 
-											<input type="reset" class="btn btn-warning border-dark" value="Reset" />
+											<input type="submit" class="btn btn-primary btn-sm " style="border-radius:20px" value="Join" onclick="window.location.href='home'"/> 
+											<input type="reset" class="btn btn-primary btn-sm" style="border-radius:20px" value="Reset" />
 										</div>
 									</form>
 								</div>

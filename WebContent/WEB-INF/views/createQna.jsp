@@ -152,7 +152,7 @@
 								<h5>문의 내용 </h5>
 							</div>
 							<div class="col-9">
-								<textarea id="qna_content_box" name="qna_content" maxlength="1000" style="width: 800px; height: 200px; resize: none; "></textarea>
+								<textarea id="qna_content_box" name="qna_content" maxlength="1000" placeholder="문의 내용을 입력하시오" style="width: 800px; height: 200px; resize: none; "></textarea>
 							</div>
 						</div>			
 					</div>
