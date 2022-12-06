@@ -32,8 +32,6 @@ public class CreateOrderController extends HttpServlet {
 		order.setUsers_id(userId);
 		
 		createOrderService.createOrder(order);
-
-		response.sendRedirect("ContentController");
 		
 		request.getRequestDispatcher("/WEB-INF/views/order.jsp").forward(request, response);
 	}

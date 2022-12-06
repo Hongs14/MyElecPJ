@@ -1,32 +1,30 @@
 package service.my;
 
 import java.sql.Connection;
-import java.util.List;
 
 import javax.servlet.ServletContext;
 import javax.sql.DataSource;
 
-import dao.ProductDAO;
-import dto.product.ProductDTO;
-import util.Pager;
+import dao.OrderDAO;
+import dto.order.OrderDTO;
 
-public class UpdateProductListService {
+public class ReadOrderService {
 	private ServletContext application;
 	private DataSource ds;
-	private ProductDAO productDAO;
-	public UpdateProductListService(ServletContext application) {
+	private OrderDAO orderDAO;
+	public ReadOrderService(ServletContext application) {
 		this.application = application;
-		productDAO = (ProductDAO)application.getAttribute("productDAO");
+		orderDAO = (OrderDAO)application.getAttribute("orderDAO");
 		ds = (DataSource) application.getAttribute("dataSource");
 	}
-
-	public int updatePageList(ProductDTO product) {
-		int result = 0;
+	
+	public OrderDTO readOrder(OrderDTO order) {
+		OrderDTO result = null;
 		Connection conn = null;
 		
 		try {
 			conn = ds.getConnection();
-			result = productDAO.updatePageList(product, conn);
+			result = orderDAO.selectOrder(conn);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -37,4 +35,5 @@ public class UpdateProductListService {
 		
 		return result;
 	}
+	
 }

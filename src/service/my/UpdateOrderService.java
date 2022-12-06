@@ -8,23 +8,23 @@ import javax.sql.DataSource;
 import dao.OrderDAO;
 import dto.order.OrderDTO;
 
-public class CreateOrderService {
+public class UpdateOrderService {
 	private ServletContext application;
 	private DataSource ds;
 	private OrderDAO orderDAO;
-	public CreateOrderService(ServletContext application) {
+	public UpdateOrderService(ServletContext application) {
 		this.application = application;
 		orderDAO = (OrderDAO)application.getAttribute("orderDAO");
 		ds = (DataSource) application.getAttribute("dataSource");
 	}
 	
-	public int createOrder(OrderDTO order) {
+	public int updateOrder(OrderDTO order) {
 		int result = 0;
 		Connection conn = null;
 		
 		try {
 			conn = ds.getConnection();
-			result = orderDAO.insertOrder(conn);
+			result = orderDAO.updateOrder(conn);
 		}
 		catch (Exception e) {
 			e.printStackTrace();

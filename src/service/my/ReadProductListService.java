@@ -20,13 +20,13 @@ public class ReadProductListService {
 		ds = (DataSource) application.getAttribute("dataSource");
 	}
 	
-	public int getTotalBoardNum() {
+	public int getTotalBoardNum(ProductDTO product) {
 		int result = 0;
 		Connection conn = null;
 		
 		try {
 			conn = ds.getConnection();
-			result = productDAO.countRows(conn);
+			result = productDAO.getTotalRows(product, conn);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -38,13 +38,13 @@ public class ReadProductListService {
 		return result;
 	}
 	
-	public List<ProductDTO> getPageList(Pager pager) {
+	public List<ProductDTO> getPageList(Pager pager, ProductDTO product) {
 		List<ProductDTO> result = null;
 		Connection conn = null;
 		
 		try {
 			conn = ds.getConnection();
-			result = productDAO.selectPageList(pager, conn);
+			result = productDAO.selectAllList(pager, product, conn);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
