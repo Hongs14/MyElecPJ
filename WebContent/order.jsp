@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -82,9 +84,7 @@
 								<img src="/Project2_shopping/resources/images/refrigerator1.png"/>
 							</div>
 							<div class="col-3 d-flex flex-column">
-								<h6>냉장고 설치유형</h6>
-								<h6>냉장고 제품명</h6>
-								<h6>냉장고 색 조합</h6>
+								<h6>${productId}</h6>
 							</div>
 							<div class="col-3 d-flex flex-column">
 								<div class="form-group d-flex flex-column">
@@ -99,7 +99,7 @@
 					          	</div>
 							</div>
 							<div class="col-3">
-								<h6>가격: 5,000,000원</h6>
+								<h6>가격: ${price} 원</h6>
 							</div>
 						</div>
 					</div>
@@ -156,11 +156,11 @@
 						<h3 class="text-left">결제정보</h3><hr/>
 						<div class="row">
 							<h5 class="text-left col-7">상품 수</h5>
-							<h5 class="text-right col-5">1개</h5>
+							<h5 class="text-right col-5">${countNum}개</h5>
 						</div>
 						<div class="row">
 							<h5 class="text-left col-7">주문 금액</h5>
-							<h5 class="text-right col-5">+5,000,000원</h5>
+							<h5 class="text-right col-5">+${price}원</h5>
 						</div>
 						<div class="row">
 							<h5 class="text-left col-7">할인 금액</h5>

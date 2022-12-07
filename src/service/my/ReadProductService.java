@@ -5,30 +5,28 @@ import java.sql.Connection;
 import javax.servlet.ServletContext;
 import javax.sql.DataSource;
 
-import dao.OrderDAO;
-import dto.order.OrderDTO;
-import dto.order.OrderDetailDTO;
+import dao.ProductDAO;
+import dto.product.ProductDTO;
 
-public class CreateOrderService {
+public class ReadProductService {
 	private ServletContext application;
 	private DataSource ds;
-	private OrderDAO orderDAO;
-	public CreateOrderService(ServletContext application) {
+	private ProductDAO productDAO;
+	public ReadProductService(ServletContext application) {
 		this.application = application;
-		orderDAO = (OrderDAO)application.getAttribute("orderDAO");
+		productDAO = (ProductDAO)application.getAttribute("productDAO");
 		ds = (DataSource) application.getAttribute("dataSource");
 	}
 	
-	public int createOrder(OrderDTO order, OrderDetailDTO orderDetail) {
-		int result = 0;
+	public ProductDTO getProduct(int id) {
+		ProductDTO result = null;
 		Connection conn = null;
 		
 		try {
 			conn = ds.getConnection();
-			orderDAO.insertOrder(order, orderDetail, conn);
+			result = productDAO.selectProductContent(id, conn);
 		}
 		catch (Exception e) {
-			result = -1;
 			e.printStackTrace();
 		}
 		finally {
@@ -37,5 +35,5 @@ public class CreateOrderService {
 		
 		return result;
 	}
-	
+
 }

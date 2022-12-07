@@ -9,33 +9,22 @@ import java.util.List;
 
 import dto.review.ReviewBoardDTO;
 import dto.review.ReviewBoardProductDTO;
+import util.Pager;
 
 public class ReviewBoardDAO {
 	List<ReviewBoardDTO> reviewBoardDTOs = new ArrayList<>();
-	List<ReviewBoardProductDTO> reviewBoardProductDTOs = new ArrayList<>();
+
 	
-	public int getTotalRows(Connection conn) {
-		int totalRows = 0;
-		try {
-			String sql = "" + "select count(*) " + "from review_board ";
-			PreparedStatement pstmt;
-			pstmt = conn.prepareStatement(sql);
-			ResultSet rs = pstmt.executeQuery();
-			if (rs.next()) {
-				totalRows = rs.getInt(1);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				//Connection 반납
-				conn.close();
-				System.out.println("반납 성공");
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
+	public int getTotalRows(Connection conn) throws SQLException {
+		int result = 0;
+		String sql = "" + "select count(*) " + "from review_board ";
+		PreparedStatement pstmt;
+		pstmt = conn.prepareStatement(sql);
+		ResultSet rs = pstmt.executeQuery();
+		if (rs.next()) {
+			result = rs.getInt(1);
 		}
-		return totalRows;
+		return result;
 	}
 	
 	public int getTotalSearchRows(String search, Connection conn) {
@@ -108,64 +97,42 @@ public class ReviewBoardDAO {
 	}
 
 
-	public List<ReviewBoardProductDTO> selectAllList(int pageNo, Connection conn) {
-		try {
+	public List<ReviewBoardDTO> selectAllList(Pager pager, Connection conn) throws SQLException {
+		List<ReviewBoardDTO> result = new ArrayList<>();
+		int pageNo = pager.getPageNo();
+		String sql = ""
+				+" SELECT RNUM, review_board_id, product_id, review_board_title, users_id, review_board_date, review_board_reviewpoint, product_name "
+				+" FROM ("
+				+"    SELECT ROWNUM AS RNUM, review_board_id, product_id, review_board_title, users_id,review_board_date, review_board_reviewpoint, product_name  "
+				+"    FROM ( "
+				+"       SELECT review_board_id, p. product_id, review_board_title, users_id, review_board_date, review_board_reviewpoint, product_name  "
+				+"        FROM REVIEW_BOARD r, product p "
+				+"		  where r.product_id = p.product_id "		
+				+"        ORDER BY review_board_date desc)"
+				+"   WHERE ROWNUM < (? * 5) + 1 "
+				+") WHERE RNUM >= ((? - 1) * 5) + 1 ";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setInt(1, pageNo);
+		pstmt.setInt(2, pageNo);
+		ResultSet rs = pstmt.executeQuery();
 		
-		
-			// sql문 작성
-			String sql = ""
-					+" SELECT RNUM, review_board_id, product_id, review_board_title, users_id, review_board_date, review_board_reviewpoint, product_name "
-					+" FROM ("
-					+"    SELECT ROWNUM AS RNUM, review_board_id, product_id, review_board_title, users_id,review_board_date, review_board_reviewpoint, product_name  "
-					+"    FROM ( "
-					+"       SELECT review_board_id, p. product_id, review_board_title, users_id, review_board_date, review_board_reviewpoint, product_name  "
-					+"        FROM REVIEW_BOARD r, product p "
-					+"		  where r.product_id = p.product_id "		
-					+"        ORDER BY review_board_date desc)"
-					+"   WHERE ROWNUM < (? * 5) + 1 "
-					+") WHERE RNUM >= ((? - 1) * 5) + 1 ";
-			PreparedStatement pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, pageNo);
-			pstmt.setInt(2, pageNo);
-			ResultSet rs = pstmt.executeQuery();
+		while (rs.next()) {
+			ReviewBoardDTO reviewBoardDTO = new ReviewBoardDTO();
 
-			ReviewBoardProductDTO reviewBoardDTO;
-			
-			while (rs.next()) {
-				reviewBoardDTO = new ReviewBoardProductDTO();
+			reviewBoardDTO.setReview_board_id(rs.getInt("review_board_id"));
+			reviewBoardDTO.setProduct_id(rs.getInt("product_id"));
+			reviewBoardDTO.setReview_board_title(rs.getString("review_board_title"));
+			reviewBoardDTO.setUsers_id(rs.getString("users_id"));
+			reviewBoardDTO.setReview_board_date(rs.getDate("review_board_date"));
+			reviewBoardDTO.setReview_board_reviewpoint(rs.getInt("review_board_reviewpoint"));
 
-				// 답변은 답변여부만 담아서 리스트 DTO로 담기 위해 삼항연산자 사용 
-				//String YN = rs.getString("qna_board_answer") != null? "Y": "N";
-				
-				// 한 행의 데이터를 DTO에 담아준다
-				reviewBoardDTO.setReview_board_id(rs.getInt("review_board_id"));
-				reviewBoardDTO.setProduct_id(rs.getInt("product_id"));
-				reviewBoardDTO.setProduct_name(rs.getString("product_name"));
-				reviewBoardDTO.setReview_board_title(rs.getString("review_board_title"));
-				reviewBoardDTO.setUsers_id(rs.getString("users_id"));
-				reviewBoardDTO.setReview_board_date(rs.getDate("review_board_date"));
-				reviewBoardDTO.setReview_board_reviewpoint(rs.getInt("review_board_reviewpoint"));
-	
-		
-
-				// DB의 한 행 데이터를 담은 DTO를 리스트에 더해준다
-				reviewBoardProductDTOs.add(reviewBoardDTO);
-			}
-			rs.close();
-			pstmt.close();
-
-		} catch (Exception e) {
-			e.getMessage();
-		}finally {
-			try {
-				//Connection 반납
-				conn.close();
-				System.out.println("반납 성공");
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
+			result.add(reviewBoardDTO);
 		}
-		return reviewBoardProductDTOs;
+		
+		rs.close();
+		pstmt.close();
+		
+		return result;
 	}
 	
 	public String insertReviewBoard(ReviewBoardDTO reviewDTO, Connection conn) {
@@ -257,41 +224,26 @@ public class ReviewBoardDAO {
 		return result;
 	}
 
-	public ReviewBoardProductDTO selectOnereview(int idNum, Connection conn) {
-		System.out.println("DAO : "+ idNum);
-		ReviewBoardProductDTO reviewContentDTO = new ReviewBoardProductDTO();
-		try {
-		// JSON으로 사용자로부터 입력받은 게시물 번호를 가져온
-		
-		// SQL문작성하여 가져온번호를 넣고 DB에 데이터를 요청한다
+	public ReviewBoardDTO selectOnereview(int idNum, Connection conn) throws SQLException {
+		ReviewBoardDTO reviewContentDTO = new ReviewBoardDTO();
 		String sql = ""
-				+ "SELECT review_board_id, p.product_id, product_name, review_board_title, review_board_content, users_id, review_board_date ,review_board_reviewpoint "
+				+ "SELECT review_board_id, p.product_id, product_name, review_board_title, review_board_content, users_id, review_board_date ,review_board_reviewpoint, review_board_comment "
 				+ "FROM review_board q, product p " + "WHERE p.product_id = q.product_id and review_board_id =?";
 
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		pstmt.setInt(1, idNum);
 		ResultSet rs = pstmt.executeQuery();
-		// 요청한 데이터를 rs로 받아서 reviewBoardDTO에 담는다
+		
 		if (rs.next()) {
 			reviewContentDTO.setReview_board_id(rs.getInt("review_board_id"));
 			reviewContentDTO.setReview_board_reviewpoint(rs.getInt("review_board_reviewpoint"));
-			reviewContentDTO.setProduct_name(rs.getString("product_name"));
 			reviewContentDTO.setReview_board_title(rs.getString("review_board_title"));
 			reviewContentDTO.setReview_board_content(rs.getString("review_board_content"));
 			reviewContentDTO.setUsers_id(rs.getString("users_id"));
 			reviewContentDTO.setReview_board_date(rs.getDate("review_board_date"));
+			reviewContentDTO.setReview_board_comment(rs.getString("review_board_comment"));
 		}
-		}catch(Exception e) {
-			e.getMessage();
-		}finally {
-			try {
-				// Connection 반납
-				conn.close();
-				System.out.println("반납 성공");
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
+
 		return reviewContentDTO;
 	}
 	

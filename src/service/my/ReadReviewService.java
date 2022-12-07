@@ -1,34 +1,35 @@
 package service.my;
 
 import java.sql.Connection;
+import java.util.List;
 
 import javax.servlet.ServletContext;
 import javax.sql.DataSource;
 
-import dao.OrderDAO;
-import dto.order.OrderDTO;
-import dto.order.OrderDetailDTO;
+import dao.ReviewBoardDAO;
+import dto.product.ProductDTO;
+import dto.review.ReviewBoardDTO;
+import util.Pager;
 
-public class CreateOrderService {
+public class ReadReviewService {
 	private ServletContext application;
 	private DataSource ds;
-	private OrderDAO orderDAO;
-	public CreateOrderService(ServletContext application) {
+	private ReviewBoardDAO reviewBoardDAO;
+	public ReadReviewService(ServletContext application) {
 		this.application = application;
-		orderDAO = (OrderDAO)application.getAttribute("orderDAO");
+		reviewBoardDAO = (ReviewBoardDAO)application.getAttribute("reviewBoardDAO");
 		ds = (DataSource) application.getAttribute("dataSource");
 	}
 	
-	public int createOrder(OrderDTO order, OrderDetailDTO orderDetail) {
-		int result = 0;
+	public ReviewBoardDTO getReview(int id) {
+		ReviewBoardDTO result = null;
 		Connection conn = null;
 		
 		try {
 			conn = ds.getConnection();
-			orderDAO.insertOrder(order, orderDetail, conn);
+			result = reviewBoardDAO.selectOnereview(id, conn);
 		}
 		catch (Exception e) {
-			result = -1;
 			e.printStackTrace();
 		}
 		finally {
@@ -37,5 +38,5 @@ public class CreateOrderService {
 		
 		return result;
 	}
-	
+
 }

@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -79,10 +80,9 @@ public class ProductDAO {
 	}
 	
 	//상품 상세 정보 출력
-	public ProductDTO selectProductContent(int product_id, Connection conn) {
+	public ProductDTO selectProductContent(int product_id, Connection conn) throws SQLException {
 		ProductDTO productDTO = null;
-		
-		try {
+
 			String sql = "SELECT product_id, product_name, product_price, product_company, product_content, c.category_id, category_name, s.subcategory_id, subcategory_name, product_totalpoint " +
 						"FROM product p, category c, subcategory s " + 
 						"WHERE c.category_id = s.category_id and s.subcategory_id = p.subcategory_id and c.category_id = p.category_id " +
@@ -106,23 +106,48 @@ public class ProductDAO {
 				productDTO.setSubcategory_id(rs.getInt("subcategory_id"));
 				productDTO.setSubcategory_name(rs.getString("subcategory_name"));
 				productDTO.setProduct_totalpoint(rs.getDouble("product_totalpoint"));
+//				productDTO.setProduct_filename(rs.getString("product_filename"));
+//	            productDTO.setProduct_savedname(rs.getString("product_savedname"));
+//	            productDTO.setProduct_contenttype(rs.getString("product_contenttype"));
+
 				
 			}
 			rs.close();
 			pstmt.close();
-			
-		} catch (Exception e) {
-			e.getMessage();
-		} finally {
-			try {
-				//Connection 반납
-				conn.close();
-			} catch(SQLException e) {
-				e.printStackTrace();
-			}
-		}
+
 
 		return productDTO;
 	}
 	
+	  //리뷰 평점 구하기
+
+	public ProductDTO averageStar(ProductDTO productDTO, Connection conn) throws Exception{
+	      double average=0.0;
+	      String result= "";
+	      String sql = "select sum(r.review_board_reviewpoint) as pointsum, count(*) as count " + 
+	            "from review_board r, product p  "+ 
+	            "where p.product_id = r.product_id and p.product_id = ?";
+	      
+	      PreparedStatement pstmt = conn.prepareStatement(sql);
+	      
+	      pstmt.setInt(1, productDTO.getProduct_id());
+	      
+	      ResultSet rs = pstmt.executeQuery();
+	      if (rs.next()) {
+	         average = rs.getDouble("pointsum") / rs.getDouble("count");
+	         System.out.println(average);
+	         DecimalFormat df = new DecimalFormat("#.#");
+	         result = df.format(average);
+	         System.out.println(result);
+	      }
+	      
+	      rs.close();
+	      pstmt.close();
+	      
+	      productDTO.setProduct_totalpoint(Double.parseDouble(result));
+	      
+	      return productDTO;
+	   }
+	   
 }
+	

@@ -1,4 +1,7 @@
-<%@ page contentType="text/html; charset=UTF-8" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -75,8 +78,15 @@
 				color: orange;
 			}
 		</style>
+		<script>
+	        function init(){
+	            var r_score = document.getElementByClass
+	            r_score = Math.round(r_score);
+	            $('.fa-star:nth-child(-n'+r_score+')').addClass("starchecked");
+	    	}
+		</script>
 	</head>
-	<body>
+	<body onload="init()">
 		<%@ include file="/WEB-INF/views/common/banner.jsp" %>
 	 
 		<div id="bottomViewPort" class="wrapper d-flex mt-3">
@@ -199,163 +209,66 @@
 						</div>
 					</div><hr class="my-2"/>
 					<div class="titles d-flex flex-column">
+					
+					<c:forEach var="review" items="${pageList}" varStatus="status">
 						<div class="titleBlock d-flex">
 							<div class="titleId col-1">
 								<h5>1234</h5>
 							</div>
 							<div class="titleContent col-11">
 								<div class="titleTop d-flex">
-									<h5 class="col-5">앞광고) 갤럭시 S222 Note 리뷰</h5>
-									<h5 class="col-2">Samsung</h5>
-									<h5 class="col-2">2222-2-22</h5>
+									<h5 class="col-5"><a href="ReadReview?id=${review.review_board_id}">${review.review_board_title}</a></h5>
+									<h5 class="col-2">${review.users_id}</h5>
+									<h5 class="col-2">${review.review_board_date}</h5>
 									<div class="col-1 d-flex justify-content-start">					
-										<span class="fa fa-star checked"></span>
-										<span class="fa fa-star checked"></span>
-										<span class="fa fa-star checked"></span>
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span>
 										<span class="fa fa-star"></span>
 										<span class="fa fa-star"></span>
 									</div>
-									<h5 class="col-1 text-center">(2.2)</h5>
+									<h5 class="point col-1 text-center">${review.review_board_reviewpoint}</h5>
 									<h5 class="col-1 text-center">222</h5>
 								</div>
 								<div class="titleBottom d-flex justify-content-start">
 									<div class="d-flex justify-content-around col-3">
-										<h5>스마트폰</h5>
+									<c:forEach var="category" items="${categoryList}">
+										<h5>${category.category_name}</h5>
 										<h5> > </h5>
-										<h5>갤럭시 S 시리즈</h5>
+										<h5>${category.subcategory_name}</h5>
+									</c:forEach>
 									</div>
 									<div class="col-9"></div>
 								</div>
 							</div>
 						</div><hr class="my-1"/>
-						<div class="titleBlock d-flex">
-							<div class="titleId col-1">
-								<h5>1234</h5>
-							</div>
-							<div class="titleContent col-11">
-								<div class="titleTop d-flex">
-									<h5 class="col-5">앞광고) 갤럭시 S222 Note 리뷰</h5>
-									<h5 class="col-2">Samsung</h5>
-									<h5 class="col-2">2222-2-22</h5>
-									<div class="col-1 d-flex justify-content-start">
-										<span class="fa fa-star checked"></span>
-										<span class="fa fa-star checked"></span>
-										<span class="fa fa-star checked"></span>
-										<span class="fa fa-star"></span>
-										<span class="fa fa-star"></span>
-									</div>
-									<h5 class="col-1 text-center">(2.2)</h5>
-									<h5 class="col-1 text-center">222</h5>
-								</div>
-								<div class="titleBottom d-flex justify-content-start">
-									<div class="d-flex justify-content-around col-3">
-										<h5>스마트폰</h5>
-										<h5> > </h5>
-										<h5>갤럭시 S 시리즈</h5>
-									</div>
-									<div class="col-9"></div>
-								</div>
-							</div>
-						</div><hr class="my-1"/>
-						<div class="titleBlock d-flex">
-							<div class="titleId col-1">
-								<h5>1234</h5>
-							</div>
-							<div class="titleContent col-11">
-								<div class="titleTop d-flex">
-									<h5 class="col-5">앞광고) 갤럭시 S222 Note 리뷰</h5>
-									<h5 class="col-2">Samsung</h5>
-									<h5 class="col-2">2222-2-22</h5>
-									<div class="col-1 d-flex justify-content-start">					
-										<span class="fa fa-star checked"></span>
-										<span class="fa fa-star checked"></span>
-										<span class="fa fa-star checked"></span>
-										<span class="fa fa-star"></span>
-										<span class="fa fa-star"></span>
-									</div>
-									<h5 class="col-1 text-center">(2.2)</h5>
-									<h5 class="col-1 text-center">222</h5>
-								</div>
-								<div class="titleBottom d-flex justify-content-start">
-									<div class="d-flex justify-content-around col-3">
-										<h5>스마트폰</h5>
-										<h5> > </h5>
-										<h5>갤럭시 S 시리즈</h5>
-									</div>
-									<div class="col-9"></div>
-								</div>
-							</div>
-						</div><hr class="my-1"/>
-						<div class="titleBlock d-flex">
-							<div class="titleId col-1">
-								<h5>1234</h5>
-							</div>
-							<div class="titleContent col-11">
-								<div class="titleTop d-flex">
-									<h5 class="col-5">앞광고) 갤럭시 S222 Note 리뷰</h5>
-									<h5 class="col-2">Samsung</h5>
-									<h5 class="col-2">2222-2-22</h5>
-									<div class="col-1 d-flex justify-content-start">					
-										<span class="fa fa-star checked"></span>
-										<span class="fa fa-star checked"></span>
-										<span class="fa fa-star checked"></span>
-										<span class="fa fa-star"></span>
-										<span class="fa fa-star"></span>
-									</div>
-									<h5 class="col-1 text-center">(2.2)</h5>
-									<h5 class="col-1 text-center">222</h5>
-								</div>
-								<div class="titleBottom d-flex justify-content-start">
-									<div class="d-flex justify-content-around col-3">
-										<h5>스마트폰</h5>
-										<h5> > </h5>
-										<h5>갤럭시 S 시리즈</h5>
-									</div>
-									<div class="col-9"></div>
-								</div>
-							</div>
-						</div><hr class="my-1"/>
-						<div class="titleBlock d-flex">
-							<div class="titleId col-1">
-								<h5>1234</h5>
-							</div>
-							<div class="titleContent col-11">
-								<div class="titleTop d-flex">
-									<h5 class="col-5">앞광고) 갤럭시 S222 Note 리뷰</h5>
-									<h5 class="col-2">Samsung</h5>
-									<h5 class="col-2">2222-2-22</h5>
-									<div class="col-1 d-flex justify-content-start">					
-										<span class="fa fa-star checked"></span>
-										<span class="fa fa-star checked"></span>
-										<span class="fa fa-star checked"></span>
-										<span class="fa fa-star"></span>
-										<span class="fa fa-star"></span>
-									</div>
-									<h5 class="col-1 text-center">(2.2)</h5>
-									<h5 class="col-1 text-center">222</h5>
-								</div>
-								<div class="titleBottom d-flex justify-content-start">
-									<div class="d-flex justify-content-around col-3">
-										<h5>스마트폰</h5>
-										<h5> > </h5>
-										<h5>갤럭시 S 시리즈</h5>
-									</div>
-									<div class="col-9"></div>
-								</div>
-							</div>
-						</div><hr class="my-1"/>
+					</c:forEach>
+					
 					</div>
 				</div>
 				<div class="pager d-flex justify-content-around my-3">
 					<div class="flex-fulfill"></div>
-					<div class="pagingButtonSet d-flex justify-content-around col-5">
-						<button type="button" class="btn btn-muted shadow" onclick="window.location.href='login'">처음으로</button>
-						<button type="button" class="btn btn-muted shadow" onclick="window.location.href='login'">앞으로</button>
-						<button type="button" class="btn btn-dark shadow" onclick="window.location.href='login'">1</button>
-						<button type="button" class="btn btn-dark shadow" onclick="window.location.href='login'">2</button>
-						<button type="button" class="btn btn-dark shadow" onclick="window.location.href='login'">3</button>
-						<button type="button" class="btn btn-muted shadow" onclick="window.location.href='login'">뒤로</button>
-						<button type="button" class="btn btn-muted shadow" onclick="window.location.href='login'">마지막으로</button>							
+					<div class="pagingButtonSet d-flex justify-content-center col-5">
+					
+						<a href="ReadReviewBoardList?pageNo=1" class="btn btn-muted shadow">처음</a>
+						<c:if test="${pager.groupNo > 1 }">
+		                	<a href="ReadReviewBoardList?pageNo=${pager.startPageNo - 1}" class="btn btn-muted shadow">이전</a>
+	                    </c:if>
+	                    
+	                  	<c:forEach var="i" begin="${pager.startPageNo}" end="${pager.endPageNo}">
+	                    	<c:if test="${pager.pageNo != i}">
+	                     		<a href="ReadReviewBoardList?pageNo=${i}" class="btn btn-dark shadow">${i}</a>
+	                    	</c:if>
+	                    	<c:if test="${pager.pageNo == i}">
+	                     		<a href="ReadReviewBoardList?pageNo=${i}" class="btn btn-warning shadowm">${i}</a>
+	                    	</c:if>
+	                    </c:forEach>
+	                    
+	                    <c:if test="${pager.groupNo < pager.totalGroupNo}">
+		                	<a href="ReadReviewBoardList?pageNo=${pager.endPageNo + 1}" class="btn btn-muted shadow">다음</a>
+	                    </c:if>
+	                    <a href="ReadReviewBoardList?pageNo=${pager.totalPageNo}" class="btn btn-muted shadow">맨끝</a>
+	                    
 					</div>
 					<div class="flex-fulfill"></div>
 				</div>

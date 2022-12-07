@@ -24,7 +24,7 @@ public class ReadOrderService {
 		
 		try {
 			conn = ds.getConnection();
-			result = orderDAO.selectOrder(conn);
+			result = orderDAO.selectOrder(order, conn);
 		}
 		catch (Exception e) {
 			e.printStackTrace();

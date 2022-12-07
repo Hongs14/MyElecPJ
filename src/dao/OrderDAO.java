@@ -44,9 +44,12 @@ public class OrderDAO {
 		
 		pstmt.close();
 		conn.close();
+		
 	}
 	
-	public OrderDTO selectOrder(String id, Connection conn) throws SQLException {
+	public OrderDTO selectOrder(OrderDTO order, Connection conn) throws SQLException {
+		String id = order.getUsers_id();
+		OrderDTO result = new OrderDTO();
 		String SQL
 			="SELECT ORDERS.USER_ID, ORDERS.ORDERS_ID, PRODUCT_NAME, ORDER_DETAIL_ITEM_COUNT, ORDERS_DATE, ORDERS_PRICE, ORDERS_STATUS, ORDERS_ADDRESS "
 			+"FROM ORDERS, ORDER_DETAIL, PRODUCT "
@@ -58,24 +61,21 @@ public class OrderDAO {
 		pstmt.setString(1, id);
 		
 		ResultSet rs = pstmt.executeQuery();
-		
-		OrderDTO order = new OrderDTO();
-		
 		if(rs.next()) {
-			order.setUsers_id(rs.getString("USERS_ID"));
-			order.setOrders_id(rs.getInt("ORDERS_ID"));
-			order.setProduct_name(rs.getString("PRODUCT_NAME"));
-			order.setOrder_detail_item_count(rs.getInt("ORDER_DETAIL_ITEM_COUNT"));
-			order.setOrders_date(rs.getString("ORDERS_DATE"));
-			order.setOrders_price(rs.getInt("ORDERS_PRICE"));
-			order.setOrders_status(rs.getString("ORDERS_STATUS"));
-			order.setOrders_address(rs.getString("ORDERS_ADDRESS"));
+			result.setUsers_id(rs.getString("USERS_ID"));
+			result.setOrders_id(rs.getInt("ORDERS_ID"));
+			result.setProduct_name(rs.getString("PRODUCT_NAME"));
+			result.setOrder_detail_item_count(rs.getInt("ORDER_DETAIL_ITEM_COUNT"));
+			result.setOrders_date(rs.getString("ORDERS_DATE"));
+			result.setOrders_price(rs.getInt("ORDERS_PRICE"));
+			result.setOrders_status(rs.getString("ORDERS_STATUS"));
+			result.setOrders_address(rs.getString("ORDERS_ADDRESS"));
 		}
 		
 		rs.close();
 		pstmt.close();
-		conn.close();
-		return order;
+		
+		return result;
 	}
 	
 	public OrderDTO selectOrder(int id, Connection conn) throws SQLException {
