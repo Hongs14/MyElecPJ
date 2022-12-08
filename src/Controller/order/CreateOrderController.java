@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import dto.order.OrderDTO;
 import dto.order.OrderDetailDTO;
-import service.my.CreateOrderService;
+import service.CreateOrderService;
 
 @WebServlet(name="Controller.CreateOrderController", urlPatterns="/CreateOrder")
 public class CreateOrderController extends HttpServlet {

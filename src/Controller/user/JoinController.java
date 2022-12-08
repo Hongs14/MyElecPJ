@@ -13,8 +13,8 @@ import javax.servlet.http.HttpSession;
 import dto.user.UserDTO;
 import service.JoinService;
 
-@WebServlet(name="Controller.joinController", urlPatterns="/join")
-public class joinController extends HttpServlet {
+@WebServlet(name="Controller.JoinController", urlPatterns="/Join")
+public class JoinController extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -49,9 +49,9 @@ public class joinController extends HttpServlet {
 			session.setAttribute("user_level", "vip");
 			session.setAttribute("user_point", 0);
 			
-			response.sendRedirect("productList");
+			response.sendRedirect("ReadProductList");
 		} else {
-			response.sendRedirect("joinController");
+			response.sendRedirect("Join");
 		}
 		
 		

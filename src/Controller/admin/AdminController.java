@@ -14,8 +14,8 @@ import dto.user.UserDTO;
 import service.AdminUserService;
 import util.Pager;
 
-@WebServlet(name="Controller.adminController", urlPatterns="/admin")
-public class adminController extends HttpServlet{
+@WebServlet(name="Controller.AdminController", urlPatterns="/Admin")
+public class AdminController extends HttpServlet{
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

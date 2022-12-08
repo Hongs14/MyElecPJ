@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dto.order.OrderDTO;
-import service.my.UpdateOrderService;
+import service.UpdateOrderService;
 
 @WebServlet(name="Controller.UpdateOrderController", urlPatterns="/UpdateOrder")
 public class UpdateOrderController extends HttpServlet {

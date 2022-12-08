@@ -10,11 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import dto.order.OrderDTO;
 import dto.product.ProductDTO;
 import dto.user.UserDTO;
 import service.UserInfoService;
-import service.my.ReadProductService;
+import service.ReadProductDetailService;
 
 @WebServlet(name="Controller.ReadOrderController", urlPatterns="/ReadOrder")
 public class ReadOrderController extends HttpServlet {
@@ -49,8 +48,8 @@ public class ReadOrderController extends HttpServlet {
 		ServletContext application = request.getServletContext();
 		//ReadOrderService readOrderService = (ReadOrderService) request.getServletContext().getAttribute("boardService");
 		//ReadOrderService readOrderService = new ReadOrderService(application);
-		ReadProductService readProductService = new ReadProductService(application);
-		ProductDTO product = readProductService.getProduct(productid);
+		ReadProductDetailService readProductDetailService = new ReadProductDetailService(application);
+		ProductDTO product = readProductDetailService.getProductDetail(productid);
 		
 		UserInfoService userInfoService = (UserInfoService)application.getAttribute("userInfoService");
 		UserDTO userDTO = new UserDTO();
@@ -78,7 +77,7 @@ public class ReadOrderController extends HttpServlet {
 		
 		
 		
-		request.getRequestDispatcher("order.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/views/order.jsp").forward(request, response);
 	}
 
 }

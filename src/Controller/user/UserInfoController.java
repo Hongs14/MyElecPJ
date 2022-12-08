@@ -13,8 +13,8 @@ import dto.user.UserDTO;
 import service.UserInfoService;
 
 
-@WebServlet(name="Controller.UserInfoController", urlPatterns="/userInfo")
-public class userInfoController extends HttpServlet{
+@WebServlet(name="Controller.UserInfoController", urlPatterns="/UserInfo")
+public class UserInfoController extends HttpServlet{
 	
 	
 	@Override

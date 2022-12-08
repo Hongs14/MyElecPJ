@@ -10,14 +10,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dto.qna.QnABoardDTO;
-import service.ReadQnaService;
+import service.ReadQnADetailService;
 
-@WebServlet(name="Controller.readQnaController", urlPatterns="/readQna")
-public class readQnaController extends HttpServlet{
+@WebServlet(name="Controller.ReadQnaController", urlPatterns="/ReadQna")
+public class ReadQnaController extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ServletContext application = request.getServletContext();
-		ReadQnaService readQnaService = (ReadQnaService) application.getAttribute("readQnaService");
+		ReadQnADetailService readQnaService = (ReadQnADetailService) application.getAttribute("readQnaService");
 				
 	//new ReadQnaService(application);
 

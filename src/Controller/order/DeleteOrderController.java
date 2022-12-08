@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dto.order.OrderDTO;
-import service.my.DeleteOrderService;
+import service.DeleteOrderService;
 
 @WebServlet(name="Controller.DeleteOrderController", urlPatterns="/DeleteOrder")
 public class DeleteOrderController extends HttpServlet {

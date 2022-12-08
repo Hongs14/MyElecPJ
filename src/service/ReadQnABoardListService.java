@@ -14,12 +14,12 @@ import dto.cart.CartDTO;
 import dto.qna.QnABoardDTO;
 import util.Pager;
 
-public class QnABoardListService {
+public class ReadQnABoardListService {
 	private ServletContext application;
 	private DataSource ds;
 	private QnABoardDAO qnaBoardDAO;
 	
-	public QnABoardListService(ServletContext application) {
+	public ReadQnABoardListService(ServletContext application) {
 		this.application = application;
 		qnaBoardDAO = (QnABoardDAO) application.getAttribute("QnABoardDAO");
 		ds = (DataSource) application.getAttribute("dataSource");

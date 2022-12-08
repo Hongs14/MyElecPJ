@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dto.cart.CartDTO;
-import service.my.UpdateCartService;
+import service.UpdateCartService;
 
 @WebServlet(name = "Controller.UpdateCartController", urlPatterns = "/UpdateCart")
 public class UpdateCartController extends HttpServlet {
@@ -45,10 +45,10 @@ public class UpdateCartController extends HttpServlet {
 	
 				// 다 지우기~~~~
 				if (result.equals("success")) {
-					response.sendRedirect("ReadCartController");
+					response.sendRedirect("ReadCart");
 				} else {
 					// 에러 처리 페이지
-					response.sendRedirect("ReadCartController");
+					response.sendRedirect("ReadCart");
 				}
 			}
 			case "deleteCart": {

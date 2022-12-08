@@ -10,20 +10,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dto.review.ReviewBoardDTO;
-import service.deprecated.ReviewboardListService;
+import service.CreateReviewService;
 
-@WebServlet(name="Controller.reviewBoardListController", urlPatterns="/reviewBoardList")
-public class reviewBoardListController extends HttpServlet{
-
-	@Override
+@WebServlet(name = "Controller.CreateReviewController", urlPatterns = "/CreateReview")
+public class CreateReviewController extends HttpServlet{
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		ReviewBoardDTO reviewBoardDTO = new ReviewBoardDTO();
 		
-		//서비스로 회원 가입 요청
 		ServletContext application = request.getServletContext();
-		ReviewboardListService reviewBoardListService = (ReviewboardListService) application.getAttribute("reviewboardListService"); 
-		reviewBoardListService.readList(reviewBoardDTO);
+		CreateReviewService createReviewService = (CreateReviewService)application.getAttribute("createReviewService");
+		createReviewService.writeReview(reviewBoardDTO); 
 		
-		request.getRequestDispatcher("/WEB-INF/views/boardList.jsp").forward(request, response);
+		
+		request.getRequestDispatcher("/WEB-INF/views/createReview.jsp").forward(request, response);
 	}
 }

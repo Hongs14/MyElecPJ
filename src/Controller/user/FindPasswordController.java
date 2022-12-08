@@ -12,8 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import dto.user.UserDTO;
 import service.FindPasswordService;
 
-@WebServlet(name = "Controller.findPasswordController", urlPatterns = "/findPassword")
-public class findPasswordController extends HttpServlet{
+@WebServlet(name = "Controller.FindPasswordController", urlPatterns = "/FindPassword")
+public class FindPasswordController extends HttpServlet{
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		UserDTO userDTO = new UserDTO();
 		

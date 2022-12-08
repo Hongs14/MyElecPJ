@@ -16,7 +16,7 @@ import org.json.JSONObject;
 
 import dto.ReviewComment;
 import dto.review.ReviewBoardDTO;
-import service.my.ReadReviewService;
+import service.ReadReviewDetailService;
 
 @WebServlet(name="Controller.ReadReviewController", urlPatterns="/ReadReview")
 public class ReadReviewController extends HttpServlet{
@@ -29,8 +29,7 @@ public class ReadReviewController extends HttpServlet{
 		int reviewBoardId = Integer.parseInt(id);
 		System.out.println(reviewBoardId);
 		ServletContext application = request.getServletContext();
-		//ReadReviewService readReviewService = (ReadReviewService) application.getAttribute("readReviewServie");
-		ReadReviewService readReviewService = new ReadReviewService(application);
+		ReadReviewDetailService readReviewService = (ReadReviewDetailService) application.getAttribute("readReviewDetailService");
 		ReviewBoardDTO reviewBoard = readReviewService.getReview(reviewBoardId);
 		
 		if (reviewBoard.getReview_board_comment() != null) {
@@ -54,7 +53,7 @@ public class ReadReviewController extends HttpServlet{
 		
 		request.setAttribute("reviewBoard", reviewBoard);
 		
-		request.getRequestDispatcher("/readReview.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/views/readReview.jsp").forward(request, response);
 	}
 	
 	@Override

@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import service.my.CreateCartService;
+import service.CreateCartService;
 
 @WebServlet(name = "Controller.CreateCartController", urlPatterns = "/CreateCart")
 public class CreateCartController extends HttpServlet {
@@ -26,6 +26,6 @@ public class CreateCartController extends HttpServlet {
 		// Cart 생성
 		createCartService.createCart(userId);
 
-		response.sendRedirect("HomeController");
+		response.sendRedirect("Home");
 	}
 }

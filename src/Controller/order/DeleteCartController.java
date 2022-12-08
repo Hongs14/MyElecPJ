@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import service.my.DeleteCartService;
+import service.DeleteCartService;
 
 @WebServlet(name = "Controller.DeleteCartController", urlPatterns = "/DeleteCart")
 public class DeleteCartController extends HttpServlet {
@@ -26,6 +26,6 @@ public class DeleteCartController extends HttpServlet {
 		// Cart 생성
 		deleteCartService.deleteCart(userId);
 
-		response.sendRedirect("HomeController");
+		response.sendRedirect("Home");
 	}
 }

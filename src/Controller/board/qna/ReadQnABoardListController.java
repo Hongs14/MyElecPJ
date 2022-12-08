@@ -11,18 +11,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dto.qna.QnABoardDTO;
-import service.QnABoardListService;
+import service.ReadQnABoardListService;
 import util.Pager;
 
-@WebServlet(name = "Controller.QnABoardListController", urlPatterns = "/QnABoardList")
-public class QnABoardListController extends HttpServlet {
+@WebServlet(name = "Controller.ReadQnABoardListController", urlPatterns = "/ReadQnABoardList")
+public class ReadQnABoardListController extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// QnABoardListService 서비스로 요청
 		ServletContext application = request.getServletContext();
-		QnABoardListService qnaBoardListService = new QnABoardListService(application);
+		ReadQnABoardListService qnaBoardListService = new ReadQnABoardListService(application);
 
 		String strPageNo = request.getParameter("pageNo");
 		if (strPageNo == null) {

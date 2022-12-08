@@ -1,30 +1,33 @@
 package service;
 
 import java.sql.Connection;
+import java.util.List;
 
 import javax.servlet.ServletContext;
 import javax.sql.DataSource;
 
-import dao.ProductDAO;
+import dao.ReviewBoardDAO;
 import dto.product.ProductDTO;
+import dto.review.ReviewBoardDTO;
+import util.Pager;
 
-public class ReadProductService {
+public class ReadReviewDetailService {
 	private ServletContext application;
 	private DataSource ds;
-	private ProductDAO productDAO;
-	public ReadProductService(ServletContext application) {
+	private ReviewBoardDAO reviewBoardDAO;
+	public ReadReviewDetailService(ServletContext application) {
 		this.application = application;
-		productDAO = (ProductDAO)application.getAttribute("productDAO");
+		reviewBoardDAO = (ReviewBoardDAO)application.getAttribute("reviewBoardDAO");
 		ds = (DataSource) application.getAttribute("dataSource");
 	}
 	
-	public ProductDTO getProduct(int id) {
-		ProductDTO result = null;
+	public ReviewBoardDTO getReview(int id) {
+		ReviewBoardDTO result = null;
 		Connection conn = null;
 		
 		try {
 			conn = ds.getConnection();
-			result = productDAO.selectProductContent(id, conn);
+			result = reviewBoardDAO.selectOnereview(id, conn);
 		}
 		catch (Exception e) {
 			e.printStackTrace();

@@ -1,6 +1,7 @@
 package service;
 
 import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.List;
 
 import javax.servlet.ServletContext;
@@ -51,6 +52,27 @@ public class ReadProductListService {
 		}
 		finally {
 			try {conn.close();} catch (Exception e) {}
+		}
+		
+		return result;
+	}
+	
+	public ProductDTO getImage(int product_id) {
+		ProductDTO result = null;
+		Connection conn = null;
+		
+		try {
+			conn = ds.getConnection();
+			result = productDAO.getImage(product_id, conn);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 		
 		return result;

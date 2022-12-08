@@ -246,6 +246,9 @@
 					
 					</div>
 				</div>
+				<div class="d-flex justify-content-end mt-2">
+					<a href="CreateReview" class="btn btn-warning">리뷰 등록하기</a>
+				</div>
 				<div class="pager d-flex justify-content-around my-3">
 					<div class="flex-fulfill"></div>
 					<div class="pagingButtonSet d-flex justify-content-center col-5">

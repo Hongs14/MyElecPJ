@@ -8,15 +8,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(name = "Controller.homeController", urlPatterns = "/home")
-public class homeController extends HttpServlet{
+@WebServlet(name = "Controller.homeController", urlPatterns = "/Home")
+public class HomeController extends HttpServlet{
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//코드 작성
-		//클라이언트 생성
-		//요청 받음
-		//데이터를 처리함
-		//서버랑연결함
-		//데이터받아옴
 		request.setAttribute("pathList0", "carou1.png");
 		request.setAttribute("pathList1", "carou2.png");
 		request.setAttribute("pathList2", "carou3.png");

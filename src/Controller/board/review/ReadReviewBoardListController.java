@@ -1,7 +1,6 @@
 package Controller.board.review;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletContext;
@@ -12,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dto.review.ReviewBoardDTO;
-import service.my.ReadReviewBoardListService;
+import service.ReadReviewBoardListService;
 import util.Pager;
 @WebServlet(name="Controller.ReadReviewBoardListController", urlPatterns="/ReadReviewBoardList")
 public class ReadReviewBoardListController extends HttpServlet{
@@ -36,6 +35,6 @@ public class ReadReviewBoardListController extends HttpServlet{
 		request.setAttribute("pageList", pageList);
 		request.setAttribute("pager", pager);
 		
-		request.getRequestDispatcher("/reviewBoardList.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/views/reviewBoardList.jsp").forward(request, response);
 	}
 }

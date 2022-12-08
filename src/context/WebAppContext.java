@@ -15,19 +15,27 @@ import dao.SubCategoryDAO;
 import dao.UserDAO;
 import service.AdminDeleteUserService;
 import service.AdminUserService;
+import service.CreateCartService;
+import service.CreateOrderService;
 import service.CreateQnAService;
-import service.ReadReviewService;
+import service.CreateReviewService;
+import service.DeleteCartService;
+import service.DeleteOrderService;
+import service.FindPasswordService;
+import service.JoinService;
+import service.LoginService;
+import service.ReadCartService;
+import service.ReadOrderService;
+import service.ReadProductDetailService;
+import service.ReadProductListService;
+import service.ReadQnABoardListService;
+import service.ReadQnADetailService;
+import service.ReadReviewBoardListService;
+import service.ReadReviewDetailService;
+import service.UpdateCartService;
+import service.UpdateOrderService;
+import service.UpdateUserService;
 import service.UserInfoService;
-import service.deprecated.BoardListService;
-import service.deprecated.CartService;
-import service.deprecated.CreateReviewService;
-import service.deprecated.FindPasswordService;
-import service.deprecated.JoinService;
-import service.deprecated.LoginService;
-import service.deprecated.ProductDetailService;
-import service.deprecated.ProductListService;
-import service.deprecated.ReviewboardListService;
-import service.deprecated.UpdateUserService;
 
 public class WebAppContext implements ServletContextListener{
 	@Override
@@ -45,27 +53,33 @@ public class WebAppContext implements ServletContextListener{
 		application.setAttribute("subCategoryDAO", new SubCategoryDAO());
 		application.setAttribute("userDAO", new UserDAO());
 		
-		//ServletContext 객체에 데이터 저장
-//		application.setAttribute("adminService", new AdminService(application));
-//		application.setAttribute("adminListService", new AdminListService(application));
+
 		application.setAttribute("adminUserService", new AdminUserService(application));
 		application.setAttribute("adminDeleteUserService", new AdminDeleteUserService(application));
-		application.setAttribute("QnAboardListService", new BoardListService(application));
-		application.setAttribute("createQnAService", new CreateQnAService(application));
-		application.setAttribute("reviewboardListService", new ReviewboardListService(application));
-		application.setAttribute("createReviewService", new CreateReviewService(application));
-		application.setAttribute("readReviewService", new ReadReviewService(application));
-		application.setAttribute("cartService", new CartService(application));
-//		application.setAttribute("orderService", new OrderService(application));
-//		application.setAttribute("orderListService", new OrderListService(application));
-		application.setAttribute("productDetailService", new ProductDetailService(application));
-		application.setAttribute("productListService", new ProductListService(application));
 		application.setAttribute("findPasswordService", new FindPasswordService(application));
 		application.setAttribute("joinService", new JoinService(application));
 		application.setAttribute("loginService", new LoginService(application));
-		application.setAttribute("updateUserService", new UpdateUserService(application));
 		application.setAttribute("userInfoService", new UserInfoService(application));
-//		application.setAttribute("homeService", new HomeService(application));
-
+		
+		application.setAttribute("createCartService", new CreateCartService(application));
+		application.setAttribute("createOrderService", new CreateOrderService(application));
+		application.setAttribute("createQnAService", new CreateQnAService(application));
+		application.setAttribute("createReviewService", new CreateReviewService(application));	
+		
+		application.setAttribute("deleteCartService", new DeleteCartService(application));
+		application.setAttribute("deleteOrderService", new DeleteOrderService(application));
+		
+		application.setAttribute("readCartService", new ReadCartService(application));
+		application.setAttribute("readOrderService", new ReadOrderService(application));
+		application.setAttribute("readProductDetailService", new ReadProductDetailService(application));
+		application.setAttribute("readProductListService", new ReadProductListService(application));
+		application.setAttribute("readQnABoardListService", new ReadQnABoardListService(application));
+		application.setAttribute("readQnADetailService", new ReadQnADetailService(application));
+		application.setAttribute("readReviewBoardListService", new ReadReviewBoardListService(application));
+		application.setAttribute("readReviewDetailService", new ReadReviewDetailService(application));
+		
+		application.setAttribute("updateCartService", new UpdateCartService(application));
+		application.setAttribute("updateOrderService", new UpdateOrderService(application));
+		application.setAttribute("updateUserService", new UpdateUserService(application));
 	}
 }

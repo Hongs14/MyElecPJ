@@ -9,12 +9,12 @@ import javax.sql.DataSource;
 import dao.QnABoardDAO;
 import dto.qna.QnABoardDTO;
 
-public class ReadQnaService {
+public class ReadQnADetailService {
 private ServletContext application;
 private DataSource ds;
 private QnABoardDAO qnaBoardDAO;
 	
-	public ReadQnaService(ServletContext application) {
+	public ReadQnADetailService(ServletContext application) {
 		this.application = application;
 		qnaBoardDAO = (QnABoardDAO) application.getAttribute("QnABoardDAO");
 		ds = (DataSource) application.getAttribute("dataSource");

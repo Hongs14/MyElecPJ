@@ -16,8 +16,8 @@ import org.json.JSONArray;
 
 import service.my.AdminDeleteUserService;
 
-@WebServlet(name="Controller.adminDeleteUserController", urlPatterns="/deleteUser")
-public class adminDeleteUserController extends HttpServlet{
+@WebServlet(name="Controller.AdminDeleteUserController", urlPatterns="/DeleteUser")
+public class AdminDeleteUserController extends HttpServlet{
 	
 	
 	

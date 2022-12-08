@@ -20,11 +20,11 @@
 			</button>
 			<div class="collapse navbar-collapse" id="navbarColor02">
 				<ul class="navbar-nav me-auto">
-					<li class="nav-item"><a class="nav-link active" onclick="window.location.href='home'">Home</a></li>
-					<li class="nav-item"><a class="nav-link" onclick="window.location.href='productList'">Products</a></li>
-					<li class="nav-item"><a class="nav-link" onclick="window.location.href='QnABoardList'">QnA</a></li>
-					<li class="nav-item"><a class="nav-link" onclick="window.location.href='reviewBoardList'">Review</a></li>
-					<li class="nav-item"><a class="nav-link" onclick="window.location.href='userInfo'">MyPage</a></li>
+					<li class="nav-item"><a class="nav-link active" onclick="window.location.href='Home'">Home</a></li>
+					<li class="nav-item"><a class="nav-link" onclick="window.location.href='ReadProductList'">Products</a></li>
+					<li class="nav-item"><a class="nav-link" onclick="window.location.href='ReadQnABoardList'">QnA</a></li>
+					<li class="nav-item"><a class="nav-link" onclick="window.location.href='ReadReviewBoardList'">Review</a></li>
+					<li class="nav-item"><a class="nav-link" onclick="window.location.href='UserInfo'">MyPage</a></li>
 				</ul>
 			</div>
 			<form class="d-flex">
@@ -34,17 +34,17 @@
 			<div class="d-flex justify-content-end">
 			
 				<c:if test="${user_id == null}">
-					<button type="button" class="btn btn-dark my-2 my-sm-0" onclick="window.location.href='login'">Login</button>
+					<button type="button" class="btn btn-dark my-2 my-sm-0" onclick="window.location.href='Login'">Login</button>
 				</c:if>
 				<c:if test="${user_id != null}">
-					<button type="button" class="btn btn-dark my-2 my-sm-0" onclick="window.location.href='logout'">Logout</button>
+					<button type="button" class="btn btn-dark my-2 my-sm-0" onclick="window.location.href='Logout'">Logout</button>
 				</c:if>
 				
 				<c:if test="${user_id != null}">
-					<button type="submit" class="btn btn-danger my-2 my-sm-0" onclick="window.location.href='userInfo'">${user_id}</button>
+					<button type="submit" class="btn btn-danger my-2 my-sm-0" onclick="window.location.href='UserInfo'">${user_id}</button>
 				</c:if>
 				<c:if test="${user_id == null}">
-					<button type="button" class="btn btn-dark my-2 my-sm-0" onclick="window.location.href='join'">Join</button>
+					<button type="button" class="btn btn-dark my-2 my-sm-0" onclick="window.location.href='Join'">Join</button>
 				</c:if>
 				
 				

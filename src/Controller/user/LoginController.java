@@ -13,8 +13,8 @@ import javax.servlet.http.HttpSession;
 import dto.user.UserDTO;
 import service.LoginService;
 
-@WebServlet(name = "Controller.loginController", urlPatterns = "/login")
-public class loginController extends HttpServlet {
+@WebServlet(name = "Controller.LoginController", urlPatterns = "/Login")
+public class LoginController extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -59,9 +59,9 @@ public class loginController extends HttpServlet {
 			//관리자 로그인 이동
 			if (result.getUser_level()==99) {
 				session.setAttribute("user_level", "ADMIN");	
-				response.sendRedirect("admin");
+				response.sendRedirect("Admin");
 			} else{
-				response.sendRedirect("productList");
+				response.sendRedirect("ReadProductList");
 			}
 			
 			

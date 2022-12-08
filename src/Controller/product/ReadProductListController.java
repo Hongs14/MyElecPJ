@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dto.product.ProductDTO;
-import service.my.ReadProductListService;
+import service.ReadProductListService;
 import util.Pager;
 
 @WebServlet(name="Controller.ReadProductListController", urlPatterns="/ReadProductList")
@@ -40,8 +40,8 @@ public class ReadProductListController extends HttpServlet{
 		 
 		//BoardService 객체 얻기
 		ServletContext application = request.getServletContext();
-		//ReadProductListService readProductListService = (ReadProductListService) application.getAttribute("readProductListService");
-		ReadProductListService readProductListService = new ReadProductListService(application);
+		ReadProductListService readProductListService = (ReadProductListService) application.getAttribute("readProductListService");
+
 		//페이징 대상이 되는 전체 행수 얻기
 		int totalBoardNum = readProductListService.getTotalBoardNum(product);
 		  
@@ -56,8 +56,18 @@ public class ReadProductListController extends HttpServlet{
 		request.setAttribute("pageList", pageList);
 		request.setAttribute("category", category);
 		request.setAttribute("subcategory", subcategory);
-	      
-		request.getRequestDispatcher("/productList.jsp").forward(request, response);
+		
+		
+		product = readProductListService.getImage(pageList.get(0).getProduct_id());
+
+		//String fileName = product.getProduct_filename();
+		String filePath = "resources\\images\\download\\" + product.getProduct_savedname();
+		//String contextType = product.getProduct_filename();
+		
+
+		request.setAttribute("filePath", filePath);
+		
+		request.getRequestDispatcher("/WEB-INF/views/productList.jsp").forward(request, response);
 	}
 	
 	@Override

@@ -14,8 +14,8 @@ import dto.user.UserDTO;
 import service.UpdateUserService;
 
 
-@WebServlet(name="Controller.updateUserInfoController", urlPatterns="/updateUserinfo")
-public class updateUserController extends HttpServlet{
+@WebServlet(name="Controller.UpdateUserController", urlPatterns="/UpdateUser")
+public class UpdateUserController extends HttpServlet{
 	
 	
 	@Override
@@ -53,7 +53,7 @@ public class updateUserController extends HttpServlet{
 		
 		
 		
-		response.sendRedirect("userInfo");
+		response.sendRedirect("UserInfo");
 	}
 	
 	

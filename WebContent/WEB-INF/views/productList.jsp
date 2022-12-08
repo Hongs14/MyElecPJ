@@ -233,7 +233,7 @@ hr {
 							</div>
 						</figcaption>
 
-						<img src="/Project2_shopping/resources/images/refrigerator1.png" />
+						<img src="${filePath}" />
 						<figcaption id="bottomfugure">
 							<h6 class="text-center">
 								<strong>${product.product_name}</strong>

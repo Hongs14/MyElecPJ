@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dto.product.ProductDTO;
-import service.my.ReadProductDetailService;
+import service.ReadProductDetailService;
 
 @WebServlet(name = "Controller.ReadProductDetailController", urlPatterns ="/ReadProductDetail")
 public class ReadProductDetailController extends HttpServlet{
@@ -34,7 +34,7 @@ public class ReadProductDetailController extends HttpServlet{
       
       request.setAttribute("Product", productDTO);
       
-      request.getRequestDispatcher("/productDetail.jsp").forward(request, response);
+      request.getRequestDispatcher("/WEB-INF/views/productDetail.jsp").forward(request, response);
    
    }
 

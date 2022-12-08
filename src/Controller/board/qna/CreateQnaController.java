@@ -12,8 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import dto.qna.QnABoardDTO;
 import service.CreateQnAService;
 
-@WebServlet(name = "Controller.createQnaController", urlPatterns = "/createQna")
-public class createQnaController extends HttpServlet{
+@WebServlet(name = "Controller.CreateQnaController", urlPatterns = "/CreateQna")
+public class CreateQnaController extends HttpServlet{
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
 		QnABoardDTO qnaBoardDTO = new QnABoardDTO();

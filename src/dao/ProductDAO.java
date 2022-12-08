@@ -148,6 +148,28 @@ public ProductDTO averageStar(ProductDTO productDTO, Connection conn) throws Exc
 	productDTO.setProduct_totalpoint(Double.parseDouble(result));
 	
 	return productDTO;
-	}   
+	}
+
+//이미지 얻기
+public ProductDTO getImage(int product_id, Connection conn) throws SQLException {
+	String sql = "select product_filename, product_savedname, product_contenttype ";
+			sql += "from product ";
+			sql += "where product_id = ? ";
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, product_id);
+			ResultSet rs = pstmt.executeQuery();
+			
+			ProductDTO result = new ProductDTO();
+		while(rs.next()){
+			result.setProduct_filename(rs.getString("product_filename"));
+			result.setProduct_savedname(rs.getString("product_savedname"));
+			result.setProduct_contenttype(rs.getString("product_contenttype"));
+			System.out.println(result.getProduct_filename());
+		}
+	rs.close();
+	pstmt.close();
+	
+	return result;
+}
 }
 	
