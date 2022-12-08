@@ -225,6 +225,25 @@ public class UserDAO {
 		pstmt.close();
 	}
 	
+	//비밀번호 찾기
+	public String findPassword(UserDTO receivedDTO, Connection conn) throws SQLException {
+		String sql = "select users_password ";
+		sql += "from users ";
+		sql += "where users_id = ? and users_phone = ? ";
+		
+		String result = "";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, receivedDTO.getUser_id());
+		pstmt.setString(2, receivedDTO.getUser_phone());
+		
+		ResultSet rs = pstmt.executeQuery();
+		if(rs.next()) {
+			result = rs.getString("users_password");
+		}
+		pstmt.close();
+		
+		return result;
+	}
 	
 
 }

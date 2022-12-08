@@ -120,34 +120,34 @@ public class ProductDAO {
 	}
 	
 	  //리뷰 평점 구하기
-
-	public ProductDTO averageStar(ProductDTO productDTO, Connection conn) throws Exception{
-	      double average=0.0;
-	      String result= "";
-	      String sql = "select sum(r.review_board_reviewpoint) as pointsum, count(*) as count " + 
-	            "from review_board r, product p  "+ 
-	            "where p.product_id = r.product_id and p.product_id = ?";
+public ProductDTO averageStar(ProductDTO productDTO, Connection conn) throws Exception{
+	double average=0.0;
+	String result= "";
+	String sql = "select sum(r.review_board_reviewpoint) as pointsum, count(*) as count " + 
+			"from review_board r, product p  "+ 
+			"where p.product_id = r.product_id and p.product_id = ?";
 	      
-	      PreparedStatement pstmt = conn.prepareStatement(sql);
+	PreparedStatement pstmt = conn.prepareStatement(sql);
+	pstmt.setInt(1, productDTO.getProduct_id());
+	  
+	ResultSet rs = pstmt.executeQuery();
+	if (rs.next()) {
+		if (rs.getDouble("count") == 0) {
+			result = "0.0";
+		}
+		else {
+			average = rs.getDouble("pointsum") / rs.getDouble("count");
+			DecimalFormat df = new DecimalFormat("#.#");
+			result = df.format(average);	
+		}
+	}
+	  
+	rs.close();
+	pstmt.close();
 	      
-	      pstmt.setInt(1, productDTO.getProduct_id());
-	      
-	      ResultSet rs = pstmt.executeQuery();
-	      if (rs.next()) {
-	         average = rs.getDouble("pointsum") / rs.getDouble("count");
-	         System.out.println(average);
-	         DecimalFormat df = new DecimalFormat("#.#");
-	         result = df.format(average);
-	         System.out.println(result);
-	      }
-	      
-	      rs.close();
-	      pstmt.close();
-	      
-	      productDTO.setProduct_totalpoint(Double.parseDouble(result));
-	      
-	      return productDTO;
-	   }
-	   
+	productDTO.setProduct_totalpoint(Double.parseDouble(result));
+	
+	return productDTO;
+	}   
 }
 	

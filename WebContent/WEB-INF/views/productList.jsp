@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <!DOCTYPE html>
 <html>
@@ -107,14 +109,14 @@ hr {
 			<div id="sidebar" class="col-sm-2 col-md-2 d-none d-xl-block">
 				<div class="d-flex flex-column rounded-lg" style="background-color: #F5F5F5;">
                     <div class="mx-3 mt-3">
-                         <h4> ${user_id} </h4>
+                        <h4>ID</h4>
                     </div>
                     <div class="d-flex mx-0">
                         <h6 class="col-2">
-                            <span class="align-self-start badge badge-primary">${user_level}</span>
+                            <span class="align-self-start badge badge-primary">VIP</span>
                         </h6>
                         <h6 class="col-2">
-                            <span class="align-self-start badge badge-info">${user_point}P</span>
+                            <span class="align-self-start badge badge-info">100,000P</span>
                         </h6>
                     </div>
                     <div class="mx-3 my-3">
@@ -128,14 +130,24 @@ hr {
 				<h3 class="text-left my-3">제품군</h3>
 
 				<div class="d-flex flex-column">
+				
+					
 					<div class="d-flex flex-column my-2">
 						<a class="text-left" data-toggle="collapse" href=".collapseOne" style="font-size: large;">냉장고</a>
 						<hr />
 						<div class="d-flex flex-column">
-							<div class="collapse collapseOne text-left">정수기형</div>
-							<div class="collapse collapseOne text-left">양문형</div>
-							<div class="collapse collapseOne text-left">일반형</div>
-							<div class="collapse collapseOne text-left">김치냉장고</div>
+							<div class="collapse collapseOne text-left">
+								<a href="ReadProductList?pageNo=1&category=1&subcategory=1">정수기형</a>
+							</div>
+							<div class="collapse collapseOne text-left">
+								<a href="ReadProductList?pageNo=1&category=1&subcategory=2">양문형</a>
+							</div>
+							<div class="collapse collapseOne text-left">
+								<a href="ReadProductList?pageNo=1&category=1&subcategory=3">일반형</a>
+							</div>
+							<div class="collapse collapseOne text-left">
+								<a href="ReadProductList?pageNo=1&category=1&subcategory=4">김치냉장고</a>
+							</div>
 						</div>
 					</div>
 
@@ -143,9 +155,15 @@ hr {
 						<a class="text-left " data-toggle="collapse" href=".collapseOne" style="font-size: arge;">TV</a>
 						<hr />
 						<div class="d-flex flex-column">
-							<div class="collapse collapseOne text-left">올레드</div>
-							<div class="collapse collapseOne text-left">벽걸이형</div>
-							<div class="collapse collapseOne text-left">스탠드형</div>
+							<div class="collapse collapseOne text-left">
+								<a href="ReadProductList?pageNo=1&category=2&subcategory=1">올레드</a>
+							</div>
+							<div class="collapse collapseOne text-left">
+								<a href="ReadProductList?pageNo=1&category=2&subcategory=2">벽걸이형</a>
+							</div>
+							<div class="collapse collapseOne text-left">
+								<a href="ReadProductList?pageNo=1&category=2&subcategory=3">스탠드형</a>
+							</div>
 						</div>
 					</div>
 
@@ -153,9 +171,15 @@ hr {
 						<a class="text-left " data-toggle="collapse" href=".collapseOne" style="font-size: large;">세탁기</a>
 						<hr />
 						<div class="d-flex flex-column">
-							<div class="collapse collapseOne text-left">통돌이</div>
-							<div class="collapse collapseOne text-left">드럼</div>
-							<div class="collapse collapseOne text-left">워시타워</div>
+							<div class="collapse collapseOne text-left">
+								<a href="ReadProductList?pageNo=1&category=3&subcategory=1">통돌이</a>
+							</div>
+							<div class="collapse collapseOne text-left">
+								<a href="ReadProductList?pageNo=1&category=3&subcategory=2">드럼</a>
+							</div>
+							<div class="collapse collapseOne text-left">
+								<a href="ReadProductList?pageNo=1&category=3&subcategory=3">워시타워</a>
+							</div>
 						</div>
 					</div>
 
@@ -163,9 +187,15 @@ hr {
 						<a class="text-left " data-toggle="collapse" href=".collapseOne" style="font-size: large;">에어컨</a>
 						<hr />
 						<div class="d-flex flex-column">
-							<div class="collapse collapseOne text-left">스텐드형</div>
-							<div class="collapse collapseOne text-left">이동식</div>
-							<div class="collapse collapseOne text-left">벽걸이형</div>
+							<div class="collapse collapseOne text-left">
+								<a href="ReadProductList?pageNo=1&category=4&subcategory=1">스텐드형</a>
+							</div>
+							<div class="collapse collapseOne text-left">
+								<a href="ReadProductList?pageNo=1&category=4&subcategory=2">이동식</a>
+							</div>
+							<div class="collapse collapseOne text-left">
+								<a href="ReadProductList?pageNo=1&category=4&subcategory=3">벽걸이형</a>
+							</div>
 						</div>
 					</div>
 
@@ -173,16 +203,26 @@ hr {
 						<a class="text-left " data-toggle="collapse" href=".collapseOne" style="font-size: large;">PC</a>
 						<hr />
 						<div class="d-flex flex-column">
-							<div class="collapse collapseOne text-left">노트북</div>
-							<div class="collapse collapseOne text-left">모니터</div>
-							<div class="collapse collapseOne text-left">데스크톱</div>
+							<div class="collapse collapseOne text-left">
+								<a href="ReadProductList?pageNo=1&category=5&subcategory=1">노트북</a>
+							</div>
+							<div class="collapse collapseOne text-left">
+								<a href="ReadProductList?pageNo=1&category=5&subcategory=2">모니터</a>
+							</div>
+							<div class="collapse collapseOne text-left">
+								<a href="ReadProductList?pageNo=1&category=5&subcategory=3">데스크톱</a>
+							</div>
 						</div>
 					</div>
+					
+					
 				</div>
 			</div>
 			<!--상품 리스트 부분 -->
 			<div id="product" class="col-10">
 				<div id="columns">
+				
+				<c:forEach var="product" items="${pageList}">
 					<figure id="topfigure" class="productmouse">
 						<figcaption>
 							<div class="row">
@@ -196,9 +236,9 @@ hr {
 						<img src="/Project2_shopping/resources/images/refrigerator1.png" />
 						<figcaption id="bottomfugure">
 							<h6 class="text-center">
-								<strong>BESPOKE 냉장고 4도어</strong>
+								<strong>${product.product_name}</strong>
 							</h6>
-							<h6 class="text-center">5,000,000</h6>
+							<h6 class="text-center">${product.product_price}</h6>
 							<div class="d-felx justify-content-center" style="text-align: center;">
 								<span class="fa fa-star checked"></span>
 								<span class="fa fa-star checked"></span>
@@ -208,204 +248,7 @@ hr {
 							</div>
 						</figcaption>
 						<figcaption id="buttonfigcaption" class="text-center">
-							<button type="button" class="btn btn-sm btn-dark">자세히 보기</button>
-						</figcaption>
-
-						<figcaption id="textfigcaption" class="text-center" style="margin: 0px;">
-							<p style="font-size: x-small; text-align: left">
-								<i class="fa-solid fa-minus"></i>냉장고 > 양문형 냉장고
-							</p>
-							<p style="font-size: x-small; text-align: left">
-								<i class="fa-solid fa-minus"></i>새틴 베이지+새틴 화이트
-							</p>
-							<p style="font-size: x-small; text-align: left">
-								<i class="fa-solid fa-minus"></i>트리플 독립냉각 & 미세정온, 변치 않는 신선함
-							</p>
-						</figcaption>
-
-
-					</figure>
-
-
-
-					<figure id="topfigure" class="productmouse">
-						<figcaption>
-							<div class="row">
-								<div class="col-4">
-									<h6 class="badge badge-dark text-center">NEW</h6>
-								</div>
-								<i class="col-8 fa fa-cart-plus text-right mt-1" style="font-size: x-large"></i>
-							</div>
-						</figcaption>
-
-						<img src="/Project2_shopping/resources/images/refrigerator2.png" />
-						<figcaption id="bottomfugure">
-							<h6 class="text-center">
-								<strong>BESPOKE 냉장고 4도어</strong>
-							</h6>
-							<h6 class="text-center">5,000,000</h6>
-						</figcaption>
-						<figcaption id="starrating" style="text-align: center">
-							<span class="fa fa-star checked"></span> <span class="fa fa-star checked"></span> <span class="fa fa-star checked"></span> <span class="fa fa-star"></span> <span class="fa fa-star"></span>
-						</figcaption>
-
-						<figcaption id="buttonfigcaption" class="text-center">
-							<button type="button" class="btn btn-sm btn-dark">자세히 보기</button>
-						</figcaption>
-
-						<figcaption id="textfigcaption" class="text-center" style="margin: 0px;">
-							<p style="font-size: x-small; text-align: left">
-								<i class="fa-solid fa-minus"></i>냉장고 > 양문형 냉장고
-							</p>
-							<p style="font-size: x-small; text-align: left">
-								<i class="fa-solid fa-minus"></i>새틴 베이지+새틴 화이트
-							</p>
-							<p style="font-size: x-small; text-align: left">
-								<i class="fa-solid fa-minus"></i>트리플 독립냉각 & 미세정온, 변치 않는 신선함
-							</p>
-						</figcaption>
-
-
-					</figure>
-					<figure id="topfigure" class="productmouse">
-						<figcaption>
-							<div class="row">
-								<div class="col-4">
-									<h6 class="badge badge-dark text-center">NEW</h6>
-								</div>
-								<i class="col-8 fa fa-cart-plus text-right mt-1" style="font-size: x-large"></i>
-							</div>
-						</figcaption>
-
-						<img src="/Project2_shopping/resources/images/refrigerator3.png" />
-						<figcaption id="bottomfugure">
-							<h6 class="text-center">
-								<strong>BESPOKE 냉장고 4도어</strong>
-							</h6>
-							<h6 class="text-center">5,000,000</h6>
-						</figcaption>
-						<figcaption id="starrating" style="text-align: center">
-							<span class="fa fa-star checked"></span> <span class="fa fa-star checked"></span> <span class="fa fa-star checked"></span> <span class="fa fa-star"></span> <span class="fa fa-star"></span>
-						</figcaption>
-
-						<figcaption id="buttonfigcaption" class="text-center">
-							<button type="button" class="btn btn-sm btn-dark">자세히 보기</button>
-						</figcaption>
-
-						<figcaption id="textfigcaption" class="text-center" style="margin: 0px;">
-							<p style="font-size: x-small; text-align: left">
-								<i class="fa-solid fa-minus"></i>냉장고 > 양문형 냉장고
-							</p>
-							<p style="font-size: x-small; text-align: left">
-								<i class="fa-solid fa-minus"></i>새틴 베이지+새틴 화이트
-							</p>
-							<p style="font-size: x-small; text-align: left">
-								<i class="fa-solid fa-minus"></i>트리플 독립냉각 & 미세정온, 변치 않는 신선함
-							</p>
-						</figcaption>
-
-
-					</figure>
-					<figure id="topfigure" class="productmouse">
-						<figcaption>
-							<div class="row">
-								<div class="col-4">
-									<h6 class="badge badge-dark text-center">NEW</h6>
-								</div>
-								<i class="col-8 fa fa-cart-plus text-right mt-1" style="font-size: x-large"></i>
-							</div>
-						</figcaption>
-
-						<img src="/Project2_shopping/resources/images/refrigerator1.png" />
-						<figcaption id="bottomfugure">
-							<h6 class="text-center">
-								<strong>BESPOKE 냉장고 4도어</strong>
-							</h6>
-							<h6 class="text-center">5,000,000</h6>
-						</figcaption>
-						<figcaption id="starrating" style="text-align: center">
-							<span class="fa fa-star checked"></span> <span class="fa fa-star checked"></span> <span class="fa fa-star checked"></span> <span class="fa fa-star"></span> <span class="fa fa-star"></span>
-						</figcaption>
-
-						<figcaption id="buttonfigcaption" class="text-center">
-							<button type="button" class="btn btn-sm btn-dark">자세히 보기</button>
-						</figcaption>
-
-						<figcaption id="textfigcaption" class="text-center" style="margin: 0px;">
-							<p style="font-size: x-small; text-align: left">
-								<i class="fa-solid fa-minus"></i>냉장고 > 양문형 냉장고
-							</p>
-							<p style="font-size: x-small; text-align: left">
-								<i class="fa-solid fa-minus"></i>새틴 베이지+새틴 화이트
-							</p>
-							<p style="font-size: x-small; text-align: left">
-								<i class="fa-solid fa-minus"></i>트리플 독립냉각 & 미세정온, 변치 않는 신선함
-							</p>
-						</figcaption>
-
-
-					</figure>
-					<figure id="topfigure" class="productmouse">
-						<figcaption>
-							<div class="row">
-								<div class="col-4">
-									<h6 class="badge badge-dark text-center">NEW</h6>
-								</div>
-								<i class="col-8 fa fa-cart-plus text-right mt-1" style="font-size: x-large"></i>
-							</div>
-						</figcaption>
-
-						<img src="/Project2_shopping/resources/images/refrigerator2.png" />
-						<figcaption id="bottomfugure">
-							<h6 class="text-center">
-								<strong>BESPOKE 냉장고 4도어</strong>
-							</h6>
-							<h6 class="text-center">5,000,000</h6>
-						</figcaption>
-						<figcaption id="starrating" style="text-align: center">
-							<span class="fa fa-star checked"></span> <span class="fa fa-star checked"></span> <span class="fa fa-star checked"></span> <span class="fa fa-star"></span> <span class="fa fa-star"></span>
-						</figcaption>
-
-						<figcaption id="buttonfigcaption" class="text-center">
-							<button type="button" class="btn btn-sm btn-dark">자세히 보기</button>
-						</figcaption>
-
-						<figcaption id="textfigcaption" class="text-center" style="margin: 0px;">
-							<p style="font-size: x-small; text-align: left">
-								<i class="fa-solid fa-minus"></i>냉장고 > 양문형 냉장고
-							</p>
-							<p style="font-size: x-small; text-align: left">
-								<i class="fa-solid fa-minus"></i>새틴 베이지+새틴 화이트
-							</p>
-							<p style="font-size: x-small; text-align: left">
-								<i class="fa-solid fa-minus"></i>트리플 독립냉각 & 미세정온, 변치 않는 신선함
-							</p>
-						</figcaption>
-
-					</figure>
-					<figure id="topfigure" class="productmouse">
-						<figcaption>
-							<div class="row">
-								<div class="col-4">
-									<h6 class="badge badge-dark text-center">NEW</h6>
-								</div>
-								<i class="col-8 fa fa-cart-plus text-right mt-1" style="font-size: x-large"></i>
-							</div>
-						</figcaption>
-
-						<img src="/Project2_shopping/resources/images/refrigerator3.png" />
-						<figcaption id="bottomfugure">
-							<h6 class="text-center">
-								<strong>BESPOKE 냉장고 4도어</strong>
-							</h6>
-							<h6 class="text-center">5,000,000</h6>
-						</figcaption>
-						<figcaption id="starrating" style="text-align: center">
-							<span class="fa fa-star checked"></span> <span class="fa fa-star checked"></span> <span class="fa fa-star checked"></span> <span class="fa fa-star"></span> <span class="fa fa-star"></span>
-						</figcaption>
-
-						<figcaption id="buttonfigcaption" class="text-center">
-							<button type="button" class="btn btn-sm btn-dark">자세히 보기</button>
+							<a href="ReadProductDetail?productId=${product.product_id}" class="btn btn-dark btn-sm">자세히 보기</a>
 						</figcaption>
 
 						<figcaption id="textfigcaption" class="text-center" style="margin: 0px;">
@@ -420,21 +263,33 @@ hr {
 							</p>
 						</figcaption>
 					</figure>
+            	</c:forEach>
 				</div>
 			<div class ="d-flex">
                <div id = "pagination " class = "container" >
-                  <ul class = "pagination justify-content-center" >
+                  <div class = "pagination justify-content-center" >
                   
-                     <li class ="page-item"><a class = "page-link"><i class="fa-solid fa-angles-left" style = "color: black"></i></a></li>
-                     <li class ="page-item"><a class = "page-link"><i class="fa-solid fa-angle-left" style = "color: black"></i></a></li>
-                     <li class ="page-item"><a class = "page-link"><i class="fa-solid fa-1" style = "color: black"></i></a></li>
-                     <li class ="page-item"><a class = "page-link"><i class="fa-solid fa-2" style = "color: black"></i></a></li>
-                     <li class ="page-item"><a class = "page-link"><i class="fa-solid fa-3" style = "color: black"></i></a></li>
-                     <li class ="page-item"><a class = "page-link"><i class="fa-solid fa-4" style = "color: black"></i></a></li>
-                     <li class ="page-item"><a class = "page-link"><i class="fa-solid fa-5" style = "color: black"></i></a></li>
-                     <li class ="page-item"><a class = "page-link"><i class="fa-solid fa-angle-right" style = "color: black"></i></a></li>
-                     <li class ="page-item"><a class = "page-link"><i class="fa-solid fa-angles-right" style = "color: black"></i></a></li>
-                  </ul>
+                     <a href="ReadProductList?pageNo=1&category=${category}&subcategory=${subcategory}" class="btn btn-muted btn-sm">처음</a>
+                     
+                     <c:if test="${pager.groupNo > 1 }">
+	                 	<a href="ReadProductList?pageNo=${pager.startPageNo - 1}&category=${category}&subcategory=${subcategory}" class="btn btn-muted btn-sm">이전</a>
+                     </c:if>
+                     
+                     <c:forEach var="i" begin="${pager.startPageNo}" end="${pager.endPageNo}">
+                     	<c:if test="${pager.pageNo != i}">
+	                     	<a href="ReadProductList?pageNo=${i}&category=${category}&subcategory=${subcategory}" class="btn btn-dark btn-sm">${i}</a>
+                     	</c:if>
+                     	<c:if test="${pager.pageNo == i}">
+	                     	<a href="ReadProductList?pageNo=${i}&category=${category}&subcategory=${subcategory}" class="btn btn-warning btn-sm">${i}</a>
+                     	</c:if>
+                     </c:forEach>
+                     
+                     <c:if test="${pager.groupNo < pager.totalGroupNo}">
+	                 	<a href="ReadProductList?pageNo=${pager.endPageNo + 1}&category=${category}&subcategory=${subcategory}" class="btn btn-muted btn-sm">다음</a>
+                     </c:if>
+                     
+                     <a href="ReadProductList?pageNo=${pager.totalPageNo}&category=${category}&subcategory=${subcategory}" class="btn btn-muted btn-sm">맨끝</a>
+                  </div>
                
                </div>
             </div>

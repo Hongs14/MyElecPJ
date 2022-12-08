@@ -20,7 +20,7 @@ public class createQnaController extends HttpServlet{
 		
 		ServletContext application = request.getServletContext();
 		CreateQnAService createQnAService = (CreateQnAService)application.getAttribute("createQnAService");
-		createQnAService.write(qnaBoardDTO);
+		createQnAService.writeQnA(qnaBoardDTO);
 	
 		request.getRequestDispatcher("/WEB-INF/views/createQna.jsp").forward(request, response);
 	

@@ -12,6 +12,8 @@ import javax.servlet.http.HttpSession;
 
 import dto.order.OrderDTO;
 import dto.product.ProductDTO;
+import dto.user.UserDTO;
+import service.UserInfoService;
 import service.my.ReadProductService;
 
 @WebServlet(name="Controller.ReadOrderController", urlPatterns="/ReadOrder")
@@ -20,9 +22,11 @@ public class ReadOrderController extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		String userId = (String) session.getAttribute("userId");
+		String userId = (String) session.getAttribute("user_id");
 		int productid = Integer.parseInt(request.getParameter("productid"));
 		int price = Integer.parseInt(request.getParameter("price"));
+		
+		
 		//int countNum = Integer.parseInt(request.getParameter("countNum"));
 		int countNum = 1;
 //		BufferedReader br = request.getReader();
@@ -48,11 +52,19 @@ public class ReadOrderController extends HttpServlet {
 		ReadProductService readProductService = new ReadProductService(application);
 		ProductDTO product = readProductService.getProduct(productid);
 		
+		UserInfoService userInfoService = (UserInfoService)application.getAttribute("userInfoService");
+		UserDTO userDTO = new UserDTO();
+		userDTO.setUser_id(userId);
+		UserDTO user = userInfoService.UserInfo(userDTO);
+		
 		request.setAttribute("productId", productid);
 		request.setAttribute("price", price);
 		request.setAttribute("countNum", countNum);
+		request.setAttribute("productName", product.getProduct_name());
 		
+		request.setAttribute("user", user);
 		
+
 		/*OrderDTO order = new OrderDTO();
 		order.setProduct_id(Integer.parseInt(productid));
 		order.setOrders_price(Integer.parseInt(price));

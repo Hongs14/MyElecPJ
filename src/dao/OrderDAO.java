@@ -12,7 +12,7 @@ import dto.order.OrderDetailDTO;
 import dto.order.OrderReadListDTO;
 
 public class OrderDAO {
-	public void insertOrder(OrderDTO order, OrderDetailDTO orderDetail, Connection conn) throws SQLException {
+	public int insertOrder(OrderDTO order, OrderDetailDTO orderDetail, Connection conn) throws SQLException {
 		int price = order.getOrders_price();
 		String userId = order.getUsers_id();
 		String address = order.getOrders_address();
@@ -27,7 +27,7 @@ public class OrderDAO {
 		pstmt.setInt(1, price);
 		pstmt.setString(2, userId);
 		pstmt.setString(3, address);
-		pstmt.executeUpdate();
+		int result = pstmt.executeUpdate();
 		
 		int count = orderDetail.getOrder_detail_item_count();
 		int productId = orderDetail.getProduct_id();
@@ -40,10 +40,11 @@ public class OrderDAO {
 		pstmt = conn.prepareStatement(SQL);
 		pstmt.setInt(1, count);
 		pstmt.setInt(2, productId);
-		pstmt.executeUpdate();
+		result += pstmt.executeUpdate();
 		
 		pstmt.close();
-		conn.close();
+		
+		return result;
 		
 	}
 	

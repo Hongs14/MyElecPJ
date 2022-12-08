@@ -1,16 +1,15 @@
 package Controller.order;
 
-import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.PrintWriter;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
-import org.json.JSONObject;
 
 import dto.order.OrderDTO;
 import dto.order.OrderDetailDTO;
@@ -22,45 +21,38 @@ public class CreateOrderController extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		String userId = (String) session.getAttribute("userId");
+		String userId = (String) session.getAttribute("user_id");
 		
-		BufferedReader br = request.getReader();
-		char[] buffer = new char[1024];
-		int isEnd = 0;
-		String receivedData = "";
-		while (isEnd > 0) {
-			isEnd = br.read(buffer);
-			receivedData += buffer;
-		}
-		JSONObject receivedJSON = new JSONObject(receivedData);
+		int productId = Integer.parseInt(request.getParameter("id"));
+		int qty = Integer.parseInt(request.getParameter("count"));
+		int price = Integer.parseInt(request.getParameter("price"));
+		String address = request.getParameter("address");
 		
-		String productId = receivedJSON.getString("id");
-		int qty = receivedJSON.getInt("qty");
-		int price = receivedJSON.getInt("price");
-		String address = receivedJSON.getString("address");
-		String date = receivedJSON.getString("date");
-		
-		CreateOrderService createOrderService = (CreateOrderService) request.getServletContext().getAttribute("boardService");
-		
+		ServletContext application = request.getServletContext();
+		//CreateOrderService createOrderService = (CreateOrderService) request.getServletContext().getAttribute("boardService");
+		CreateOrderService createOrderService = new CreateOrderService(application);
+				
 		OrderDetailDTO orderDetail = new OrderDetailDTO();
 		orderDetail.setOrder_detail_item_count(qty);
-		orderDetail.setProduct_id(Integer.parseInt(productId));
+		orderDetail.setProduct_id(productId);
 		
 		OrderDTO order = new OrderDTO();
 		order.setOrders_address(address);
-		order.setOrders_date(date);
 		order.setOrders_status("주문 완료");
 		order.setUsers_id(userId);
+		order.setOrders_price(price);
 		
 		int result = createOrderService.createOrder(order, orderDetail);
-		
-		if (result != -1) {
-			//success
-			request.getRequestDispatcher("/WEB-INF/views/order.jsp").forward(request, response);
+		PrintWriter pw = new PrintWriter(response.getOutputStream());
+		if (result == 2) {
+			pw.write("success");
+			
 		}
 		else {
-			//fail
+			pw.write("success");
 		}
+		pw.flush();
+		pw.close();
 		
 	}
 

@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <!DOCTYPE html>
 <html>
@@ -111,15 +113,15 @@
 				<div>
 					<div class="d-flex my-2">
 						<h4 class="text-left text-muted mr-3 mt-2">no.1</h4>
-						<h2 >냉장고 신제품 구매 리뷰</h2>					
+						<h2 >${reviewBoard.review_board_title}냉장고 신제품 구매 리뷰</h2>					
 					</div>
 		 		</div>	
 			 	<hr style="height: 0.1px; background-color: grey"/>		
 					<div class="d-flex my-2">
 						<h5 class="mr-1">작성일 |</h5>
-						<h5 class="ml-1 mr-2">2022-11-24</h5>					
+						<h5 class="ml-1 mr-2">${reviewBoard.review_board_date}</h5>					
 						<h5 class="mx-1">작성자 |</h5>					
-						<h5 class="mx-1">otioti</h5>								
+						<h5 class="mx-1">${reviewBoard.users_id}</h5>								
 					</div>	
 					<div class="d-flex justify-content-end my-2 ">
 						<button type="button" class="btn btn-primary btn-sm mr-1" style="border-radius:30px">수정</button>	
@@ -137,38 +139,43 @@
 						<span class="fa fa-star checked"></span>
 						<span class="fa fa-star"></span>
 						<span class="fa fa-star"></span>
-						<h5 class="text-left ml-1">(3.0)</h5>
+						<h5 class="text-left ml-1">${reviewBoard.review_board_reviewpoint}</h5>
 					</div>					
 				<div class="d-flex flex-column py-10" style="height:300px;">
-					<h3 class="mt-1"> 냉장고 좋아요 짱! 추천합니다~ </h3>			
-				</div>		
+					<h3 class="mt-1"> ${reviewBoard.review_board_content} </h3>			
+				</div>
 				<hr style="height: 0.1px; background-color: grey"/>
 				
 				
-				<div class="d-flex flex-column mt-2">
-					<h4 class="mb-3">Comment</h4>				
+				<div id=commentList class="d-flex flex-column mt-2">
+					<h4 class="mb-3">Comment</h4>
+					<!-- 
+					<c:if test="${review.review_board_id}">
+						<form method="post" action="ReadReview?id=${review.review_board_id}">
+							<div class="form-group">
+								<input type="text" class="form-control" id="comment" name="comment">
+							</div>
+						</form>
+					</c:if>
+					 -->
+					<form method="post" action="ReadReview?id=${review.review_board_id}">
+						<div class="form-group">
+							<input type="text" class="form-control" id="comment" name="comment">
+						</div>
+					</form>
+					<c:forEach var="comment" items="${commentList}">
 					<div id="reviewComment" class="d-flex jutify-content-between">
 						<div class="d-flex col-9">
-							<h5>우와 예쁘네요 저도 사야겠어요^_^</h5>
+							<h5>${comment.comment}</h5>
 						</div>
 						<div class="d-flex text-muted jutify-content-end">
 							<h6 class="mx-1">작성일 |</h6>
-							<h6 class="mx-1">2022-11-26</h6>					
+							<h6 class="mx-1">${comment.date}</h6>					
 							<h6 class="mx-1">작성자 |</h6>					
-							<h6 class="mx-1">my</h6>		
+							<h6 class="mx-1">${comment.user}</h6>		
 						</div>						
 					</div>	
-					<div id="reviewComment" class="d-flex jutify-content-between">
-						<div class="d-flex col-9">
-							<h5>허거덩 즉시구매</h5>
-						</div>
-						<div class="d-flex text-muted jutify-content-end">
-							<h6 class="mx-1">작성일 |</h6>
-							<h6 class="mx-1">2022-11-28</h6>					
-							<h6 class="mx-1">작성자 |</h6>					
-							<h6 class="mx-1">js</h6>		
-						</div>						
-					</div>	
+					</c:forEach>
 				</div>		
 			</div>
 		</div>		

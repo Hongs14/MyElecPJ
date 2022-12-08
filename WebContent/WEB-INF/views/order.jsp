@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -62,8 +64,42 @@
 			}
 			
 		</style>
+		<script>
+			function createOrder() {
+				let price = $(".price").attr("id");
+				let address = $("#address").val();
+				let count = $(".count").attr("id");
+				let id =$(".productId").attr("id");
+	    		let dataObject = { price : price, address : address, count : count, id : id};
+	    		console.log(dataObject);
+				$.ajax({
+					url: "CreateOrder",
+					type: "post",
+					data: dataObject,
+					success: function(result) {
+						if (result === "success") {
+							$('#orderResult').html = "주문에 성공했습니다.";
+						}
+						else {
+							$('#orderResult').html = "주문에 실패했습니다.";
+						}
+						popOpen();
+					}
+				});
+			}
+			
+			function popOpen() {
+				$('.modal-wrap').show();
+				$('.modal-bg').show();
+			}
+
+			function popClose() {
+				$('.modal-wrap').hide();
+				$('.modal-bg').hide();
+			}
+		</script>
 	</head>
-	<body>
+	<body onLoad="popClose()">
 		<%@ include file="/WEB-INF/views/common/banner.jsp" %>
 		
 		<!-- 상단 고정 메뉴 끝 -->
@@ -82,9 +118,7 @@
 								<img src="/Project2_shopping/resources/images/refrigerator1.png"/>
 							</div>
 							<div class="col-3 d-flex flex-column">
-								<h6>냉장고 설치유형</h6>
-								<h6>냉장고 제품명</h6>
-								<h6>냉장고 색 조합</h6>
+								<h6>${productName}</h6>
 							</div>
 							<div class="col-3 d-flex flex-column">
 								<div class="form-group d-flex flex-column">
@@ -92,14 +126,9 @@
 					            	<input type="text" class="form-control-sm text-muted" id="point" value="사용할 포인트를 입력해 주세요"/>
 					            	<small id="pointHelp" class="form-text">남은 포인트: 9999p</small>
 					          	</div>
-								<div class="form-group d-flex flex-column">
-					            	<label for="coupon">Coupon</label>
-					            	<input type="text" class="form-control-sm text-muted" id="coupon" value="쿠폰 번호를 입력해 주세요"/>
-					            	<small id="couponHelp" class="form-text">쿠폰은 한장만 사용 가능합니다</small>
-					          	</div>
 							</div>
 							<div class="col-3">
-								<h6>가격: 5,000,000원</h6>
+								<h6 id="${productId}" class="productId">가격: ${price} 원</h6>
 							</div>
 						</div>
 					</div>
@@ -111,9 +140,9 @@
 								<h5 class="text-left">주문자 정보</h5>
 							</div>
 							<div class="col-7 d-flex flex-column">
-								<h5 class="text-left">이름: Foo Bar</h5>
-								<h5 class="text-left">휴대폰 번호: 010-1234-5678</h5>
-								<h5 class="text-left">이메일: foobar@foobar.com</h5>
+								<h5 class="text-left">이름: ${user.user_name}</h5>
+								<h5 class="text-left">휴대폰 번호: ${user.user_phone}</h5>
+								<h5 class="text-left">이메일: ${user.user_email}</h5>
 							</div>
 							<div class="col-2">
 								<a href="">주문자 정보 변경</a>
@@ -126,22 +155,17 @@
 							<div class="col-7">
 								<div class="form-group d-flex justify-content-around">
 					            	<label for="receiver" class="col-4">수령인 이름</label>
-					            	<input type="text" class="form-control-sm text-muted col-6 rounded-0 border-top-0 border-left-0 border-right-0" id="receiver" value="이름을 입력해 주세요"/>
+					            	<input type="text" class="form-control-sm text-muted col-6 rounded-0 border-top-0 border-left-0 border-right-0" id="receiver" value="${user.user_name}"/>
 					            	<div class="col-2"></div>
 					          	</div>
 								<div class="form-group d-flex justify-content-around">
 					            	<label for="tel" class="col-4">연락처</label>
-					            	<input type="text" class="form-control-sm text-muted col-6 rounded-0 border-top-0 border-left-0 border-right-0" id="tel" value="숫자만 입력 가능합니다('-' 제외)"/>
-					            	<div class="col-2"></div>
-					          	</div>
-								<div class="form-group d-flex justify-content-around">
-					            	<label for="receivePlace" class="col-4">배송지 명칭</label>
-					            	<input type="text" class="form-control-sm text-muted col-6 rounded-0 border-top-0 border-left-0 border-right-0" id="receivePlace" value="명칭을 입력해 주세요"/>
+					            	<input type="text" class="form-control-sm text-muted col-6 rounded-0 border-top-0 border-left-0 border-right-0" id="tel" value="${user.user_phone}"/>
 					            	<div class="col-2"></div>
 					          	</div>
 								<div class="form-group d-flex justify-content-around">
 					            	<label for="address" class="col-4">주소</label>
-					            	<input type="text" class="form-control-sm text-muted col-6 rounded-0 border-top-0 border-left-0 border-right-0" id="address" value="우편번호를 선택해 주세요"/>
+					            	<input type="text" class="form-control-sm text-muted col-6 rounded-0 border-top-0 border-left-0 border-right-0" id="address" value="${user.user_address}"/>
 					            	<div class="col-2"></div>
 					          	</div>
 							</div>
@@ -156,11 +180,11 @@
 						<h3 class="text-left">결제정보</h3><hr/>
 						<div class="row">
 							<h5 class="text-left col-7">상품 수</h5>
-							<h5 class="text-right col-5">1개</h5>
+							<h5 id="${countNum}" class="text-right col-5 count">${countNum}개</h5>
 						</div>
 						<div class="row">
 							<h5 class="text-left col-7">주문 금액</h5>
-							<h5 class="text-right col-5">+5,000,000원</h5>
+							<h5 class="text-right col-5">+${price}원</h5>
 						</div>
 						<div class="row">
 							<h5 class="text-left col-7">할인 금액</h5>
@@ -172,7 +196,7 @@
 						</div>
 						<div class="row">
 							<h5 class="text-left col-7">결제 예정 금액</h5>
-							<h5 class="text-right col-5 text-primary">3,850,000원</h5>
+							<h5 id="${price}" class="text-right col-5 text-primary price">3,850,000원</h5>
 						</div>
 						<div class="row">
 							<h5 class="text-left col-7">적립 예정 멤버쉽 포인트</h5>
@@ -203,8 +227,22 @@
 							   	<input type="checkbox" class="form-check-input align-self-center">
 							</div>
 						</div>
-						<button type="button" class="btn bg-primary" style="color: #ffffff; border-radius: 36px">결제하기</button>
+						<button onclick="createOrder()" type="button" class="btn bg-primary" style="color: #ffffff; border-radius: 36px">결제하기</button>
 					</div>
+				</div>
+			</div>
+		</div>
+		
+		<!-- 팝업 창 -->
+		<div class="modal-bg" onClick="popClose()"></div>
+		<div class="modal-wrap container-fluid" style="border-radius: 20px;">
+			<div style="height: 150px;" class="pt-5 text-center">
+				<h6 id="orderResult">주문에 성공했습니다</h6>
+			</div>
+	
+			<div class="row my-1 ">
+				<div class="col-6 d-flex justify-content-center my-1">
+					<button class="btn btn-sm btn-dark round" onClick="popClose()">확인</button>
 				</div>
 			</div>
 		</div>

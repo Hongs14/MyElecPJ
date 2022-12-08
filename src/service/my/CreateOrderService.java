@@ -25,7 +25,7 @@ public class CreateOrderService {
 		
 		try {
 			conn = ds.getConnection();
-			orderDAO.insertOrder(order, orderDetail, conn);
+			result = orderDAO.insertOrder(order, orderDetail, conn);
 		}
 		catch (Exception e) {
 			result = -1;

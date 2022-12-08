@@ -18,13 +18,12 @@ public class DeleteOrderService {
 		ds = (DataSource) application.getAttribute("dataSource");
 	}
 	
-	public int deleteOrder(OrderDTO order) {
-		int result = 0;
+	public void deleteOrder(OrderDTO order) {
 		Connection conn = null;
 		
 		try {
 			conn = ds.getConnection();
-			result = orderDAO.deleteOrder(conn);
+			orderDAO.deleteOrder(order,conn);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -33,7 +32,6 @@ public class DeleteOrderService {
 			try {conn.close();} catch (Exception e) {}
 		}
 		
-		return result;
 	}
 	
 }

@@ -18,13 +18,12 @@ public class UpdateOrderService {
 		ds = (DataSource) application.getAttribute("dataSource");
 	}
 	
-	public int updateOrder(OrderDTO order) {
-		int result = 0;
+	public void updateOrder(OrderDTO order) {
 		Connection conn = null;
 		
 		try {
 			conn = ds.getConnection();
-			result = orderDAO.updateOrder(conn);
+			orderDAO.updateOrder(order, conn);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -33,7 +32,6 @@ public class UpdateOrderService {
 			try {conn.close();} catch (Exception e) {}
 		}
 		
-		return result;
 	}
 	
 }

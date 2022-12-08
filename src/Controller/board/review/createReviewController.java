@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dto.review.ReviewBoardDTO;
-import service.CreateReviewService;
+import service.deprecated.CreateReviewService;
 
 @WebServlet(name = "Controller.createReviewController", urlPatterns = "/createReview")
 public class createReviewController extends HttpServlet{

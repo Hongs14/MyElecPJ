@@ -247,10 +247,8 @@ public class ReviewBoardDAO {
 		return reviewContentDTO;
 	}
 	
-	public List<ReviewBoardProductDTO> selectSearchReview(int pageNo, String search, Connection conn) {
-		System.out.println("리뷰 서치 DAO: "+pageNo +"/ "+ search);
-		try {
-		
+	public List<ReviewBoardProductDTO> selectSearchReview(int pageNo, String search, Connection conn) throws SQLException {
+		List<ReviewBoardProductDTO> result = null;
 			// sql문 작성
 			String sql = ""
 					+" SELECT RNUM, review_board_id, users_id,product_name, review_board_title,review_board_date,review_board_reviewpoint "
@@ -285,32 +283,17 @@ public class ReviewBoardDAO {
 	            reviewBoardDTO.setReview_board_reviewpoint(rs.getInt("review_board_reviewpoint"));
 
 	            // DB의 한 행 데이터를 담은 DTO를 리스트에 더해준다
-	            reviewBoardProductDTOs.add(reviewBoardDTO);
-	            System.out.println("[리뷰 DAO]DTO에 담긴것 : "+ rs.getString("product_name"));
+	            result.add(reviewBoardDTO);
 			}
 			rs.close();
 			pstmt.close();
 
-		} catch (Exception e) {
-			e.getMessage();
-		}finally {
-			try {
-				//Connection 반납
-				conn.close();
-				System.out.println("반납 성공");
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-		return reviewBoardProductDTOs;
+		return result;
 	}
 
 	//MYLIST
-	public List<ReviewBoardProductDTO> selectMyList(int pageNo, String users_id, Connection conn) {
-		System.out.println("MyReview DAO: "+ users_id);
-		System.out.println("MyReview DAO: "+ pageNo);
-		try {
-		
+	public List<ReviewBoardProductDTO> selectMyList(int pageNo, String users_id, Connection conn) throws SQLException {
+		List<ReviewBoardProductDTO> result = null;
 		// sql문 작성
 		String sql = ""
 						+"SELECT RNUM, review_board_id, product_id, review_board_title, users_id,review_board_date, review_board_reviewpoint, product_name "
@@ -352,23 +335,12 @@ public class ReviewBoardDAO {
 	
 
 			// DB의 한 행 데이터를 담은 DTO를 리스트에 더해준다
-			reviewBoardProductDTOs.add(reviewBoardDTO);
+			result.add(reviewBoardDTO);
 		}
 		rs.close();
 		pstmt.close();
 
-	} catch (Exception e) {
-		e.getMessage();
-	}finally {
-		try {
-			//Connection 반납
-			conn.close();
-			System.out.println("반납 성공");
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-	}
-	return reviewBoardProductDTOs;
+	return result;
 	}
 
 	public int getMyListRows(String users_id, Connection conn) {

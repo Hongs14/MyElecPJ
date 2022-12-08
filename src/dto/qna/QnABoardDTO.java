@@ -10,12 +10,14 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class QnABoardDTO {
-	private int rownum;
 	private int qna_board_id;
 	private String qna_board_title;
 	private String qna_board_content;
 	private String users_id;
 	private int product_id;
+	private String product_name;
 	private Date qna_board_date;
 	private String qna_board_answer;
+	private String qna_category_name;
+	private int qna_category_id;
 }
