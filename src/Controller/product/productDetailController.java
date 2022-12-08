@@ -22,7 +22,7 @@ public class productDetailController extends HttpServlet{
 	
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ProductDTO productDTO = new ProductDTO();
+		
 		ServletContext application = request.getServletContext();
 		ProductDetailService productdetailService = (ProductDetailService)application.getAttribute("productDetailService");
 		
