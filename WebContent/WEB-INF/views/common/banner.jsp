@@ -1,8 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%-- 
 <%@ include file="/WEB-INF/views/common/banner.jsp" %>
 --%>
+
 
 <div class="jumbotron text-center jumbotron-fluid bg-lightgrey">
 	<div class="container bg-dark rounded-lg text-white mx-auto my-0">
@@ -31,8 +32,22 @@
 				<button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
 			</form>
 			<div class="d-flex justify-content-end">
-				<button type="button" class="btn btn-dark my-2 my-sm-0" onclick="window.location.href='login'">Login</button>
-				<button type="button" class="btn btn-dark my-2 my-sm-0" onclick="window.location.href='join'">Join</button>
+			
+				<c:if test="${user_id == null}">
+					<button type="button" class="btn btn-dark my-2 my-sm-0" onclick="window.location.href='login'">Login</button>
+				</c:if>
+				<c:if test="${user_id != null}">
+					<button type="button" class="btn btn-dark my-2 my-sm-0" onclick="window.location.href='logout'">Logout</button>
+				</c:if>
+				
+				<c:if test="${user_id != null}">
+					<button type="submit" class="btn btn-danger my-2 my-sm-0" onclick="window.location.href='userInfo'">${user_id}</button>
+				</c:if>
+				<c:if test="${user_id == null}">
+					<button type="button" class="btn btn-dark my-2 my-sm-0" onclick="window.location.href='join'">Join</button>
+				</c:if>
+				
+				
 			</div>
 		</div>
 	</nav>

@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <!DOCTYPE html>
 <html>
@@ -126,14 +128,14 @@ hr {
 			<div id="sidebar" class="col-sm-2 col-md-2 d-none d-xl-block">
 				<div class="d-flex flex-column rounded-lg" style="background-color: #F5F5F5;">
                     <div class="mx-3 mt-3">
-                        <h4>ID</h4>
+                        <h4> ${user_id} </h4>
                     </div>
                     <div class="d-flex mx-0">
                         <h6 class="col-2">
-                            <span class="align-self-start badge badge-primary">VIP</span>
+                            <span class="align-self-start badge badge-primary">${user_level}</span>
                         </h6>
                         <h6 class="col-2">
-                            <span class="align-self-start badge badge-info">100,000P</span>
+                            <span class="align-self-start badge badge-info">${user_point}P</span>
                         </h6>
                     </div>
                     <div class="mx-3 my-3">
@@ -151,8 +153,8 @@ hr {
 						<a class="text-left" data-toggle="collapse" href=".collapseOne" style="font-size: large;">회원정보 관리</a>
 						<hr />
 						<div class="d-flex flex-column">
-							<div class="collapse collapseOne text-left">개인정보 확인</div>
-							<div class="collapse collapseOne text-left">개인정보 수정</div>
+							<div class="collapse collapseOne text-left" onclick="window.location.href='userInfo'" style="cursor:pointer">개인정보 확인</div>
+							<div class="collapse collapseOne text-left" onclick="window.location.href='updateUserinfo'" style="cursor:pointer">개인정보 수정</div>
 						</div>
 					</div>
 
@@ -208,23 +210,23 @@ hr {
 										</div>
 
 										<div class="p-2" style="margin-left: 7.5rem;">
-											<div class="userId">기존 아이디 출력</div>
+											<div class="userId">${user_id}</div>
 										</div>
 									</div>
 
-									<div class="d-flex form-group">
+									<%-- <div class="d-flex form-group">
 										<div class="p-1">
 											<div class="password">패스워드</div>
 										</div>
 
 										<div class="p-2" style="margin-left: 7.5rem;">
-											<div class="userId">기존 패스워드 출력</div>
+											<div class="userId">${user_password}</div>
 										</div>
-									</div>
+									</div> --%>
 								</form>
 
 								<hr />
-
+							
 								<form id="personal">
 									<div class="d-flex form-group">
 										<div class="p-1">
@@ -232,7 +234,7 @@ hr {
 										</div>
 
 										<div class="p-2" style="margin-left: 7.5rem;">
-											<div class="userId">기존 이름 출력</div>
+											<div class="userId">${result.user_name}</div>
 										</div>
 									</div>
 
@@ -242,7 +244,7 @@ hr {
 										</div>
 
 										<div class="p-2" style="margin-left: 7.5rem;">
-											<div class="userId">기존 E-mail 출력</div>
+											<div class="userId">${result.user_email}</div>
 										</div>
 									</div>
 									<div class="d-flex form-group">
@@ -251,7 +253,7 @@ hr {
 										</div>
 
 										<div class="p-2" style="margin-left: 7.5rem;">
-											<div class="phone">기존 전화번호 출력</div>
+											<div class="phone">${result.user_phone}</div>
 										</div>
 									</div>
 
@@ -261,7 +263,7 @@ hr {
 										</div>
 
 										<div class="p-2" style="margin-left: 7.5rem;">
-											<div class="birth">기존 생년월일 출력</div>
+											<div class="birth">${result.user_birthday}</div>
 										</div>
 									</div>
 									<div class="d-flex form-group">
@@ -270,13 +272,13 @@ hr {
 										</div>
 
 										<div class="p-2" style="margin-left: 7.5rem;">
-											<div class="address">기존 주소 출력</div>
+											<div class="address">${result.user_address}</div>
 										</div>
 									</div>
 								</form>
 								<hr />
 
-								<button class="btn btn-primary btn-md" onclick="location.href = '회원정보수정.html'">회원정보 수정하기</button>
+								<button class="btn btn-primary btn-md" onclick="window.location.href='updateUserinfo'">회원정보 수정하기</button>
 							</div>
 						</div>
 					</div>

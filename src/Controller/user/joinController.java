@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dto.user.UserDTO;
 import service.JoinService;
@@ -31,14 +32,28 @@ public class joinController extends HttpServlet {
 		userDTO.setUser_email(request.getParameter("email"));
 		userDTO.setUser_phone(request.getParameter("phone"));
 		userDTO.setUser_birthday(request.getParameter("birth"));
-		userDTO.setUser_address(request.getParameter("address"));
-		//userDTO.setUser_wishProduct(request.getParameter("likeProduct"));
+		userDTO.setUser_address(request.getParameter("postcode") + request.getParameter("addr1")+request.getParameter("addr3"));
 			
+		
+		
 		//서비스로 회원가입 요청
 		ServletContext application = request.getServletContext();
 		JoinService joinService = (JoinService) application.getAttribute("joinService"); 
-		joinService.join(userDTO);
 		
-		response.sendRedirect("joinController");
+		boolean result = false;
+		result = joinService.join(userDTO);
+		
+		if(result == true) {
+			HttpSession session = request.getSession();
+			session.setAttribute("user_id",userDTO.getUser_id());
+			session.setAttribute("user_level", "vip");
+			session.setAttribute("user_point", 0);
+			
+			response.sendRedirect("productList");
+		} else {
+			response.sendRedirect("joinController");
+		}
+		
+		
 	}
 }

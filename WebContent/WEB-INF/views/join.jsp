@@ -53,9 +53,7 @@
 			var result = true; //true로 설정 안하면 action이 실행되지 않음=값이 제출되지 않음
 	
 			//ID 유효성 검사 
-			//방법1 querySelector로 찾기
-			//var uid = document.querySelector("#uid");
-			//방법2 name으로 찾기
+			
 			var uid = document.joinForm.uid;
 			var uidValue = uid.value;
 			var uidPattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,10}$/;
@@ -110,7 +108,6 @@
 			function findAddress() {
 				new daum.Postcode({
 					oncomplete : function(data) {
-						console.log(data);
 						var addr1 = data.roadAddress; // 도로명 주소
 						var addr3 = ''; // 상세 주소
 		
@@ -156,11 +153,11 @@
 						<div class="card-body col-sm-12">
 							<div class="card border-dark">
 								<div class="card-header bg-dark py-2">
-									<h3 class="text-white text-center">회원가입</h3>
+									<h3 class="text-white text-center">Join</h3>
 								</div>
 	
 								<div class="card-body">
-									<form id="joinForm" name="joinForm" action="#" onsubmit="return handleCheckData()" novalidate>
+									<form id="joinForm" method = "post" name="joinForm" action="join"  novalidate>
 										<div class="form-group">
 											<label for="uname">Name</label> 
 											<input type="text" class="form-control" id="uname" name="uname" placeholder="홍길동"/>
@@ -194,17 +191,17 @@
 											<label for="birth">Birth</label> 
 											<input type="date" class="form-control" id="birth" name="birth" />
 										</div>
-	
+										
 										<div class="form-group">
 											<label for="address">Address</label><br /> 
-											<input type="text" id="postcode" placeholder="우편번호">
-											<button type="button" class="btn_address" id="btn_address" onclick="findAddress()">우편번호</button><br /> 
-											<input type="text" id="addr1" placeholder="도로명 주소" readonly> 
-											<input type="text" id="addr3" placeholder="상세 주소">
+											<input type="text" id="postcode" name = "postcode" placeholder="우편번호">
+											<button type="button" class="btn_address" id="address"  name="address" onclick="findAddress()">우편번호</button><br /> 
+											<input type="text" id="addr1" name="addr1" placeholder="도로명 주소" readonly> 
+											<input type="text" id="addr3" name="addr3" placeholder="상세 주소">
 										</div>
 	
 										<div class="text-center">
-											<input type="submit" class="btn btn-primary btn-sm " style="border-radius:20px" value="Join" onclick="window.location.href='home'"/> 
+											<input type="submit" class="btn btn-primary btn-sm " style="border-radius:20px" value="Join" type ="submit"/> 
 											<input type="reset" class="btn btn-primary btn-sm" style="border-radius:20px" value="Reset" />
 										</div>
 									</form>

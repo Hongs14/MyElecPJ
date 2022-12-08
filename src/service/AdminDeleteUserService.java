@@ -2,33 +2,36 @@ package service;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.List;
 
 import javax.servlet.ServletContext;
 import javax.sql.DataSource;
 
 import dao.UserDAO;
-import dto.user.UserDTO;
 
-public class LoginService {
 
+public class AdminDeleteUserService {
 	private ServletContext application;
 	private DataSource ds;
 	private UserDAO userDAO;
 	
 	
-	public LoginService(ServletContext application) {
+	public AdminDeleteUserService(ServletContext application) {
 		this.application = application;
 		userDAO = (UserDAO)application.getAttribute("userDAO");
 		ds = (DataSource)application.getAttribute("dataSource");
 	}
 	
-	public UserDTO join(UserDTO userDTO) {
-		UserDTO result = null;
+	public int UserDelete(List<String> list) {
 		Connection conn = null;
+		int result = 0;
+		
 		try {
 			conn = ds.getConnection();
-			result = userDAO.selectUser(userDTO, conn);
-		} catch (Exception e) {
+			for(int i = 0 ; i<list.size(); i++) {
+				userDAO.deleteUser(list.get(i), conn);
+			}
+		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			try {
@@ -39,4 +42,6 @@ public class LoginService {
 		}
 		return result;
 	}
+	
+	
 }

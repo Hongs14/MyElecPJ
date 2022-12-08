@@ -4,6 +4,7 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.sql.DataSource;
+
 import dao.CartDAO;
 import dao.CategoryDAO;
 import dao.OrderDAO;
@@ -12,6 +13,8 @@ import dao.QnABoardDAO;
 import dao.ReviewBoardDAO;
 import dao.SubCategoryDAO;
 import dao.UserDAO;
+import service.AdminDeleteUserService;
+import service.AdminUserService;
 import service.BoardListService;
 import service.CartService;
 import service.CreateQnAService;
@@ -24,6 +27,7 @@ import service.ProductListService;
 import service.ReadReviewService;
 import service.ReviewboardListService;
 import service.UpdateUserService;
+import service.UserInfoService;
 
 public class WebAppContext implements ServletContextListener{
 	@Override
@@ -53,6 +57,8 @@ public class WebAppContext implements ServletContextListener{
 		//ServletContext 객체에 데이터 저장
 //		application.setAttribute("adminService", new AdminService(application));
 //		application.setAttribute("adminListService", new AdminListService(application));
+		application.setAttribute("adminUserService", new AdminUserService(application));
+		application.setAttribute("adminDeleteUserService", new AdminDeleteUserService(application));
 		application.setAttribute("QnAboardListService", new BoardListService(application));
 //		System.out.println("2");
 		application.setAttribute("createQnAService", new CreateQnAService(application));
@@ -79,7 +85,7 @@ public class WebAppContext implements ServletContextListener{
 //		System.out.println("12");
 		application.setAttribute("updateUserService", new UpdateUserService(application));
 //		System.out.println("13");
-//		application.setAttribute("userInfoService", new UserInfoService(application));
+		application.setAttribute("userInfoService", new UserInfoService(application));
 //		application.setAttribute("homeService", new HomeService(application));
 
 	}
