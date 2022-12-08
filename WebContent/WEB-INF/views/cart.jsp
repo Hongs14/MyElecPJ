@@ -54,6 +54,68 @@
 		}); */
 
 	}
+	
+	function deleteCart(Item) {
+		let id = Item.getAttribute("id").replace(/\D/g, '');
+		let name = 'productId';
+		name += id;
+		let value = document.getElementById(name).getAttribute("class");
+		
+		$.ajax({
+			url : "UpdateCart",
+			type : "post",
+			data : {
+				productId : value,
+				task : "deleteCart"
+			},
+			success : function(result) {
+				if (result === "success") {
+					deleteItem(Item);
+				}
+			}
+		});
+	}
+	
+	function updateCart(type, e) {
+		var min = 1;
+		var max = 10;
+		var id = e.getAttribute("id").replace(/\D/g, '');
+		
+		var name = 'productId';
+		name += id;
+		var idValue = document.getElementById(name).getAttribute("class");
+
+		var name = 'num';
+		name += id;
+		var countValue = document.getElementById(name);
+		
+		let isChanged = false;
+		if (type === 'm' && countValue.getAttribute('value') > min) {
+			countValue = parseInt(countValue.getAttribute('value')) - 1;
+			isChanged = true;
+		}
+		if (type === 'p' && countValue.getAttribute('value') < max) {
+			countValue = parseInt(countValue.getAttribute('value')) + 1;
+			isChanged = true;
+		}
+		
+		if (isChanged === true) {
+			$.ajax({
+				url : "UpdateCart",
+				type : "post",
+				data : {
+					productId : idValue,
+					cartItemCount : countValue,
+					task : "updateCart"
+				},
+				success : function(result) {
+					if (result === "success") {
+						count(type, e);
+					}
+				}
+			});
+		}
+	}
 
 	//체크박스 선택 및 해제
 	function selectAll() {
@@ -89,7 +151,7 @@
 		for (var i = 0; i < checkboxes.length; i++) {
 			if (checkboxes[i].checked) {
 				//휴지통 삭제 function으로 
-				deleteItem(checkboxes[i]);
+				deleteCart(checkboxes[i]);
 			}
 		}
 	}
@@ -210,8 +272,10 @@ a {
 				</div>
 				<c:set var="sum" value="0" />
 				<c:forEach var="cart" items="${cartList}" varStatus="i">
+					
 					<div id="cartItem${i.count}"
 						class="card container-fluid grey my-2 py-1">
+						<div id="productId${i.count}" class="${cart.product_id}"></div>
 						<div class="card container-fluid grey">
 							<div class="row">
 								<div class="col-sm-9">
@@ -220,7 +284,7 @@ a {
 								<div class="col-sm-3 d-flex justify-content-end">
 									<button type="button" id="${i.count}"
 										class="btn btn-outline-dark btn-sm" style="font-size: 17px;"
-										onclick="deleteItem(this)">
+										onclick="deleteCart(this)">
 										<i class='far fa-trash-alt'></i>
 									</button>
 								</div>
@@ -271,7 +335,7 @@ a {
 									<div class="btn-group btn-group-sm pl-5 ml-5"
 										style="width: 50%">
 										<button type="button" class="btn btn-outline-dark btn-sm"
-											id="minus${i.count}" onclick="count('m',this)">-</button>
+											id="minus${i.count}" onclick="updateCart('m', this)">-</button>
 
 										<input type="button"
 											class="btn btn-outline-dark btn-sm disabled"
@@ -280,7 +344,7 @@ a {
 										<c:set var="totalCount" value="${totalCount.i.count}" />
 
 										<button type="button" class="btn btn-outline-dark btn-sm"
-											id="plus${i.count}" onclick="count('p',this)">+</button>
+											id="plus${i.count}" onclick="updateCart('p', this)">+</button>
 									</div>
 								</div>
 							</div>

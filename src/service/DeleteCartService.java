@@ -21,11 +21,12 @@ public class DeleteCartService {
 		ds = (DataSource) application.getAttribute("dataSource");
 	}
 
-	public void deleteCart(String userId) {
+	public String deleteCart(CartDTO cart) {
+		String result = null;
 		Connection conn = null;
 		try {
 			conn = ds.getConnection();
-			cartDAO.selectAllList(userId, conn);
+			result = cartDAO.delCartItem(cart, conn);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -34,5 +35,6 @@ public class DeleteCartService {
 			} catch (SQLException e) {
 			}
 		}
+		return result;
 	}
 }

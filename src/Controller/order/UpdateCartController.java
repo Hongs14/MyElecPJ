@@ -1,6 +1,7 @@
 package Controller.order;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -32,28 +33,30 @@ public class UpdateCartController extends HttpServlet {
 		// Cart 상품 수량 업데이트 & 상품 삭제
 		CartDTO cartDTO = new CartDTO();
 		cartDTO.setCart_detail_item_count(Integer.parseInt(request.getParameter("cartItemCount")));
-		//System.out.println(Integer.parseInt(request.getParameter("cartItemCount")));
 		cartDTO.setProduct_id(Integer.parseInt(request.getParameter("productId")));
-		//System.out.println(Integer.parseInt(request.getParameter("productId")));
 		cartDTO.setUser_id(userId);
 
 		String task = request.getParameter("task");
+		PrintWriter pw = new PrintWriter(response.getOutputStream());
+		System.out.println(task);
+		String result = null;
 		switch (task) {
 			case "updateCart": {
 				// UpdateCartService로 CartDTO 보내고 받기
-				String result = updateCartService.controlCartqty(cartDTO);
-	
-				// 다 지우기~~~~
-				if (result.equals("success")) {
-					response.sendRedirect("ReadCart");
-				} else {
-					// 에러 처리 페이지
-					response.sendRedirect("ReadCart");
-				}
+				System.out.println("update");
+				result = updateCartService.updateCartqty(cartDTO);
+				break;
 			}
 			case "deleteCart": {
-				int result = updateCartService.deleteCartItem(cartDTO);
+				System.out.println("delete");
+				result = updateCartService.deleteCartItem(cartDTO);
+				break;
 			}
+			default: break;
 		}
+		System.out.println(result);
+		pw.write(result);
+		pw.flush();
+		pw.close();
 	}
 }

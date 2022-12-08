@@ -69,7 +69,6 @@ public class CartDAO {
 
 			// 수동 커밋
 			conn.commit();
-			System.out.println("장바구니 담기 성공");
 
 		return result;
 	}
@@ -123,8 +122,8 @@ public class CartDAO {
 	}
 
 	// 장바구니 아이템 삭제
-	public int delCartItem(CartDTO cartDTO, Connection conn) throws Exception {	
-		int result = 0;
+	public String delCartItem(CartDTO cartDTO, Connection conn) throws Exception {	
+		String result = null;
 
 			// 자동 커밋 기능 끄기
 			conn.setAutoCommit(false);
@@ -134,14 +133,36 @@ public class CartDAO {
 			pstmt.setInt(1, cartDTO.getProduct_id());
 			pstmt.setString(2, cartDTO.getUser_id());
 			
-			result = pstmt.executeUpdate();
+			int queryResult = pstmt.executeUpdate();
 			pstmt.close();
 			
 			// 수동 커밋
 			conn.commit();
-			System.out.println("상품 삭제 완료");
-
+		if (queryResult == 1) {
+			result = "success";
+		}
+		else {
+			result = "fail";
+		}
 		
+		return result;
+	}
+	
+	public String updateCartItem(CartDTO cartDTO, Connection conn) throws SQLException {
+		String result = null;
+		String sql = "UPDATE cart_detail SET cart_detail_item_count = ? WHERE users_id = ? and product_id = ? ";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setInt(1, cartDTO.getCart_detail_item_count());
+		pstmt.setString(2, cartDTO.getUser_id());
+		pstmt.setInt(3, cartDTO.getProduct_id());
+		int queryResult = pstmt.executeUpdate();
+		pstmt.close();
+		if (queryResult == 1) {
+			result = "success";
+		}
+		else {
+			result = "fail";
+		}
 		return result;
 	}
 

@@ -55,8 +55,8 @@ public class UpdateCartService {
 		return result;
 	}
 
-	public int deleteCartItem(CartDTO cartDTO) {
-		int result = 0;
+	public String deleteCartItem(CartDTO cartDTO) {
+		String result = null;
 		Connection conn = null;
 		try {
 			conn = ds.getConnection();

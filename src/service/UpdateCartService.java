@@ -21,19 +21,16 @@ public class UpdateCartService {
 		ds = (DataSource) application.getAttribute("dataSource");
 	}
 
-	public String controlCartqty(CartDTO cartDTO) {
+	public String updateCartqty(CartDTO cartDTO) {
 		String result = null;
 		Connection conn = null;
 		try {
 			conn = ds.getConnection();
-			result = cartDAO.insertCart(cartDTO, conn);
+			result = cartDAO.updateCartItem(cartDTO, conn);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			try {
-				conn.close();
-			} catch (SQLException e) {
-			}
+			try {conn.close();} catch (SQLException e) {}
 		}
 		return result;
 	}
@@ -47,16 +44,13 @@ public class UpdateCartService {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			try {
-				conn.close();
-			} catch (SQLException e) {
-			}
+			try {conn.close();} catch (SQLException e) {}
 		}
 		return result;
 	}
 
-	public int deleteCartItem(CartDTO cartDTO) {
-		int result = 0;
+	public String deleteCartItem(CartDTO cartDTO) {
+		String result = null;
 		Connection conn = null;
 		try {
 			conn = ds.getConnection();
@@ -64,10 +58,7 @@ public class UpdateCartService {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			try {
-				conn.close();
-			} catch (SQLException e) {
-			}
+			try {conn.close();} catch (SQLException e) {}
 		}
 		return result;
 	}
