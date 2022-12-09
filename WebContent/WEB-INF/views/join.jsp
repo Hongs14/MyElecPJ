@@ -157,7 +157,7 @@
 								</div>
 	
 								<div class="card-body">
-									<form id="joinForm" method = "post" name="joinForm" action="join"  novalidate>
+									<form id="joinForm" method = "post"  novalidate>
 										<div class="form-group">
 											<label for="uname">Name</label> 
 											<input type="text" class="form-control" id="uname" name="uname" placeholder="홍길동"/>

@@ -69,8 +69,6 @@
 			num.setAttribute('value', parseInt(num.getAttribute('value')) + 1);
 		}
 		//최종 금액 구하기
-		parseInt(num.getAttribute('value')) * ${Product.product_price};
-		
 		let result = parseInt(num.getAttribute('value')) * ${Product.product_price};
 		document.getElementById('total_sum').innerText = result.toLocaleString('en-US');
 	}
@@ -283,8 +281,7 @@ li:first-child {
 											</div>
 											<div class="ml-3">
 												<span class="btn-group btn-group-sm pl-5 ml-5" style="width: 50%">
-													<button type="button" class="btn btn-outline-dark btn-sm" onclick="counting('m')">-</button> 
-													<input type="button" class="form-control btn btn-outline-dark btn-sm disabled" id="countNum" name="countNum" value="0" />
+													<button type="button" class="btn btn-outline-dark btn-sm" onclick="counting('m')">-</button> <input type="button" class="form-control btn btn-outline-dark btn-sm disabled" id="countNum" name="countNum" value="0" />
 													<button type="button" class="btn btn-outline-dark btn-sm" onclick="counting('p')">+</button>
 												</span>
 											</div>
