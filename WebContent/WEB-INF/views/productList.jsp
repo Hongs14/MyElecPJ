@@ -109,14 +109,14 @@ hr {
 			<div id="sidebar" class="col-sm-2 col-md-2 d-none d-xl-block">
 				<div class="d-flex flex-column rounded-lg" style="background-color: #F5F5F5;">
                     <div class="mx-3 mt-3">
-                        <h4>ID</h4>
+                        <h4>${user_id}</h4>
                     </div>
                     <div class="d-flex mx-0">
                         <h6 class="col-2">
-                            <span class="align-self-start badge badge-primary">VIP</span>
+                            <span class="align-self-start badge badge-primary">${user_level}</span>
                         </h6>
                         <h6 class="col-2">
-                            <span class="align-self-start badge badge-info">100,000P</span>
+                            <span class="align-self-start badge badge-info">${user_point}P</span>
                         </h6>
                     </div>
                     <div class="mx-3 my-3">

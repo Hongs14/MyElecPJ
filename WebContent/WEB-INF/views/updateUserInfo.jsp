@@ -236,7 +236,7 @@ hr {
 			}) */
 
 		} else {
-			$("#idpass").submit();
+			alert("입력란을 확인하세요");
 		}
 
 	}
@@ -252,24 +252,24 @@ hr {
 			<!-- 사이드바 -->
 			<div id="sidebar" class="col-sm-2 col-md-2 d-none d-xl-block">
 				<div class="d-flex flex-column rounded-lg" style="background-color: #F5F5F5;">
-					<div class="mx-3 mt-3">
-						<h4>${user_id}</h4>
-					</div>
-					<div class="d-flex mx-0">
-						<h6 class="col-2">
-							<span class="align-self-start badge badge-primary">${user_level}</span>
-						</h6>
-						<h6 class="col-2">
-							<span class="align-self-start badge badge-info">${user_point}P</span>
-						</h6>
-					</div>
-					<div class="mx-3 my-3">
-						<h6>최근주문내역</h6>
-						<h6>장바구니</h6>
-						<h6>내가 쓴 리뷰</h6>
-						<h6>내 문의내역</h6>
-					</div>
-				</div>
+                    <div class="mx-3 mt-3">
+                        <h4> ${user_id} </h4>
+                    </div>
+                    <div class="d-flex mx-0">
+                        <h6 class="col-2">
+                            <span class="align-self-start badge badge-primary">${user_level}</span>
+                        </h6>
+                        <h6 class="col-2">
+                            <span class="align-self-start badge badge-info">${user_point}P</span>
+                        </h6>
+                    </div>
+                    <div class="mx-3 my-3">
+                        <h6>최근주문내역</h6>
+                        <h6>장바구니</h6>
+                        <h6>내가 쓴 리뷰</h6>
+                        <h6>내 문의내역</h6>
+                    </div>
+               	</div>
 
 				<h3 class="text-left my-3">My page</h3>
 
@@ -278,8 +278,8 @@ hr {
 						<a class="text-left" data-toggle="collapse" href=".collapseOne" style="font-size: large;">회원정보 관리</a>
 						<hr />
 						<div class="d-flex flex-column">
-							<div class="collapse collapseOne text-left" onclick="window.location.href='userInfo'" style="cursor: pointer">개인정보 확인</div>
-							<div class="collapse collapseOne text-left" onclick="window.location.href='updateUserinfo'" style="cursor: pointer">개인정보 수정</div>
+							<div class="collapse collapseOne text-left" onclick="window.location.href='UserInfo'" style="cursor:pointer">개인정보 확인</div>
+							<div class="collapse collapseOne text-left" onclick="window.location.href='UpdateUser'" style="cursor:pointer">개인정보 수정</div>
 						</div>
 					</div>
 
@@ -408,7 +408,7 @@ hr {
 								<hr />
 
 								<button class="btn btn-primary btn-md" name="updateInfo" onclick="submitInfo()">회원정보 수정하기</button>
-								<button class="btn btn-primary btn-md" onclick="location.href = 'my_page_userdata_info.html'">돌아가기</button>
+								<button class="btn btn-primary btn-md" onclick="location.href = 'UserInfo'">돌아가기</button>
 
 
 

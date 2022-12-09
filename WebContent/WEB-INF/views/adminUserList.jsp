@@ -151,7 +151,7 @@ label {
 					<a class="text-left" data-toggle="collapse" href=".collapseOne" style="font-size: x-large;">관리 목록</a>
 					<hr />
 					<div class="d-flex flex-column">
-						<div class="collapse collapseOne text-left" onclick="window.location.href='admin'" style="cursor:pointer">
+						<div class="collapse collapseOne text-left" onclick="window.location.href='Admin'" style="cursor:pointer">
 																	유저 목록</div>
 						<div class="collapse collapseOne text-left">상품 목록</div>
 						<div class="collapse collapseOne text-left">주문 목록</div>
@@ -274,26 +274,26 @@ label {
 				<div class="flex-fulfill"></div>
 				<div class="pagingButtonSet d-flex justify-content-center col-5">
 					<c:if test="${pager.pageNo > 1}">
-						<a href="admin?pageNo=1" type="button" class="btn btn-muted shadow">처음으로</a>
+						<a href="Admin?pageNo=1" type="button" class="btn btn-muted shadow">처음으로</a>
 					</c:if>
 					
 					<c:if test = "${pager.groupNo > 1}">
-						<a href="admin?pageNo=${pager.startPageNo-1}" type="button" class="btn btn-muted shadow">앞으로</a>
+						<a href="Admin?pageNo=${pager.startPageNo-1}" type="button" class="btn btn-muted shadow">앞으로</a>
 					</c:if>
 					
 					<c:forEach var="i" begin="${pager.startPageNo}" end ="${pager.endPageNo}">
 						<c:if test="${pager.pageNo != i}">
-							<a href="admin?pageNo=${i}" type="button" class="btn btn-dark shadow">${i}</a>
+							<a href="Admin?pageNo=${i}" type="button" class="btn btn-dark shadow">${i}</a>
 						</c:if>
 						<c:if test="${pager.pageNo == i}">
-							<a href="admin?pageNo=${i}" type="button" class="btn btn-white shadow">${i}</a>
+							<a href="Admin?pageNo=${i}" type="button" class="btn btn-white shadow">${i}</a>
 						</c:if>
 					</c:forEach>
 					
 					<c:if test = "${pager.groupNo < pager.totalGroupNo }">
-						<a href="admin?pageNo=${pager.endPageNo+1}" type="button" class="btn btn-muted shadow">뒤로</a>
+						<a href="Admin?pageNo=${pager.endPageNo+1}" type="button" class="btn btn-muted shadow">뒤로</a>
 					</c:if>
-					<a href="admin?pageNo=${pager.totalPageNo}"type="button" class="btn btn-muted shadow">마지막으로</a>
+					<a href="Admin?pageNo=${pager.totalPageNo}"type="button" class="btn btn-muted shadow">마지막으로</a>
 				</div>
 				<div class="flex-fulfill"></div>
 			</div>
