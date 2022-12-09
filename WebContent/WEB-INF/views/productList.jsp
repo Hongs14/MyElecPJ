@@ -222,7 +222,7 @@ hr {
 			<div id="product" class="col-10">
 				<div id="columns">
 				
-				<c:forEach var="product" items="${pageList}">
+				<c:forEach var="product" items="${pageList}" varStatus="i">
 					<figure id="topfigure" class="productmouse">
 						<figcaption>
 							<div class="row">
@@ -233,7 +233,7 @@ hr {
 							</div>
 						</figcaption>
 
-						<img src="${filePath}" />
+						<img src="${product.product_savedname}" />
 						<figcaption id="bottomfugure">
 							<h6 class="text-center">
 								<strong>${product.product_name}</strong>

@@ -53,19 +53,22 @@ public class ReadProductListController extends HttpServlet{
 		  
 		//jsp에서 사용할수 있도록 request 범위에 저장
 		request.setAttribute("pager", pager);
-		request.setAttribute("pageList", pageList);
 		request.setAttribute("category", category);
 		request.setAttribute("subcategory", subcategory);
 		
+		String filePath = null;
+		for (ProductDTO p : pageList) {
+			product = readProductListService.getImage(p.getProduct_id());
+			filePath =  "resources\\images\\download\\" + product.getProduct_savedname();
+			p.setProduct_savedname(filePath);
+		}
 		
-		product = readProductListService.getImage(pageList.get(0).getProduct_id());
-
+		request.setAttribute("pageList", pageList);
 		//String fileName = product.getProduct_filename();
-		String filePath = "resources\\images\\download\\" + product.getProduct_savedname();
 		//String contextType = product.getProduct_filename();
 		
 
-		request.setAttribute("filePath", filePath);
+		
 		
 		request.getRequestDispatcher("/WEB-INF/views/productList.jsp").forward(request, response);
 	}

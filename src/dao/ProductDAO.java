@@ -157,6 +157,7 @@ public ProductDTO getImage(int product_id, Connection conn) throws SQLException 
 			sql += "where product_id = ? ";
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, product_id);
+			System.out.println(product_id);
 			ResultSet rs = pstmt.executeQuery();
 			
 			ProductDTO result = new ProductDTO();
@@ -164,6 +165,7 @@ public ProductDTO getImage(int product_id, Connection conn) throws SQLException 
 			result.setProduct_filename(rs.getString("product_filename"));
 			result.setProduct_savedname(rs.getString("product_savedname"));
 			result.setProduct_contenttype(rs.getString("product_contenttype"));
+			
 			System.out.println(result.getProduct_filename());
 		}
 	rs.close();
