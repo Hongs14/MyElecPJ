@@ -32,6 +32,11 @@ public class ReadProductDetailController extends HttpServlet{
       ReadProductDetailService readProductDetailService = new ReadProductDetailService(application);
       ProductDTO productDTO = readProductDetailService.getProductDetail(product_id);
       
+      
+      //이미지 불러오기
+      String filePath = "resources\\images\\download\\" + productDTO.getProduct_savedname();
+      request.setAttribute("filePath", filePath);
+      
       request.setAttribute("Product", productDTO);
       
       request.getRequestDispatcher("/WEB-INF/views/productDetail.jsp").forward(request, response);

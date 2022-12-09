@@ -69,13 +69,10 @@
 			num.setAttribute('value', parseInt(num.getAttribute('value')) + 1);
 		}
 		//최종 금액 구하기
-		let result = parseInt(num.getAttribute('value')) * $
-		{
-			Product.product_price
-		}
-		;
-		document.getElementById('total_sum').innerText = result
-				.toLocaleString('en-US');
+		parseInt(num.getAttribute('value')) * ${Product.product_price};
+		
+		let result = parseInt(num.getAttribute('value')) * ${Product.product_price};
+		document.getElementById('total_sum').innerText = result.toLocaleString('en-US');
 	}
 
 	//별점 칠하기
