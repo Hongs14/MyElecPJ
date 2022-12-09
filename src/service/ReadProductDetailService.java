@@ -1,6 +1,7 @@
 package service;
 
 import java.sql.Connection;
+import java.sql.SQLException;
 
 import javax.servlet.ServletContext;
 import javax.sql.DataSource;
@@ -28,6 +29,7 @@ public class ReadProductDetailService {
          conn = ds.getConnection();
          result = productDAO.selectProductContent(product_id, conn);
          result1 = productDAO.averageStar(result, conn);
+  
       } catch (Exception e) {
          e.printStackTrace();
       } finally {
@@ -35,4 +37,25 @@ public class ReadProductDetailService {
       }
       return result1;
    }
+   
+   public ProductDTO getImage(int product_id) {
+		ProductDTO result = null;
+		Connection conn = null;
+		
+		try {
+			conn = ds.getConnection();
+			result = productDAO.getImage(product_id, conn);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+		
+		return result;
+	}
 }
