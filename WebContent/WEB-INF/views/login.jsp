@@ -184,11 +184,11 @@ hr {
 
 								<div id="userinfo">
 									<div class="text-left">
-										<a href="http://localhost:8080/Project2_shopping/html/find_password.html"> Find Password </a>
+										<a href="FindPassword"> Find Password </a>
 									</div>
 
 									<div class="text-left">
-										<a href="http://localhost:8080/Project2_shopping/html/joinform_ej.html"> 회원가입 </a>
+										<a href="Join"> 회원가입 </a>
 									</div>
 								</div>
 							</form>
