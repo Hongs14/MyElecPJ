@@ -157,7 +157,7 @@ hr {
 
 
 
-							<form id="loginForm" method="post" action="login" novalidate>
+							<form id="loginForm" method="post" action="Login" novalidate>
 								<div id="userId" class="form-group">
 									<input type="email" class="form-control form-control-user" id="user_id" name="user_id" onfocusout="checkID()" placeholder="Email@naver.com">
 								</div>
@@ -184,11 +184,11 @@ hr {
 
 								<div id="userinfo">
 									<div class="text-left">
-										<a href="http://localhost:8080/Project2_shopping/html/find_password.html"> Find Password </a>
+										<a href="FindPassword"> Find Password </a>
 									</div>
 
 									<div class="text-left">
-										<a href="http://localhost:8080/Project2_shopping/html/joinform_ej.html"> 회원가입 </a>
+										<a href="Join"> 회원가입 </a>
 									</div>
 								</div>
 							</form>

@@ -118,37 +118,37 @@ hr {
 		<div id="contents" class="wrapper">
 			<div class="row">
 			
-				<div id="sidebar" class="col-sm-2 col-md-2 d-none d-xl-block">
-			<div class="d-flex flex-column rounded-lg" style="background-color: #F5F5F5">
-				<div class="mx-3 mt-3">
-					<h3>관리자님</h3>
+			<div id="sidebar" class="col-sm-2 col-md-2 d-none d-xl-block">
+				<div class="d-flex flex-column rounded-lg" style="background-color: #F5F5F5">
+					<div class="mx-3 mt-3">
+						<h3>관리자님</h3>
+					</div>
+					<div class="d-flex mx-1">
+						<h5 class="col-2">
+							<span class="align-self-start badge badge-warning">ADMIN</span>
+						</h5>
+					</div>
+					<div class="d-flex justify-content-start mx-3 my-3">
+						<h5>공지사항</h5>
+					</div>
 				</div>
-				<div class="d-flex mx-1">
-					<h5 class="col-2">
-						<span class="align-self-start badge badge-warning">ADMIN</span>
-					</h5>
-				</div>
-				<div class="d-flex justify-content-start mx-3 my-3">
-					<h5>공지사항</h5>
-				</div>
-			</div>
-
-			<h3 class="text-left my-3">관리자 페이지</h3>
-
-			<div class="d-flex flex-column">
-				<div class="d-flex flex-column my-2">
-					<a class="text-left" data-toggle="collapse" href=".collapseOne" style="font-size: x-large;">관리 목록</a>
-					<hr />
-					<div class="d-flex flex-column">
-						<div class="collapse collapseOne text-left">유저 목록</div>
-						<div class="collapse collapseOne text-left">상품 목록</div>
-						<div class="collapse collapseOne text-left">주문 목록</div>
-						<div class="collapse collapseOne text-left">리뷰 게시판 목록</div>
-						<div class="collapse collapseOne text-left">QnA 게시판 목록</div>
+	
+				<h3 class="text-left my-3">관리자 페이지</h3>
+	
+				<div class="d-flex flex-column">
+					<div class="d-flex flex-column my-2">
+						<a class="text-left" data-toggle="collapse" href=".collapseOne" style="font-size: x-large;">관리 목록</a>
+						<hr />
+						<div class="d-flex flex-column">
+							<div class="collapse collapseOne text-left">유저 목록</div>
+							<div class="collapse collapseOne text-left">상품 목록</div>
+							<div class="collapse collapseOne text-left">주문 목록</div>
+							<div class="collapse collapseOne text-left">리뷰 게시판 목록</div>
+							<div class="collapse collapseOne text-left">QnA 게시판 목록</div>
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>
 			<div id="product" class="col-sm-9 col-md-9 container-fluid text-center">
 			<div class="container-fluid">
 				<div class="d-flex-column">

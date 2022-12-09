@@ -1,5 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -186,130 +185,123 @@ hr {
 						</div>
 					</div>
 				</div>
-				<div id="product" class="col-sm-9 col-md-9 container-fluid text-center">
+			<div id="product" class="col-sm-9 col-md-9 container-fluid text-center">
 
-					<div class="card container-fluid">
-						<div class="column">
-							<div id="card1">
-								<div class="card-header"></div>
-								<div class="card-body text-left">
-								<b>주문/배송 조회</b>
-								</div>
+			<form>
+				<div class="card container-fluid">
+					<div class="column">
+						<div id="card1">
+							<div class="card-header"></div>
+							<div class="card-body text-left">
+							<b>주문/배송 조회</b>
 							</div>
-							
-							<div id = "card2" class ="card">
-								<div class = "card-body" >
-									<div class = "row" >
-										<div  class = "card col-sm-3" style = "align-items: center;">
-											<table title="delivery" >
-												<tr><td >1</td></tr>
-												<tr><td>주문 접수</td></tr>
-											</table>
-										</div>
-										
-										
-										<div  class = "card col-sm-3" style = "align-items: center;">
-											<table title="delivery">
-												<tr><td>1</td></tr>
-												<tr><td>상품 준비</td></tr>
-											</table>
-										</div>
-										
-										
-										<div  class = "card col-sm-3" style = "align-items: center;">
-											<table title="delivery">
-												<tr><td>1</td></tr>
-												<tr><td>배송 중</td></tr>
-											</table>
-										</div>
-										
-										
-										<div  class = "card col-sm-3" style = "align-items: center;">
-											<table title="delivery">
-												<tr><td>1</td></tr>
-												<tr><td>배송 완료</td></tr>
-											</table>
-										</div>
-										
-										
+						</div>
+						
+						<div id = "card2" class ="card">
+							<div class = "card-body" >
+								<div class = "row" >
+									<div  class = "card col-sm-3" style = "align-items: center;">
+										<table title="delivery" >
+											<tr><td >1</td></tr>
+											<tr><td>주문 접수</td></tr>
+										</table>
 									</div>
-								</div>
-							</div>
-							
-							<div id="card3">
-								<div class="card-header"></div>
-								<div class="card-body text-left">
-								<b>주문 내역</b>
-									<table id = "orderlist"class="table table-striped" style = "text-align : center;">
-										<thead>
-											<tr>
-												<th>주문자</th>
-												<th>주문 상품</th>
-												<th>가격</th>
-												<th>배송상태</th>
-											</tr>
-										</thead>
-										<tbody >
-										<c:forEach var="order" items="${pageList}">
-											<tr >
-												<th>${order.users_id}</th>
-												<th>${order.product_name}</th>
-												<th>${order.orders_price}</th>
-												<th>${order.orders_status}</th>
-											</tr>
-										</c:forEach>
-										</tbody>
-									</table>
-	
-								</div>
-								<div class ="d-flex">
-					               <div id = "pagination " class = "container" >
-					                  <div class = "pagination justify-content-center" >
-					                  
-					                     <a href="ReadOrderList?pageNo=1" class="btn btn-muted btn-sm">처음</a>
-					                     
-					                     <c:if test="${pager.groupNo > 1 }">
-						                 	<a href="ReadOrderList?pageNo=${pager.startPageNo - 1}" class="btn btn-muted btn-sm">이전</a>
-					                     </c:if>
-					                     
-					                     <c:forEach var="i" begin="${pager.startPageNo}" end="${pager.endPageNo}">
-					                     	<c:if test="${pager.pageNo != i}">
-						                     	<a href="ReadOrderList?pageNo=${i}" class="btn btn-dark btn-sm">${i}</a>
-					                     	</c:if>
-					                     	<c:if test="${pager.pageNo == i}">
-						                     	<a href="ReadOrderList?pageNo=${i}" class="btn btn-warning btn-sm">${i}</a>
-					                     	</c:if>
-					                     </c:forEach>
-					                     
-					                     <c:if test="${pager.groupNo < pager.totalGroupNo}">
-						                 	<a href="ReadOrderList?pageNo=${pager.endPageNo + 1}" class="btn btn-muted btn-sm">다음</a>
-					                     </c:if>
-					                     
-					                     <a href="ReadOrderList?pageNo=${pager.totalPageNo}" class="btn btn-muted btn-sm">맨끝</a>
-					                  </div>
-					               
-					               </div>
-					            </div>
-							</div>
-							
-							<div id="card4">
-								<div class="card-header"></div>
-								<div class="card-body text-left">
-								<b>쇼핑몰 주문 공통</b>
-								<hr/>
-									<ul>
-										<li class="list-group-item">- 주문하신 상품마다 배송 및 도착 날짜가 서로 다를 수 있습니다.</li>
-										<li class="list-group-item">- 일요일 및 공휴일에는 배송이 되지 않습니다.</li>
-										<li class="list-group-item">- 주문 취소/반품은 '주문 취소’, ‘반품 신청’ 버튼을 클릭하여 직접 신청하거나, 고객센터를 통해 취소/반품 해주시기 바랍니다.</li>
-										<li class="list-group-item">- 주문 취소/반품은 처리가 가능한 단계에서만 버튼이 표시됩니다.</li>
-																	
-									</ul>
+									
+									
+									<div  class = "card col-sm-3" style = "align-items: center;">
+										<table title="delivery">
+											<tr><td>1</td></tr>
+											<tr><td>상품 준비</td></tr>
+										</table>
+									</div>
+									
+									
+									<div  class = "card col-sm-3" style = "align-items: center;">
+										<table title="delivery">
+											<tr><td>1</td></tr>
+											<tr><td>배송 중</td></tr>
+										</table>
+									</div>
+									
+									
+									<div  class = "card col-sm-3" style = "align-items: center;">
+										<table title="delivery">
+											<tr><td>1</td></tr>
+											<tr><td>배송 완료</td></tr>
+										</table>
+									</div>
+									
+									
 								</div>
 							</div>
 						</div>
+						
+						<div id="card3">
+							<div class="card-header"></div>
+							<div class="card-body text-left">
+							<b>주문 내역</b>
+								<table id = "orderlist"class="table table-striped" style = "text-align : center;">
+									<thead>
+										<tr>
+											<th>주문자</th>
+											<th>주문 상품</th>
+											<th>가격</th>
+											<th>배송상태</th>
+										</tr>
+									</thead>
+									<tbody >
+										<tr >
+											<th>1</th>
+											<th>2</th>
+											<th>3</th>
+											<th>4</th>
+										</tr>
+										<tr>
+											<th>1</th>
+											<th>2</th>
+											<th>3</th>
+											<th>4</th>
+										</tr>
+										<tr>
+											<th>1</th>
+											<th>2</th>
+											<th>3</th>
+											<th>4</th>
+										</tr>
+									</tbody>
+								</table>
+
+							</div>
+						</div>
+						
+						<div id="card4">
+							<div class="card-header"></div>
+							<div class="card-body text-left">
+							<b>쇼핑몰 주문 공통</b>
+							<hr/>
+								<ul>
+									<li class="list-group-item">- 주문하신 상품마다 배송 및 도착 날짜가 서로 다를 수 있습니다.</li>
+									<li class="list-group-item">- 일요일 및 공휴일에는 배송이 되지 않습니다.</li>
+									<li class="list-group-item">- 주문 취소/반품은 '주문 취소’, ‘반품 신청’ 버튼을 클릭하여 직접 신청하거나, 고객센터를 통해 취소/반품 해주시기 바랍니다.</li>
+									<li class="list-group-item">- 주문 취소/반품은 처리가 가능한 단계에서만 버튼이 표시됩니다.</li>
+																
+								</ul>
+							</div>
+						</div>
+
+
 					</div>
 				</div>
+			</form>
+		</div>
+
+				
+				
 			</div>
-		</div>	
+				
+				
+				
+				
+			</div>	
 	</body>
 </html>

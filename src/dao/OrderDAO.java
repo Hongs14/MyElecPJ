@@ -10,6 +10,7 @@ import java.util.List;
 import dto.order.OrderDTO;
 import dto.order.OrderDetailDTO;
 import dto.order.OrderReadListDTO;
+import util.Pager;
 
 public class OrderDAO {
 	public int insertOrder(OrderDTO order, OrderDetailDTO orderDetail, Connection conn) throws SQLException {
@@ -111,7 +112,8 @@ public class OrderDAO {
 		return order;
 	}
 	
-	public List<OrderDTO> selectOrderList(int pageNo, OrderReadListDTO receivedDTO, Connection conn) throws SQLException {
+	public List<OrderDTO> selectOrderList(Pager pager, OrderDTO order, Connection conn) throws SQLException {
+		int pageNo = pager.getPageNo();
 		StringBuilder sqlBuilder = new StringBuilder();
 		sqlBuilder.append("SELECT USERS_ID, ORDERS_ID, PRODUCT_NAME, ORDERS_DATE, ORDERS_STATUS, RNUM ");
 		sqlBuilder.append("FROM ( ");
@@ -119,60 +121,19 @@ public class OrderDAO {
 		sqlBuilder.append(" FROM ORDERS, ORDER_DETAIL, PRODUCT ");
 		sqlBuilder.append(" WHERE ORDERS.ORDERS_ID = ORDER_DETAIL.ORDERS_ID AND ");
 		sqlBuilder.append("  ORDER_DETAIL.PRODUCT_ID = PRODUCT.PRODUCT_ID AND ");
-		if (!(receivedDTO.getCondition() == null)) {
-			if (receivedDTO.getCondition().equals("LIKE")) {
-				if (!(receivedDTO.getProduct_name() == null)) {
-					sqlBuilder.append("  PRODUCT.PRODUCT_NAME LIKE ? AND ");
-				}
-				else {
-					sqlBuilder.append("  PRODUCT.PRODUCT_NAME = ? AND ");
-				}
-			}
-			else {
-				if (!(receivedDTO.getId() == null)) {
-					sqlBuilder.append("  ORDERS.USERS_ID LIKE ? AND ");
-				}
-				else {
-					sqlBuilder.append("  ORDERS.USERS_ID = ? AND ");
-				}
-			}
-		}
 		sqlBuilder.append("  (rownum - 1) < ? ");
 		sqlBuilder.append("	) ");
 		sqlBuilder.append("WHERE (RNUM - 1) > = ?");
 
-
 		PreparedStatement pstmt = conn.prepareStatement(sqlBuilder.toString());
 		
-		int idx = 1;
-		if (!(receivedDTO.getProduct_name() == null)) {
-			if (!(receivedDTO.getCondition() == null)) {
-				if (receivedDTO.getCondition().equals("LIKE")) {
-					pstmt.setString(idx++, "%" + receivedDTO.getProduct_name() + "%");
-				}
-				else {
-					pstmt.setString(idx++, receivedDTO.getProduct_name());
-				}
-			}
-		}
-		else {
-			if (!(receivedDTO.getCondition() == null)) {
-				if (receivedDTO.getCondition().equals("LIKE")) {
-					pstmt.setString(idx++, "%" + receivedDTO.getId() + "%");
-				}
-				else {
-					pstmt.setString(idx++, receivedDTO.getId());
-				}
-			}
-		}
-		
-		pstmt.setInt(idx++, pageNo * 5);
-		pstmt.setInt(idx++, ((pageNo - 1) * 5));
+		pstmt.setInt(1, pageNo * 5);
+		pstmt.setInt(2, ((pageNo - 1) * 5));
 		ResultSet rs = pstmt.executeQuery();
 		
 		List<OrderDTO> orders = new ArrayList<>();
 		
-		while(rs.next()) {
+		while (rs.next()) {
 			OrderDTO orderDTO = new OrderDTO();
 			orderDTO.setUsers_id(rs.getString("USERS_ID"));
 			orderDTO.setOrders_id(rs.getInt("ORDERS_ID"));
@@ -184,39 +145,20 @@ public class OrderDAO {
 		
 		rs.close();
 		pstmt.close();
-		conn.close();
+		
 		return orders;
 	}
 	
-	public int getTotalRows(OrderReadListDTO receivedDTO, Connection conn) throws SQLException {
+	public int getTotalRows(OrderDTO order, Connection conn) throws SQLException {
 		String SQL
 				="SELECT COUNT(*) as total "
-				+"FROM ORDERS "
+				+"FROM ORDERS WHERE USERS_ID = ? "
 				;
-		
-		if (!(receivedDTO.getCondition() == null)) {
-			if (receivedDTO.getCondition().equals("LIKE")) {
-				SQL = SQL.concat("WHERE USERS_ID LIKE ? ");
-			}
-			else {
-				SQL = SQL.concat("WHERE USERS_ID = ? ");
-			}
-			
-		}
 
 		PreparedStatement pstmt = conn.prepareStatement(SQL);
-		
-		if (!(receivedDTO.getCondition() == null)) {
-			if (receivedDTO.getCondition().equals("LIKE")) {
-				pstmt.setString(1, "%" + receivedDTO.getId() + "%");
-			}
-			else {
-				pstmt.setString(1, receivedDTO.getId());
-			}
-			
-		}
-		
+		pstmt.setString(1, order.getUsers_id());
 		ResultSet rs = pstmt.executeQuery();
+		
 		int result;
 		if (rs.next()) {
 			result = rs.getInt("total");
@@ -226,7 +168,6 @@ public class OrderDAO {
 		}
 		rs.close();
 		pstmt.close();
-		conn.close();
 		return result;
 	}
 	

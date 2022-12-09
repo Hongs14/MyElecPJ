@@ -25,6 +25,7 @@ import service.FindPasswordService;
 import service.JoinService;
 import service.LoginService;
 import service.ReadCartService;
+import service.ReadOrderListService;
 import service.ReadOrderService;
 import service.ReadProductDetailService;
 import service.ReadProductListService;
@@ -71,6 +72,7 @@ public class WebAppContext implements ServletContextListener{
 		
 		application.setAttribute("readCartService", new ReadCartService(application));
 		application.setAttribute("readOrderService", new ReadOrderService(application));
+		application.setAttribute("readOrderListService", new ReadOrderListService(application));
 		application.setAttribute("readProductDetailService", new ReadProductDetailService(application));
 		application.setAttribute("readProductListService", new ReadProductListService(application));
 		application.setAttribute("readQnABoardListService", new ReadQnABoardListService(application));
