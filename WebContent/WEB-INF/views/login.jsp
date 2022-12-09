@@ -195,21 +195,20 @@ hr {
 									<input type="checkbox" class="checkbox" id="customcheck" placeholder="Password..." id="check"> <label class="control-laber" for="check"> ID/PWD 저장 </label>
 
 								</div>
-
 								<button type="button" class="btn btn-primary btn-user btn-block" onclick = "submitInfo()">Login</button>
 
 								<hr />
+								
+								<a href="FindId" class="btn btn-danger btn-user btn-block"> ID 찾기</a> 
 
-								<a href="" class="btn btn-danger btn-user btn-block"> <i class="fab fa-google fa-fw "></i> 구글 로그인
-
-								</a> <a href="" class="btn btn-primary btn-user btn-block"> <i class="fab fa-facebook-f fa-fw"></i> 페이스북 로그인
-								</a>
+								
+								<a href="FindPassword" class="btn btn-primary btn-user btn-block"> Find Password</a>
 
 								<hr />
 
 								<div id="userinfo">
 									<div class="text-left">
-										<a href="FindPassword"> Find Password </a>
+										<a href="FindPassword"> </a>
 									</div>
 
 									<div class="text-left">

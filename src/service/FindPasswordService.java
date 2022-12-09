@@ -39,7 +39,24 @@ public class FindPasswordService {
 		System.out.println(result);
 		return result;
 	}
-	
+	public String findId(UserDTO userDTO) {
+		Connection conn = null;
+		String result = null;
+		try {
+			conn = ds.getConnection();
+			result = userDAO.findId(userDTO, conn);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return result;
+	}
 	
 	
 	
