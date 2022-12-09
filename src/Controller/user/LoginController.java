@@ -40,7 +40,7 @@ public class LoginController extends HttpServlet {
 		result = loginService.join(userDTO);
 		
 		if(result == null) {
-			response.sendRedirect("login");
+			response.sendRedirect("Login");
 		} else {
 			
 			HttpSession session = request.getSession();

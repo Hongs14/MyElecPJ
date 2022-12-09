@@ -50,16 +50,22 @@ public class ReadOrderController extends HttpServlet {
 		//ReadOrderService readOrderService = new ReadOrderService(application);
 		ReadProductDetailService readProductDetailService = new ReadProductDetailService(application);
 		ProductDTO product = readProductDetailService.getProductDetail(productid);
+		String productName = product.getProduct_name();
+		product = readProductDetailService.getProductImage(productid);
+		String filePath = "resources\\images\\download\\" + product.getProduct_savedname();
 		
 		UserInfoService userInfoService = (UserInfoService)application.getAttribute("userInfoService");
 		UserDTO userDTO = new UserDTO();
 		userDTO.setUser_id(userId);
 		UserDTO user = userInfoService.UserInfo(userDTO);
 		
+		
+		
 		request.setAttribute("productId", productid);
 		request.setAttribute("price", price);
 		request.setAttribute("countNum", countNum);
-		request.setAttribute("productName", product.getProduct_name());
+		request.setAttribute("productName", productName);
+		request.setAttribute("filePath", filePath);
 		
 		request.setAttribute("user", user);
 		

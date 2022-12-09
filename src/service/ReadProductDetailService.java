@@ -35,4 +35,19 @@ public class ReadProductDetailService {
       }
       return result1;
    }
+   
+   public ProductDTO getProductImage(int product_id) {
+	      ProductDTO result = null;
+	      
+	      Connection conn = null;
+	      try {
+	         conn = ds.getConnection();
+	         result = productDAO.getImage(product_id, conn);
+	      } catch (Exception e) {
+	         e.printStackTrace();
+	      } finally {
+	         try { conn.close();} catch (Exception e) {}
+	      }
+	      return result;
+	   }
 }
