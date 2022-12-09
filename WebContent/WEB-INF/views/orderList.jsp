@@ -134,25 +134,7 @@ hr {
 			
 				<!-- 사이드바 -->
 				<div id="sidebar" class="col-sm-2 col-md-2 d-none d-xl-block">
-					<div class="d-flex flex-column rounded-lg" style="background-color: #F5F5F5;">
-	                    <div class="mx-3 mt-3">
-	                        <h4>ID</h4>
-	                    </div>
-	                    <div class="d-flex mx-0">
-	                        <h6 class="col-2">
-	                            <span class="align-self-start badge badge-primary">VIP</span>
-	                        </h6>
-	                        <h6 class="col-2">
-	                            <span class="align-self-start badge badge-info">100,000P</span>
-	                        </h6>
-	                    </div>
-	                    <div class="mx-3 my-3">
-	                        <h6>최근주문내역</h6>
-	                        <h6>장바구니</h6>
-	                        <h6>내가 쓴 리뷰</h6>
-	                        <h6>내 문의내역</h6>
-	                    </div>
-                	</div>
+					<%@ include file="/WEB-INF/views/common/userInfo.jsp" %>
 				
 					<h3 class="text-left my-3">My page</h3>
 					
@@ -167,21 +149,21 @@ hr {
 						</div>
 
 						<div class="d-flex flex-column my-2">
-							<a class="text-left " data-toggle="collapse" href=".collapseOne" style="font-size: arge;">구매 정보</a>
+							<a class="text-left " data-toggle="collapse" href=".collapseTwo" style="font-size: arge;">구매 정보</a>
 							<hr/>
 							<div class="d-flex flex-column">
-								<div class="collapse collapseOne text-left">주문 내역 조회</div>
-								<div class="collapse collapseOne text-left">장바구니 조회</div>
+								<div class="collapse collapseTwo text-left">주문 내역 조회</div>
+								<div class="collapse collapseTwo text-left">장바구니 조회</div>
 							</div>
 						</div>
 						
 						<div class="d-flex flex-column my-2">
-							<a class="text-left " data-toggle="collapse" href=".collapseOne" style="font-size: large;">고객센터</a>
+							<a class="text-left " data-toggle="collapse" href=".collapseThree" style="font-size: large;">고객센터</a>
 							<hr/>
 							<div class="d-flex flex-column">
-								<div class="collapse collapseOne text-left">상품평</div>
-								<div class="collapse collapseOne text-left">Q & A</div>
-								<div class="collapse collapseOne text-left">내 게시글</div>
+								<div class="collapse collapseThree text-left">상품평</div>
+								<div class="collapse collapseThree text-left">Q & A</div>
+								<div class="collapse collapseThree text-left">내 게시글</div>
 							</div>
 						</div>
 					</div>

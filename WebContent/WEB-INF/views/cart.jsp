@@ -229,26 +229,7 @@ a {
 		<div class="row">
 			<div id="sidebar"
 				class="col-sm-2 col-md-2 d-none d-xl-block justify-content-center">
-				<div class="d-flex flex-column rounded-lg"
-					style="background-color: #F5F5F5;">
-					<div class="mx-3 mt-3">
-						<h4>ID님</h4>
-					</div>
-					<div class="d-flex mx-0">
-						<h6 class="col-2">
-							<span class="align-self-start badge badge-primary">VIP</span>
-						</h6>
-						<h6 class="col-2">
-							<span class="align-self-start badge badge-info">100,000P</span>
-						</h6>
-					</div>
-					<div class="mx-3 my-3">
-						<h6>최근주문내역</h6>
-						<h6>장바구니</h6>
-						<h6>내가 쓴 리뷰</h6>
-						<h6>내 문의내역</h6>
-					</div>
-				</div>
+				<%@ include file="/WEB-INF/views/common/userInfo.jsp" %>
 
 				<div class="d-flex flex-column rounded-lg pt-3">
 					<img src="/Project2_shopping/resources/images/adlong.png"

@@ -134,64 +134,64 @@ hr {
 					</div>
 
 					<div class="d-flex flex-column my-2">
-						<a class="text-left " data-toggle="collapse" href=".collapseOne" style="font-size: arge;">TV</a>
+						<a class="text-left " data-toggle="collapse" href=".collapseTwo" style="font-size: arge;">TV</a>
 						<hr />
 						<div class="d-flex flex-column">
-							<div class="collapse collapseOne text-left">
+							<div class="collapse collapseTwo text-left">
 								<a href="ReadProductList?pageNo=1&category=2&subcategory=1">올레드</a>
 							</div>
-							<div class="collapse collapseOne text-left">
+							<div class="collapse collapseTwo text-left">
 								<a href="ReadProductList?pageNo=1&category=2&subcategory=2">벽걸이형</a>
 							</div>
-							<div class="collapse collapseOne text-left">
+							<div class="collapse collapseTwo text-left">
 								<a href="ReadProductList?pageNo=1&category=2&subcategory=3">스탠드형</a>
 							</div>
 						</div>
 					</div>
 
 					<div class="d-flex flex-column my-2">
-						<a class="text-left " data-toggle="collapse" href=".collapseOne" style="font-size: large;">세탁기</a>
+						<a class="text-left " data-toggle="collapse" href=".collapseThree" style="font-size: large;">세탁기</a>
 						<hr />
 						<div class="d-flex flex-column">
-							<div class="collapse collapseOne text-left">
+							<div class="collapse collapseThree text-left">
 								<a href="ReadProductList?pageNo=1&category=3&subcategory=1">통돌이</a>
 							</div>
-							<div class="collapse collapseOne text-left">
+							<div class="collapse collapseThree text-left">
 								<a href="ReadProductList?pageNo=1&category=3&subcategory=2">드럼</a>
 							</div>
-							<div class="collapse collapseOne text-left">
+							<div class="collapse collapseThree text-left">
 								<a href="ReadProductList?pageNo=1&category=3&subcategory=3">워시타워</a>
 							</div>
 						</div>
 					</div>
 
 					<div class="d-flex flex-column my-2">
-						<a class="text-left " data-toggle="collapse" href=".collapseOne" style="font-size: large;">에어컨</a>
+						<a class="text-left " data-toggle="collapse" href=".collapseFour" style="font-size: large;">에어컨</a>
 						<hr />
 						<div class="d-flex flex-column">
-							<div class="collapse collapseOne text-left">
+							<div class="collapse collapseFour text-left">
 								<a href="ReadProductList?pageNo=1&category=4&subcategory=1">스텐드형</a>
 							</div>
-							<div class="collapse collapseOne text-left">
+							<div class="collapse collapseFour text-left">
 								<a href="ReadProductList?pageNo=1&category=4&subcategory=2">이동식</a>
 							</div>
-							<div class="collapse collapseOne text-left">
+							<div class="collapse collapseFour text-left">
 								<a href="ReadProductList?pageNo=1&category=4&subcategory=3">벽걸이형</a>
 							</div>
 						</div>
 					</div>
 
 					<div class="d-flex flex-column my-2">
-						<a class="text-left " data-toggle="collapse" href=".collapseOne" style="font-size: large;">PC</a>
+						<a class="text-left " data-toggle="collapse" href=".collapseFive" style="font-size: large;">PC</a>
 						<hr />
 						<div class="d-flex flex-column">
-							<div class="collapse collapseOne text-left">
+							<div class="collapse collapseFive text-left">
 								<a href="ReadProductList?pageNo=1&category=5&subcategory=1">노트북</a>
 							</div>
-							<div class="collapse collapseOne text-left">
+							<div class="collapse collapseFive text-left">
 								<a href="ReadProductList?pageNo=1&category=5&subcategory=2">모니터</a>
 							</div>
-							<div class="collapse collapseOne text-left">
+							<div class="collapse collapseFive text-left">
 								<a href="ReadProductList?pageNo=1&category=5&subcategory=3">데스크톱</a>
 							</div>
 						</div>
@@ -215,7 +215,7 @@ hr {
 							</div>
 						</figcaption>
 
-						<img src="${filePath}" />
+						<img src="${product.product_savedname}" />
 						<figcaption id="bottomfugure">
 							<h6 class="text-center">
 								<strong>${product.product_name}</strong>

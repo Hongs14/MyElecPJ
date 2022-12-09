@@ -129,20 +129,7 @@ label {
 
 	<div id="bottomViewPort" class="wrapper d-flex mt-3">
 		<div id="sidebar" class="col-sm-2 col-md-2 d-none d-xl-block">
-			<div class="d-flex flex-column rounded-lg" style="background-color: #F5F5F5;">
-				<div class="mx-3 mt-3">
-					<h4>${user_id}</h4>
-				</div>
-				<div class="d-flex mx-0">
-					<h6 class="col-2">
-						<span class="align-self-start badge badge-warning">${user_level}</span>
-					</h6>
-					
-				</div>
-				<div class="d-flex justify-content-start mx-3 my-3">
-					<h5>공지사항</h5>
-				</div>
-			</div>
+			<%@ include file="/WEB-INF/views/common/userInfo.jsp" %>
 
 			<h3 class="text-left my-3">게시판 목록</h3>
 
