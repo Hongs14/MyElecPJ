@@ -63,6 +63,30 @@
 				text-align: left;
 			}
 			
+			.modal-bg {
+				display: none;
+				width: 100%;
+				height: 100%;
+				position: fixed;
+				top: 0;
+				left: 0;
+				right: 0;
+				background: rgba(0, 0, 0, 0.6);
+				z-index: 0;
+			}
+			
+			.modal-wrap {
+				display: none;
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				width: 400px;
+				height: 150px;
+				background: #fff;
+				z-index: 1;
+			}
+			
 		</style>
 		<script>
 			function createOrder() {
@@ -115,16 +139,18 @@
 						<h3 class="text-left">주문상품</h3><hr/>
 						<div class="row">
 							<div class="col-3">
-								<img src="/Project2_shopping/resources/images/refrigerator1.png"/>
+								<img src="${filePath}"/>
 							</div>
+						</div>
+						<div class="row mt-3">
 							<div class="col-3 d-flex flex-column">
 								<h6>${productName}</h6>
 							</div>
-							<div class="col-3 d-flex flex-column">
+							<div class="col-4 d-flex flex-column">
 								<div class="form-group d-flex flex-column">
 					            	<label for="point">Membership Point</label>
 					            	<input type="text" class="form-control-sm text-muted" id="point" value="사용할 포인트를 입력해 주세요"/>
-					            	<small id="pointHelp" class="form-text">남은 포인트: 9999p</small>
+					            	<small id="pointHelp" class="form-text">남은 포인트: ${user_point}p</small>
 					          	</div>
 							</div>
 							<div class="col-3">
@@ -168,9 +194,6 @@
 					            	<input type="text" class="form-control-sm text-muted col-6 rounded-0 border-top-0 border-left-0 border-right-0" id="address" value="${user.user_address}"/>
 					            	<div class="col-2"></div>
 					          	</div>
-							</div>
-							<div class="col-2">
-								<a href="">배송지 신규 등록</a>
 							</div>
 						</div>
 					</div>
