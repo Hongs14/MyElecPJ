@@ -208,15 +208,17 @@ li:first-child {
 	<%@ include file="/WEB-INF/views/common/banner.jsp"%>
 	<div id="${Product.product_id}" class="deliver_pid"></div>
 	<div class="pb-5 pt-2">
+	<!--  
 		<h6>
 			HOME > 주방가전 > <a href="${pageContext.request.contextPath}/productList">냉장고 모두 보기</a> > BESPOKE 냉장고 4도어 키친핏 604 L
 		</h6>
+	-->
 	</div>
 	<div id="wrapper">
 		<div id="pd_detail" class="container-fluid row">
 			<div class="col-sm-12 col-md-6 col-lg-8">
 				<div class="py-3 text-center">
-					<img class="mt-5" src="${pageContext.request.contextPath}/resources/images/refrigerator_big.png" />
+					<img class="mt-5" src="${filePath}" />
 				</div>
 			</div>
 
@@ -227,7 +229,12 @@ li:first-child {
 						<h3 class="my-4">${Product.product_name}</h3>
 						<div class="pd_score container-fluid d-flex justify-content-between px-0 my-5">
 							<div class="d-flex">
-								<span id="starList"> <span class="fa fa-star"></span> <span class="fa fa-star"></span> <span class="fa fa-star"></span> <span class="fa fa-star"></span> <span class="fa fa-star"></span>
+								<span id="starList"> 
+									<span class="fa fa-star"></span> 
+									<span class="fa fa-star"></span> 
+									<span class="fa fa-star"></span> 
+									<span class="fa fa-star"></span> 
+									<span class="fa fa-star"></span>
 								</span>
 
 								<h6 id="point" class="mt-1 ml-2">${Product.product_totalpoint}</h6>

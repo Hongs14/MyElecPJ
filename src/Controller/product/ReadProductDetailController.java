@@ -30,15 +30,19 @@ public class ReadProductDetailController extends HttpServlet{
       ServletContext application = request.getServletContext();
       //ReadProductDetailService readProductDetailService = (ReadProductDetailService) request.getServletContext().getAttribute("readProductDetailService");
       ReadProductDetailService readProductDetailService = new ReadProductDetailService(application);
-      ProductDTO productDTO = readProductDetailService.getProductDetail(product_id);
+     
+      ProductDTO image = readProductDetailService.getImage(product_id);
+ 
+      ProductDTO product = readProductDetailService.getProductDetail(product_id);
       
-      
+      System.out.println("pid: "+image.getProduct_savedname());
       //이미지 불러오기
-      String filePath = "resources\\images\\download\\" + productDTO.getProduct_savedname();
+      String filePath = "resources\\images\\download\\" + image.getProduct_savedname();
+   
+      
+      request.setAttribute("Product", product);
       request.setAttribute("filePath", filePath);
-      
-      request.setAttribute("Product", productDTO);
-      
+      System.out.println("pd: "+filePath);
       request.getRequestDispatcher("/WEB-INF/views/productDetail.jsp").forward(request, response);
    
    }
