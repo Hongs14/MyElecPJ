@@ -43,10 +43,14 @@ public class CreateQnaController extends HttpServlet {
 		qnaBoardDTO.setQna_category_id(Integer.parseInt(request.getParameter("qna_category_id")));
 
 		int result = createQnAService.writeQnA(qnaBoardDTO);
-
-		if (result == 1) {
+		//qnaBoardDTO.setQna_board_id(Integer.parseInt(request.getParameter("qna_board_id")));
+				
+		if (result != 0) {
 			request.setAttribute("qnaBoard", qnaBoardDTO);
-			response.sendRedirect("readQna?=" + session.getAttribute("users_id").toString());
+			response.sendRedirect("ReadQna?id=" + result);
+			System.out.println(result);
+			
+			//System.out.println(qnaBoardDTO.getQna_board_id());
 //	         request.getRequestDispatcher("WEB-INF/views/readQna.jsp").forward(request, response);
 		}
 
