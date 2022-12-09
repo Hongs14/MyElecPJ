@@ -74,55 +74,77 @@
 				text-align: left;
 			}
 			
-			.checked {
+			.starchecked {
 				color: orange;
 			}
 		</style>
-		<script>
-	        function init(){
-	            var r_score = document.getElementByClass
-	            r_score = Math.round(r_score);
-	            $('.fa-star:nth-child(-n'+r_score+')').addClass("starchecked");
-	    	}
-		</script>
+		
+			
 	</head>
-	<body onload="init()">
+	<body>
 		<%@ include file="/WEB-INF/views/common/banner.jsp" %>
 	 
 		<div id="bottomViewPort" class="wrapper d-flex mt-3">
 			<div id="sidebar" class="col-sm-2 col-md-2 d-none d-xl-block">
-				<div class="d-flex flex-column rounded-lg" style="background-color: #F5F5F5;">
-                    <div class="mx-3 mt-3">
-                        <h4>ID님</h4>
-                    </div>
-                    <div class="d-flex mx-0">
-                        <h6 class="col-2">
-                            <span class="align-self-start badge badge-primary">VIP</span>
-                        </h6>
-                        <h6 class="col-2">
-                            <span class="align-self-start badge badge-info">100,000P</span>
-                        </h6>
-                    </div>
-                    <div class="mx-3 my-3">
-                        <h6>최근주문내역</h6>
-                        <h6>장바구니</h6>
-                        <h6>내가 쓴 리뷰</h6>
-                        <h6>내 문의내역</h6>
-                    </div>
-                </div>
+				<c:if test="${userId != null}">
+					<div class="d-flex flex-column rounded-lg" style="background-color: #F5F5F5;">
+	                    <div class="mx-3 mt-3">
+	                        <h4>${userId}님</h4>
+	                    </div>
+	                    <div class="d-flex mx-0">
+	                        <h6 class="col-2">
+	                            <span class="align-self-start badge badge-primary">VIP</span>
+	                        </h6>
+	                        <h6 class="col-2">
+	                            <span class="align-self-start badge badge-info">100,000P</span>
+	                        </h6>
+	                    </div>
+	                    <div class="mx-3 my-3">
+	                        <h6>최근주문내역</h6>
+	                        <h6>장바구니</h6>
+	                        <h6>내가 쓴 리뷰</h6>
+	                        <h6>내 문의내역</h6>
+	                    </div>
+	                </div>
+                </c:if>
+                <c:if test="${userId == null}">
+					<div class="d-flex flex-column rounded-lg" style="background-color: #F5F5F5;">
+	                    <div class="mx-3 mt-3">
+	                        <h4>Guest님</h4>
+	                    </div>
+	                    <div class="d-flex mx-0">
+	                        <h6 class="col-2">
+	                            <span class="align-self-start badge badge-primary">guest</span>
+	                        </h6>
+	                        <h6 class="col-2">
+	                            <span class="align-self-start badge badge-info">0P</span>
+	                        </h6>
+	                    </div>
+	                </div>
+                </c:if>
 
 				<h3 class="text-left my-3">게시판 목록</h3>
 
 				<div class="d-flex flex-column">
 					<div class="d-flex flex-column my-2">
-						<a class="text-left" data-toggle="collapse" href=".collapseOne" style="font-size: x-large;">관리 목록</a>
-						<hr/>
+					<a class="text-left" data-toggle="collapse" href=".collapseOne"
+						style="font-size: large;">리뷰게시판</a>
+					<hr />
+					<div class="d-flex flex-column">
+						<div class="collapse collapseOne text-left">리뷰 작성하기</div>
+					</div>
+					</div>
+
+					<div class="d-flex flex-column my-2">
+						<a class="text-left " data-toggle="collapse" href=".collapseOne"
+							style="font-size: large;">QnA게시판</a>
+						<hr />
 						<div class="d-flex flex-column">
-							<div class="collapse collapseOne text-left">유저 목록</div>
-							<div class="collapse collapseOne text-left">상품 목록</div>
-							<div class="collapse collapseOne text-left">주문 목록</div>
-							<div class="collapse collapseOne text-left">리뷰 게시판 목록</div>
-							<div class="collapse collapseOne text-left">QnA 게시판 목록</div>
+							<div class="collapse collapseOne text-left">배송 문의</div>
+							<div class="collapse collapseOne text-left">주문 문의</div>
+							<div class="collapse collapseOne text-left">결제 문의</div>
+							<div class="collapse collapseOne text-left">제품 문의</div>
+							<div class="collapse collapseOne text-left">기타 문의</div>
 						</div>
 					</div>
 				</div>
@@ -190,7 +212,7 @@
 				</div><hr class="my-3"/>
 				<div class="titleList d-flex flex-column">
 					<div class="listInfo">
-						<h3>총 ~개의 게시글이 있습니다</h3>
+						<h3>총 ${pager.totalRows}개의 게시글이 있습니다</h3>
 					</div><hr class="my-2"/>
 					<div class="titleInfo">
 						<div class="d-flex">
@@ -213,21 +235,21 @@
 					<c:forEach var="review" items="${pageList}" varStatus="status">
 						<div class="titleBlock d-flex">
 							<div class="titleId col-1">
-								<h5>1234</h5>
+								<h5>${review.review_board_id}</h5>
 							</div>
 							<div class="titleContent col-11">
 								<div class="titleTop d-flex">
 									<h5 class="col-5"><a href="ReadReview?id=${review.review_board_id}">${review.review_board_title}</a></h5>
 									<h5 class="col-2">${review.users_id}</h5>
-									<h5 class="col-2">${review.review_board_date}</h5>
-									<div class="col-1 d-flex justify-content-start">					
+									<h5 class="col-2">${review.review_board_date}</h5>			
+									<div id="starList" class="col-1 d-flex justify-content-start">					
 										<span class="fa fa-star"></span>
 										<span class="fa fa-star"></span>
 										<span class="fa fa-star"></span>
 										<span class="fa fa-star"></span>
-										<span class="fa fa-star"></span>
+										<span class="fa fa-star"></span> 
 									</div>
-									<h5 class="point col-1 text-center">${review.review_board_reviewpoint}</h5>
+									<h5 id="review_point" class="point col-1 text-center">${review.review_board_reviewpoint}</h5>
 									<h5 class="col-1 text-center">222</h5>
 								</div>
 								<div class="titleBottom d-flex justify-content-start">

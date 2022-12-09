@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dto.review.ReviewBoardDTO;
 import service.ReadReviewBoardListService;
@@ -22,6 +23,9 @@ public class ReadReviewBoardListController extends HttpServlet{
 		   strPageNo = "1";      
 		}
 		int pageNo = Integer.parseInt(strPageNo);
+		
+		HttpSession session = request.getSession();
+		request.setAttribute("userId", session.getAttribute("user_id"));
 		
 		//서비스로 리뷰 보기 요청
 		ServletContext application = request.getServletContext();

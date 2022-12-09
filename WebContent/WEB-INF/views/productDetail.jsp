@@ -78,7 +78,6 @@
 		var r_score = document.getElementById("point").innerHTML;
 		r_score = Math.round(r_score);
 		$('.fa-star:nth-child(-n' + r_score + ')').addClass("starchecked");
-
 	};
 </script>
 <style>

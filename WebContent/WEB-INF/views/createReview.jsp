@@ -12,9 +12,12 @@
 		<script>
 		
 		//별점 주기
+		var targetNum = 0;
 		$(function(){
+			
 			$('.makeStar span').hover(function(){
-				var targetNum = $(this).index() + 1;
+				targetNum = $(this).index() + 1;
+				console.log(targetNum);
 				$('.makeStar span').css({color: '#000'});
 				$('.makeStar span:nth-child(-n'+targetNum+')').css({color: 'orange'});
 				
@@ -22,29 +25,31 @@
 			
 		});
 		
-		
+		function send(){
+			var title = $('#title').val();
+			var content = $('content').val(); 
+			var uid = ${user_id};
 			
+			$.ajax({
+		        url : "CreateReview",
+		        type : "POST",
+		        data : {send_score: JSON.stringify(targetNum), 
+		        		user_id: Json.stringify(uid),
+		        		title: Json.stringify(title),
+		        		content: Json.stringify(content)
+		        },
+		        dataType: "json",
+		        success : function () {
+		            console.log("성공")
+		        },
+		        error : function(){
+		        	console.log("실패")
+		        }
+		     });  //ajax	
+		};
+
 		
-		/* 글자수 제한걸기
-		$('#review_content_box').keyup(function (e) {
-			let content = $(this).val();
-		    
-		    // 글자수 세기
-		    if (content.length == 0 || content == '') {
-		    	$('.textCount').text('0자');
-		    } else {
-		    	$('.textCount').text(content.length + '자');
-		    }
-		    
-		    // 글자수 제한
-		    if (content.length > 200) {
-		    	// 200자 부터는 타이핑 되지 않도록
-		        $(this).val($(this).val().substring(0, 200));
-		        // 200자 넘으면 알림창 뜨도록
-		        alert('글자수는 200자까지 입력 가능합니다.');
-		    };
-		});
-		*/
+
 		</script>
 		<style>
 			* {
@@ -118,7 +123,7 @@
 			
 <!-------------------------------   작성하기  본문   --------------------------->
 			<div class="wrapperChild">
-				<form style="border: 0">
+				<form method="Post" style="border: 0" novalidate>
 					<div class="card cotainer-fluid column">
 						<div class="row my-4">
 							<div class="col-3">
@@ -127,21 +132,26 @@
 							<div class="col-9">
 								<div id="review_id">
 									<!-- DB에서 값 받아오기 -->
-									<h5>정홍주</h5>
+									<h5>${user_id}</h5>
 								</div>
 							</div>
 						</div>
 						<div class="row my-4">
-							<div class="col-3">
-								<h5>상품 이름 </h5>
-							</div>
-							<div class="col-9">
-								<div id="review_product">
-									<!-- DBd에서 값 얻어오기 -->
-									<h5>BESPOKE 냉장고 4도어 키친핏 604 L</h5>
-								</div>
-							</div>
-						</div>
+                        <div class="col-3">
+                           <h5>상품명</h5>
+                        </div>
+                        <div class="col-9">
+                           <div id="qna_category">
+                              <!-- DBd에서 값 얻어오기 -->
+                              <select class="form-control" id="qna_category" name="send_score">
+                                  <option value="1"></option>
+                                  <option value="3">주문 관련</option>
+                                  <option value="2">상품 관련</option>
+                                  <option value="4">기타 유형</option>
+                               </select>   
+                           </div>
+                        </div>
+                     </div>
 						
 						<div class="row my-4">
 							<div class="col-3">
@@ -164,7 +174,7 @@
 								<h5>제목 </h5>
 							</div>
 							<div class="col-9">
-								<input type="text" style="width: 800px; border: 0; border-bottom: 2px solid gray;"/>
+								<input id="r_title" type="text" name="title" style="width: 800px; border: 0; border-bottom: 2px solid gray;"/>
 							</div>
 						</div>
 						
@@ -173,7 +183,7 @@
 								<h5>리뷰 내용 </h5>
 							</div>
 							<div class="col-9">
-								<textarea id="review_content_box" name="review_content" maxlength="1000" placeholder="리뷰 내용을 입력하시오" style="width: 800px; height: 200px; resize: none;"></textarea>
+								<input id="r_content" type="text" id="qna_content_box" name="content" value=""  placeholder="문의 내용을 입력하시오" style="width: 800px; height: 200px; "/>
 							</div>
 						</div>
 						
@@ -182,12 +192,12 @@
 								<h5>사진 첨부 (10MB이하 가능)</h5>
 							</div>
 							<div class="col-9">
-								<input type="file" class="form-control" id="review_attach" name="review_attach" required multiple> 
+								<input type="file" class="form-control" id="review_attach" name="review_attach" > 
 							</div>
 						</div>
 					</div>
 				
-				</form>
+				
 				
 				<div style="background-color:#F0F0F0; border-radius: 24px" class="p-2 my-4">
 					<h6>ㆍ 게시판 성격에 맞지 않는 게시물은 사전 통보 없이 삭제 될 수 있는 점을 양해 부탁드립니다.</h6>
@@ -199,17 +209,17 @@
 				<div class="row container-fluid mt-3 col-sm-12 ">
 					<div class="col-6">
 						<div class="text-right">
-							<button class="btn btn-sm btn-primary round">취소하기</button>
+							<button class="btn btn-sm btn-primary round" onclick="window.location.href='ReadReviewBoardList'">취소하기</button>
 						</div>
 					</div>
 					<div class="col-6">
 						<div class="text-left mb-5">
-							<button type="submit" class="btn btn-sm btn-primary round" onclick="window.location.href='readReview'">등록하기</button>
+							<button onclick="send()" class="btn btn-sm btn-primary round">등록하기</button>						
 						</div>
 					</div>
 				</div>
 				
-			
+			</form>
 			</div>
 			
 		</div>	
