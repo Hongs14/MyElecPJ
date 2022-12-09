@@ -25,12 +25,12 @@
 	    	</c:if>
 	    </h6>
 	</div>
-	<div class="mx-3 my-3">
+	<div class="d-flex flex-column mx-3 my-3">
 		<c:if test="${user_id != null}">
-	    	<a href="ReadOrderList">최근주문내역</a>
-	    	<a href="ReadCart">장바구니</a>
-	    	<a href="ReadReviewBoardList">내가 쓴 리뷰</a>
-	    	<a href="ReadQnABoardList">내 문의내역</a>
+    	<a href="ReadOrderList">최근주문내역</a>
+    	<a href="ReadCart">장바구니</a>
+    	<a href="ReadReviewBoardList">내가 쓴 리뷰</a>
+    	<a href="ReadQnABoardList">내 문의내역</a>
 	    </c:if>
 	</div>
 </div>
