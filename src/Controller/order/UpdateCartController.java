@@ -22,7 +22,7 @@ public class UpdateCartController extends HttpServlet {
 		// 세션에 저장된 유저ID 가져오기
 		HttpSession session = request.getSession();
 		String userId = (String) session.getAttribute("loginUser");
-		userId = "NewUser";
+		userId = "Manager";
 
 		// UpdateCartService 객체 얻기
 		ServletContext application = request.getServletContext();

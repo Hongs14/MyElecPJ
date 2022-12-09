@@ -29,7 +29,7 @@
 	
 	<servlet>
 		<servlet-name>Home</servlet-name>
-		<servlet-class>Controller.homeController</servlet-class>
+		<servlet-class>Controller.HomeController</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>Home</servlet-name>

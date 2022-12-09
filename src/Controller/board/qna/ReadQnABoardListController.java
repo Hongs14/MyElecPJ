@@ -22,7 +22,7 @@ public class ReadQnABoardListController extends HttpServlet {
 			throws ServletException, IOException {
 		// QnABoardListService 서비스로 요청
 		ServletContext application = request.getServletContext();
-		ReadQnABoardListService qnaBoardListService = new ReadQnABoardListService(application);
+		ReadQnABoardListService qnaBoardListService = (ReadQnABoardListService) application.getAttribute("readQnABoardListService");
 
 		String strPageNo = request.getParameter("pageNo");
 		if (strPageNo == null) {

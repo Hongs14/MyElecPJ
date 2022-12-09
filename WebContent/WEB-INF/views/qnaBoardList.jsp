@@ -18,7 +18,11 @@
 <!-- Latest compiled JavaScript -->
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
-	
+<script>
+	function popUp() {
+		alert("로그인 후 이용가능한 서비스 입니다.");
+	}
+</script>
 <style>
 /* 글꼴 */
 @font-face {
@@ -94,29 +98,38 @@ label {
 			<%@ include file="/WEB-INF/views/common/userInfo.jsp" %>
 
 			<h3 class="text-left my-3">게시판 목록</h3>
-
 			<div class="d-flex flex-column">
 				<div class="d-flex flex-column my-2">
-					<a class="text-left" data-toggle="collapse" href=".collapseOne"
-						style="font-size: large;">리뷰게시판</a>
+					<a class="text-left " data-toggle="collapse" href=".collapseOne"
+						style="font-size: large;">QnA 게시판</a>
 					<hr />
 					<div class="d-flex flex-column">
-						<div class="collapse collapseOne text-left">리뷰 작성하기</div>
+						<div class="collapse collapseOne text-left"
+							onclick="window.location.href='ReadQnABoardList'">게시판 목록보기</div>
+						<c:choose>
+							<c:when test="${user_id!=null}">
+								<div class="collapse collapseOne text-left"
+									onclick="window.location.href='CreateQna'">문의글 작성하기</div>
+							</c:when>
+							<c:otherwise>
+							</c:otherwise>
+						</c:choose>
+					</div>
+
+				</div>
+				<div class="d-flex flex-column my-2">
+					<a class="text-left" data-toggle="collapse" href=".collapseOne"
+						style="font-size: large;">Review 게시판</a>
+					<hr />
+					<div class="d-flex flex-column">
+						<div class="collapse collapseOne text-left"
+							onclick="window.location.href='ReadReviewBoardList'">게시판
+							목록보기</div>
+						<div class="collapse collapseOne text-left"
+							onclick="window.location.href='CreateReview'">리뷰 작성하기</div>
 					</div>
 				</div>
 
-				<div class="d-flex flex-column my-2">
-					<a class="text-left " data-toggle="collapse" href=".collapseOne"
-						style="font-size: large;">QnA게시판</a>
-					<hr />
-					<div class="d-flex flex-column">
-						<div class="collapse collapseOne text-left">배송 문의</div>
-						<div class="collapse collapseOne text-left">주문 문의</div>
-						<div class="collapse collapseOne text-left">결제 문의</div>
-						<div class="collapse collapseOne text-left">제품 문의</div>
-						<div class="collapse collapseOne text-left">기타 문의</div>
-					</div>
-				</div>
 			</div>
 		</div>
 		<div class="d-flex flex-column col-sm-10 col-md-10">
@@ -133,22 +146,12 @@ label {
 					class="conditionSet d-flex justify-content-start align-items-center flex-fill">
 					<h5 class="col-5 text-center">문의 유형</h5>
 					<select class="col-6 form-control">
-						<option>상품</option>
-						<option>주문</option>
-						<option>배송</option>
-						<option>기타</option>
+						<option value="1">상품</option>
+						<option value="2">주문</option>
+						<option value="3">배송</option>
+						<option value="4">기타</option>
 					</select>
 				</div>
-				<!-- 					<div class="conditionSet d-flex justify-content-start align-items-center flex-fill">
-						<h5 class="col-6 text-center">상품 종류</h5>
-						<select class="col-5 form-control">
-					    	<option>냉장고</option>
-					    	<option>TV</option>
-					    	<option>세탁기</option>
-					    	<option>에어컨</option>
-					    	<option>PC</option>
-					  	</select>
-					</div> -->
 				<div
 					class="conditionSet d-flex justify-content-start align-items-center flex-fill">
 					<h5 class="col-8 text-center">리스트 최대치</h5>
@@ -163,7 +166,7 @@ label {
 						<nav class="navbar navbar-expand-sm nav-bar-gray">
 							<ul class="navbar-nav">
 								<li class="nav-item"><input type="text"
-									class="form-control" value="검색할 내용 입력하기"></li>
+									class="form-control" value="검색할 내용 입력하기 "></li>
 								<li class="nav-item"><button type="button"
 										class="btn btn-dark shadow">Search</button></li>
 							</ul>
@@ -173,7 +176,7 @@ label {
 				</div>
 				<div
 					class="conditionSet d-flex justify-content-start align-items-center flex-fill">
-					<h5 class="col-6 text-center">필터</h5>
+					<h5 class="col-6 text-center">답변 상태</h5>
 					<select class="col-5 form-control">
 						<option>답변 대기</option>
 						<option>답변 완료</option>
@@ -196,8 +199,8 @@ label {
 								<h5 class="col-4">제목</h5>
 								<h5 class="col-2">글쓴이</h5>
 								<h5 class="col-2">날짜</h5>
-								<h5 class="col-2">문의 종류</h5>
-								<h5 class="col-2">문의 상태</h5>
+								<h5 class="col-2">문의 유형</h5>
+								<h5 class="col-2">답변 상태</h5>
 							</div>
 						</div>
 					</div>
@@ -213,7 +216,9 @@ label {
 							</div>
 							<div class="titleContent col-11 py-1">
 								<div class="titleTop d-flex">
-									<h5 class="col-4">${qnaBoardList.qna_board_title}</h5>
+									<h5 class="col-4">
+										<a href="ReadQna?id=${qnaBoardList.qna_board_id}">${qnaBoardList.qna_board_title}</a>
+									</h5>
 									<h5 class="col-2">${qnaBoardList.users_id}</h5>
 									<h5 class="col-2">${qnaBoardList.qna_board_date}</h5>
 									<h5 class="col-2">${qnaBoardList.qna_category_name}</h5>
@@ -226,36 +231,42 @@ label {
 
 				</div>
 			</div>
-			<div class="d-flex justify-content-end mt-2">
-				<a href="CreateQna" class="btn btn-warning">QnA 등록하기</a>
-			</div>
+			<c:choose>
+				<c:when test="${user_id!=null}">
+					<div class="d-flex justify-content-end mt-2">
+						<a href="CreateQna" class="btn btn-warning">문의글 작성</a>
+					</div>
+				</c:when>
+				<c:otherwise>
+				</c:otherwise>
+			</c:choose>
 			<div class="pager d-flex justify-content-around my-3">
 				<div class="flex-fulfill"></div>
 				<div class="pagingButtonSet d-flex justify-content-center col-5">
 
-					<a href="QnABoardList?pageNo=1" class="btn btn-muted shadow">처음</a>
+					<a href="ReadQnABoardList?pageNo=1" class="btn btn-muted shadow">처음</a>
 					<c:if test="${pager.groupNo > 1 }">
-						<a href="QnABoardList?pageNo=${pager.startPageNo - 1}"
+						<a href="ReadQnABoardList?pageNo=${pager.startPageNo - 1}"
 							class="btn btn-muted shadow">이전</a>
 					</c:if>
 
 					<c:forEach var="i" begin="${pager.startPageNo}"
 						end="${pager.endPageNo}">
 						<c:if test="${pager.pageNo != i}">
-							<a href="QnABoardList?pageNo=${i}"
+							<a href="ReadQnABoardList?pageNo=${i}"
 								class="btn btn-dark shadow">${i}</a>
 						</c:if>
 						<c:if test="${pager.pageNo == i}">
-							<a href="QnABoardList?pageNo=${i}"
+							<a href="ReadQnABoardList?pageNo=${i}"
 								class="btn btn-warning shadowm">${i}</a>
 						</c:if>
 					</c:forEach>
 
 					<c:if test="${pager.groupNo < pager.totalGroupNo}">
-						<a href="QnABoardList?pageNo=${pager.endPageNo + 1}"
+						<a href="ReadQnABoardList?pageNo=${pager.endPageNo + 1}"
 							class="btn btn-muted shadow">다음</a>
 					</c:if>
-					<a href="QnABoardList?pageNo=${pager.totalPageNo}"
+					<a href="ReadQnABoardList?pageNo=${pager.totalPageNo}"
 						class="btn btn-muted shadow">맨끝</a>
 
 				</div>

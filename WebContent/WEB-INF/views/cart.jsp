@@ -39,20 +39,12 @@
 		if (type === 'p' && value.getAttribute('value') < max) {
 			value.setAttribute('value',
 					parseInt(value.getAttribute('value')) + 1);
-		}
-
-		/* $.ajax({
-			url : "UpdateCart",
-			type : "post",
-			data : {
-				value : value.getAttribute('value')
-			},
-			success : function(task) {
-				location.href = "ReadCart"
-			}
-
-		}); */
-
+		} 
+		
+		//최종 금액 구하기
+		let result = parseInt(value.getAttribute('value')) * ${cart.product_price};
+		document.getElementById('total_sum').innerText = result
+				.toLocaleString('en-US');
 	}
 	
 	function deleteCart(Item) {
@@ -351,7 +343,7 @@ a {
 							<h5>전체 상품</h5>
 						</div>
 						<div class="d-flex mx-3">
-							<h5>""개</h5>
+							<h5>${UpdateCart.cartcartItemCount}개</h5>
 						</div>
 					</div>
 					<div class="row justify-content-between">
@@ -359,11 +351,10 @@ a {
 							<h5>주문 금액</h5>
 						</div>
 						<div class="d-flex mx-3">
-							<h5>
-								<fmt:formatNumber type="number" maxFractionDigits="0"
-									value="${price}" />
-								원
+							<h5 id="total_sum">
+								<%-- <fmt:formatNumber type="number" maxFractionDigits="0" value="${total_sum}"/> --%>
 							</h5>
+							<h5>원</h5>
 						</div>
 					</div>
 					<div class="row justify-content-between">
