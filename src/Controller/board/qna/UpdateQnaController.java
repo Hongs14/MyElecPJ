@@ -2,7 +2,6 @@ package Controller.board.qna;
 
 import java.io.IOException;
 
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,11 +10,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dto.qna.QnABoardDTO;
-import dto.user.UserDTO;
-import service.CreateQnAService;
+import service.UpdateQnAService;
 
-@WebServlet(name = "Controller.CreateQnaController", urlPatterns = "/CreateQna")
-public class CreateQnaController extends HttpServlet {
+@WebServlet(name = "Controller.UpdateQnaController", urlPatterns = "/UpdateQna")
+public class UpdateQnaController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -29,29 +27,28 @@ public class CreateQnaController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		CreateQnAService createQnAService = (CreateQnAService) request.getServletContext()
-				.getAttribute("createQnAService");
+		UpdateQnAService updateQnAService = (UpdateQnAService) request.getServletContext()
+				.getAttribute("updateQnAService");
 		// 객체 만들기
-		QnABoardDTO qnaBoardDTO = new QnABoardDTO();
+		QnABoardDTO upQna = new QnABoardDTO();
 		// 세션 객체 생성
 		HttpSession session = request.getSession();
 
 		// 문자파트
-		qnaBoardDTO.setUsers_id(session.getAttribute("user_id").toString());
-		qnaBoardDTO.setQna_board_title(request.getParameter("qna_board_title"));
-		qnaBoardDTO.setQna_board_content(request.getParameter("qna_board_content"));
-		qnaBoardDTO.setQna_category_id(Integer.parseInt(request.getParameter("qna_category_id")));
+		upQna.setQna_board_title(request.getParameter("qna_board_title"));
+		upQna.setQna_board_content(request.getParameter("qna_board_content"));
+		upQna.setQna_category_name(request.getParameter("qna_category_name"));
 
-		int result = createQnAService.writeQnA(qnaBoardDTO);
+		String result = updateQnAService.updateQnA(upQna);
 
-		if (result == 1) {
-			request.setAttribute("qnaBoard", qnaBoardDTO);
+		if (result != null) {
+			request.setAttribute("updatedQnABoard", upQna);
 			response.sendRedirect("readQna?=" + session.getAttribute("users_id").toString());
 //	         request.getRequestDispatcher("WEB-INF/views/readQna.jsp").forward(request, response);
 		}
 
 		else {
-			response.sendRedirect("CreateQna");
+			response.sendRedirect("UpdateQna");
 		}
 
 	}

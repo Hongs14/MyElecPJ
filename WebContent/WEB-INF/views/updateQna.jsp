@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html>
    <head>
       <meta charset="UTF-8">
-      <title>Qna작성 페이지</title>
+      <title>Qna수정 페이지</title>
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
       <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
@@ -137,7 +138,7 @@
                            <h5>제목 </h5>
                         </div>
                         <div class="col-9">
-                           <input type="text" name="qna_board_title" value="${qnaBoard.qna_board_title}" style="width: 800px; border: 0; border-bottom: 2px solid gray;"/>
+                           <input type="text" name="qna_board_title" value="${updatedQnABoard.qna_board_title}" style="width: 800px; border: 0; border-bottom: 2px solid gray;"/>
                         </div>
                      </div>
                      
@@ -146,7 +147,7 @@
                            <h5>문의 내용 </h5>
                         </div>
                         <div class="col-9">
-                           <input type="text" id="qna_content_box" name="qna_board_content" value="${qnaBoard.qna_board_content}"  placeholder="문의 내용을 입력하시오" style="width: 800px; height: 200px; "/>
+                           <input type="text" id="qna_content_box" name="qna_board_content" value="${updatedQnABoard.qna_board_content}"  placeholder="문의 내용을 입력하시오" style="width: 800px; height: 200px; "/>
                         </div>
                      </div>      
                   </div>

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 <html>
@@ -92,14 +93,14 @@ a {
 			<div class="d-flex flex-column rounded-lg"
 				style="background-color: #F5F5F5;">
 				<div class="mx-3 mt-3">
-					<h4>ID님</h4>
+					<h4>${user_id}님</h4>
 				</div>
 				<div class="d-flex mx-0">
 					<h6 class="col-2">
-						<span class="align-self-start badge badge-primary">VIP</span>
+						<span class="align-self-start badge badge-primary">${user_level}</span>
 					</h6>
 					<h6 class="col-2">
-						<span class="align-self-start badge badge-info">100,000P</span>
+						<span class="align-self-start badge badge-info">${user_point}P</span>
 					</h6>
 				</div>
 				<div class="mx-3 my-3">
@@ -111,29 +112,32 @@ a {
 			</div>
 
 			<h3 class="text-left my-3">게시판 목록</h3>
-
 			<div class="d-flex flex-column">
 				<div class="d-flex flex-column my-2">
-					<a class="text-left" data-toggle="collapse" href=".collapseOne"
-						style="font-size: large;">리뷰게시판</a>
+					<a class="text-left " data-toggle="collapse" href=".collapseOne"
+						style="font-size: large;">QnA 게시판</a>
 					<hr />
 					<div class="d-flex flex-column">
-						<div class="collapse collapseOne text-left">리뷰 작성하기</div>
+						<div class="collapse collapseOne text-left"
+							onclick="window.location.href='ReadQnABoardList'">게시판 목록보기</div>
+						<div class="collapse collapseOne text-left"
+							onclick="window.location.href='CreateQna'">문의글 작성하기</div>
+
+					</div>
+				</div>
+				<div class="d-flex flex-column my-2">
+					<a class="text-left" data-toggle="collapse" href=".collapseOne"
+						style="font-size: large;">Review 게시판</a>
+					<hr />
+					<div class="d-flex flex-column">
+						<div class="collapse collapseOne text-left"
+							onclick="window.location.href='ReadReviewBoardList'">게시판
+							목록보기</div>
+						<div class="collapse collapseOne text-left"
+							onclick="window.location.href='CreateReview'">리뷰 작성하기</div>
 					</div>
 				</div>
 
-				<div class="d-flex flex-column my-2">
-					<a class="text-left " data-toggle="collapse" href=".collapseOne"
-						style="font-size: large;">QnA게시판</a>
-					<hr />
-					<div class="d-flex flex-column">
-						<div class="collapse collapseOne text-left">배송 문의</div>
-						<div class="collapse collapseOne text-left">주문 문의</div>
-						<div class="collapse collapseOne text-left">결제 문의</div>
-						<div class="collapse collapseOne text-left">제품 문의</div>
-						<div class="collapse collapseOne text-left">기타 문의</div>
-					</div>
-				</div>
 			</div>
 		</div>
 
@@ -153,9 +157,9 @@ a {
 			</div>
 			<div class="d-flex justify-content-end my-2 ">
 				<button type="button" class="btn btn-primary btn-sm mr-1"
-					style="border-radius: 30px">수정</button>
+					style="border-radius: 30px" onclick="window.location.href='UpdateQna'">수정</button>
 				<button type="button" class="btn btn-primary btn-sm"
-					style="border-radius: 30px">삭제</button>
+					style="border-radius: 30px" onclick="window.location.href='DeleteQna'">삭제</button>
 			</div>
 			<hr />
 			<div class="d-flex mt-2">
@@ -168,14 +172,24 @@ a {
 
 			<div class="d-flex flex-column mt-2">
 				<h4>Answer</h4>
-				<div id="QnaAnswer" class="d-flex text-muted align-self-end">
-					<h6 class="mr-1">작성일 |</h6>
-					<h6 class="ml-1 mr-2">${readQna.qna_board_date}</h6>
-					<h6 class="mx-1">작성자 |</h6>
-					<h6 class="mx-1">관리자</h6>
+				<div id="QnaAnswer" class="d-flex text-muted align-self-end">					
+					<c:choose>
+						<c:when test="${readQna.qna_board_answer != '답변이 등록되지 않았습니다.'}">
+							<h6 class="mr-1">작성일 |</h6>
+							<h6 class="ml-1 mr-2">${readQna.qna_board_date}</h6>
+							<h6 class="mx-1">작성자 |</h6>
+							<h6 class="mx-1">관리자</h6>
+						</c:when>
+						<c:otherwise>
+							<h6 class="mr-1">작성일 |</h6>
+							<h6 class="ml-1 mr-4"></h6>
+							<h6 class="mx-1">작성자 |</h6>
+							<h6 class="ml-1 mr-4"></h6>
+						</c:otherwise>
+					</c:choose>
 				</div>
 				<div id="QnaAnswer" class="d-flex flex-column">
-					<h5>환불 접수 되었습니다.</h5>
+					<h5>${readQna.qna_board_answer}</h5>
 				</div>
 			</div>
 		</div>

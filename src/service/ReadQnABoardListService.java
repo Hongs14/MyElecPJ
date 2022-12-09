@@ -3,14 +3,11 @@ package service;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 
 import javax.servlet.ServletContext;
 import javax.sql.DataSource;
 
 import dao.QnABoardDAO;
-import dao.ReviewBoardDAO;
-import dto.cart.CartDTO;
 import dto.qna.QnABoardDTO;
 import util.Pager;
 

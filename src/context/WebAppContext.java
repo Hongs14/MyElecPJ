@@ -34,6 +34,7 @@ import service.ReadReviewBoardListService;
 import service.ReadReviewDetailService;
 import service.UpdateCartService;
 import service.UpdateOrderService;
+import service.UpdateQnAService;
 import service.UpdateUserService;
 import service.UserInfoService;
 
@@ -81,5 +82,6 @@ public class WebAppContext implements ServletContextListener{
 		application.setAttribute("updateCartService", new UpdateCartService(application));
 		application.setAttribute("updateOrderService", new UpdateOrderService(application));
 		application.setAttribute("updateUserService", new UpdateUserService(application));
+		application.setAttribute("updateQnAService", new UpdateQnAService(application));
 	}
 }

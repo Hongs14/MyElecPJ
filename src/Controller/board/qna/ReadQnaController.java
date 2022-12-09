@@ -16,18 +16,19 @@ import service.ReadQnADetailService;
 public class ReadQnaController extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String id = request.getParameter("id");
+		if (id == null) {
+			id = "1";
+		}
+		int qnaNo=Integer.parseInt(id);
+			
 		ServletContext application = request.getServletContext();
-		ReadQnADetailService readQnaService = (ReadQnADetailService) application.getAttribute("readQnaService");
-				
-	//new ReadQnaService(application);
-
-//		int qnaNo=Integer.parseInt(request.getParameter("qnaNo"));
+		ReadQnADetailService readQnADetailService = (ReadQnADetailService) application.getAttribute("readQnADetailService");
 		
-		int qnaNo =2884;
-		QnABoardDTO readQna = readQnaService.getReadQna(qnaNo);
+		QnABoardDTO readQna = readQnADetailService.getReadQna(qnaNo);
+		
 		
 		request.setAttribute("readQna", readQna);
-		
 		request.getRequestDispatcher("/WEB-INF/views/readQna.jsp").forward(request, response);
 	}
 	

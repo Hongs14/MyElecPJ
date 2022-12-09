@@ -3,12 +3,9 @@ package dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 
 import dto.qna.QnABoardDTO;
-import dto.qna.QnABoardProductDTO;
 import util.Pager;
 
 public class QnABoardDAO {
@@ -67,9 +64,16 @@ public class QnABoardDAO {
 		ArrayList<QnABoardDTO> QnaBoardList = new ArrayList<QnABoardDTO>();
 		
 			// sql문 작성
-			String sql = "" + "select * " + "from(select rownum rnum, qna_board_id, qna_board_title, users_id, "
-					+ "qna_board_date, qna_category_name, qna_board_answer " + "from qna_board q, qna_category qc "
-					+ "where rownum <=? and q.qna_category_id=qc.qna_category_id ) qtable " + "where rnum >= ? ";
+			String sql = "" + "select * "
+					+ "from (select rownum rnum, qna_board_id, qna_board_title, users_id, "
+					+ "qna_board_date, qna_category_name, qna_board_answer "
+					+		"from( "
+					+		"select qna_board_id, qna_board_title, users_id, qna_board_date, qna_category_name, qna_board_answer "
+					+		"from qna_board q, qna_category qc "
+					+		"where q.qna_category_id=qc.qna_category_id "
+					+		"order by q.qna_board_id desc) "
+					+		"where rownum <=?) "
+					+		"where rnum >= ? ";
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, pager.getEndRowNo());
 			pstmt.setInt(2, pager.getStartRowNo());
@@ -128,16 +132,17 @@ public class QnABoardDAO {
 
 			// SQL문작성하여 가져온번호를 넣고 DB에 데이터를 요청한다
 			String sql = ""
-					+ "SELECT qna_board_id, p.product_id, product_name, qna_board_title, qna_board_content, users_id, qna_board_date, qna_category_name, nvl(qna_board_answer, '답변이 등록되지 않았습니다.') as qna_board_answer "
-					+ "FROM qna_board q, product p, qna_category qc "
-					+ "WHERE p.product_id = q.product_id and qc.qna_category_id=q.qna_category_id and qna_board_id =? ";
+					+ "SELECT qna_board_id, qna_board_title, qna_board_content, q.users_id, qna_board_date, qc.qna_category_name, nvl(qna_board_answer, '답변이 등록되지 않았습니다.') as qna_board_answer "  
+					+"FROM qna_board q,  qna_category qc " 
+					+"WHERE qc.qna_category_id=q.qna_category_id " 
+					+"and qna_board_id = ? ";
 
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, qnaNo);
 			ResultSet rs = pstmt.executeQuery();
 			// 요청한 데이터를 rs로 받아서 QnABoardDTO에 담는다
 			if (rs.next()) {
-				readQna.setQna_board_id(rs.getInt("qna_board_id"));
+				readQna.setQna_board_id(qnaNo);
 				readQna.setQna_board_title(rs.getString("qna_board_title"));
 				readQna.setQna_board_content(rs.getString("qna_board_content"));
 				readQna.setUsers_id(rs.getString("users_id"));
