@@ -108,7 +108,7 @@ label {
 				//document.querySelector("#title").innerHTML = "총 ${pager.totalRows}명의 유저가 있습니다";
 				location.href="admin"
 			}
-		});v c 
+		});
 		//refreshList();
 	}
 	function checkAll(){
