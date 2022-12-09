@@ -56,11 +56,19 @@ public class ReadProductListController extends HttpServlet{
 		request.setAttribute("category", category);
 		request.setAttribute("subcategory", subcategory);
 		
-		for (ProductDTO productDTO : pageList) {
-			productDTO.setProduct_savedname("resources\\images\\download\\" + readProductListService.getImage(productDTO.getProduct_id()).getProduct_savedname());
+		String filePath = null;
+		for (ProductDTO p : pageList) {
+			product = readProductListService.getImage(p.getProduct_id());
+			filePath =  "resources\\images\\download\\" + product.getProduct_savedname();
+			p.setProduct_savedname(filePath);
 		}
-
+		
 		request.setAttribute("pageList", pageList);
+		//String fileName = product.getProduct_filename();
+		//String contextType = product.getProduct_filename();
+		
+
+		
 		
 		request.getRequestDispatcher("/WEB-INF/views/productList.jsp").forward(request, response);
 	}

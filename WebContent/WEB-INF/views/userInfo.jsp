@@ -135,8 +135,8 @@ hr {
 						<a class="text-left" data-toggle="collapse" href=".collapseOne" style="font-size: large;">회원정보 관리</a>
 						<hr />
 						<div class="d-flex flex-column">
-							<div class="collapse collapseOne text-left" onclick="window.location.href='userInfo'" style="cursor:pointer">개인정보 확인</div>
-							<div class="collapse collapseOne text-left" onclick="window.location.href='updateUserinfo'" style="cursor:pointer">개인정보 수정</div>
+							<div class="collapse collapseOne text-left" onclick="window.location.href='UserInfo'" style="cursor:pointer">개인정보 확인</div>
+							<div class="collapse collapseOne text-left" onclick="window.location.href='UpdateUser'" style="cursor:pointer">개인정보 수정</div>
 						</div>
 					</div>
 
@@ -260,7 +260,7 @@ hr {
 								</form>
 								<hr />
 
-								<button class="btn btn-primary btn-md" onclick="window.location.href='updateUserinfo'">회원정보 수정하기</button>
+								<button class="btn btn-primary btn-md" onclick="window.location.href='UpdateUser'">회원정보 수정하기</button>
 							</div>
 						</div>
 					</div>

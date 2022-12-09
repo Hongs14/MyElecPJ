@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(name = "Controller.homeController", urlPatterns = "/Home")
+@WebServlet(name = "Controller.HomeController", urlPatterns = "/Home")
 public class HomeController extends HttpServlet{
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setAttribute("pathList0", "carou1.png");
@@ -21,5 +21,6 @@ public class HomeController extends HttpServlet{
 		
 		//받은 데이터를 해가지고 jsp만들고 클라이언트로 보냄
 		request.getRequestDispatcher("/WEB-INF/views/home.jsp").forward(request, response);
+		
 	}
 }
