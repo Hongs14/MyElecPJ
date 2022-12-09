@@ -31,7 +31,7 @@ public class ReadProductDetailController extends HttpServlet{
       //ReadProductDetailService readProductDetailService = (ReadProductDetailService) request.getServletContext().getAttribute("readProductDetailService");
       ReadProductDetailService readProductDetailService = new ReadProductDetailService(application);
      
-      ProductDTO image = readProductDetailService.getImage(product_id);
+      ProductDTO image = readProductDetailService.getProductImage(product_id);
  
       ProductDTO product = readProductDetailService.getProductDetail(product_id);
       
