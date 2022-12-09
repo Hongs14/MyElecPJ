@@ -14,13 +14,36 @@ import service.FindPasswordService;
 
 @WebServlet(name = "Controller.FindPasswordController", urlPatterns = "/FindPassword")
 public class FindPasswordController extends HttpServlet{
-	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		UserDTO userDTO = new UserDTO();
-		
-		//서비스로 회원 가입 요청
-		ServletContext application = request.getServletContext();
-		FindPasswordService findPasswordService = (FindPasswordService) application.getAttribute("findPasswordService"); 
-		findPasswordService.findPassword(userDTO);
-		request.getRequestDispatcher("/WEB-INF/views/findPassword.jsp").forward(request, response);
-	}
+   
+   
+   
+   
+   @Override
+   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+      request.getRequestDispatcher("/WEB-INF/views/findPassword.jsp").forward(request, response);
+   }
+   
+   
+   @Override
+   protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+      UserDTO userDTO = new UserDTO();
+      userDTO.setUser_id(request.getParameter("user_id"));
+      userDTO.setUser_phone(request.getParameter("user_phone"));
+      
+      ServletContext application = request.getServletContext();
+      FindPasswordService findPasswordService = (FindPasswordService)application.getAttribute("findPasswordService");
+      String result = findPasswordService.findPassword(userDTO);
+      
+      UserDTO password = new UserDTO();
+      password.setUser_password(result);
+      
+      request.setAttribute("password",password);
+      request.getRequestDispatcher("/WEB-INF/views/findPassword.jsp").forward(request, response);
+      
+      
+   
+   }
+   
+   
+   
 }

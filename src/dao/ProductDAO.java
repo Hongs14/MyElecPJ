@@ -50,9 +50,9 @@ public class ProductDAO {
 				             "and p.category_id = ? and p.subcategory_id = ? " +
 				        "ORDER BY product_id " +
 				        ") " +
-				    "WHERE rownum <= (? * 5) " +
+				    "WHERE rownum <= (? * 6) " +
 				    ") " + 
-				"WHERE rnum >= ((? - 1) * 5) + 1 ";
+				"WHERE rnum >= ((? - 1) * 6) + 1 ";
 	
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		pstmt.setInt(1, productDTO.getCategory_id());

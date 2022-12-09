@@ -49,10 +49,9 @@ public class UserDAO {
 	}
 	
 	//회원가입
-	public boolean insertUser(UserDTO receivedDTO, Connection conn) throws SQLException {
-		boolean result = false;
+	public int insertUser(UserDTO receivedDTO, Connection conn) throws SQLException {
+		int result = 0;
 
-		try {
 			String sql1 = "";
 			sql1 += "INSERT INTO USERS ";
 			sql1 += "VALUES (?, ?, ?, ?, ?, 1, ?, ?, 0)";
@@ -68,7 +67,7 @@ public class UserDAO {
 			pstmt1.setString(6, receivedDTO.getUser_name());
 			pstmt1.setString(7, receivedDTO.getUser_birthday());
 			
-			pstmt1.executeUpdate();
+			result += pstmt1.executeUpdate();
 			pstmt1.close();
 			
 			String sql2
@@ -78,34 +77,10 @@ public class UserDAO {
 			PreparedStatement pstmt2 = conn.prepareStatement(sql2);
 			pstmt2.setString(1, receivedDTO.getUser_id());
 		
-			int rows2 = pstmt2.executeUpdate();
-			if(rows2 == 0) throw new Exception("회원 장바구니 만들기 실패");
+			result += pstmt2.executeUpdate();
 	
 			pstmt2.close();
-			
-			result = true;
-			
-		} catch(Exception e) {
-			try {
-				//수동 롤백 -> 모두 실패 처리
-				conn.rollback();
-				result = false;
-				
-			} catch(SQLException e1) {
-			}
-			System.out.println("회원가입, 장바구니 생성 실패");
-			e.printStackTrace();
-		} finally {
-			if(conn != null) {
-				try {
-					//자동 커밋 기능 켜기
-					conn.setAutoCommit(true);
-					conn.close();
-				} catch (SQLException e) {
-					
-				}
-			}
-		}
+	
 		return result;
 	}
 	//관리자 페이지 전체 리스트

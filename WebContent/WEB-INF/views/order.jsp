@@ -204,29 +204,6 @@
 						</div>
 					</div>
 					<div class="d-flex flex-column mt-5">
-						<div class="d-flex justify-content-between">
-							<h2 class="text-left col-7 align-self-center">약관 동의</h2>
-							<a class="text-right col-5 align-self-center" data-toggle="collapse" data-target=".terms">전체 약관 보기</a>
-						</div>
-						<hr/>
-						<div class="terms collapse d-flex justify-content-around">
-							<h3 class="text-left col-10">어쩌구 동의</h3>
-							<div class="form-check d-flex justify-content-center col-2">
-							   	<input type="checkbox" class="form-check-input align-self-center">
-							</div>
-						</div>
-						<div class="terms collapse d-flex justify-content-around">
-							<h3 class="text-left col-10">저쩌구 동의</h3>
-							<div class="form-check d-flex justify-content-center col-2">
-							   	<input type="checkbox" class="form-check-input align-self-center">
-							</div>
-						</div>
-						<div class="terms collapse d-flex justify-content-around">
-							<h3 class="text-left col-10">동의? 보감</h3>
-							<div class="form-check d-flex justify-content-center col-2">
-							   	<input type="checkbox" class="form-check-input align-self-center">
-							</div>
-						</div>
 						<button onclick="createOrder()" type="button" class="btn bg-primary" style="color: #ffffff; border-radius: 36px">결제하기</button>
 					</div>
 				</div>

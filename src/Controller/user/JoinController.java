@@ -26,15 +26,13 @@ public class JoinController extends HttpServlet {
 		
 		//클라이언트가 보낸 데이터 얻기
 		UserDTO userDTO = new UserDTO();
-		userDTO.setUser_name(request.getParameter("uname"));
-		userDTO.setUser_id(request.getParameter("uid"));		
-		userDTO.setUser_password(request.getParameter("password"));
-		userDTO.setUser_email(request.getParameter("email"));
-		userDTO.setUser_phone(request.getParameter("phone"));
-		userDTO.setUser_birthday(request.getParameter("birth"));
-		userDTO.setUser_address(request.getParameter("postcode") + request.getParameter("addr1")+request.getParameter("addr3"));
-			
-		
+		userDTO.setUser_name(request.getParameter("user_name"));
+		userDTO.setUser_id(request.getParameter("user_id"));		
+		userDTO.setUser_password(request.getParameter("user_password"));
+		userDTO.setUser_email(request.getParameter("user_email"));
+		userDTO.setUser_phone(request.getParameter("user_phone"));
+		userDTO.setUser_birthday(request.getParameter("user_birthday"));
+		userDTO.setUser_address(request.getParameter("postcode") + request.getParameter("addr1") + request.getParameter("addr3"));
 		
 		//서비스로 회원가입 요청
 		ServletContext application = request.getServletContext();

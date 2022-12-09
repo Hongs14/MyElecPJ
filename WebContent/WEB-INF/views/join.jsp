@@ -150,15 +150,15 @@ form {
 		var phone = $("#user_phone").val();
 		var postcode = $("#postcode").val();
 
-		if(isEmpty(id) || isEmpty(pass) || isEmpty(mail) || isEmpty(phone) || isEmpty(postcode)) {
+		if(id === null || pass === null || mail === null || phone === null || postcode === null) {
 			console.log("실패");
 			alert("입력란 확인");
 		} else {
 			console.log("성공");
 			$("#idpass").submit();
 		}
-	} 
-	
+	}
+
 </script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
