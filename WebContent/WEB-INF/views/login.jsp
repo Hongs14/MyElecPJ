@@ -106,7 +106,7 @@ hr {
 <script>
 	function checkID() {
 
-		var loginId = $("#uid");
+		var loginId = $("#user_id");
 		var idValue = loginId.val();
 		var idPattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,10}$/;
 		var idTest = idPattern.test(idValue);
@@ -121,7 +121,7 @@ hr {
 	}
 
 	function checkPWD() {
-		var loginPwd = $("#upassword");
+		var loginPwd = $("#user_password");
 		var pwdValue = loginPwd.val();
 		var pwdPattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,15}$/;
 		var pwdTest = pwdPattern.test(pwdValue);
@@ -134,6 +134,31 @@ hr {
 			result = false;
 		}
 	}
+
+	function isEmpty(str){
+		
+		if(typeof str == "undefined" || str == null || str == "")
+			return true;
+		else
+			return false ;
+	}
+	
+	//데이터 전송
+	 function submitInfo() {
+		var id = $("#user_id").val();
+		var pass = $("#user_password").val();
+
+		if(isEmpty(id) || isEmpty(pass)  ){
+			console.log("실패");
+			alert("입력란 확인");
+		} else {
+			console.log("성공");
+			$("#idpass").submit();
+		}
+	} 
+	
+	
+	
 </script>
 
 
@@ -156,14 +181,14 @@ hr {
 						<div class="card-body col-sm-12 col-md-12">
 
 
+							<form id="idpass" method="post" novalidate>
 
-							<form id="loginForm" method="post" action="Login" novalidate>
 								<div id="userId" class="form-group">
-									<input type="email" class="form-control form-control-user" id="user_id" name="user_id" onfocusout="checkID()" placeholder="Email@naver.com">
+									<input type="text" class="form-control form-control-user" id="user_id" name="user_id" onfocusout="checkID()" placeholder="ID...">
 								</div>
 
 								<div id="userPassword" class="form-group">
-									<input type="password" class="form-control form-control-password" id="user_password" name="user_password" onfocusout="checkPWD()" placeholder="Password...">
+									<input type="text" class="form-control form-control-password" id="user_password" name="user_password" onfocusout="checkPWD()" placeholder="Password...">
 								</div>
 
 								<div class="form-group">
@@ -171,7 +196,7 @@ hr {
 
 								</div>
 
-								<button type="submit" class="btn btn-primary btn-user btn-block">Login</button>
+								<button type="button" class="btn btn-primary btn-user btn-block" onclick = "submitInfo()">Login</button>
 
 								<hr />
 

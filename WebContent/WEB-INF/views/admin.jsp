@@ -253,9 +253,9 @@ hr {
 							</form>
 							<hr />
 
-							<button class="btn btn-primary btn-md">회원정보 수정하기</button>
+							<button class="btn btn-primary btn-md" onclick = "location.href = 'AdminList'">회원정보 수정하기</button>
 							<button class="btn btn-primary btn-md"
-							onclick = "location.href = 'updateUserInfo'"
+							onclick = "location.href = 'AdminList'"
 							>돌아가기</button>
 
 
