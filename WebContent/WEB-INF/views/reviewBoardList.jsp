@@ -94,20 +94,38 @@
 				<%@ include file="/WEB-INF/views/common/userInfo.jsp" %>
 
 				<h3 class="text-left my-3">게시판 목록</h3>
-
+				
 				<div class="d-flex flex-column">
 					<div class="d-flex flex-column my-2">
-						<a class="text-left" data-toggle="collapse" href=".collapseOne" style="font-size: x-large;">관리 목록</a>
-						<hr/>
+						<a class="text-left " data-toggle="collapse" href=".collapseOne"
+						style="font-size: large;">QnA 게시판</a>
+						<hr />
 						<div class="d-flex flex-column">
-							<div class="collapse collapseOne text-left">유저 목록</div>
-							<div class="collapse collapseOne text-left">상품 목록</div>
-							<div class="collapse collapseOne text-left">주문 목록</div>
-							<div class="collapse collapseOne text-left">리뷰 게시판 목록</div>
-							<div class="collapse collapseOne text-left">QnA 게시판 목록</div>
+							<div class="collapse collapseOne text-left"
+								onclick="window.location.href='ReadQnABoardList'">게시판 목록보기</div>
+								<c:choose>
+									<c:when test="${user_id!=null}">
+										<div class="collapse collapseOne text-left"
+											onclick="window.location.href='CreateQna'">문의글 작성하기</div>
+									</c:when>
+									<c:otherwise>
+									</c:otherwise>
+								</c:choose>
+							</div>
+						</div>
+					<div class="d-flex flex-column my-2">
+						<a class="text-left" data-toggle="collapse" href=".collapseOne"
+							style="font-size: large;">Review 게시판</a>
+						<hr />
+						<div class="d-flex flex-column">
+							<div class="collapse collapseOne text-left"
+								onclick="window.location.href='ReadReviewBoardList'">게시판
+								목록보기</div>
+							<div class="collapse collapseOne text-left"
+								onclick="window.location.href='CreateReview'">리뷰 작성하기</div>
 						</div>
 					</div>
-				</div>
+				</div>		
 			</div>
 			<div class="d-flex flex-column col-sm-10 col-md-10">
 				<div id="listType" class="mt-4">
@@ -228,9 +246,16 @@
 					
 					</div>
 				</div>
-				<div class="d-flex justify-content-end mt-2">
-					<a href="CreateReview" class="btn btn-warning">리뷰 등록하기</a>
-				</div>
+				<c:choose>
+					<c:when test="${user_id!=null}">
+						<div class="d-flex justify-content-end mt-2">
+							<a href="CreateQna" class="btn btn-warning">리뷰글 작성</a>
+						</div>
+					</c:when>
+					<c:otherwise>
+					</c:otherwise>
+				</c:choose>
+			
 				<div class="pager d-flex justify-content-around my-3">
 					<div class="flex-fulfill"></div>
 					<div class="pagingButtonSet d-flex justify-content-center col-5">

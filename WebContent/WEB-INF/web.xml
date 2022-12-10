@@ -33,7 +33,7 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>Home</servlet-name>
-		<url-pattern>/homeController</url-pattern>
+		<url-pattern>/HomeController</url-pattern>
 	</servlet-mapping>
 	
 </web-app>
