@@ -24,10 +24,8 @@ public class ReadOrderController extends HttpServlet {
 		String userId = (String) session.getAttribute("user_id");
 		int productid = Integer.parseInt(request.getParameter("productid"));
 		int price = Integer.parseInt(request.getParameter("price"));
-		
-		
-		//int countNum = Integer.parseInt(request.getParameter("countNum"));
-		int countNum = 1;
+		int countNum = Integer.parseInt(request.getParameter("qty"));
+
 //		BufferedReader br = request.getReader();
 //		char[] buffer = new char[1024];
 //		int isEnd = 0;
@@ -62,7 +60,7 @@ public class ReadOrderController extends HttpServlet {
 		
 		
 		request.setAttribute("productId", productid);
-		request.setAttribute("price", price);
+		request.setAttribute("price", price * countNum);
 		request.setAttribute("countNum", countNum);
 		request.setAttribute("productName", productName);
 		request.setAttribute("filePath", filePath);

@@ -60,13 +60,15 @@
 		var min = 1;
 		var max = 10;
 		var num = document.getElementById('countNum');
-		var countQty = document.getElementById('total_qty');
+		var qty = document.getElementById('qty');
 		if (type === 'm' && num.getAttribute('value') > min) {
 			num.setAttribute('value', parseInt(num.getAttribute('value')) - 1);
+			qty.setAttribute('value', parseInt(num.getAttribute('value')));
 		}
 
 		if (type === 'p' && num.getAttribute('value') < max) {
 			num.setAttribute('value', parseInt(num.getAttribute('value')) + 1);
+			qty.setAttribute('value', parseInt(num.getAttribute('value')));
 		}
 		//최종 금액 구하기
 		let result = parseInt(num.getAttribute('value')) * ${Product.product_price};
@@ -280,7 +282,9 @@ li:first-child {
 											</div>
 											<div class="ml-3">
 												<span class="btn-group btn-group-sm pl-5 ml-5" style="width: 50%">
-													<button type="button" class="btn btn-outline-dark btn-sm" onclick="counting('m')">-</button> <input type="button" class="form-control btn btn-outline-dark btn-sm disabled" id="countNum" name="countNum" value="0" />
+													<button type="button" class="btn btn-outline-dark btn-sm" onclick="counting('m')">-</button>
+													<input type="button" class="btn btn-outline-dark btn-sm disabled" id="countNum" name="countNum" value="1" />
+													<input type="hidden" id="qty" name="qty" value="0"/>
 													<button type="button" class="btn btn-outline-dark btn-sm" onclick="counting('p')">+</button>
 												</span>
 											</div>
@@ -298,13 +302,14 @@ li:first-child {
 								<div class="d-flex justify-content-between">
 									<h3>총 금액:</h3>
 									<div class="d-flex justify-content-end">
-										<h4 id="total_sum"></h4>
+										<h4 id="total_sum">${Product.product_price}</h4>
 										<h4>원</h4>
 									</div>
 								</div>
 							</div>
 							<div id="rf_button">
 								<div class="row" style="text-align: center">
+								<c:if test="${user_id != null}">
 									<div class="text-right col-6 my-1">
 										<button type="button" onClick="javascript:popOpen();" class="btn btn-dark btn-lg round" name="choice" data-color="white" value="cart">장바구니</button>
 									</div>
@@ -313,6 +318,15 @@ li:first-child {
 										<input name="price" value="${Product.product_price}" style="display: none" />
 										<button class="form-control btn btn-dark btn-lg round" value="구매하기" type="submit">구매하기</button>
 									</div>
+								</c:if>
+								<c:if test="${user_id == null}">
+									<div class="text-right col-6 my-1">
+									<a href="Login" class="btn btn-dark btn-lg round" data-color="white">로그인하기</a>
+									</div>
+									<div class="text-right col-6 my-1">
+									<a href="Join" class="btn btn-dark btn-lg round" data-color="white">회원가입하기</a>
+									</div>
+								</c:if>
 								</div>
 							</div>
 						</form>

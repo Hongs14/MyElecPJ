@@ -90,7 +90,7 @@
 		</style>
 		<script>
 			function createOrder() {
-				let price = $(".price").attr("id");
+				let price = $(".price").text().substr(0, $(".price").text().length - 1);
 				let address = $("#address").val();
 				let count = $(".count").attr("id");
 				let id =$(".productId").attr("id");
@@ -107,19 +107,41 @@
 						else {
 							$('#orderResult').html = "주문에 실패했습니다.";
 						}
-						popOpen();
+						popOpen('order');
 					}
 				});
 			}
 			
-			function popOpen() {
-				$('.modal-wrap').show();
-				$('.modal-bg').show();
+			function popOpen(str) {
+				if (str === 'order') {
+					$('#orderWarning').show();
+					$('.modal-bg').show();
+				}
+				
+				else if (str === 'point') {
+					$('#pointWarning').show();
+					$('.modal-bg').show();
+				}
+				
 			}
 
-			function popClose() {
+			function popClose(str) {
 				$('.modal-wrap').hide();
 				$('.modal-bg').hide();
+			}
+			
+			function updatePoint() {
+				let point = $('#point').val();
+				let usable = ${user_point};
+				let Price = ${price};
+				if (point <= usable) {
+					$('#usedPoint').text() = '-' + point + 'p';
+					$('#${price}').text() = Price - point + '원';
+					$('#bonus').text() = '+' + ((Price - point) / 10) + 'p';
+				}
+				else {
+					popOpen('point');
+				}
 			}
 		</script>
 	</head>
@@ -149,7 +171,10 @@
 							<div class="col-4 d-flex flex-column">
 								<div class="form-group d-flex flex-column">
 					            	<label for="point">Membership Point</label>
-					            	<input type="text" class="form-control-sm text-muted" id="point" value="사용할 포인트를 입력해 주세요"/>
+					            	<div class="d-flex">
+						            	<input type="text" class="form-control-sm text-muted" id="point" value="사용할 포인트를 입력해 주세요"/>
+					            		<button onclick="updatePoint()" class="btn btn-primary btn-sm">확인</button>
+					            	</div>
 					            	<small id="pointHelp" class="form-text">남은 포인트: ${user_point}p</small>
 					          	</div>
 							</div>
@@ -210,20 +235,16 @@
 							<h5 class="text-right col-5">+${price}원</h5>
 						</div>
 						<div class="row">
-							<h5 class="text-left col-7">할인 금액</h5>
-							<h5 class="text-right col-5 text-success">-1,000,000원</h5>
-						</div>
-						<div class="row">
 							<h5 class="text-left col-7">사용한 멤버쉽 포인트</h5>
-							<h5 class="text-right col-5 text-success">-150,000p</h5>
+							<h5 id="usedPoint" class="text-right col-5 text-success">0p</h5>
 						</div>
 						<div class="row">
 							<h5 class="text-left col-7">결제 예정 금액</h5>
-							<h5 id="${price}" class="text-right col-5 text-primary price">3,850,000원</h5>
+							<h5 id="${price}" class="text-right col-5 text-primary price">${price}원</h5>
 						</div>
 						<div class="row">
 							<h5 class="text-left col-7">적립 예정 멤버쉽 포인트</h5>
-							<h5 class="text-right col-5 text-info">+38,500p</h5>
+							<h5 id="bonus" class="text-right col-5 text-info">+0p</h5>
 						</div>
 					</div>
 					<div class="d-flex flex-column mt-5">
@@ -235,15 +256,22 @@
 		
 		<!-- 팝업 창 -->
 		<div class="modal-bg" onClick="popClose()"></div>
-		<div class="modal-wrap container-fluid" style="border-radius: 20px;">
+		<div id="orderWarning" class="modal-wrap container-fluid" style="border-radius: 20px;">
 			<div style="height: 150px;" class="pt-5 text-center">
 				<h6 id="orderResult">주문에 성공했습니다</h6>
 			</div>
 	
-			<div class="row my-1 ">
-				<div class="col-6 d-flex justify-content-center my-1">
+			<div class="d-flex justify-content-center my-1">
 					<button class="btn btn-sm btn-dark round" onClick="popClose()">확인</button>
-				</div>
+			</div>
+		</div>
+		<div id="pointWarning" class="modal-wrap container-fluid" style="border-radius: 20px;">
+			<div style="height: 150px;" class="pt-5 text-center">
+				<h6 id="orderResult">포인트가 부족합니다</h6>
+			</div>
+	
+			<div class="d-flex justify-content-center my-1">
+					<button class="btn btn-sm btn-dark round" onClick="popClose()">확인</button>
 			</div>
 		</div>
 	</body>

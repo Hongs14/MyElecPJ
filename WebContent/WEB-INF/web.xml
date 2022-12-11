@@ -27,13 +27,4 @@
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
 	
-	<servlet>
-		<servlet-name>Home</servlet-name>
-		<servlet-class>Controller.HomeController</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>Home</servlet-name>
-		<url-pattern>/HomeController</url-pattern>
-	</servlet-mapping>
-	
 </web-app>

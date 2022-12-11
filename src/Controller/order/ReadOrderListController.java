@@ -39,7 +39,7 @@ public class ReadOrderListController extends HttpServlet{
 		int totalBoardNum = readOrderListSerivce.getTotalBoardNum(order);
 		  
 		//pager 생성
-		Pager pager = new Pager(6, 5, totalBoardNum, pageNo);
+		Pager pager = new Pager(5, 5, totalBoardNum, pageNo);
 		  
 		//pageNo에 해당하는 게시물 가져오기
 		List<OrderDTO> pageList = readOrderListSerivce.getPageList(pager, order);
