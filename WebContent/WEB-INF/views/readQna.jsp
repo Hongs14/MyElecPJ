@@ -90,7 +90,7 @@ a {
 		style="width: 1440px; margin: 0px auto;">
 		<div id="sidebar"
 			class="col-sm-2 col-md-2 d-none d-xl-block justify-content-center">
-			<%@ include file="/WEB-INF/views/common/userInfo.jsp" %>
+			<%@ include file="/WEB-INF/views/common/userInfo.jsp"%>
 
 			<h3 class="text-left my-3">게시판 목록</h3>
 			<div class="d-flex flex-column">
@@ -137,10 +137,14 @@ a {
 				<h5 class="mx-1">${readQna.users_id}</h5>
 			</div>
 			<div class="d-flex justify-content-end my-2 ">
-				<button type="button" class="btn btn-primary btn-sm mr-1"
-					style="border-radius: 30px" onclick="window.location.href='UpdateQna'">수정</button>
-				<button type="button" class="btn btn-primary btn-sm"
-					style="border-radius: 30px" onclick="window.location.href='DeleteQna'">삭제</button>
+				<c:if test="${readQna.users_id == userId}">
+					<button type="button" class="btn btn-primary btn-sm mr-1"
+						style="border-radius: 30px"
+						onclick="window.location.href='UpdateQna'">수정</button>
+					<button type="button" class="btn btn-primary btn-sm"
+						style="border-radius: 30px"
+						onclick="window.location.href='DeleteQna'">삭제</button>
+				</c:if>
 			</div>
 			<hr />
 			<div class="d-flex mt-2">
@@ -153,7 +157,7 @@ a {
 
 			<div class="d-flex flex-column mt-2">
 				<h4>Answer</h4>
-				<div id="QnaAnswer" class="d-flex text-muted align-self-end">					
+				<div id="QnaAnswer" class="d-flex text-muted align-self-end">
 					<c:choose>
 						<c:when test="${readQna.qna_board_answer != '답변이 등록되지 않았습니다.'}">
 							<h6 class="mr-1">작성일 |</h6>

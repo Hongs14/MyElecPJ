@@ -123,8 +123,8 @@ public class QnABoardDAO {
 		pstmt2.setString(1, qnaDTO.getUsers_id());
 		ResultSet rs = pstmt2.executeQuery();
 		if (rs.next()) {
-			result2=rs.getInt("qna_board_id");
-			
+			result2 = rs.getInt("qna_board_id");
+
 		}
 		pstmt2.close();
 		return result2;
@@ -135,9 +135,6 @@ public class QnABoardDAO {
 	public QnABoardDTO selectOneQnA(int qnaNo, Connection conn) throws Exception {
 		QnABoardDTO readQna = new QnABoardDTO();
 
-		// JSON으로 사용자로부터 입력받은 게시물 번호를 가져온
-
-		// SQL문작성하여 가져온번호를 넣고 DB에 데이터를 요청한다
 		String sql = ""
 				+ "SELECT qna_board_id, qna_board_title, qna_board_content, q.users_id, qna_board_date, qc.qna_category_name, nvl(qna_board_answer, '답변이 등록되지 않았습니다.') as qna_board_answer "
 				+ "FROM qna_board q,  qna_category qc " + "WHERE qc.qna_category_id=q.qna_category_id "
@@ -156,7 +153,7 @@ public class QnABoardDAO {
 			readQna.setQna_category_name(rs.getString("qna_category_name"));
 			readQna.setQna_board_answer(rs.getString("qna_board_answer"));
 		}
-
+		pstmt.close();
 		return readQna;
 	}
 
@@ -209,46 +206,37 @@ public class QnABoardDAO {
 	// updateQna
 	public int updateQnABoard(QnABoardDTO upQna, Connection conn) throws Exception {
 		int result = 0;
-		int result2 = 0;
 
-		// sql문 작성 및 받은 JSONObject에서 데이터 뽑아서 DB로 전송
-		String sql = "" + " UPDATE qna_board "
-				+ " SET qna_category_name = ?, qna_board_title = ? , qna_board_content = ?, qna_board_date = sysdate "
-				+ " WHERE qna_board_id = ? ";
+		String sql = "UPDATE qna_board SET qna_category_id = ?, qna_board_title = ?, qna_board_content = ?, qna_board_date = sysdate WHERE qna_board_id = ?";
+
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 
-		pstmt.setString(1, upQna.getQna_category_name());
+		pstmt.setInt(1, upQna.getQna_category_id());
 		pstmt.setString(2, upQna.getQna_board_title());
 		pstmt.setString(3, upQna.getQna_board_content());
 		pstmt.setInt(4, upQna.getQna_board_id());
+
 		result = pstmt.executeUpdate();
 		pstmt.close();
-		
-		if (result==1) {
-			result2 = upQna.getQna_board_id();
-		} 
 
-		return result2;
+		// 수정 완료되면 1
+		return result;
+		
+		
+		
 	}
 
 	// deleteQna
-	public String deleteQnABoard(int qna_board_id, Connection conn) throws Exception {
-		int rsResult = 0;
-		System.out.println("DAO BoardID: " + qna_board_id);
-		String result = null;
-
+	public int deleteQnABoard(int qnaNo, Connection conn) throws Exception {
+		int result = 0;
+		
 		// sql문 작성 및 받은 JSONObject에서 데이터 뽑아서 DB로 전송
 		String sql = "" + " DELETE FROM qna_board " + " WHERE qna_board_id = ?";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 
-		pstmt.setInt(1, qna_board_id);
-		rsResult = pstmt.executeUpdate();
+		pstmt.setInt(1, qnaNo);
+		result = pstmt.executeUpdate();
 		pstmt.close();
-		if (rsResult == 1) {
-			result = "success";
-		} else {
-			result = "fail";
-		}
 
 		return result;
 	}

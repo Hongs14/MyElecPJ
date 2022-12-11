@@ -21,6 +21,7 @@ import service.CreateQnAService;
 import service.CreateReviewService;
 import service.DeleteCartService;
 import service.DeleteOrderService;
+import service.DeleteQnaService;
 import service.FindPasswordService;
 import service.JoinService;
 import service.LoginService;
@@ -70,6 +71,7 @@ public class WebAppContext implements ServletContextListener{
 		
 		application.setAttribute("deleteCartService", new DeleteCartService(application));
 		application.setAttribute("deleteOrderService", new DeleteOrderService(application));
+		application.setAttribute("deleteQnaService", new DeleteQnaService(application));
 		
 		application.setAttribute("readCartService", new ReadCartService(application));
 		application.setAttribute("readOrderService", new ReadOrderService(application));

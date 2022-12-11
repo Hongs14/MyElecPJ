@@ -6,25 +6,26 @@ import javax.servlet.ServletContext;
 import javax.sql.DataSource;
 
 import dao.QnABoardDAO;
-import dto.qna.QnABoardDTO;
 
-public class UpdateQnAService {
+
+
+public class DeleteQnaService {
 	private ServletContext application;
 	private DataSource ds;
 	private QnABoardDAO qnaBoardDAO;
 
-	public UpdateQnAService(ServletContext application) {
+	public DeleteQnaService(ServletContext application) {
 		this.application = application;
 		qnaBoardDAO = (QnABoardDAO) application.getAttribute("QnABoardDAO");
 		ds = (DataSource) application.getAttribute("dataSource");
 	}
 
-	public int updateQnA(QnABoardDTO upQna) {
-		int result = 0;
+	public int deleteQnA(int qnaNo) {
 		Connection conn = null;
+		int result = 0;
 		try {
 			conn = ds.getConnection();
-			result = qnaBoardDAO.updateQnABoard(upQna, conn);
+			result=qnaBoardDAO.deleteQnABoard(qnaNo, conn);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
