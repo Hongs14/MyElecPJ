@@ -31,22 +31,24 @@ public class CreateReviewController extends HttpServlet{
 		HttpSession session = request.getSession();
 
 		reviewBoardDTO.setUsers_id(session.getAttribute("user_id").toString());
-		reviewBoardDTO.setReview_board_reviewpoint(Integer.parseInt(request.getParameter("send_score")));
+		reviewBoardDTO.setReview_board_reviewpoint(Integer.parseInt(request.getParameter("s_score")));
 		reviewBoardDTO.setReview_board_title(request.getParameter("title"));
 		reviewBoardDTO.setReview_board_content(request.getParameter("content"));
 		
-		System.out.println("cr: "+reviewBoardDTO.getUsers_id());
-		System.out.println("cr: "+reviewBoardDTO.getReview_board_content());
-		System.out.println("cr: "+reviewBoardDTO.getReview_board_reviewpoint());
-		System.out.println("cr: "+reviewBoardDTO.getReview_board_title());
-		
-		/*
 		request.setAttribute("review", reviewBoardDTO);
 
-		createReviewService.writeReview(reviewBoardDTO); 
+		int result = createReviewService.writeReview(reviewBoardDTO); 
 		
-		response.sendRedirect("ProductDetail");
+		if (result != 0) {
+			request.setAttribute("ReviewBoard", reviewBoardDTO);
+			response.sendRedirect("ReadReview?id=" + result);
+			System.out.println(result);
+			
+		}
+
+		else {
+			response.sendRedirect("CreateReview");
+		}
 		
-		request.getRequestDispatcher("/WEB-INF/views/createReview.jsp").forward(request, response);*/
 	}
 }

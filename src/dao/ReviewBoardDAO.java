@@ -13,8 +13,32 @@ import util.Pager;
 
 public class ReviewBoardDAO {
 	List<ReviewBoardDTO> reviewBoardDTOs = new ArrayList<>();
-
 	
+	
+	public int insertReviewBoard(ReviewBoardDTO reviewBoardDTO, Connection conn) throws Exception{
+		int result = 0;
+		
+		String sql = ""
+				+ "INSERT INTO review_board (review_board_id, product_id, review_board_title, review_board_content, review_board_reviewpoint, " + 
+				"    review_board_date, users_id, review_filename, review_savedname, review_contenttype) " + 
+				"VALUES (seq_review_board_id.nextval, ?, ?, ?, ?, SYSDATE, ?, ?, ?, ?)";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setInt(1, reviewBoardDTO.getProduct_id());
+		pstmt.setString(2, reviewBoardDTO.getReview_board_title());
+		pstmt.setString(3, reviewBoardDTO.getReview_board_content());
+		pstmt.setInt(4, reviewBoardDTO.getReview_board_reviewpoint());
+		pstmt.setString(5, reviewBoardDTO.getUsers_id());
+		pstmt.setString(6, reviewBoardDTO.getReview_filename());
+		pstmt.setString(7, reviewBoardDTO.getReview_savedname());
+		pstmt.setString(8, reviewBoardDTO.getReview_contenttype());
+		
+		result = pstmt.executeUpdate();
+		pstmt.close();
+		
+		return result;
+	}
+
+
 	public int getTotalRows(Connection conn) throws SQLException {
 		int result = 0;
 		String sql = "" + "select count(*) " + "from review_board ";
@@ -27,72 +51,33 @@ public class ReviewBoardDAO {
 		return result;
 	}
 	
-	public int getTotalSearchRows(String search, Connection conn) {
+	public int getTotalSearchRows(String search, Connection conn) throws Exception{
 		int totalRows = 0;
-		try {
-			String sql = "" + " select count(*) " + "FROM review_board r , product p "
-					+ " WHERE r.product_id = p.product_id  "
-					+ " and product_name like '%'||?||'%'";
-			PreparedStatement pstmt;
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, search);
-			ResultSet rs = pstmt.executeQuery();
-			if (rs.next()) {
-				totalRows = rs.getInt(1);
-				System.out.println("ReviewDAO totalrows: "+rs.getInt(1));
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				// Connection 반납
-				conn.close();
-				System.out.println("반납 성공");
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}finally {
-				try {
-					// Connection 반납
-					conn.close();
-					System.out.println("반납 성공");
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-			}
+		String sql = "" + " select count(*) " + "FROM review_board r , product p "
+				+ " WHERE r.product_id = p.product_id  "
+				+ " and product_name like '%'||?||'%'";
+		PreparedStatement pstmt;
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, search);
+		ResultSet rs = pstmt.executeQuery();
+		if (rs.next()) {
+			totalRows = rs.getInt(1);
+			System.out.println("ReviewDAO totalrows: "+rs.getInt(1));
 		}
 		return totalRows;
 	}
 
-	public int getTotalSearchRows(int product_id, Connection conn) {
+	public int getTotalSearchRows(int product_id, Connection conn) throws Exception{
 		int totalRows = 0;
-		try {
-			String sql = "" + "select count(*) " + "FROM review_board WHERE product_id = ? ";
-			PreparedStatement pstmt;
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, product_id);
-			ResultSet rs = pstmt.executeQuery();
-			if (rs.next()) {
-				totalRows = rs.getInt(1);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				// Connection 반납
-				conn.close();
-				System.out.println("반납 성공");
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}finally {
-				try {
-					// Connection 반납
-					conn.close();
-					System.out.println("반납 성공");
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-			}
+		String sql = "" + "select count(*) " + "FROM review_board WHERE product_id = ? ";
+		PreparedStatement pstmt;
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setInt(1, product_id);
+		ResultSet rs = pstmt.executeQuery();
+		if (rs.next()) {
+			totalRows = rs.getInt(1);
 		}
+	
 		return totalRows;
 	}
 
@@ -135,6 +120,8 @@ public class ReviewBoardDAO {
 		return result;
 	}
 	
+	/*
+	//리뷰 작성하기
 	public String insertReviewBoard(ReviewBoardDTO reviewDTO, Connection conn) {
 		int rsResult = 0;
 		String result = null;
@@ -222,7 +209,7 @@ public class ReviewBoardDAO {
 		}
 
 		return result;
-	}
+	} */
 
 	public ReviewBoardDTO selectOnereview(int idNum, Connection conn) throws SQLException {
 		ReviewBoardDTO reviewContentDTO = new ReviewBoardDTO();
@@ -437,6 +424,7 @@ public class ReviewBoardDAO {
 		}
 		return result;
 	}
-	
+
+
 
 }

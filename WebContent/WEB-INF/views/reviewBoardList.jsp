@@ -249,7 +249,7 @@
 				<c:choose>
 					<c:when test="${user_id!=null}">
 						<div class="d-flex justify-content-end mt-2">
-							<a href="CreateQna" class="btn btn-warning">리뷰글 작성</a>
+							<a href="CreateReview" class="btn btn-warning">리뷰글 작성</a>
 						</div>
 					</c:when>
 					<c:otherwise>

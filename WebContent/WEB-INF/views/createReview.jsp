@@ -20,12 +20,12 @@
 				console.log(targetNum);
 				$('.makeStar span').css({color: '#000'});
 				$('.makeStar span:nth-child(-n'+targetNum+')').css({color: 'orange'});
-				
+				document.getElementById('starScore').value = targetNum;
 			});
 			
 		});
-		
-		function send(){
+		 
+		/* function send(){
 			var title = $('#title').val();
 			var content = $('content').val(); 
 			var uid = ${user_id};
@@ -46,7 +46,7 @@
 		        	console.log("실패")
 		        }
 		     });  //ajax	
-		};
+		};  */
 
 		
 
@@ -123,7 +123,7 @@
 			
 <!-------------------------------   작성하기  본문   --------------------------->
 			<div class="wrapperChild">
-				<form method="Post" style="border: 0" novalidate>
+				<form method="Post" action="CreateReview" style="border: 0" novalidate>
 					<div class="card cotainer-fluid column">
 						<div class="row my-4">
 							<div class="col-3">
@@ -157,6 +157,7 @@
 							<div class="col-3">
 								<h5>별점 </h5>
 							</div>
+							<input id="starScore" name="s_score" value="" style="display: none"/>
 							<div class="starScore col-9">
 								<div class="makeStar">
 									<span class="fa fa-star"></span>
@@ -165,7 +166,6 @@
 									<span class="fa fa-star"></span>
 									<span class="fa fa-star"></span>
 								</div>
-								
 							</div>
 						</div>
 						

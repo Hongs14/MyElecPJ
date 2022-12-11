@@ -19,16 +19,20 @@ public class CreateReviewService {
 		ds = (DataSource) application.getAttribute("dataSource");
 	}
 	
-	public void writeReview(ReviewBoardDTO reviewBoardDTO) {
+	public int writeReview(ReviewBoardDTO reviewBoardDTO) {
 		Connection conn = null;
+		int result = 0;
+		
 		try {
 			conn = ds.getConnection();
-			reviewBoardDAO.insertReviewBoard(reviewBoardDTO, conn);
+			result = reviewBoardDAO.insertReviewBoard(reviewBoardDTO, conn);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			try { conn.close(); } catch (Exception e) {}
 		}
+		
+		return result;
 	}
 
 }
