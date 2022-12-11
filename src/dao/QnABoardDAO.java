@@ -207,9 +207,9 @@ public class QnABoardDAO {
 	 */
 
 	// updateQna
-	public String updateQnABoard(QnABoardDTO upQna, Connection conn) throws Exception {
-		int rsResult = 0;
-		String result = null;
+	public int updateQnABoard(QnABoardDTO upQna, Connection conn) throws Exception {
+		int result = 0;
+		int result2 = 0;
 
 		// sql문 작성 및 받은 JSONObject에서 데이터 뽑아서 DB로 전송
 		String sql = "" + " UPDATE qna_board "
@@ -221,16 +221,14 @@ public class QnABoardDAO {
 		pstmt.setString(2, upQna.getQna_board_title());
 		pstmt.setString(3, upQna.getQna_board_content());
 		pstmt.setInt(4, upQna.getQna_board_id());
-
-		rsResult = pstmt.executeUpdate();
+		result = pstmt.executeUpdate();
 		pstmt.close();
-		if (rsResult == 1) {
-			result = "success";
-		} else {
-			result = "fail";
-		}
+		
+		if (result==1) {
+			result2 = upQna.getQna_board_id();
+		} 
 
-		return result;
+		return result2;
 	}
 
 	// deleteQna

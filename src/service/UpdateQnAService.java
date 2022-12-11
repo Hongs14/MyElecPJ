@@ -19,8 +19,8 @@ public class UpdateQnAService {
       ds = (DataSource) application.getAttribute("dataSource");
    }
    
-   public String updateQnA(QnABoardDTO upQna) {
-	   String result = null;
+   public int updateQnA(QnABoardDTO upQna) {
+	   int result = 0;
       Connection conn = null;
       try {
          conn = ds.getConnection();

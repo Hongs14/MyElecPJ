@@ -37,13 +37,13 @@ public class UpdateQnaController extends HttpServlet {
 		// 문자파트
 		upQna.setQna_board_title(request.getParameter("qna_board_title"));
 		upQna.setQna_board_content(request.getParameter("qna_board_content"));
-		upQna.setQna_category_name(request.getParameter("qna_category_name"));
+		upQna.setQna_category_id(Integer.parseInt(request.getParameter("qna_category_id")));
+	
+		int result = updateQnAService.updateQnA(upQna);
 
-		String result = updateQnAService.updateQnA(upQna);
-
-		if (result != null) {
+		if (result != 0) {
 			request.setAttribute("updatedQnABoard", upQna);
-			response.sendRedirect("readQna?=" + session.getAttribute("users_id").toString());
+			response.sendRedirect("readQna?id=" + result);
 //	         request.getRequestDispatcher("WEB-INF/views/readQna.jsp").forward(request, response);
 		}
 
