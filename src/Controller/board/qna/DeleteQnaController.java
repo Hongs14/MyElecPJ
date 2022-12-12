@@ -16,10 +16,9 @@ import service.DeleteQnaService;
 public class DeleteQnaController extends HttpServlet {
 
 	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		session.setAttribute("userId", session.getAttribute("user_id"));
+		String userId = (String) session.getAttribute("users_id");			
 		DeleteQnaService deleteQnaService = (DeleteQnaService) request.getServletContext()
 				.getAttribute("deleteQnaService");
 
@@ -27,8 +26,9 @@ public class DeleteQnaController extends HttpServlet {
 		int result = deleteQnaService.deleteQnA(qnaNo);
 		
 		if (result != 0) {
-			
-			request.getRequestDispatcher("/WEB-INF/views/readQna.jsp").forward(request,response);
+			request.setAttribute("userId", userId);
+
+			response.sendRedirect("ReadQnABoardList");
 		}
 
 	}

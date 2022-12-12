@@ -19,9 +19,7 @@
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-	function popUp() {
-		alert("로그인 후 이용가능한 서비스 입니다.");
-	}
+
 </script>
 <style>
 /* 글꼴 */

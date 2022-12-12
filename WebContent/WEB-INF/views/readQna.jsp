@@ -15,6 +15,15 @@
 	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+	<script>
+	function upQ() {
+		$("#readForm").attr("action","UpdateQna").submit();
+	}
+	
+	function delQ(){
+		$("#readForm").attr("action","DeleteQna").submit();
+	}
+	</script>
 
 <style>
 /* 글꼴 */
@@ -121,11 +130,17 @@ a {
 
 			</div>
 		</div>
-
+		
 		<div id="readQna" class="d-flex flex-column col-10 ml-0">
+		<!-- get 방식으로 UpdateQnaController call-->
+		<form id="readForm" method="get">
 			<div>
 				<div class="d-flex my-2">
-					<h4 class="text-left text-muted mr-3 mt-2">no.${readQna.qna_board_id}</h4>
+					<h4 id="qNoId" class="text-left text-muted mr-3 mt-2">no.${readQna.qna_board_id}</h4>
+					<input type="hidden" name="qna_category_id" value="${readQna.qna_category_id}"/>
+					<input type="hidden" name="qna_board_content" value="${readQna.qna_board_content}"/>
+					<input type="hidden" name="qna_board_title" value="${readQna.qna_board_title}"/>
+					<input name="qna_board_id" value="${readQna.qna_board_id}" style="display:none"/>
 					<h2>${readQna.qna_board_title}</h2>
 				</div>
 			</div>
@@ -140,10 +155,10 @@ a {
 				<c:if test="${readQna.users_id == userId}">
 					<button type="button" class="btn btn-primary btn-sm mr-1"
 						style="border-radius: 30px"
-						onclick="window.location.href='UpdateQna'">수정</button>
+						onclick="upQ()" >수정</button>
 					<button type="button" class="btn btn-primary btn-sm"
 						style="border-radius: 30px"
-						onclick="window.location.href='DeleteQna'">삭제</button>
+						onclick="delQ()">삭제</button>
 				</c:if>
 			</div>
 			<hr />
@@ -177,7 +192,9 @@ a {
 					<h5>${readQna.qna_board_answer}</h5>
 				</div>
 			</div>
+			</form> 
 		</div>
+		
 	</div>
 </body>
 </html>

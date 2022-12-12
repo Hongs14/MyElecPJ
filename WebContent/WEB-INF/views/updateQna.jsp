@@ -102,6 +102,7 @@
          </div>
          
 <!-------------------------------   작성하기  본문   --------------------------->
+		<!-- post 방식으로 UpdateQnaController call-->
          <form method="post" action="UpdateQna" style="border: 0">
             <div class="wrapperChild">
                <div class="card cotainer-fluid column">
@@ -123,12 +124,12 @@
                         <div class="col-9">
                            <div id="qna_category">
                               <!-- DBd에서 값 얻어오기 -->
-                                     <select class="form-control" id="qna_category" name="qna_category_id">
-                                         <option value="1">상품</option>
-                                         <option value="2">주문</option>
-                                         <option value="3">배송</option>
-                                         <option value="4">기타</option>
-                                      </select>   
+                                <select class="form-control" id="qna_category" name="qna_category_id">
+                                   <option value="1">상품</option>
+                                   <option value="2">주문</option>
+                                   <option value="3">배송</option>
+                                   <option value="4">기타</option>
+                                </select>   
                            </div>
                         </div>
                      </div>
@@ -166,6 +167,7 @@
                   </div>
                   <div class="col-6">
                      <div class="text-left mb-5">
+                     	<input type="hidden" name="qna_board_id" value="${updatedQnABoard.qna_board_id}"/>
                         <input type="submit" class="btn btn-sm btn-primary round" value="수정하기"/>
                      </div>
                   </div>

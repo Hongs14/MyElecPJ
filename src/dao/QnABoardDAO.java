@@ -207,7 +207,7 @@ public class QnABoardDAO {
 	public int updateQnABoard(QnABoardDTO upQna, Connection conn) throws Exception {
 		int result = 0;
 
-		String sql = "UPDATE qna_board SET qna_category_id = ?, qna_board_title = ?, qna_board_content = ?, qna_board_date = sysdate WHERE qna_board_id = ?";
+		String sql = "UPDATE qna_board SET qna_category_id = ?, qna_board_title = ?, qna_board_content = ?, qna_board_date = sysdate WHERE qna_board_id = ? ";
 
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 
@@ -217,6 +217,7 @@ public class QnABoardDAO {
 		pstmt.setInt(4, upQna.getQna_board_id());
 
 		result = pstmt.executeUpdate();
+
 		pstmt.close();
 
 		// 수정 완료되면 1
