@@ -144,10 +144,10 @@
                            <div id="qna_category">
                               <!-- DBd에서 값 얻어오기 -->
                               <select class="form-control" id="qna_category" name="send_score">
-                                  <option value="1"></option>
-                                  <option value="3">주문 관련</option>
-                                  <option value="2">상품 관련</option>
-                                  <option value="4">기타 유형</option>
+                                  <option value="99">ddd</option>
+                                  <option value="96">주문 관련</option>
+                                  <option value="97">상품 관련</option>
+                                  <option value="98">기타 유형</option>
                                </select>   
                            </div>
                         </div>

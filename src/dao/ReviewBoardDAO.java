@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import dto.review.ReviewBoardDTO;
-import dto.review.ReviewBoardProductDTO;
 import util.Pager;
 
 public class ReviewBoardDAO {
@@ -17,20 +16,20 @@ public class ReviewBoardDAO {
 	
 	public int insertReviewBoard(ReviewBoardDTO reviewBoardDTO, Connection conn) throws Exception{
 		int result = 0;
-		
+		//, review_filename, review_savedname, review_contenttype
 		String sql = ""
 				+ "INSERT INTO review_board (review_board_id, product_id, review_board_title, review_board_content, review_board_reviewpoint, " + 
-				"    review_board_date, users_id, review_filename, review_savedname, review_contenttype) " + 
-				"VALUES (seq_review_board_id.nextval, ?, ?, ?, ?, SYSDATE, ?, ?, ?, ?)";
+				"    review_board_date, users_id) " + 
+				"VALUES (seq_review_board_id.nextval, ?, ?, ?, ?, SYSDATE, ?)";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		pstmt.setInt(1, reviewBoardDTO.getProduct_id());
 		pstmt.setString(2, reviewBoardDTO.getReview_board_title());
 		pstmt.setString(3, reviewBoardDTO.getReview_board_content());
 		pstmt.setInt(4, reviewBoardDTO.getReview_board_reviewpoint());
 		pstmt.setString(5, reviewBoardDTO.getUsers_id());
-		pstmt.setString(6, reviewBoardDTO.getReview_filename());
-		pstmt.setString(7, reviewBoardDTO.getReview_savedname());
-		pstmt.setString(8, reviewBoardDTO.getReview_contenttype());
+//		pstmt.setString(6, reviewBoardDTO.getReview_filename());
+//		pstmt.setString(7, reviewBoardDTO.getReview_savedname());
+//		pstmt.setString(8, reviewBoardDTO.getReview_contenttype());
 		
 		result = pstmt.executeUpdate();
 		pstmt.close();
@@ -234,8 +233,8 @@ public class ReviewBoardDAO {
 		return reviewContentDTO;
 	}
 	
-	public List<ReviewBoardProductDTO> selectSearchReview(int pageNo, String search, Connection conn) throws SQLException {
-		List<ReviewBoardProductDTO> result = null;
+	public List<ReviewBoardDTO> selectSearchReview(int pageNo, String search, Connection conn) throws SQLException {
+		List<ReviewBoardDTO> result = null;
 			// sql문 작성
 			String sql = ""
 					+" SELECT RNUM, review_board_id, users_id,product_name, review_board_title,review_board_date,review_board_reviewpoint "
@@ -256,10 +255,10 @@ public class ReviewBoardDAO {
 			ResultSet rs = pstmt.executeQuery();
 			
 			
-			ReviewBoardProductDTO reviewBoardDTO;
+			ReviewBoardDTO reviewBoardDTO;
 			
 			while (rs.next()) {
-				reviewBoardDTO = new ReviewBoardProductDTO();
+				reviewBoardDTO = new ReviewBoardDTO();
 				// 답변은 답변여부만 담아서 리스트 DTO로 담기 위해 삼항연산자 사용 
 				//String YN = rs.getString("review_board_comment") != null? "Y": "N";
 				reviewBoardDTO.setReview_board_id(rs.getInt("review_board_id"));
@@ -279,8 +278,8 @@ public class ReviewBoardDAO {
 	}
 
 	//MYLIST
-	public List<ReviewBoardProductDTO> selectMyList(int pageNo, String users_id, Connection conn) throws SQLException {
-		List<ReviewBoardProductDTO> result = null;
+	public List<ReviewBoardDTO> selectMyList(int pageNo, String users_id, Connection conn) throws SQLException {
+		List<ReviewBoardDTO> result = null;
 		// sql문 작성
 		String sql = ""
 						+"SELECT RNUM, review_board_id, product_id, review_board_title, users_id,review_board_date, review_board_reviewpoint, product_name "
@@ -301,11 +300,11 @@ public class ReviewBoardDAO {
 		
 		
 
-		ReviewBoardProductDTO reviewBoardDTO;
+		ReviewBoardDTO reviewBoardDTO;
 		
 		while (rs.next()) {
 			System.out.println("DAO: "+ rs.getString("product_name"));
-			reviewBoardDTO = new ReviewBoardProductDTO();
+			reviewBoardDTO = new ReviewBoardDTO();
 
 			// 답변은 답변여부만 담아서 리스트 DTO로 담기 위해 삼항연산자 사용 
 			//String YN = rs.getString("qna_board_answer") != null? "Y": "N";

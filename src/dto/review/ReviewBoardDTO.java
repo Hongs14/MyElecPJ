@@ -19,6 +19,7 @@ public class ReviewBoardDTO {
 	private Date review_board_date;
 	private String review_board_comment;
 	
+	private String product_name;
 	private String review_filename;
 	private String review_savedname;
 	private String review_contenttype;
