@@ -123,7 +123,7 @@
 			
 <!-------------------------------   작성하기  본문   --------------------------->
 			<div class="wrapperChild">
-				<form method="Post" action="CreateReview" style="border: 0" novalidate>
+				<form method="Post" action="CreateReview" enctype="multipart/form-data" style="border: 0" novalidate>
 					<div class="card cotainer-fluid column">
 						<div class="row my-4">
 							<div class="col-3">
@@ -143,7 +143,7 @@
                         <div class="col-9">
                            <div id="qna_category">
                               <!-- DBd에서 값 얻어오기 -->
-                              <select class="form-control" id="qna_category" name="send_score">
+                              <select class="form-control" id="product_id" name="product_id">
                                   <option value="99">ddd</option>
                                   <option value="96">주문 관련</option>
                                   <option value="97">상품 관련</option>
@@ -186,7 +186,7 @@
 								<input id="r_content" type="text" id="qna_content_box" name="content" value=""  placeholder="문의 내용을 입력하시오" style="width: 800px; height: 200px; "/>
 							</div>
 						</div>
-						
+						<!--  
 						<div class="row my-4">
 							<div class="col-3">
 								<h5>사진 첨부 (10MB이하 가능)</h5>
@@ -195,6 +195,7 @@
 								<input type="file" class="form-control" id="review_attach" name="review_attach" > 
 							</div>
 						</div>
+						-->
 					</div>
 				
 				
@@ -214,7 +215,7 @@
 					</div>
 					<div class="col-6">
 						<div class="text-left mb-5">
-							<button onclick="send()" class="btn btn-sm btn-primary round">등록하기</button>						
+							<button onclick="submit" class="btn btn-sm btn-primary round">등록하기</button>						
 						</div>
 					</div>
 				</div>

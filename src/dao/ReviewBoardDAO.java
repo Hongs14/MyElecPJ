@@ -16,7 +16,8 @@ public class ReviewBoardDAO {
 	
 	public int insertReviewBoard(ReviewBoardDTO reviewBoardDTO, Connection conn) throws Exception{
 		int result = 0;
-		//, review_filename, review_savedname, review_contenttype
+		
+		// review_filename, review_savedname, review_contenttype
 		String sql = ""
 				+ "INSERT INTO review_board (review_board_id, product_id, review_board_title, review_board_content, review_board_reviewpoint, " + 
 				"    review_board_date, users_id) " + 
@@ -32,8 +33,23 @@ public class ReviewBoardDAO {
 //		pstmt.setString(8, reviewBoardDTO.getReview_contenttype());
 		
 		result = pstmt.executeUpdate();
-		pstmt.close();
 		
+		if (result == 1) {
+			String sql2 = "select review_board_id from(select review_board_id from review_board "
+					+ "where users_id = ? order by review_board_id desc) where rownum = 1 ";
+
+			PreparedStatement pstmt2 = conn.prepareStatement(sql2);
+			pstmt2.setString(1, reviewBoardDTO.getUsers_id());
+			ResultSet rs = pstmt2.executeQuery();
+			if (rs.next()) {
+				result=rs.getInt("review_board_id");
+				
+			}
+			pstmt2.close();
+		}
+		pstmt.close();
+
+	
 		return result;
 	}
 

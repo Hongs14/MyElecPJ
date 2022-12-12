@@ -6,7 +6,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>Insert title here</title>
+		<title>리뷰 자세히 보기</title>
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">			
 		<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>		
 		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>	
@@ -94,8 +94,8 @@
 			<div id="readReview" class="d-flex flex-column col-10 ml-0">			
 				<div>
 					<div class="d-flex my-2">
-						<h4 class="text-left text-muted mr-3 mt-2">no.1</h4>
-						<h2 >${reviewBoard.review_board_title}냉장고 신제품 구매 리뷰</h2>					
+						<h4 class="text-left text-muted mr-3 mt-2">no.${reviewBoard.review_board_id }</h4>
+						<h2 >${reviewBoard.review_board_title}</h2>					
 					</div>
 		 		</div>	
 			 	<hr style="height: 0.1px; background-color: grey"/>		
@@ -109,12 +109,13 @@
 						<button type="button" class="btn btn-primary btn-sm mr-1" style="border-radius:30px">수정</button>	
 						<button type="button" class="btn btn-primary btn-sm" style="border-radius:30px">삭제</button>	
 					</div>
-					<hr/>			
+					<hr/>	
+					<!--  		
 					<div class="d-flex mt-2">
 						<h6 class="text-left text-muted mr-1">냉장고</h6>
 						<h6 class="text-left text-muted mr-1">></h6>
 						<h6 class="text-left text-muted">양문형 냉장고</h6>
-					</div>		
+					</div>	-->	
 					<div class="d-flex justify-content-end">					
 						<span class="fa fa-star checked"></span>
 						<span class="fa fa-star checked"></span>

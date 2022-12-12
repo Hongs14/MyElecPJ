@@ -6,7 +6,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>Insert title here</title>
+		<title>리뷰 게시판</title>
 		<!-- Latest compiled and minified CSS -->
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
 		<!-- jQuery library -->
@@ -190,7 +190,7 @@
 				</div><hr class="my-3"/>
 				<div class="titleList d-flex flex-column">
 					<div class="listInfo">
-						<h3>총 ~개의 게시글이 있습니다</h3>
+						<h3>총  ${pager.totalRows}개의 게시글이 있습니다</h3>
 					</div><hr class="my-2"/>
 					<div class="titleInfo">
 						<div class="d-flex">
@@ -213,7 +213,7 @@
 					<c:forEach var="review" items="${pageList}" varStatus="status">
 						<div class="titleBlock d-flex">
 							<div class="titleId col-1">
-								<h5>1234</h5>
+								<h5>${review.review_board_id}</h5>
 							</div>
 							<div class="titleContent col-11">
 								<div class="titleTop d-flex">
