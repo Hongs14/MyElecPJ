@@ -21,6 +21,7 @@ import service.CreateQnAService;
 import service.CreateReviewService;
 import service.DeleteCartService;
 import service.DeleteOrderService;
+import service.DeleteReviewService;
 import service.FindPasswordService;
 import service.JoinService;
 import service.LoginService;
@@ -36,6 +37,7 @@ import service.ReadReviewDetailService;
 import service.UpdateCartService;
 import service.UpdateOrderService;
 import service.UpdateQnAService;
+import service.UpdateReviewService;
 import service.UpdateUserService;
 import service.UserInfoService;
 
@@ -70,6 +72,7 @@ public class WebAppContext implements ServletContextListener{
 		
 		application.setAttribute("deleteCartService", new DeleteCartService(application));
 		application.setAttribute("deleteOrderService", new DeleteOrderService(application));
+		application.setAttribute("deleteReviewService", new DeleteReviewService(application));
 		
 		application.setAttribute("readCartService", new ReadCartService(application));
 		application.setAttribute("readOrderService", new ReadOrderService(application));
@@ -85,5 +88,6 @@ public class WebAppContext implements ServletContextListener{
 		application.setAttribute("updateOrderService", new UpdateOrderService(application));
 		application.setAttribute("updateUserService", new UpdateUserService(application));
 		application.setAttribute("updateQnAService", new UpdateQnAService(application));
+		application.setAttribute("updateReviewService", new UpdateReviewService(application));
 	}
 }

@@ -372,71 +372,42 @@ public class ReviewBoardDAO {
 	}
 
 
-	public String updateReviewBoard(ReviewBoardDTO reviewDTO, Connection conn) {
-		int rsResult = 0;
-		String result = null;
-		try {
+	public int updateReviewBoard(ReviewBoardDTO reviewDTO, Connection conn) throws Exception {
+		int result = 0;
 			// sql문 작성 및 받은 JSONObject에서 데이터 뽑아서 DB로 전송
-			String sql = "" + " UPDATE review_board "
-					+ " SET review_board_title = ? , review_board_content = ?, review_board_date = sysdate , review_board_reviewpoint = ?"
-					+ " WHERE review_board_id = ? ";
+			String sql = "" 
+					+"UPDATE review_board  " + 
+					"SET review_board_title = ? , review_board_content = ?, review_board_date = sysdate , review_board_reviewpoint = ?  " + 
+					"WHERE review_board_id = ?";
 			PreparedStatement pstmt = conn.prepareStatement(sql);
-
+	
 			pstmt.setString(1, reviewDTO.getReview_board_title());
 			pstmt.setString(2, reviewDTO.getReview_board_content());
 			pstmt.setInt(3, reviewDTO.getReview_board_reviewpoint());
 			pstmt.setInt(4, reviewDTO.getReview_board_id());
-
-			rsResult = pstmt.executeUpdate();
+	
+			result = pstmt.executeUpdate();
+			if(result == 1) {
+				result = reviewDTO.getReview_board_id();
+				
+			}
 			pstmt.close();
-			if (rsResult == 1) {
-				result = "success";
-			} else {
-				result = "fail";
-			}
-		} catch (SQLException e) {
-			System.out.println(e.getMessage());
-
-		} finally {
-			try {
-				// Connection 반납
-				conn.close();
-				System.out.println("반납 성공");
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-		return result;
+		
+			return result;
+		
 	}
 
-	public String deleteReviewBoard(int review_board_id, Connection conn) {
-		int rsResult = 0;
-		String result = null;
-		try {
-			// sql문 작성 및 받은 JSONObject에서 데이터 뽑아서 DB로 전송
-			String sql = "" + " DELETE FROM review_board " + " WHERE review_board_id = ?";
-			PreparedStatement pstmt = conn.prepareStatement(sql);
+	public int deleteReviewBoard(int review_board_id, Connection conn) throws Exception {
+		int result = 0;
 
-			pstmt.setInt(1, review_board_id);
-			rsResult = pstmt.executeUpdate();
-			pstmt.close();
-			if (rsResult == 1) {
-				result = "success";
-			} else {
-				result = "fail";
-			}
-		} catch (SQLException e) {
-			System.out.println(e.getMessage());
+		// sql문 작성 및 받은 JSONObject에서 데이터 뽑아서 DB로 전송
+		String sql = " DELETE FROM review_board WHERE review_board_id = ?";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
 
-		} finally {
-			try {
-				// Connection 반납
-				conn.close();
-				System.out.println("반납 성공");
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
+		pstmt.setInt(1, review_board_id);
+		result = pstmt.executeUpdate();
+		pstmt.close();
+		
 		return result;
 	}
 
