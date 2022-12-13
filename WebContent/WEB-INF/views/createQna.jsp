@@ -80,7 +80,7 @@
       <hr style="0.7px solid lightgray"/>
       
 <!-------------------------------    분류    --------------------------->
-      <div id="review_top" class="wrapper" style="width: 80%">
+      <div id="qna_top" class="wrapper" style="width: 80%">
          <div class="wrapperCild py-2">
             <div class="text-left row container-fluid">
                <div style="width: 40px">
@@ -146,7 +146,7 @@
                            <h5>문의 내용 </h5>
                         </div>
                         <div class="col-9">
-                           <input type="text" id="qna_content_box" name="qna_board_content" value="${qnaBoard.qna_board_content}"  placeholder="문의 내용을 입력하시오" style="width: 800px; height: 200px; "/>
+                           <input type="text" id="qna_content_box" name="qna_board_content" value="${qnaBoard.qna_board_content}"  placeholder="문의 내용을 입력하세요." style="width: 800px; height: 200px; "/>
                         </div>
                      </div>      
                   </div>

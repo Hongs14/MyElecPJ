@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dto.qna.QnABoardDTO;
 import service.ReadQnADetailService;
@@ -27,7 +28,8 @@ public class ReadQnaController extends HttpServlet{
 		
 		QnABoardDTO readQna = readQnADetailService.getReadQna(qnaNo);
 		
-		
+		HttpSession session = request.getSession();
+		request.setAttribute("userId", session.getAttribute("user_id"));
 		request.setAttribute("readQna", readQna);
 		request.getRequestDispatcher("/WEB-INF/views/readQna.jsp").forward(request, response);
 	}

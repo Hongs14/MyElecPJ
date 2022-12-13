@@ -81,7 +81,7 @@
       <hr style="0.7px solid lightgray"/>
       
 <!-------------------------------    분류    --------------------------->
-      <div id="review_top" class="wrapper" style="width: 80%">
+      <div id="qna_top" class="wrapper" style="width: 80%">
          <div class="wrapperCild py-2">
             <div class="text-left row container-fluid">
                <div style="width: 40px">
@@ -102,7 +102,8 @@
          </div>
          
 <!-------------------------------   작성하기  본문   --------------------------->
-         <form method="post" action="CreateQna" style="border: 0">
+		<!-- post 방식으로 UpdateQnaController call-->
+         <form method="post" action="UpdateQna" style="border: 0">
             <div class="wrapperChild">
                <div class="card cotainer-fluid column">
                      <div class="row my-4">
@@ -110,7 +111,7 @@
                            <h5>글쓴이 </h5>
                         </div>
                         <div class="col-9">
-                           <div id="review_id">
+                           <div id="qna_id">
                               <!-- DB에서 값 받아오기 -->
                               <h5>${userId}</h5>
                            </div>
@@ -123,12 +124,12 @@
                         <div class="col-9">
                            <div id="qna_category">
                               <!-- DBd에서 값 얻어오기 -->
-                                     <select class="form-control" id="qna_category" name="qna_category_id">
-                                         <option value="1">상품</option>
-                                         <option value="2">주문</option>
-                                         <option value="3">배송</option>
-                                         <option value="4">기타</option>
-                                      </select>   
+                                <select class="form-control" id="qna_category" name="qna_category_id">
+                                   <option value="1">상품</option>
+                                   <option value="2">주문</option>
+                                   <option value="3">배송</option>
+                                   <option value="4">기타</option>
+                                </select>   
                            </div>
                         </div>
                      </div>
@@ -138,7 +139,7 @@
                            <h5>제목 </h5>
                         </div>
                         <div class="col-9">
-                           <input type="text" name="qna_board_title" value="${updatedQnABoard.qna_board_title}" style="width: 800px; border: 0; border-bottom: 2px solid gray;"/>
+                           <input type="text" name="qna_board_title" value="${updatedQnABoard.qna_board_title}" placeholder="수정하실 제목을 입력하세요." style="width: 800px; border: 0; border-bottom: 2px solid gray;"/>
                         </div>
                      </div>
                      
@@ -147,7 +148,7 @@
                            <h5>문의 내용 </h5>
                         </div>
                         <div class="col-9">
-                           <input type="text" id="qna_content_box" name="qna_board_content" value="${updatedQnABoard.qna_board_content}"  placeholder="문의 내용을 입력하시오" style="width: 800px; height: 200px; "/>
+                           <input type="text" id="qna_content_box" name="qna_board_content" value="${updatedQnABoard.qna_board_content}"  placeholder="수정하실 내용을 입력하세요." style="width: 800px; height: 200px; "/>
                         </div>
                      </div>      
                   </div>
@@ -166,7 +167,8 @@
                   </div>
                   <div class="col-6">
                      <div class="text-left mb-5">
-                        <input type="submit" class="btn btn-sm btn-primary round" value="등록하기"/>
+                     	<input type="hidden" name="qna_board_id" value="${updatedQnABoard.qna_board_id}"/>
+                        <input type="submit" class="btn btn-sm btn-primary round" value="수정하기"/>
                      </div>
                   </div>
                </div>

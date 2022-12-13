@@ -21,7 +21,11 @@ import service.CreateQnAService;
 import service.CreateReviewService;
 import service.DeleteCartService;
 import service.DeleteOrderService;
+<<<<<<< HEAD
 import service.DeleteReviewService;
+=======
+import service.DeleteQnaService;
+>>>>>>> refs/remotes/origin/ejej1
 import service.FindPasswordService;
 import service.JoinService;
 import service.LoginService;
@@ -72,7 +76,11 @@ public class WebAppContext implements ServletContextListener{
 		
 		application.setAttribute("deleteCartService", new DeleteCartService(application));
 		application.setAttribute("deleteOrderService", new DeleteOrderService(application));
+<<<<<<< HEAD
 		application.setAttribute("deleteReviewService", new DeleteReviewService(application));
+=======
+		application.setAttribute("deleteQnaService", new DeleteQnaService(application));
+>>>>>>> refs/remotes/origin/ejej1
 		
 		application.setAttribute("readCartService", new ReadCartService(application));
 		application.setAttribute("readOrderService", new ReadOrderService(application));
