@@ -74,19 +74,19 @@
 				text-align: left;
 			}
 			
-			.checked {
+			.starchecked {
 				color: orange;
 			}
 		</style>
 		<script>
-	        function init(){
-	            var r_score = document.getElementByClass
-	            r_score = Math.round(r_score);
-	            $('.fa-star:nth-child(-n'+r_score+')').addClass("starchecked");
+	        function a(){
+	            var r_score = document.getElementById('starmark').innerHTML;
+	            console.log(r_score);
+	            $('.fa-star:nth-child(n'+r_score+')').addClass("starchecked");
 	    	}
 		</script>
 	</head>
-	<body onload="init()">
+	<body>
 		<%@ include file="/WEB-INF/views/common/banner.jsp" %>
 	 
 		<div id="bottomViewPort" class="wrapper d-flex mt-3">
@@ -220,14 +220,16 @@
 									<h5 class="col-5"><a href="ReadReview?id=${review.review_board_id}">${review.review_board_title}</a></h5>
 									<h5 class="col-2">${review.users_id}</h5>
 									<h5 class="col-2">${review.review_board_date}</h5>
-									<div class="col-1 d-flex justify-content-start">					
+									<div id="starlist" class="col-1 d-flex justify-content-start">					
 										<span class="fa fa-star"></span>
 										<span class="fa fa-star"></span>
 										<span class="fa fa-star"></span>
 										<span class="fa fa-star"></span>
 										<span class="fa fa-star"></span>
 									</div>
-									<h5 class="point col-1 text-center">${review.review_board_reviewpoint}</h5>
+									
+									<h5 id="starmark" class="point col-1 text-center">${review.review_board_reviewpoint}</h5>
+								
 									<h5 class="col-1 text-center">222</h5>
 								</div>
 								<div class="titleBottom d-flex justify-content-start">

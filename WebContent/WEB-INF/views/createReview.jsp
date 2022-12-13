@@ -144,10 +144,13 @@
                            <div id="qna_category">
                               <!-- DBd에서 값 얻어오기 -->
                               <select class="form-control" id="product_id" name="product_id">
-                                  <option value="99">ddd</option>
-                                  <option value="96">주문 관련</option>
-                                  <option value="97">상품 관련</option>
-                                  <option value="98">기타 유형</option>
+                              		
+                              		<%-- <c:forEach var="product" items="${product_list}" varStatus="status">
+                                  		<option>${status.count}:<c:out value="${product}"></c:out></option>
+                              		</c:forEach> --%>
+                              		<c:forEach var="product" items="${product_list}">
+                              			<option value="${product.product_id }">${product.product_name}</option>
+                              		</c:forEach>
                                </select>   
                            </div>
                         </div>

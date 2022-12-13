@@ -172,6 +172,34 @@ public ProductDTO getImage(int product_id, Connection conn) throws SQLException 
 	pstmt.close();
 	
 	return result;
-}
+	}
+
+
+	//상품 얻기
+
+	public List<ProductDTO> selectProductList(String users_id, Connection conn) throws Exception {
+		List<ProductDTO> list = new ArrayList<>();
+		
+		String sql = ""
+				+"select p.product_name, p.product_id  " + 
+				"from product p, orders o, order_detail od  " + 
+				"where p.product_id = od.product_id and o.orders_id = od.orders_id and o.users_id = ?";
+		
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, users_id);
+		ResultSet rs = pstmt.executeQuery();
+		
+		while(rs.next()) {
+			ProductDTO productDTO = new ProductDTO();
+			productDTO.setProduct_id(rs.getInt("product_id"));
+			productDTO.setProduct_name(rs.getString("product_name"));
+			list.add(productDTO);
+		}
+		
+		rs.close();
+		pstmt.close();
+		
+		return list;
+	}
 }
 	

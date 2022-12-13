@@ -55,7 +55,11 @@
 		         	width : 20px;
 					height : 20px;
 					margin: 0px auto;
-		    }	         
+		    }	
+		     
+		    .starchecked {
+					color: orange;
+			}        
 		</style>
 		<script>
 		function goUpdate(){
@@ -66,10 +70,15 @@
 			$('#review_content').attr("method","get")
 			$('#review_content').attr("action","DeleteReview").submit();
 		}
+		//별점 칠하기
+		function init() {
+			var r_score = ${reviewBoard.review_board_reviewpoint};
+			$('.fa-star:nth-child(-n' + r_score + ')').addClass("starchecked");
+		};
 		
 		</script>
 	</head>
-	<body>	
+	<body onload="init()">	
 		<%@ include file="/WEB-INF/views/common/banner.jsp" %>
 		
 		<div class="container-fluid mt-3" style="width: 1440px;">
@@ -125,7 +134,7 @@
 						</div>
 						</c:if>
 						<hr/>	
-						<h6>${reviewBoard.product_id}</h6>
+						
 					 	<!--  	
 						<div class="d-flex mt-2">
 							
@@ -135,10 +144,10 @@
 							<h6 class="text-left text-muted">양문형 냉장고</h6>
 							
 						</div>	-->
-						<div class="d-flex justify-content-end">					
-							<span class="fa fa-star checked"></span>
-							<span class="fa fa-star checked"></span>
-							<span class="fa fa-star checked"></span>
+						<div id="starList" class="d-flex justify-content-end">					
+							<span class="fa fa-star"></span>
+							<span class="fa fa-star"></span>
+							<span class="fa fa-star"></span>
 							<span class="fa fa-star"></span>
 							<span class="fa fa-star"></span>
 							<h5 class="text-left ml-1">${reviewBoard.review_board_reviewpoint}</h5>
