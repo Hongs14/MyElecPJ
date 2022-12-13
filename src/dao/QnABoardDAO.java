@@ -96,6 +96,49 @@ public class QnABoardDAO {
 
 		return QnaBoardList;
 	}
+	
+
+	// qna게시판 카테고리로 불러오기
+	public ArrayList<QnABoardDTO> selectCategoryList(int cateId, Pager pager, Connection conn) throws Exception {
+		ArrayList<QnABoardDTO> QnaCategoryList = new ArrayList<QnABoardDTO>();
+
+		// sql문 작성
+		String sql = "" + "select * " + 
+				"from(select rownum rnum, qna_board_id, qna_board_title, users_id, qna_board_date, qna_category_id, qna_board_answer " + 
+				"from(select qna_board_id, qna_board_title, users_id, qna_board_date, qna_category_id, qna_board_answer " + 
+				"from qna_board " + 
+				"where qna_category_id = ? " + 
+				"order by qna_board_id desc " + 
+				")where rownum <= ?) " + 
+				"where rnum>=? ";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setInt(1, cateId);
+		pstmt.setInt(2, pager.getEndRowNo());
+		pstmt.setInt(3, pager.getStartRowNo());
+		ResultSet rs = pstmt.executeQuery();
+
+		while (rs.next()) {
+			QnABoardDTO QCategoryList = new QnABoardDTO();
+
+			// 답변은 답변여부만 담아서 리스트 DTO로 담기 위해 삼항연산자 사용
+			String YN = rs.getString("qna_board_answer") != null ? "Y" : "N";
+
+			// 한 행의 데이터를 DTO에 담아준다
+			QCategoryList.setQna_board_id(rs.getInt("qna_board_id"));
+			QCategoryList.setQna_board_title(rs.getString("qna_board_title"));
+			QCategoryList.setUsers_id(rs.getString("users_id"));
+			QCategoryList.setQna_board_date(rs.getDate("qna_board_date"));
+			QCategoryList.setQna_category_name(rs.getString("qna_category_name"));
+			QCategoryList.setQna_board_answer(YN);
+
+			// DB의 한 행 데이터를 담은 DTO를 리스트에 더해준다
+			QnaCategoryList.add(QCategoryList);
+		}
+		rs.close();
+		pstmt.close();
+
+		return QnaCategoryList;
+	}
 
 	// createQna
 	public int insertQnABoard(QnABoardDTO qnaDTO, Connection conn) throws Exception {

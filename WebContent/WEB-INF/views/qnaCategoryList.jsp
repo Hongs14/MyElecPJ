@@ -19,7 +19,7 @@
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-
+	
 </script>
 <style>
 /* 글꼴 */
@@ -93,7 +93,7 @@ label {
 
 	<div id="bottomViewPort" class="wrapper d-flex mt-3">
 		<div id="sidebar" class="col-sm-2 col-md-2 d-none d-xl-block">
-			<%@ include file="/WEB-INF/views/common/userInfo.jsp" %>
+			<%@ include file="/WEB-INF/views/common/userInfo.jsp"%>
 
 			<h3 class="text-left my-3">게시판 목록</h3>
 			<div class="d-flex flex-column">
@@ -144,10 +144,12 @@ label {
 					class="conditionSet d-flex justify-content-start align-items-center flex-fill">
 					<h5 class="col-5 text-center">문의 유형</h5>
 					<select class="col-6 form-control">
-						<option id="categoryId" value="1">상품</option>
-						<option id="categoryId" value="2">주문</option>
-						<option id="categoryId" value="3">배송</option>
-						<option id="categoryId" value="4">기타</option>
+						<c:forEach var="categoryId" items="${qnaCategoryList}">
+							<option value="1"><c:out value="${qnaCategoryList.categoryId == 1}" />상품</option>
+							<option value="2"><c:out value="${qnaCategoryList.categoryId == 2}" />주문</option>
+							<option value="3"><c:out value="${qnaCategoryList.categoryId == 3}" />배송</option>
+							<option value="4"><c:out value="${qnaCategoryList.categoryId == 4}" />기타</option>
+						</c:forEach>
 					</select>
 				</div>
 				<div
@@ -206,21 +208,21 @@ label {
 				<hr class="my-2" />
 				<div class="titles d-flex flex-column">
 
-					<c:forEach var="qnaBoardList" items="${qnaBoardList}"
+					<c:forEach var="qnaCategoryList" items="${qnaCategoryList}"
 						varStatus="status">
 						<div class="titleBlock d-flex">
 							<div class="titleId col-1">
-								<h5>${qnaBoardList.qna_board_id}</h5>
+								<h5>${qnaCategoryList.qna_board_id}</h5>
 							</div>
 							<div class="titleContent col-11 py-1">
 								<div class="titleTop d-flex">
 									<h5 class="col-4">
-										<a href="ReadQna?id=${qnaBoardList.qna_board_id}">${qnaBoardList.qna_board_title}</a>
+										<a href="ReadQna?id=${qnaCategoryList.qna_board_id}">${qnaCategoryList.qna_board_title}</a>
 									</h5>
-									<h5 class="col-2">${qnaBoardList.users_id}</h5>
-									<h5 class="col-2">${qnaBoardList.qna_board_date}</h5>
-									<h5 class="col-2">${qnaBoardList.qna_category_name}</h5>
-									<h5 class="col-2">${qnaBoardList.qna_board_answer}</h5>
+									<h5 class="col-2">${qnaCategoryList.users_id}</h5>
+									<h5 class="col-2">${qnaCategoryList.qna_board_date}</h5>
+									<h5 class="col-2">${qnaCategoryList.qna_category_name}</h5>
+									<h5 class="col-2">${qnaCategoryList.qna_board_answer}</h5>
 								</div>
 							</div>
 						</div>

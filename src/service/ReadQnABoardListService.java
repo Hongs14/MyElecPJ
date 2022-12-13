@@ -15,13 +15,13 @@ public class ReadQnABoardListService {
 	private ServletContext application;
 	private DataSource ds;
 	private QnABoardDAO qnaBoardDAO;
-	
+
 	public ReadQnABoardListService(ServletContext application) {
 		this.application = application;
 		qnaBoardDAO = (QnABoardDAO) application.getAttribute("QnABoardDAO");
 		ds = (DataSource) application.getAttribute("dataSource");
 	}
-	
+
 	public ArrayList<QnABoardDTO> getQnABoardList(Pager pager) {
 		ArrayList<QnABoardDTO> result = null;
 		Connection conn = null;
@@ -36,7 +36,25 @@ public class ReadQnABoardListService {
 			} catch (SQLException e) {
 			}
 		}
-		return result;		
+		return result;
+	}
+
+	public ArrayList<QnABoardDTO> getQnACategoryList(int cateId, Pager pager) {
+		ArrayList<QnABoardDTO> result = null;
+		Connection conn = null;
+		try {
+			conn = ds.getConnection();
+			result = qnaBoardDAO.selectCategoryList(cateId, pager, conn);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				conn.close();
+			} catch (SQLException e2) {
+
+			}
+		}
+		return result;
 	}
 
 	public int getTotalQnABoardPageNum() {

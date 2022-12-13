@@ -14,16 +14,15 @@ import dto.qna.QnABoardDTO;
 import service.ReadQnABoardListService;
 import util.Pager;
 
-@WebServlet(name = "Controller.ReadQnABoardListController", urlPatterns = "/ReadQnABoardList")
-public class ReadQnABoardListController extends HttpServlet {
+@WebServlet(name = "Controller.ReadQnACategoryListController", urlPatterns = "/ReadQnACategoryList")
+public class ReadQnACategoryListController extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// QnABoardListService 서비스로 요청
 		ServletContext application = request.getServletContext();
-		ReadQnABoardListService qnaBoardListService = (ReadQnABoardListService) application
-				.getAttribute("readQnABoardListService");
+		ReadQnABoardListService qnaBoardListService = (ReadQnABoardListService) application.getAttribute("readQnABoardListService");
 
 		String strPageNo = request.getParameter("pageNo");
 		if (strPageNo == null) {
@@ -36,12 +35,16 @@ public class ReadQnABoardListController extends HttpServlet {
 
 		// pager 생성
 		Pager pager = new Pager(5, 5, totalQnABoardPageNum, pageNo);
-
-		ArrayList<QnABoardDTO> qnaBoardList = qnaBoardListService.getQnABoardList(pager);
-
+		
+		//categoryId 받아오기
+		String categoryId = request.getParameter("categoryId");	
+		int cateId = Integer.parseInt(categoryId);
+		
+		ArrayList<QnABoardDTO> qnaCategoryList = qnaBoardListService.getQnACategoryList(cateId, pager);
+		
 		request.setAttribute("pager", pager);
-		request.setAttribute("qnaBoardList", qnaBoardList);
-
-		request.getRequestDispatcher("/WEB-INF/views/qnaBoardList.jsp").forward(request, response);
+		request.setAttribute("qnaCategoryList", qnaCategoryList);
+		
+		request.getRequestDispatcher("/WEB-INF/views/qnaCategoryList.jsp").forward(request, response);
 	}
 }
