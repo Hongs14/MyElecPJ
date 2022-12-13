@@ -17,10 +17,11 @@
 			
 			$('.makeStar span').hover(function(){
 				targetNum = $(this).index() + 1;
-				console.log(targetNum);
+				/* console.log(targetNum); */
 				$('.makeStar span').css({color: '#000'});
 				$('.makeStar span:nth-child(-n'+targetNum+')').css({color: 'orange'});
 				document.getElementById('starScore').value = targetNum;
+				console.log(document.getElementById('starScore').value);
 			});
 			
 		});
@@ -118,12 +119,12 @@
 		
 		<div id="review_content" class="wrapper">
 			<div class="mt-4" style="border-bottom: 1px solid black">
-				<h2>리뷰 작성하기</h2>
+				<h2>리뷰 수정하기</h2>
 			</div>
 			
 <!-------------------------------   작성하기  본문   --------------------------->
 			<div class="wrapperChild">
-				<form method="Post" action="CreateReview" enctype="multipart/form-data" style="border: 0" novalidate>
+				<form method="post" action="UpdateReview" style="border: 0" novalidate>
 					<div class="card cotainer-fluid column">
 						<div class="row my-4">
 							<div class="col-3">
@@ -215,7 +216,7 @@
 					</div>
 					<div class="col-6">
 						<div class="text-left mb-5">
-							<button onclick="submit" class="btn btn-sm btn-primary round">등록하기</button>						
+							<input type = "submit" class="btn btn-sm btn-primary round"/>등록하기				
 						</div>
 					</div>
 				</div>
