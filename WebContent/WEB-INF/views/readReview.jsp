@@ -135,15 +135,15 @@
 						</c:if>
 						<hr/>	
 						
-					 	<!--  	
+					  	
 						<div class="d-flex mt-2">
 							
 						
-							<h6 class="text-left text-muted mr-1">냉장고</h6>
+							<h6 class="text-left text-muted mr-1">${product.category_name}</h6>
 							<h6 class="text-left text-muted mr-1">></h6>
-							<h6 class="text-left text-muted">양문형 냉장고</h6>
+							<h6 class="text-left text-muted">${product.product_name}</h6>
 							
-						</div>	-->
+						</div>	
 						<div id="starList" class="d-flex justify-content-end">					
 							<span class="fa fa-star"></span>
 							<span class="fa fa-star"></span>

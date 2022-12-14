@@ -120,63 +120,62 @@ public class ProductDAO {
 	}
 	
 	  //리뷰 평점 구하기
-public ProductDTO averageStar(ProductDTO productDTO, Connection conn) throws Exception{
-	double average=0.0;
-	String result= "";
-	String sql = "select sum(r.review_board_reviewpoint) as pointsum, count(*) as count " + 
-			"from review_board r, product p  "+ 
-			"where p.product_id = r.product_id and p.product_id = ?";
-	      
-	PreparedStatement pstmt = conn.prepareStatement(sql);
-	pstmt.setInt(1, productDTO.getProduct_id());
-	  
-	ResultSet rs = pstmt.executeQuery();
-	if (rs.next()) {
-		if (rs.getDouble("count") == 0) {
-			result = "0.0";
+	public ProductDTO averageStar(ProductDTO productDTO, Connection conn) throws Exception{
+		double average=0.0;
+		String result= "";
+		String sql = "select sum(r.review_board_reviewpoint) as pointsum, count(*) as count " + 
+				"from review_board r, product p  "+ 
+				"where p.product_id = r.product_id and p.product_id = ?";
+		      
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setInt(1, productDTO.getProduct_id());
+		  
+		ResultSet rs = pstmt.executeQuery();
+		if (rs.next()) {
+			if (rs.getDouble("count") == 0) {
+				result = "0.0";
+			}
+			else {
+				average = rs.getDouble("pointsum") / rs.getDouble("count");
+				DecimalFormat df = new DecimalFormat("#.#");
+				result = df.format(average);	
+			}
 		}
-		else {
-			average = rs.getDouble("pointsum") / rs.getDouble("count");
-			DecimalFormat df = new DecimalFormat("#.#");
-			result = df.format(average);	
-		}
-	}
-	  
-	rs.close();
-	pstmt.close();
-	      
-	productDTO.setProduct_totalpoint(Double.parseDouble(result));
-	
-	return productDTO;
-	}
-
-//이미지 얻기
-public ProductDTO getImage(int product_id, Connection conn) throws SQLException {
-	String sql = "select product_filename, product_savedname, product_contenttype ";
-			sql += "from product ";
-			sql += "where product_id = ? ";
-			PreparedStatement pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, product_id);
-			System.out.println(product_id);
-			ResultSet rs = pstmt.executeQuery();
-			
-			ProductDTO result = new ProductDTO();
-		while(rs.next()){
-			result.setProduct_filename(rs.getString("product_filename"));
-			result.setProduct_savedname(rs.getString("product_savedname"));
-			result.setProduct_contenttype(rs.getString("product_contenttype"));
-			
-			System.out.println(result.getProduct_filename());
-		}
-	rs.close();
-	pstmt.close();
-	
-	return result;
+		  
+		rs.close();
+		pstmt.close();
+		      
+		productDTO.setProduct_totalpoint(Double.parseDouble(result));
+		
+		return productDTO;
 	}
 
+	//이미지 얻기
+	public ProductDTO getImage(int product_id, Connection conn) throws SQLException {
+		String sql = "select product_filename, product_savedname, product_contenttype ";
+				sql += "from product ";
+				sql += "where product_id = ? ";
+				PreparedStatement pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, product_id);
+				System.out.println(product_id);
+				ResultSet rs = pstmt.executeQuery();
+				
+				ProductDTO result = new ProductDTO();
+			while(rs.next()){
+				result.setProduct_filename(rs.getString("product_filename"));
+				result.setProduct_savedname(rs.getString("product_savedname"));
+				result.setProduct_contenttype(rs.getString("product_contenttype"));
+				
+				System.out.println(result.getProduct_filename());
+			}
+		rs.close();
+		pstmt.close();
+		
+		return result;
+	}
 
-	//상품 얻기
 
+	//상품 이름얻기
 	public List<ProductDTO> selectProductList(String users_id, Connection conn) throws Exception {
 		List<ProductDTO> list = new ArrayList<>();
 		
@@ -200,6 +199,29 @@ public ProductDTO getImage(int product_id, Connection conn) throws SQLException 
 		pstmt.close();
 		
 		return list;
+	}
+	
+	public ProductDTO productName(int reveiw_id, Connection conn) throws Exception{
+		ProductDTO result = new ProductDTO();
+		
+		String sql=""
+				+"select p.product_name,c.category_name " + 
+				"from product p, review_board r, category c " + 
+				"where p.product_id = r.product_id and p.category_id = c.category_id and review_board_id = ? ";
+		
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setInt(1, reveiw_id);
+		ResultSet rs = pstmt.executeQuery();
+		
+		while(rs.next()) {
+			result.setProduct_name(rs.getString("product_name"));
+			result.setCategory_name(rs.getString("category_name"));
+		}
+		
+		rs.close();
+		pstmt.close();
+	
+		return result;
 	}
 }
 	
