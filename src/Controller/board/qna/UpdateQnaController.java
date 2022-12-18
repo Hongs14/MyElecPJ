@@ -26,7 +26,7 @@ public class UpdateQnaController extends HttpServlet {
 		upQna.setQna_board_title(request.getParameter("qna_board_title"));
 		upQna.setQna_board_content(request.getParameter("qna_board_content"));
 		upQna.setQna_category_id(Integer.parseInt(request.getParameter("qna_category_id")));
-
+		//upQna.setQna_category_name(request.getParameter("qna_category_name"));
 		request.setAttribute("userId", userId);
 		request.setAttribute("updatedQnABoard", upQna);
 
@@ -47,7 +47,7 @@ public class UpdateQnaController extends HttpServlet {
 		upQna.setQna_board_title(request.getParameter("qna_board_title"));
 		upQna.setQna_board_content(request.getParameter("qna_board_content"));
 		upQna.setQna_category_id(Integer.parseInt(request.getParameter("qna_category_id")));
-
+		//upQna.setQna_category_name(request.getParameter("qna_category_name"));
 		int result = updateQnAService.updateQnA(upQna);
 		
 		response.sendRedirect("ReadQna?id=" + request.getParameter("qna_board_id"));

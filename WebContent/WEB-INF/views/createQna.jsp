@@ -123,9 +123,9 @@
                            <div id="qna_category">
                               <!-- DBd에서 값 얻어오기 -->
                                      <select class="form-control" id="qna_category" name="qna_category_id">
-                                         <option value="1">상품</option>
-                                         <option value="2">주문</option>
-                                         <option value="3">배송</option>
+                                         <option value="1">배송</option>
+                                         <option value="2">상품</option>
+                                         <option value="3">주문</option>
                                          <option value="4">기타</option>
                                       </select>   
                            </div>

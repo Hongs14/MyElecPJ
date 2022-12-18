@@ -65,7 +65,8 @@ public class QnABoardDAO {
 
 		// sql문 작성
 		String sql = "" + "select * " + "from (select rownum rnum, qna_board_id, qna_board_title, users_id, "
-				+ "qna_board_date, qna_category_name, qna_board_answer " + "from( "
+				+ "qna_board_date, qna_category_name, qna_board_answer " 
+				+ "from( "
 				+ "select qna_board_id, qna_board_title, users_id, qna_board_date, qna_category_name, qna_board_answer "
 				+ "from qna_board q, qna_category qc " + "where q.qna_category_id=qc.qna_category_id "
 				+ "order by q.qna_board_id desc) " + "where rownum <=?) " + "where rnum >= ? ";
@@ -96,21 +97,17 @@ public class QnABoardDAO {
 
 		return QnaBoardList;
 	}
-	
 
 	// qna게시판 카테고리로 불러오기
 	public ArrayList<QnABoardDTO> selectCategoryList(int cateId, Pager pager, Connection conn) throws Exception {
 		ArrayList<QnABoardDTO> QnaCategoryList = new ArrayList<QnABoardDTO>();
 
 		// sql문 작성
-		String sql = "" + "select * " + 
-				"from(select rownum rnum, qna_board_id, qna_board_title, users_id, qna_board_date, qna_category_id, qna_board_answer " + 
-				"from(select qna_board_id, qna_board_title, users_id, qna_board_date, qna_category_id, qna_board_answer " + 
-				"from qna_board " + 
-				"where qna_category_id = ? " + 
-				"order by qna_board_id desc " + 
-				")where rownum <= ?) " + 
-				"where rnum>=? ";
+		String sql = "" + "select * "
+				+ "from(select rownum rnum, qna_board_id, qna_board_title, users_id, qna_board_date, qna_category_id, qna_board_answer "
+				+ "from(select qna_board_id, qna_board_title, users_id, qna_board_date, qna_category_id, qna_board_answer "
+				+ "from qna_board " + "where qna_category_id = ? " + "order by qna_board_id desc "
+				+ ")where rownum <= ?) " + "where rnum>=? ";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		pstmt.setInt(1, cateId);
 		pstmt.setInt(2, pager.getEndRowNo());
@@ -201,11 +198,10 @@ public class QnABoardDAO {
 	}
 
 	/*
-	 * // 상품 이름 검색 목록 --응 안해 public List<QnABoardProductDTO> selectSearchList(int
-	 * pageNo, String search_String, Connection conn) {
-	 * System.out.println("DAO String: " + search_String);
-	 * System.out.println("DAO pageNo: " + pageNo); try { // sql문 작성 String sql = ""
-	 * +
+	 * // 상품 이름 검색 목록 --public List<QnABoardProductDTO> selectSearchList(int pageNo,
+	 * String search_String, Connection conn) { System.out.println("DAO String: " +
+	 * search_String); System.out.println("DAO pageNo: " + pageNo); try { // sql문 작성
+	 * String sql = "" +
 	 * " SELECT RNUM, qna_board_id, product_name, qna_board_title,users_id,qna_board_date, QNA_BOARD_ANSWER "
 	 * + " FROM ( " +
 	 * "        SELECT ROWNUM AS RNUM, product_name,qna_board_id, product_id, qna_board_title,users_id,qna_board_date, QNA_BOARD_ANSWER  "
@@ -250,11 +246,12 @@ public class QnABoardDAO {
 	public int updateQnABoard(QnABoardDTO upQna, Connection conn) throws Exception {
 		int result = 0;
 
-		String sql = "UPDATE qna_board SET qna_category_id = ?, qna_board_title = ?, qna_board_content = ?, qna_board_date = sysdate WHERE qna_board_id = ? ";
+		String sql = "UPDATE qna_board SET qna_category_id= ?, qna_board_title = ?, qna_board_content = ?, qna_board_date = sysdate WHERE qna_board_id = ? ";
 
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 
 		pstmt.setInt(1, upQna.getQna_category_id());
+		//pstmt.setString(1, upQna.getQna_category_name());
 		pstmt.setString(2, upQna.getQna_board_title());
 		pstmt.setString(3, upQna.getQna_board_content());
 		pstmt.setInt(4, upQna.getQna_board_id());
@@ -265,15 +262,13 @@ public class QnABoardDAO {
 
 		// 수정 완료되면 1
 		return result;
-		
-		
-		
+
 	}
 
 	// deleteQna
 	public int deleteQnABoard(int qnaNo, Connection conn) throws Exception {
 		int result = 0;
-		
+
 		// sql문 작성 및 받은 JSONObject에서 데이터 뽑아서 DB로 전송
 		String sql = "" + " DELETE FROM qna_board " + " WHERE qna_board_id = ?";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
