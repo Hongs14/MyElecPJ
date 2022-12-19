@@ -1,7 +1,9 @@
 package Controller.board.review;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -13,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
+import dto.product.ProductDTO;
 import dto.review.ReviewBoardDTO;
 import service.CreateReviewService;
 
@@ -22,6 +25,14 @@ public class CreateReviewController extends HttpServlet{
 	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		ServletContext application = request.getServletContext();
+		//상품리스트 불러오기
+		CreateReviewService createReviewService = (CreateReviewService)application.getAttribute("createReviewService");
+		HttpSession session = request.getSession();
+		System.out.println(session.getAttribute("user_id"));
+		List<ProductDTO> list = createReviewService.selectProductList(session.getAttribute("user_id").toString());
+		
+		request.setAttribute("product_list", list);
 		
 		request.getRequestDispatcher("/WEB-INF/views/createReview.jsp").forward(request, response);
 	}
@@ -40,7 +51,7 @@ public class CreateReviewController extends HttpServlet{
 		reviewBoardDTO.setReview_board_reviewpoint(Integer.parseInt(request.getParameter("s_score")));
 		reviewBoardDTO.setReview_board_title(request.getParameter("title"));
 		reviewBoardDTO.setReview_board_content(request.getParameter("content"));
-		
+		reviewBoardDTO.setProduct_id(Integer.parseInt(request.getParameter("product_id")));
 		request.setAttribute("review", reviewBoardDTO);
 		
 		//파일 파트

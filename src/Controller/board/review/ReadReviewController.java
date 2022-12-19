@@ -15,6 +15,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import dto.ReviewComment;
+import dto.product.ProductDTO;
 import dto.review.ReviewBoardDTO;
 import service.ReadReviewDetailService;
 
@@ -30,6 +31,10 @@ public class ReadReviewController extends HttpServlet{
 		System.out.println(reviewBoardId);
 		ServletContext application = request.getServletContext();
 		ReadReviewDetailService readReviewService = (ReadReviewDetailService) application.getAttribute("readReviewDetailService");
+		ProductDTO productDTO = readReviewService.getProductName(reviewBoardId);
+		
+		request.setAttribute("product", productDTO);
+		
 		ReviewBoardDTO reviewBoard = readReviewService.getReview(reviewBoardId);
 		
 		if (reviewBoard.getReview_board_comment() != null) {

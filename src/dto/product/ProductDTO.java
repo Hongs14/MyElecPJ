@@ -21,5 +21,7 @@ public class ProductDTO {
    private String product_savedname;
    private String product_contenttype;
    
+   private int users_id;
+   
    private int review_board_reviewpoint;
 }
