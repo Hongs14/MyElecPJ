@@ -150,19 +150,43 @@ public class CartDAO {
 	
 	public String updateCartItem(CartDTO cartDTO, Connection conn) throws SQLException {
 		String result = null;
+		
 		String sql = "UPDATE cart_detail SET cart_detail_item_count = ? WHERE users_id = ? and product_id = ? ";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		pstmt.setInt(1, cartDTO.getCart_detail_item_count());
 		pstmt.setString(2, cartDTO.getUser_id());
 		pstmt.setInt(3, cartDTO.getProduct_id());
 		int queryResult = pstmt.executeUpdate();
-		pstmt.close();
-		if (queryResult == 1) {
+		if(queryResult==1) {	
 			result = "success";
 		}
 		else {
 			result = "fail";
 		}
+		
+		pstmt.close();
+		return result;
+	}
+
+	public String updateSumPrice(CartDTO cartDTO, Connection conn) throws Exception {
+		String result = null;
+		String sql = ""
+				+"update user_cart set user_cart_price =(select sum(p.product_price*cd.cart_detail_item_count) "
+				+ "from cart_detail cd, product p  where p.product_id = cd.product_id and users_id = ?) " 
+				+ "where users_id=? ";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, cartDTO.getUser_id());
+		pstmt.setString(2, cartDTO.getUser_id());
+		int queryResult = pstmt.executeUpdate();
+		
+		if(queryResult==1) {	
+			result = "success";
+		}
+		else {
+			result = "fail";
+		}
+		
+		pstmt.close();
 		return result;
 	}
 

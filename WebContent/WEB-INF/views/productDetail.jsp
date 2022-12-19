@@ -16,25 +16,37 @@
 
 <script>
 	//data보내기
-	function sendData() {
-		let xhttp = new XMLHttpRequest();
+	function sendData(str) {
+		var xhttp = new XMLHttpRequest();
 		//data를 getElementedByID해서 얻은 값은 json형태로 만든다.
-		let pid = document.getElementById('${Product.product_id}');
-		let qty = document.getElementById("countNum");
-		let data = {
+		var pid = document.getElementById('${Product.product_id}');
+		var qty = document.getElementById("countNum");
+		var price = document.getElementById("total_sum");
+		var data = {
 			'id' : pid.getAttribute("id"),
-			'qty' : qty.getAttribute("value")
+			'qty' : qty.getAttribute("value"),
+			'price': price.innerText,
+			'task' : "updateCart"
 		};
 		console.log(data);
-		xhttp.open('post', 'order'); //post방식 
+		xhttp.open('post', str); //post방식 
 		xhttp.send(JSON.stringify(data));
 	}
 
 	//OrderController로 값 보내기
 	function goOrder() {
-		sendData();
-		location.href = "/Project2_shopping/order";
+		sendData('/Project2_shopping/ReadOrder');
+		location.href = "/Project2_shopping/ReadOrder";
 	}
+	
+	//CartController로 값 보내기
+	function goCart(){
+		sendData('/Project2_shopping/UpdateCart'); 
+	
+	/* 	sendData('ReadCart'); */
+		location.href="/Project2_shopping/ReadCart";
+	}
+	
 
 	//팝업창 열기
 	function popOpen() {
@@ -271,7 +283,7 @@ li:first-child {
 								</div>
 							</div>
 						</div>
-						<form method="POST" action="ReadOrder">
+			
 							<input style="display: none" name="productid" value="${Product.product_id}" />
 							<div class="d-flex justify-content-center my-4">
 								<div id="pd_detail_option" style="background-color: #EAEAEA; border-radius: 24px">
@@ -315,8 +327,7 @@ li:first-child {
 									</div>
 
 									<div class="text-left col-6 my-1">
-										<input name="price" value="${Product.product_price}" style="display: none" />
-										<button class="form-control btn btn-dark btn-lg round" value="구매하기" type="submit">구매하기</button>
+										<button class="form-control btn btn-dark btn-lg round" value="구매하기" onclick="goOrder()">구매하기</button>
 									</div>
 								</c:if>
 								<c:if test="${user_id == null}">
@@ -329,7 +340,7 @@ li:first-child {
 								</c:if>
 								</div>
 							</div>
-						</form>
+					
 					</div>
 				</div>
 			</div>
@@ -337,7 +348,7 @@ li:first-child {
 	</div>
 
 	<!-- 팝업 창 -->
-	<div class="modal-bg" onClick="javascript:popClose();"></div>
+	<div class="modal-bg" onclick="javascript:popClose();"></div>
 	<div class="modal-wrap container-fluid" style="border-radius: 20px;">
 		<div style="height: 150px;" class="pt-5 text-center">
 			<h6>제품이 장바구니에 추가되었습니다.</h6>
@@ -348,12 +359,10 @@ li:first-child {
 			<div>
 				<div class="row my-1 ">
 					<div class="col-6 d-flex justify-content-end my-1">
-						<form method="get" action="cart">
-							<button class="btn btn-sm btn-dark round" onclick="window.location.href='cart';">장바구니로 가기</button>
-						</form>
+						<button class="btn btn-sm btn-dark round" onclick="goCart()">장바구니로 가기</button>
 					</div>
 					<div class="col-6 d-flex justify-content-start my-1">
-						<button class="btn btn-sm btn-dark round" onClick="javascript:popClose();">쇼핑 계속하기</button>
+						<button class="btn btn-sm btn-dark round" onclick="javascript:popClose();">쇼핑 계속하기</button>
 					</div>
 				</div>
 			</div>

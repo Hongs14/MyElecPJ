@@ -2,6 +2,8 @@ package service;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletContext;
 import javax.sql.DataSource;
@@ -21,12 +23,13 @@ public class UpdateCartService {
 		ds = (DataSource) application.getAttribute("dataSource");
 	}
 
-	public String updateCartqty(CartDTO cartDTO) {
-		String result = null;
+	public List<String> updateCartqty(CartDTO cartDTO) {
+		List<String> result = new ArrayList<>();
 		Connection conn = null;
 		try {
 			conn = ds.getConnection();
-			result = cartDAO.updateCartItem(cartDTO, conn);
+			result.add(cartDAO.updateCartItem(cartDTO, conn));
+			result.add(cartDAO.updateSumPrice(cartDTO, conn));
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
