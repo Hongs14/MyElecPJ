@@ -144,10 +144,10 @@ label {
 					class="conditionSet d-flex justify-content-start align-items-center flex-fill">
 					<h5 class="col-5 text-center">문의 유형</h5>
 					<select class="col-6 form-control">
-						<option value="1">상품</option>
-						<option value="2">주문</option>
-						<option value="3">배송</option>
-						<option value="4">기타</option>
+						<option id="categoryId" value="1">배송</option>
+						<option id="categoryId" value="2">상품</option>
+						<option id="categoryId" value="3">주문</option>
+						<option id="categoryId" value="4">기타</option>
 					</select>
 				</div>
 				<div
