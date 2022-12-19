@@ -84,7 +84,7 @@
 		<div class="container-fluid mt-3" style="width: 1440px;">
 			<div class="text-left container-fluid row">
 				<span>
-					<a onclick="window.location.href='home'" style="display:block">
+					<a onclick="window.location.href='Home'" style="display:block">
 					<img src="/Project2_shopping/resources/images/house.png" class="houseImg"/>
 					</a>
 					</span>
@@ -103,10 +103,10 @@
 				<hr style="height: 0.1px; background-color: grey"/>	
 					<div class="d-flex flex-column">
 						<div class="d-flex flex-column my-1">
-							<a class="text-left ml-1" onclick="window.location.href='QnABoardList'" style="font-size: large;">QnA</a>												
+							<a class="text-left ml-1" onclick="window.location.href='ReadQnABoardList'" style="font-size: large;">QnA</a>												
 					</div>					
 						<div class="d-flex flex-column my-1">
-							<a class="text-left ml-1" onclick="window.location.href='reviewBoardList'" style="font-size: large;">Review</a>						
+							<a class="text-left ml-1" onclick="window.location.href='ReadReviewBoardList'" style="font-size: large;">Review</a>						
 						</div>	
 					</div>
 			</div>			

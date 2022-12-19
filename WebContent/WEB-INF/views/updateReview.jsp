@@ -25,30 +25,6 @@
 			});
 			
 		});
-		 
-		/* function send(){
-			var title = $('#title').val();
-			var content = $('content').val(); 
-			var uid = ${user_id};
-			
-			$.ajax({
-		        url : "CreateReview",
-		        type : "POST",
-		        data : {send_score: JSON.stringify(targetNum), 
-		        		user_id: Json.stringify(uid),
-		        		title: Json.stringify(title),
-		        		content: Json.stringify(content)
-		        },
-		        dataType: "json",
-		        success : function () {
-		            console.log("성공")
-		        },
-		        error : function(){
-		        	console.log("실패")
-		        }
-		     });  //ajax	
-		};  */
-
 		
 
 		</script>
@@ -142,14 +118,9 @@
                            <h5>상품명</h5>
                         </div>
                         <div class="col-9">
-                           <div id="qna_category">
+                           <div id="review_item">
                               <!-- DBd에서 값 얻어오기 -->
-                              <select class="form-control" id="product_id" name="product_id">
-                                  <option value="99">ddd</option>
-                                  <option value="96">주문 관련</option>
-                                  <option value="97">상품 관련</option>
-                                  <option value="98">기타 유형</option>
-                               </select>   
+                           	 	<div>${list.product_name }</div>
                            </div>
                         </div>
                      </div>
@@ -216,7 +187,7 @@
 					</div>
 					<div class="col-6">
 						<div class="text-left mb-5">
-							<input type = "submit" class="btn btn-sm btn-primary round"/>등록하기				
+							<input type = "submit" class="btn btn-sm btn-primary round" value="등록하기"/>			
 						</div>
 					</div>
 				</div>

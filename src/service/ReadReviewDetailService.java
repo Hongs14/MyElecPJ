@@ -46,6 +46,7 @@ public class ReadReviewDetailService {
 		try {
 			conn = ds.getConnection();
 			result = reviewBoardDAO.selectOnereview(id, conn);
+			
 		}
 		catch (Exception e) {
 			e.printStackTrace();
