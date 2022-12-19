@@ -115,9 +115,9 @@ public class OrderDAO {
 	public List<OrderDTO> selectOrderList(Pager pager, OrderDTO order, Connection conn) throws SQLException {
 		int pageNo = pager.getPageNo();
 		StringBuilder sqlBuilder = new StringBuilder();
-		sqlBuilder.append("SELECT USERS_ID, ORDERS_ID, PRODUCT_NAME, ORDERS_DATE, ORDERS_STATUS, ORDERS_PRICE, RNUM ");
+		sqlBuilder.append("SELECT USERS_ID, ORDERS_ID, PRODUCT_NAME, ORDERS_DATE, ORDERS_STATUS, PRODUCT_PRICE, RNUM ");
 		sqlBuilder.append("FROM ( ");
-		sqlBuilder.append("	SELECT ORDERS.USERS_ID, ORDERS.ORDERS_ID, PRODUCT_NAME, ORDERS_DATE, ORDERS_STATUS, ORDERS_PRICE, rownum as RNUM ");
+		sqlBuilder.append("	SELECT ORDERS.USERS_ID, ORDERS.ORDERS_ID, PRODUCT_NAME, ORDERS_DATE, ORDERS_STATUS, PRODUCT_PRICE, rownum as RNUM ");
 		sqlBuilder.append(" FROM ORDERS, ORDER_DETAIL, PRODUCT ");
 		sqlBuilder.append(" WHERE ORDERS.ORDERS_ID = ORDER_DETAIL.ORDERS_ID AND ");
 		sqlBuilder.append("  ORDER_DETAIL.PRODUCT_ID = PRODUCT.PRODUCT_ID AND ");
@@ -142,7 +142,7 @@ public class OrderDAO {
 			orderDTO.setProduct_name(rs.getString("PRODUCT_NAME"));
 			orderDTO.setOrders_date(rs.getString("ORDERS_DATE"));
 			orderDTO.setOrders_status(rs.getString("ORDERS_STATUS"));
-			orderDTO.setOrders_price(rs.getInt("ORDERS_PRICE"));
+			orderDTO.setOrders_price(rs.getInt("PRODUCT_PRICE"));
 			orders.add(orderDTO);
 		}
 		
