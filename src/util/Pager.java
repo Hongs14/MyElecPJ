@@ -16,9 +16,9 @@ public class Pager {
 	private int startPageNo;	//그룹의 시작 페이지 번호
 	private int endPageNo;		//그룹의 끝 페이지 번호
 	private int pageNo;			//현재 페이지 번호
-	private int pagesPerGroup = 5;//그룹당 페이지 수
+	private int pagesPerGroup;//그룹당 페이지 수
 	private int groupNo;		//현재 그룹 번호
-	private int rowsPerPage = 5;//페이지당 행 수//->사용자 입력을 받을 수도 있다 
+	private int rowsPerPage;//페이지당 행 수//->사용자 입력을 받을 수도 있다 
 	private int startRowNo;		//페이지의 시작 행 번호(1, ..., n) //->1번부터 시작 (Oracle) 
 	private int startRowIndex;	//페이지의 시작 행 인덱스(0, ..., n-1) for mysql //->0번부터 시작 (MariaDB, MySQL) 
 	private int endRowNo;		//페이지의 마지막 행 번호

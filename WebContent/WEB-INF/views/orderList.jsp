@@ -227,6 +227,7 @@ hr {
 											<tr>
 												<th>주문자</th>
 												<th>주문 상품</th>
+												<th>수량<th/>
 												<th>가격</th>
 												<th>배송상태</th>
 											</tr>
@@ -236,6 +237,7 @@ hr {
 											<tr >
 												<th>${order.users_id}</th>
 												<th>${order.product_name}</th>
+												<th>${order.order_detail_item_count}<th/>
 												<th>${order.orders_price}</th>
 												<th>${order.orders_status}</th>
 											</tr>
@@ -247,7 +249,7 @@ hr {
 								<div class ="d-flex">
 					               <div id = "pagination " class = "container" >
 					                  <div class = "pagination justify-content-center" >
-					                  
+					                  <c:if test="${pager.totalPageNo > 0}">
 					                     <a href="ReadOrderList?pageNo=1" class="btn btn-muted btn-sm">처음</a>
 					                     
 					                     <c:if test="${pager.groupNo > 1 }">
@@ -268,6 +270,10 @@ hr {
 					                     </c:if>
 					                     
 					                     <a href="ReadOrderList?pageNo=${pager.totalPageNo}" class="btn btn-muted btn-sm">맨끝</a>
+					                    </c:if>
+					                    <c:if test="${pager.totalPageNo <= 0}">
+					                    	주문이 없습니다
+					                    </c:if>
 					                  </div>
 					               
 					               </div>

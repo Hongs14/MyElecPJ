@@ -95,7 +95,7 @@ public class CartDAO {
 		//int pageNo = pager.getPageNo();
 		List<CartDTO> cartList = new ArrayList<>();
 
-		String sql = "SELECT c.product_id, product_name, product_price, c.users_id, cart_detail_item_count, user_cart_price " + 
+		String sql = "SELECT c.product_id, product_name, product_price, c.users_id, cart_detail_item_count, user_cart_price, p.product_filename " + 
 				"FROM product p, cart_detail c, user_cart u " + 
 				"WHERE p.product_id = c.product_id and u.users_id = c.users_id and c.users_id = ? ";
 
@@ -113,6 +113,7 @@ public class CartDAO {
 			cartDTO.setUser_id(rs.getString("users_id"));
 			cartDTO.setCart_detail_item_count(rs.getInt("cart_detail_item_count"));
 			cartDTO.setUser_cart_price(rs.getLong("user_cart_price"));
+			cartDTO.setProduct_filename(rs.getString("product_filename"));
 			cartList.add(cartDTO);
 		}
 		rs.close();

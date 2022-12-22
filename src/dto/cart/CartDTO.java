@@ -15,5 +15,6 @@ public class CartDTO {
 	//DB에서 받아올 정보
 	private String product_name;
 	private int product_price;
+	private String product_filename;
 	
 }

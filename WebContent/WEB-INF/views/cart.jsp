@@ -42,9 +42,9 @@
 		} 
 		
 		//최종 금액 구하기
-		let result = parseInt(value.getAttribute('value')) * ${cart.product_price};
-		document.getElementById('total_sum').innerText = result
-				.toLocaleString('en-US');
+		//let result = parseInt(value.getAttribute('value')) * ${cart.product_price};
+		//document.getElementById('total_sum').innerText = result
+		//		.toLocaleString('en-US');
 	}
 	
 	function deleteCart(Item) {
@@ -53,19 +53,19 @@
 		name += id;
 		let value = document.getElementById(name).getAttribute("class");
 		
-		$.ajax({
-			url : "UpdateCart",
-			type : "post",
-			data : {
-				productId : value,
-				task : "deleteCart"
-			},
-			success : function(result) {
-				if (result === "success") {
-					deleteItem(Item);
-				}
-			}
-		});
+		//$.ajax({
+		//	url : "UpdateCart",
+		//	type : "post",
+		//	data : {
+		//		productId : value,
+		//		task : "deleteCart"
+		//	},
+		//	success : function(result) {
+		//		if (result === "success") {
+		//			deleteItem(Item);
+		//		}
+		//	}
+		//});
 	}
 	
 	function updateCart(type, e) {
@@ -81,32 +81,32 @@
 		name += id;
 		var countValue = document.getElementById(name);
 		
-		let isChanged = false;
+		//let isChanged = false;
 		if (type === 'm' && countValue.getAttribute('value') > min) {
 			countValue = parseInt(countValue.getAttribute('value')) - 1;
-			isChanged = true;
+			//isChanged = true;
 		}
 		if (type === 'p' && countValue.getAttribute('value') < max) {
 			countValue = parseInt(countValue.getAttribute('value')) + 1;
-			isChanged = true;
+			//isChanged = true;
 		}
 		
-		if (isChanged === true) {
-			$.ajax({
-				url : "UpdateCart",
-				type : "post",
-				data : {
-					productId : idValue,
-					cartItemCount : countValue,
-					task : "updateCart"
-				},
-				success : function(result) {
-					if (result === "success") {
-						count(type, e);
-					}
-				}
-			});
-		}
+		//if (isChanged === true) {
+			//$.ajax({
+			//	url : "UpdateCart",
+			//	type : "post",
+			//	data : {
+			//		productId : idValue,
+			//		cartItemCount : countValue,
+			//		task : "updateCart"
+			//	},
+			//	success : function(result) {
+			//		if (result === "success") {
+			//			count(type, e);
+			//		}
+			//	}
+			//});
+		//}
 	}
 
 	//체크박스 선택 및 해제
@@ -268,7 +268,7 @@ a {
 							<div class="row">
 								<div class="col-sm-3">
 									<img
-										src="/Project2_shopping/resources/images/refrigerator1.png" />
+										src="/Project2_shopping/resources/images/${cart.product_filename}" />
 								</div>
 								<div class="col-sm-6 container-fluid d-flex flex-column">
 									<div class="status" style="color: DodgerBlue">

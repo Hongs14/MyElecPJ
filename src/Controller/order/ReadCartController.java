@@ -21,7 +21,7 @@ public class ReadCartController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//세션에 저장된 유저ID 가져오기
 		HttpSession session = request.getSession();
-		String userId = (String) session.getAttribute("userId");
+		String userId = (String) session.getAttribute("user_id");
 /*		HttpSession session = request.getSession();
 		String userId=(String) session.getAttribute("loginUser");	
 		userId="Manager";*/
