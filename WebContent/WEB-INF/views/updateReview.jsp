@@ -155,7 +155,7 @@
 								<h5>리뷰 내용 </h5>
 							</div>
 							<div class="col-9">
-								<input id="r_content" type="text" id="qna_content_box" name="content" value=""  placeholder="문의 내용을 입력하시오" style="width: 800px; height: 200px; "/>
+								<input id="r_content" type="text" id="qna_content_box" name="content" value=""  placeholder="리뷰 내용을 입력하시오" style="width: 800px; height: 200px; "/>
 							</div>
 						</div>
 						<!--  

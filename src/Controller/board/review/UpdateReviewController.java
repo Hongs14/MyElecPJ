@@ -24,8 +24,8 @@ public class UpdateReviewController extends HttpServlet{
 		
 		//상품 이름 가져오기
 		ServletContext application = request.getServletContext();
-		ReadReviewDetailService readReviewDetailService = (ReadReviewDetailService) application.getAttribute("readReviewDetailService");
-		ReviewBoardDTO reviewBoardDTO =  readReviewDetailService.getReview(Integer.parseInt(request.getParameter("reviewNo")));
+		UpdateReviewService updateReviewService = (UpdateReviewService) application.getAttribute("updateReviewService");
+		ReviewBoardDTO reviewBoardDTO =  updateReviewService.getReview(Integer.parseInt(request.getParameter("reviewNo")));
 		request.setAttribute("list", reviewBoardDTO);
 		
 		

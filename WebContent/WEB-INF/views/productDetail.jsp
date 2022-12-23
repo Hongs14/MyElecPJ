@@ -352,7 +352,7 @@ li:first-child {
 	<div class="modal-wrap container-fluid" style="border-radius: 20px;">
 		<div style="height: 150px;" class="pt-5 text-center">
 			<h6>제품이 장바구니에 추가되었습니다.</h6>
-			<h6>(현재 총 1개의 상품이 저장되었습니다.)</h6>
+			
 		</div>
 
 		<div>
