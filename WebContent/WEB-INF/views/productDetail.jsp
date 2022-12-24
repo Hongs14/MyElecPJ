@@ -10,45 +10,31 @@
 <!-- 별 -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+<script src=https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
 	//data보내기
-	function sendData(str) {
-		var xhttp = new XMLHttpRequest();
-		//data를 getElementedByID해서 얻은 값은 json형태로 만든다.
+	function sendData() {
 		var pid = document.getElementById('${Product.product_id}');
 		var qty = document.getElementById("countNum");
 		var price = document.getElementById("total_sum");
-		var data = {
-			'id' : pid.getAttribute("id"),
-			'qty' : qty.getAttribute("value"),
-			'price': price.innerText,
-			'task' : "updateCart"
-		};
-		console.log(data);
-		xhttp.open('post', str); //post방식 
-		xhttp.send(JSON.stringify(data));
-	}
-
-	//OrderController로 값 보내기
-	function goOrder() {
-		sendData('/Project2_shopping/ReadOrder');
-		location.href = "/Project2_shopping/ReadOrder";
+		let dataObject = { id : pid.getAttribute("id"), qty : qty.getAttribute("value"), price : price.innerText, task : "insertCart"};
+		console.log(dataObject);
+		$.ajax({
+			url: "UpdateCart",
+			type: "post",
+			data: dataObject
+		});
 	}
 	
-	//CartController로 값 보내기
 	function goCart(){
-		sendData('/Project2_shopping/UpdateCart'); 
-	
-	/* 	sendData('ReadCart'); */
 		location.href="/Project2_shopping/ReadCart";
 	}
-	
 
 	//팝업창 열기
+	//CartController로 값 보내기
 	function popOpen() {
 		sendData();
 		//json을 문자열로 바꿔서 바디에 실어서 요청을 보낸다.
@@ -283,7 +269,7 @@ li:first-child {
 								</div>
 							</div>
 						</div>
-			
+						<form method="POST" action="ReadOrder">
 							<input style="display: none" name="productid" value="${Product.product_id}" />
 							<div class="d-flex justify-content-center my-4">
 								<div id="pd_detail_option" style="background-color: #EAEAEA; border-radius: 24px">
@@ -327,7 +313,8 @@ li:first-child {
 									</div>
 
 									<div class="text-left col-6 my-1">
-										<button class="form-control btn btn-dark btn-lg round" value="구매하기" onclick="goOrder()">구매하기</button>
+										<input name="price" value="${Product.product_price}" style="display: none"/>
+										<button class="form-control btn btn-dark btn-lg round" value="구매하기" type="submit">구매하기</button>
 									</div>
 								</c:if>
 								<c:if test="${user_id == null}">
@@ -340,7 +327,7 @@ li:first-child {
 								</c:if>
 								</div>
 							</div>
-					
+						</form>
 					</div>
 				</div>
 			</div>

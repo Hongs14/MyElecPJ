@@ -24,6 +24,7 @@ public class UpdateCartController extends HttpServlet {
 		// 세션에 저장된 유저ID 가져오기
 		HttpSession session = request.getSession();
 		String userId = (String) session.getAttribute("user_id");
+		System.out.println(userId);
 //		userId = "Manager";
 
 		// UpdateCartService 객체 얻기
@@ -34,7 +35,9 @@ public class UpdateCartController extends HttpServlet {
 
 		// Cart 상품 수량 업데이트 & 상품 삭제
 		CartDTO cartDTO = new CartDTO();
-		cartDTO.setCart_detail_item_count(Integer.parseInt(request.getParameter("qty")));
+		if(request.getParameter("qty") != null) {
+			cartDTO.setCart_detail_item_count(Integer.parseInt(request.getParameter("qty")));
+		}
 		cartDTO.setProduct_id(Integer.parseInt(request.getParameter("id")));
 		cartDTO.setUser_id(userId);
 
@@ -44,9 +47,17 @@ public class UpdateCartController extends HttpServlet {
 		String ajaxResult = "success";
 		List<String> result = new ArrayList<String>();
 		switch (task) {
+			case "insertCart": {
+				result.add(updateCartService.insertCart(cartDTO));
+				for(String a : result) {
+					if(a.equals("fail")) {
+						ajaxResult = "fail";
+					}
+				}
+				break;
+			}
 			case "updateCart": {
 				// UpdateCartService로 CartDTO 보내고 받기
-				System.out.println("update");
 				result = updateCartService.updateCartqty(cartDTO);
 				for(String a : result) {
 					if(a.equals("fail")) {
@@ -56,7 +67,6 @@ public class UpdateCartController extends HttpServlet {
 				break;
 			}
 			case "deleteCart": {
-				System.out.println("delete");
 				ajaxResult = updateCartService.deleteCartItem(cartDTO);
 				break;
 			}
