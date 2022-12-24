@@ -2,6 +2,8 @@ package Controller.order;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -21,8 +23,8 @@ public class UpdateCartController extends HttpServlet {
 			throws ServletException, IOException {
 		// 세션에 저장된 유저ID 가져오기
 		HttpSession session = request.getSession();
-		String userId = (String) session.getAttribute("loginUser");
-		userId = "Manager";
+		String userId = (String) session.getAttribute("user_id");
+//		userId = "Manager";
 
 		// UpdateCartService 객체 얻기
 		ServletContext application = request.getServletContext();
@@ -32,30 +34,36 @@ public class UpdateCartController extends HttpServlet {
 
 		// Cart 상품 수량 업데이트 & 상품 삭제
 		CartDTO cartDTO = new CartDTO();
-		cartDTO.setCart_detail_item_count(Integer.parseInt(request.getParameter("cartItemCount")));
-		cartDTO.setProduct_id(Integer.parseInt(request.getParameter("productId")));
+		cartDTO.setCart_detail_item_count(Integer.parseInt(request.getParameter("qty")));
+		cartDTO.setProduct_id(Integer.parseInt(request.getParameter("id")));
 		cartDTO.setUser_id(userId);
 
 		String task = request.getParameter("task");
 		PrintWriter pw = new PrintWriter(response.getOutputStream());
 		System.out.println(task);
-		String result = null;
+		String ajaxResult = "success";
+		List<String> result = new ArrayList<String>();
 		switch (task) {
 			case "updateCart": {
 				// UpdateCartService로 CartDTO 보내고 받기
 				System.out.println("update");
 				result = updateCartService.updateCartqty(cartDTO);
+				for(String a : result) {
+					if(a.equals("fail")) {
+						ajaxResult = "fail";
+					}
+				}
 				break;
 			}
 			case "deleteCart": {
 				System.out.println("delete");
-				result = updateCartService.deleteCartItem(cartDTO);
+				ajaxResult = updateCartService.deleteCartItem(cartDTO);
 				break;
 			}
 			default: break;
 		}
-		System.out.println(result);
-		pw.write(result);
+		System.out.println(ajaxResult);
+		pw.write(ajaxResult);
 		pw.flush();
 		pw.close();
 	}

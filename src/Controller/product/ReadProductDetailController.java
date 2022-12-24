@@ -44,7 +44,7 @@ public class ReadProductDetailController extends HttpServlet{
       request.setAttribute("filePath", filePath);
       System.out.println("pd: "+filePath);
       request.getRequestDispatcher("/WEB-INF/views/productDetail.jsp").forward(request, response);
-   
+      
    }
 
 }

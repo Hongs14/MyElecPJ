@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dto.review.ReviewBoardDTO;
+import service.ReadReviewDetailService;
 import service.UpdateReviewService;
 
 @WebServlet(name = "Controller.UpdateReviewController", urlPatterns = "/UpdateReview")
@@ -20,6 +21,14 @@ public class UpdateReviewController extends HttpServlet{
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		session.setAttribute("reviewNo", Integer.parseInt(request.getParameter("reviewNo")));
+		
+		//상품 이름 가져오기
+		ServletContext application = request.getServletContext();
+		UpdateReviewService updateReviewService = (UpdateReviewService) application.getAttribute("updateReviewService");
+		ReviewBoardDTO reviewBoardDTO =  updateReviewService.getReview(Integer.parseInt(request.getParameter("reviewNo")));
+		request.setAttribute("list", reviewBoardDTO);
+		
+		
 		request.getRequestDispatcher("/WEB-INF/views/updateReview.jsp").forward(request, response);
 	}
 	
@@ -33,7 +42,6 @@ public class UpdateReviewController extends HttpServlet{
 		System.out.println("reviewNo: "+ (Integer)session.getAttribute("reviewNo"));
 		reviewBoardDTO.setReview_board_id((Integer)session.getAttribute("reviewNo"));
 		reviewBoardDTO.setUsers_id(session.getAttribute("user_id").toString());
-//		reviewBoardDTO.setProduct_id(Integer.parseInt(request.getParameter("product_id")));
 		reviewBoardDTO.setReview_board_reviewpoint(Integer.parseInt(request.getParameter("s_score")));
 		reviewBoardDTO.setReview_board_title(request.getParameter("title"));
 		reviewBoardDTO.setReview_board_content(request.getParameter("content"));

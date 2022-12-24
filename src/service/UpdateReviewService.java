@@ -56,5 +56,24 @@ public class UpdateReviewService {
 		
 		return result;
 	}
+	
+	public ReviewBoardDTO getReview(int id) {
+		ReviewBoardDTO result = null;
+		Connection conn = null;
+		
+		try {
+			conn = ds.getConnection();
+			result = reviewBoardDAO.selectOnereview(id, conn);
+			
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+		finally {
+			try {conn.close();} catch (Exception e) {}
+		}
+		
+		return result;
+	}
 
 }

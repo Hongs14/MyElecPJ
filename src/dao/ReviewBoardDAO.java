@@ -108,7 +108,7 @@ public class ReviewBoardDAO {
 				+"       SELECT review_board_id, p. product_id, review_board_title, users_id, review_board_date, review_board_reviewpoint, product_name  "
 				+"        FROM REVIEW_BOARD r, product p "
 				+"		  where r.product_id = p.product_id "		
-				+"        ORDER BY review_board_date desc)"
+				+"        ORDER BY review_board_id desc)"
 				+"   WHERE ROWNUM < (? * 5) + 1 "
 				+") WHERE RNUM >= ((? - 1) * 5) + 1 ";
 		PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -230,7 +230,7 @@ public class ReviewBoardDAO {
 		ReviewBoardDTO reviewContentDTO = new ReviewBoardDTO();
 		String sql = ""
 				+ "SELECT review_board_id, p.product_id, product_name, review_board_title, review_board_content, users_id, review_board_date ,review_board_reviewpoint, review_board_comment "
-				+ "FROM review_board q, product p " + "WHERE p.product_id = q.product_id and review_board_id =?";
+				+ "FROM review_board r, product p " + "WHERE p.product_id = r.product_id and review_board_id =?";
 
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		pstmt.setInt(1, idNum);
@@ -238,6 +238,7 @@ public class ReviewBoardDAO {
 		
 		if (rs.next()) {
 			reviewContentDTO.setReview_board_id(rs.getInt("review_board_id"));
+			reviewContentDTO.setProduct_name(rs.getString("product_name"));
 			reviewContentDTO.setReview_board_reviewpoint(rs.getInt("review_board_reviewpoint"));
 			reviewContentDTO.setReview_board_title(rs.getString("review_board_title"));
 			reviewContentDTO.setReview_board_content(rs.getString("review_board_content"));
@@ -245,6 +246,7 @@ public class ReviewBoardDAO {
 			reviewContentDTO.setReview_board_date(rs.getDate("review_board_date"));
 			reviewContentDTO.setReview_board_comment(rs.getString("review_board_comment"));
 		}
+	
 
 		return reviewContentDTO;
 	}
