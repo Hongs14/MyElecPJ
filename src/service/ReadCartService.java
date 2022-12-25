@@ -9,6 +9,7 @@ import javax.sql.DataSource;
 
 import dao.CartDAO;
 import dto.cart.CartDTO;
+import dto.product.ProductDTO;
 import util.Pager;
 
 public class ReadCartService {
@@ -37,6 +38,27 @@ public class ReadCartService {
 			}
 		}
 		return result;
+	}
+	
+	public CartDTO getImage(String userId, int product_id) {
+		CartDTO cartImage = null;
+		Connection conn = null;
+		
+		try {
+			conn = ds.getConnection();
+			cartImage = cartDAO.getImage(userId, product_id, conn);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return cartImage;
 	}
 
 }
