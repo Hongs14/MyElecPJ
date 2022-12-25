@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.json.JSONArray;
 
-import service.my.AdminDeleteUserService;
+import service.AdminDeleteUserService;
 
 @WebServlet(name="Controller.AdminDeleteUserController", urlPatterns="/DeleteUser")
 public class AdminDeleteUserController extends HttpServlet{
