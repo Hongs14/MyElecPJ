@@ -19,7 +19,7 @@
 	crossorigin='anonymous'></script>
 <script>
 	//수량버튼 증감 
-	function count(type, e) {
+ 	function count(type, e) {
 		var min = 1;
 		var max = 10;
 
@@ -29,43 +29,44 @@
 		var name = 'num';
 		name += id;
 
-		var value = document.getElementById(name);
-
+		//var value = document.getElementById(name);
+var value = document.getElementById(name);
+		
 		if (type === 'm' && value.getAttribute('value') > min) {
 			value.setAttribute('value',
 					parseInt(value.getAttribute('value')) - 1);
+			
+			
 		}
 
 		if (type === 'p' && value.getAttribute('value') < max) {
 			value.setAttribute('value',
 					parseInt(value.getAttribute('value')) + 1);
-		} 
+			
+			
+		}
 		
-		//최종 금액 구하기
-		//let result = parseInt(value.getAttribute('value')) * ${cart.product_price};
-		//document.getElementById('total_sum').innerText = result
-		//		.toLocaleString('en-US');
-	}
-	
+	}  
+
 	function deleteCart(Item) {
 		let id = Item.getAttribute("id").replace(/\D/g, '');
 		let name = 'productId';
 		name += id;
 		let value = document.getElementById(name).getAttribute("class");
 		
-		//$.ajax({
-		//	url : "UpdateCart",
-		//	type : "post",
-		//	data : {
-		//		productId : value,
-		//		task : "deleteCart"
-		//	},
-		//	success : function(result) {
-		//		if (result === "success") {
-		//			deleteItem(Item);
-		//		}
-		//	}
-		//});
+		$.ajax({
+			url : "UpdateCart",
+			type : "post",
+			data : {
+				id : value,
+				task : "deleteCart"
+			},
+			success : function(result) {
+				if (result === "success") {
+					deleteItem(Item);
+				}
+			}
+		});
 	}
 	
 	function updateCart(type, e) {
@@ -81,32 +82,32 @@
 		name += id;
 		var countValue = document.getElementById(name);
 		
-		//let isChanged = false;
+		var isChanged = false;
 		if (type === 'm' && countValue.getAttribute('value') > min) {
 			countValue = parseInt(countValue.getAttribute('value')) - 1;
-			//isChanged = true;
+			isChanged = true;
 		}
 		if (type === 'p' && countValue.getAttribute('value') < max) {
 			countValue = parseInt(countValue.getAttribute('value')) + 1;
-			//isChanged = true;
+			isChanged = true;
 		}
 		
-		//if (isChanged === true) {
-			//$.ajax({
-			//	url : "UpdateCart",
-			//	type : "post",
-			//	data : {
-			//		productId : idValue,
-			//		cartItemCount : countValue,
-			//		task : "updateCart"
-			//	},
-			//	success : function(result) {
-			//		if (result === "success") {
-			//			count(type, e);
-			//		}
-			//	}
-			//});
-		//}
+		if (isChanged === true) {
+			$.ajax({
+				url : "UpdateCart",
+				type : "post",
+				data : {
+					id : idValue,
+					qty : countValue,
+					task : "updateCart"
+				},
+				success : function(result) {
+					if (result === "success") {
+						count(type, e);
+					}
+				}
+			});
+		}
 	}
 
 	//체크박스 선택 및 해제
@@ -221,7 +222,7 @@ a {
 		<div class="row">
 			<div id="sidebar"
 				class="col-sm-2 col-md-2 d-none d-xl-block justify-content-center">
-				<%@ include file="/WEB-INF/views/common/userInfo.jsp" %>
+				<%@ include file="/WEB-INF/views/common/userInfo.jsp"%>
 
 				<div class="d-flex flex-column rounded-lg pt-3">
 					<img src="/Project2_shopping/resources/images/adlong.png"
@@ -235,7 +236,7 @@ a {
 					<div class="row">
 						<div class="col-sm-9 mt-1">
 							<input type="checkbox" id="selectAll" value="selectAll"
-								onclick="selectAll()" /> 전체선택
+								onclick="selectAll()" checked/> 전체선택
 						</div>
 						<div class="col-sm-3 d-flex justify-content-end">
 							<button type="button" class="btn btn-outline-dark btn-sm"
@@ -245,14 +246,14 @@ a {
 				</div>
 				<c:set var="sum" value="0" />
 				<c:forEach var="cart" items="${cartList}" varStatus="i">
-					
+
 					<div id="cartItem${i.count}"
 						class="card container-fluid grey my-2 py-1">
 						<div id="productId${i.count}" class="${cart.product_id}"></div>
 						<div class="card container-fluid grey">
 							<div class="row">
 								<div class="col-sm-9">
-									<input type="checkbox" id="c${i.count}" class="select" multiple />
+									<input type="checkbox" id="c${i.count}" class="select" checked multiple />
 								</div>
 								<div class="col-sm-3 d-flex justify-content-end">
 									<button type="button" id="${i.count}"
@@ -267,21 +268,17 @@ a {
 						<div class="card container-fluid py-3 grey">
 							<div class="row">
 								<div class="col-sm-3">
-									<img
-										src="/Project2_shopping/resources/images/${cart.product_filename}" />
+
+									<img src="${cart.product_savedname}" />
+
 								</div>
 								<div class="col-sm-6 container-fluid d-flex flex-column">
 									<div class="status" style="color: DodgerBlue">
 										<h6>설치상품</h6>
 									</div>
 									<br />
-									<div class="name">
+									<div class="name mt-4">
 										<h3>${cart.product_name}</h3>
-
-									</div>
-									<br />
-									<div class="color">
-										<h5>새틴 베이지+새틴 화이트</h5>
 									</div>
 								</div>
 
@@ -290,7 +287,7 @@ a {
 									<div class="text-right text-muted"
 										style="text-decoration: line-through">
 
-										<c:set var="price" value="${cart.product_price}" />
+										<c:set var="price" value="${cart.product_price*cart.cart_detail_item_count}" />
 										<h5>
 											<fmt:formatNumber type="number" maxFractionDigits="0"
 												value="${price}" />
@@ -302,7 +299,7 @@ a {
 											<fmt:formatNumber type="number" maxFractionDigits="0"
 												value="${price*0.9}" />
 										</h4>
-										<c:set var="sum" value="${sum+(price*0.9)}" />
+										<c:set var="sum" value="${sum+price}" />
 									</div>
 
 									<div class="btn-group btn-group-sm pl-5 ml-5"
@@ -312,9 +309,10 @@ a {
 
 										<input type="button"
 											class="btn btn-outline-dark btn-sm disabled"
-											id="num${i.count}" value="1" />
+											id="num${i.count}" value="${cart.cart_detail_item_count}" />
 
-										<c:set var="totalCount" value="${totalCount.i.count}" />
+										<c:set var="totalCount"
+											value="${totalCount+cart.cart_detail_item_count}" />
 
 										<button type="button" class="btn btn-outline-dark btn-sm"
 											id="plus${i.count}" onclick="updateCart('p', this)">+</button>
@@ -343,7 +341,7 @@ a {
 							<h5>전체 상품</h5>
 						</div>
 						<div class="d-flex mx-3">
-							<h5>${UpdateCart.cartcartItemCount}개</h5>
+							<h5>${totalCount}개</h5>
 						</div>
 					</div>
 					<div class="row justify-content-between">
@@ -352,7 +350,8 @@ a {
 						</div>
 						<div class="d-flex mx-3">
 							<h5 id="total_sum">
-								<%-- <fmt:formatNumber type="number" maxFractionDigits="0" value="${total_sum}"/> --%>
+								<fmt:formatNumber type="number" maxFractionDigits="0"
+									value="${sum}" />
 							</h5>
 							<h5>원</h5>
 						</div>
@@ -364,7 +363,7 @@ a {
 						<div class="d-flex mx-3" style="color: DodgerBlue">
 							<h5>
 								<fmt:formatNumber type="number" maxFractionDigits="0"
-									value="${price*0.1}" />
+									value="${sum*0.1}" />
 								원
 							</h5>
 						</div>
@@ -377,7 +376,7 @@ a {
 						<div class="d-flex mx-3">
 							<h4>
 								<fmt:formatNumber type="number" maxFractionDigits="0"
-									value="${sum}" />
+									value="${sum-(sum*0.1)}" />
 
 								원
 							</h4>

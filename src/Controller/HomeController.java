@@ -20,7 +20,7 @@ public class HomeController extends HttpServlet{
 		request.setAttribute("pathList5", "otilogo.png");
 		request.setAttribute("pathList6", "kosalogo.png");
 		
-		//받은 데이터를 해가지고 jsp만들고 클라이언트로 보냄
+		//jsp로 이동
 		request.getRequestDispatcher("/WEB-INF/views/home.jsp").forward(request, response);
 	}
 }

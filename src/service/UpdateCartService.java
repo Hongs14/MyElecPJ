@@ -38,7 +38,7 @@ public class UpdateCartService {
 		return result;
 	}
 	
-	public String controlCartSum(CartDTO cartDTO) {
+	public String insertCart(CartDTO cartDTO) {
 		String result = null;
 		Connection conn = null;
 		try {

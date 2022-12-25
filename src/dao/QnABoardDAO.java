@@ -3,7 +3,9 @@ package dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 import dto.qna.QnABoardDTO;
 import util.Pager;
@@ -65,8 +67,7 @@ public class QnABoardDAO {
 
 		// sql문 작성
 		String sql = "" + "select * " + "from (select rownum rnum, qna_board_id, qna_board_title, users_id, "
-				+ "qna_board_date, qna_category_name, qna_board_answer " 
-				+ "from( "
+				+ "qna_board_date, qna_category_name, qna_board_answer " + "from( "
 				+ "select qna_board_id, qna_board_title, users_id, qna_board_date, qna_category_name, qna_board_answer "
 				+ "from qna_board q, qna_category qc " + "where q.qna_category_id=qc.qna_category_id "
 				+ "order by q.qna_board_id desc) " + "where rownum <=?) " + "where rnum >= ? ";
@@ -197,50 +198,60 @@ public class QnABoardDAO {
 		return readQna;
 	}
 
-	/*
-	 * // 상품 이름 검색 목록 --public List<QnABoardProductDTO> selectSearchList(int pageNo,
-	 * String search_String, Connection conn) { System.out.println("DAO String: " +
-	 * search_String); System.out.println("DAO pageNo: " + pageNo); try { // sql문 작성
-	 * String sql = "" +
-	 * " SELECT RNUM, qna_board_id, product_name, qna_board_title,users_id,qna_board_date, QNA_BOARD_ANSWER "
-	 * + " FROM ( " +
-	 * "        SELECT ROWNUM AS RNUM, product_name,qna_board_id, product_id, qna_board_title,users_id,qna_board_date, QNA_BOARD_ANSWER  "
-	 * + "			   FROM (" +
-	 * "                    SELECT qna_board_id, product_name, p.product_id, qna_board_title,users_id,qna_board_date, QNA_BOARD_ANSWER "
-	 * + "                     FROM QNA_BOARD q , Product p " +
-	 * "                     where q.product_id = p.product_id " +
-	 * "                            and p.product_name like '%'||?||'%' " +
-	 * "                     ORDER BY qna_board_date desc) " +
-	 * "                WHERE ROWNUM < (? * 5) + 1 " +
-	 * " ) WHERE RNUM >= ((? - 1) * 5) + 1 "; PreparedStatement pstmt =
-	 * conn.prepareStatement(sql); pstmt.setString(1, search_String);
-	 * pstmt.setInt(2, pageNo); pstmt.setInt(3, pageNo); ResultSet rs =
-	 * pstmt.executeQuery();
-	 * 
-	 * QnABoardProductDTO qnaBoardProductDTO;
-	 * 
-	 * while (rs.next()) {
-	 * 
-	 * qnaBoardProductDTO = new QnABoardProductDTO();
-	 * 
-	 * // 답변은 답변여부만 담아서 리스트 DTO로 담기 위해 삼항연산자 사용 String YN =
-	 * rs.getString("qna_board_answer") != null ? "Y" : "N"; // 한 행의 데이터를 DTO에 담아준다
-	 * qnaBoardProductDTO.setQna_board_id(rs.getInt("qna_board_id"));
-	 * qnaBoardProductDTO.setProduct_name(rs.getString("product_name"));
-	 * System.out.println(rs.getString("product_name"));
-	 * qnaBoardProductDTO.setQna_board_title(rs.getString("qna_board_title"));
-	 * qnaBoardProductDTO.setUsers_id(rs.getString("users_id"));
-	 * qnaBoardProductDTO.setQna_board_date(rs.getDate("qna_board_date"));
-	 * qnaBoardProductDTO.setQna_board_answer(YN);
-	 * 
-	 * // DB의 한 행 데이터를 담은 DTO를 리스트에 더해준다
-	 * qnaBoardProductDTOs.add(qnaBoardProductDTO); System.out.println("DAO: " +
-	 * qnaBoardProductDTOs.toString()); } rs.close(); pstmt.close();
-	 * 
-	 * } catch (Exception e) { e.getMessage(); } finally { try { // Connection 반납
-	 * conn.close(); System.out.println("반납 성공"); } catch (SQLException e) {
-	 * e.printStackTrace(); } } return qnaBoardProductDTOs; }
-	 */
+	// 상품 이름 검색 목록
+	public ArrayList<QnABoardDTO> selectSearchList(int pageNo, String search_String, Connection conn) {
+		ArrayList<QnABoardDTO> QnaSearchList = new ArrayList<QnABoardDTO>();
+		try {
+			// sql문 작성
+			String sql = ""
+					+ " SELECT RNUM, qna_board_id, product_name, qna_board_title,users_id,qna_board_date, QNA_BOARD_ANSWER "
+					+ " FROM ( "
+					+ "        SELECT ROWNUM AS RNUM, product_name,qna_board_id, product_id, qna_board_title,users_id,qna_board_date, QNA_BOARD_ANSWER  "
+					+ "			   FROM ("
+					+ "                    SELECT qna_board_id, product_name, p.product_id, qna_board_title,users_id,qna_board_date, QNA_BOARD_ANSWER "
+					+ "                     FROM QNA_BOARD q , Product p "
+					+ "                     where q.product_id = p.product_id "
+					+ "                            and p.product_name like '%'||?||'%' "
+					+ "                     ORDER BY qna_board_date desc) "
+					+ "                WHERE ROWNUM < (? * 5) + 1 " + " ) WHERE RNUM >= ((? - 1) * 5) + 1 ";
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, search_String);
+			pstmt.setInt(2, pageNo);
+			pstmt.setInt(3, pageNo);
+			ResultSet rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+
+				QnABoardDTO searchQna = new QnABoardDTO();
+
+				// 답변은 답변여부만 담아서 리스트 DTO로 담기 위해 삼항연산자 사용
+				String YN = rs.getString("qna_board_answer") != null ? "Y" : "N"; // 한 행의 데이터를 DTO에 담아준다
+				searchQna.setQna_board_id(rs.getInt("qna_board_id"));
+				searchQna.setProduct_name(rs.getString("product_name"));
+				searchQna.setQna_board_title(rs.getString("qna_board_title"));
+				searchQna.setUsers_id(rs.getString("users_id"));
+				searchQna.setQna_board_date(rs.getDate("qna_board_date"));
+				searchQna.setQna_board_answer(YN);
+
+				// DB의 한 행 데이터를 담은 DTO를 리스트에 더해준다
+				QnaSearchList.add(searchQna);
+
+			}
+			rs.close();
+			pstmt.close();
+
+		} catch (Exception e) {
+			e.getMessage();
+		} finally {
+			try { // Connection 반납
+				conn.close();
+				System.out.println("반납 성공");
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return QnaSearchList;
+	}
 
 	// updateQna
 	public int updateQnABoard(QnABoardDTO upQna, Connection conn) throws Exception {
@@ -251,7 +262,7 @@ public class QnABoardDAO {
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 
 		pstmt.setInt(1, upQna.getQna_category_id());
-		//pstmt.setString(1, upQna.getQna_category_name());
+		// pstmt.setString(1, upQna.getQna_category_name());
 		pstmt.setString(2, upQna.getQna_board_title());
 		pstmt.setString(3, upQna.getQna_board_content());
 		pstmt.setInt(4, upQna.getQna_board_id());

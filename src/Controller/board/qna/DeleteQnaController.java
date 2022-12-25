@@ -18,19 +18,17 @@ public class DeleteQnaController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		String userId = (String) session.getAttribute("users_id");			
+		String userId = (String) session.getAttribute("users_id");
 		DeleteQnaService deleteQnaService = (DeleteQnaService) request.getServletContext()
 				.getAttribute("deleteQnaService");
 
-		int qnaNo=Integer.parseInt(request.getParameter("qna_board_id"));
+		int qnaNo = Integer.parseInt(request.getParameter("qna_board_id"));
 		int result = deleteQnaService.deleteQnA(qnaNo);
-		
+
 		if (result != 0) {
 			request.setAttribute("userId", userId);
 
 			response.sendRedirect("ReadQnABoardList");
 		}
-
 	}
-
 }

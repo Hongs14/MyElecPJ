@@ -10,16 +10,16 @@ import dao.QnABoardDAO;
 import dto.qna.QnABoardDTO;
 
 public class ReadQnADetailService {
-private ServletContext application;
-private DataSource ds;
-private QnABoardDAO qnaBoardDAO;
-	
+	private ServletContext application;
+	private DataSource ds;
+	private QnABoardDAO qnaBoardDAO;
+
 	public ReadQnADetailService(ServletContext application) {
 		this.application = application;
 		qnaBoardDAO = (QnABoardDAO) application.getAttribute("QnABoardDAO");
 		ds = (DataSource) application.getAttribute("dataSource");
 	}
-	
+
 	public QnABoardDTO getReadQna(int qnaNo) {
 		QnABoardDTO result = null;
 		Connection conn = null;
@@ -31,12 +31,11 @@ private QnABoardDAO qnaBoardDAO;
 		} finally {
 			try {
 				conn.close();
-			} catch (Exception e){
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
 		return result;
 	}
-
 
 }
